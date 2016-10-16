@@ -1,0 +1,19 @@
+<div class="details" ng-model="guitarras">
+	<img class="magnifyImg" ng-src="img/{{guitarras[guitarraSeleccionada].image}}.jpg">
+	<div>
+		<h2> <strong>{{guitarras[guitarraSeleccionada].nombre | lowercase }}</h2>
+        <p class="rightDate magnifyDate">Precio revisado en: {{guitarras[guitarraSeleccionada].dateAdded | date:'dd/MM'}}</p>
+        <p class="rightPrice magnifyPrice">${{guitarras[guitarraSeleccionada].price | number:1 }}</p>
+        <p> {{guitarras[guitarraSeleccionada].descripcion}}</p>
+        <p class="longDescription">{{guitarras[guitarraSeleccionada].descripcionLarga}}</p>
+        <br><hr><br>
+
+				<div class="navigation">
+					<a href="#/guitarraDetalle/{{guitarraAnterior}}"><&nbsp; Anterior</a>
+					<a href="#/guitarraDetalle/{{guitarraPosterior}}">Próxima &nbsp;></a>
+				</div>
+
+        <a href="#/guitarras" class="link">« Volver</a><br>
+        <a href="#/" class="link">Inicio </a>
+    </div>
+</div>

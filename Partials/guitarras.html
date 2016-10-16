@@ -1,0 +1,36 @@
+        <!-- SEARCH AREA -->
+        <div class="search">
+            <h1>Almacen de Guitarras</h1>
+            <label>Buscar Guitarrra</label>
+		    <input type="text" ng-model="query" >
+	
+		    <label>Sort by:<select ng-model="orderGuitar">
+                    <option value="nombre" selected>nombre</option>
+                    <option value="price">precio</option>
+                </select>
+            </label>
+
+            <label>
+                <input type="radio" ng-model="direction" name="direction" checked>
+                Ascending
+            </label>
+            <label>	
+			    <input type="radio" ng-model="direction" name="direction" value="reverse" >
+			    Descending
+		    </label>
+        </div>
+        <!--END of SEARCH AREA -->
+
+
+        <ul>
+            <li class="itemHolder" ng-repeat="item in guitarras | filter:query | orderBy:orderGuitar:direction">
+                <a href="#/guitarraDetalle/{{guitarras.indexOf(item)}}">
+                <img ng-src="img/{{item.image}}.jpg">
+                <div>
+                    <h3>{{item.nombre | uppercase}}</h3>
+                    <p class="rightDate">Precio revisado en: {{item.dateAdded | date:'dd/MM'}}</p>
+                    <p class="rightPrice">{{item.price | number:1}}</p>
+                    <p>{{item.descripcion}}</p>
+                </div>
+            </li>
+        </ul>
