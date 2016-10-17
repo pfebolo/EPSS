@@ -1,10 +1,12 @@
-<a href="#/" class="link">Inicio </a>
-<p>Modalidades</p>
-<ul>
-    <li ng-repeat="modalidad in modalidades">
-        <div>
-            <h3>{{modalidad.modalidadId}}</h3>
-            <p>{{modalidad.nombre}}</p>
-        </div>
-    </li>
-</ul>
+<div class="container">
+  <h2>Modalidades</h2>
+  <table class="table table-striped">
+    <tbody>
+      <tr ng-repeat="modalidad in modalidades">
+        <td>
+          {{modalidad.nombre}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
