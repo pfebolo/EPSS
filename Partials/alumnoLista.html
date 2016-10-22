@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Alumnos</h2>
+  <h2>Estudiantes</h2>
   <table class="table table-striped">
     <tbody>
       <tr ng-repeat="alumno in alumnos">
@@ -8,6 +8,9 @@
         </td>
         <td>
           {{alumno.apellido}}
+        </td>
+        <td>
+          {{alumno.modalidad.nombre}}
         </td>
         <td>
           {{alumno.mail}}
