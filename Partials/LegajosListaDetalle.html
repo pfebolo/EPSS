@@ -1,0 +1,74 @@
+<div class="alert alert-info" ng-show="cargando">Cargando...</div>
+<div class="container col-md-4" ng-show="!cargando && GetOK">
+	<h2>Legajos</h2>
+	<table class="table table-striped">
+		<tbody ng-repeat="legajo in legajos" ng-click="cargarLegajo(legajo)">
+			<tr>
+				<td>
+					{{legajo.alumno.nombre}}
+				</td>
+				<td>
+					{{legajo.alumno.apellido}}
+				</td>
+				<td>
+					<button type="button" class="btn btn-info" ng-click="cargarLegajo(legajo)">+</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="col-md-6" ng-show="!cargando && GetOK">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<div class="col-md-6">
+				<h4>{{legajoSeleccionado.alumno.apellido}},&nbsp{{legajoSeleccionado.alumno.nombre}}</h4>
+			</div>
+			<div class="col-md-6">
+				<h4 class="pull-right">{{legajoSeleccionado.legajoNro}}</h4>
+			</div>
+			<p>{{legajoSeleccionado.alumno.mail}}</p>
+		</div>
+		<div class="panel-body">
+
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td>
+							DNI:&nbsp{{legajoSeleccionado.dni}}
+						</td>
+						<td>
+							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
+						</td>
+						<td>
+							{{legajoSeleccionado.direccionCoordenadaInterna}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
+						</td>
+						<td>
+							{{legajoSeleccionado.localidad.paisId}}
+						</td>
+					</tr>
+
+				</tbody>
+
+			</table>
+
+		</div>
+		<div class="panel-footer">
+			<a href="#" class="btn btn-primary">Documentación</a>
+		</div>
+	</div>
+</div>
+
+<div class="alert alert-warning" ng-show="!cargando && !GetOK">
+	Los Legajos no fueron obtenidos, intente nuevamente.
+</div>
