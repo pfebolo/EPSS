@@ -1,14 +1,11 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
-<div class="container col-md-4" ng-show="!cargando && GetOK">
+<div class="container col-md-3" ng-show="!cargando && GetOK">
 	<h2>Legajos</h2>
 	<table class="table table-striped">
 		<tbody ng-repeat="legajo in legajos">
 			<tr>
 				<td>
-					{{legajo.alumno.nombre}}
-				</td>
-				<td>
-					{{legajo.alumno.apellido}}
+					{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
 				</td>
 				<td>
 					<button type="button" class="btn btn-info" ng-click="cargarLegajo(legajo)">+</button>
@@ -23,22 +20,33 @@
 		<div class="panel-heading">
 			<div class="col-md-6">
 				<h4>{{legajoSeleccionado.alumno.apellido}},&nbsp{{legajoSeleccionado.alumno.nombre}}</h4>
+				DNI:&nbsp{{legajoSeleccionado.dni}}
 			</div>
 			<div class="col-md-6">
-				<h4 class="pull-right">{{legajoSeleccionado.legajoNro}}</h4>
+				<h4 class="text-right">Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>
+
 			</div>
-			<p>{{legajoSeleccionado.alumno.mail}}</p>
+			<p class="text-right">{{legajoSeleccionado.alumno.mail}}&nbsp&nbsp&nbsp&nbsp</p>
 		</div>
 		<div class="panel-body">
 
-			<table class="table table-striped"  ng-show="!cargando && GetOK && informaConfigruacion['Basico']">
+			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfigruacion['Basico']">
 				<tbody>
 					<tr>
 						<td>
-							DNI:&nbsp{{legajoSeleccionado.dni}}
+							Edad:&nbsp{{edad}}
 						</td>
 						<td>
-							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}&nbsp({{edad}})
+							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
+							&nbsp{{legajoSeleccionado.alumno.telefono}}
+						</td>
+						<td>
+							<span class="glyphicon glyphicon-phone" aria-hidden="true">&nbsp{{legajoSeleccionado.alumno.celular}}
 						</td>
 					</tr>
 					<tr>
@@ -63,44 +71,52 @@
 			</table>
 
 			<table class="table table-striped"  ng-show="!cargando && GetOK && informaConfigruacion['Estudios']">
-				<tbody>
+				<thead>	
+					<tr>
+						<th>
+							
+						</th>
+						<th>
+							Nivel
+						</th>
+						<th>
+							Título
+						</th>
+						<th>
+							Institución
+						</tg>
+					</tr>
+				</thead>	
+				<tbody ng-repeat="estudio in legajoSeleccionado.estudios">
 					<tr>
 						<td>
-							{{legajoSeleccionado.sexo}}
+							<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:blue" ng-show="estudio.terminado"></span>
+							<span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color:deepskyblue" ng-show="!estudio.terminado"></span>
 						</td>
 						<td>
-							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}&nbsp({{edad}})
+							{{estudio.nivelEstudioId}}
+						</td>
+						<td>
+							{{estudio.titulo}}
+						</td>
+						<td>
+							{{estudio.institucion}}
 						</td>
 					</tr>
-					<tr>
-						<td>
-							{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
-						</td>
-						<td>
-							{{legajoSeleccionado.direccionCoordenadaInterna}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
-						</td>
-						<td>
-							{{legajoSeleccionado.localidad.paisId}}
-						</td>
-					</tr>
-
 				</tbody>
 
 			</table>
 
 		</div>
 		<div class="panel-footer">
-			<button class="btn btn-primary" ng-click="cambiarInforme('Basico')">Básico</button>
+			<button class="btn btn-primary" ng-click="cambiarInforme('Basico')">Info</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Estudios')">Estudios</button>
+			<button class="btn btn-primary" disabled>Documentación</button>
+			<button class="btn btn-primary" disabled>...</button>
 		</div>
-	</div>
-</div>
 
-<div class="alert alert-warning" ng-show="!cargando && !GetOK">
-	Los Legajos no fueron obtenidos, intente nuevamente.
-</div>
+	</div>
+
+	<div class="alert alert-warning" ng-show="!cargando && !GetOK">
+		Los Legajos no fueron obtenidos, intente nuevamente.
+	</div>
