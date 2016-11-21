@@ -1,14 +1,24 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
 <div class="container col-md-3" ng-show="!cargando && GetOK">
-	<h2>Legajos</h2>
+	<div class="container col-md-6">
+		<h2>Legajos</h2>
+	</div>
+	<div class="container col-md-6">
+		<input type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
+	</div>
 	<table class="table table-striped">
-		<tbody ng-repeat="legajo in legajos">
-			<tr>
+		<tbody ng-repeat="legajo in legajos |
+		 filter:nombreapellidoFiltro | orderBy:alumno.apellido">
+			<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
+				<td>{{$index}}
+				</td>
 				<td>
 					{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
 				</td>
 				<td>
-					<button type="button" class="btn btn-info" ng-click="cargarLegajo(legajo)">+</button>
+					<button type="button" class="btn btn-info">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
 				</td>
 			</tr>
 		</tbody>
@@ -26,18 +36,26 @@
 				<h4 class="text-right">Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>
 
 			</div>
-			<p class="text-right">{{legajoSeleccionado.alumno.mail}}&nbsp&nbsp&nbsp&nbsp</p>
+			<p class="text-right">{{legajoSeleccionado.modalidadBase}},&nbsp{{legajoSeleccionado.turno}}&nbsp&nbsp&nbsp</p>
 		</div>
 		<div class="panel-body">
 
-			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfigruacion['Basico']">
+			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Basico']">
 				<tbody>
 					<tr>
 						<td>
-							Edad:&nbsp{{edad}}
+							<span class="glyphicon glyphicon-user" aria-hidden="true">&nbspEdad:&nbsp{{edad}}
 						</td>
 						<td>
-							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}
+							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}&nbsp-&nbsp{{legajoSeleccionado.lugarNacimiento}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp{{legajoSeleccionado.alumno.mail.replace("%40","@")}}
+						</td>
+						<td>
+							
 						</td>
 					</tr>
 					<tr>
@@ -51,7 +69,7 @@
 					</tr>
 					<tr>
 						<td>
-							{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
+							<span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
 						</td>
 						<td>
 							{{legajoSeleccionado.direccionCoordenadaInterna}}
@@ -59,7 +77,15 @@
 					</tr>
 					<tr>
 						<td>
-							({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
+							({{legajoSeleccionado.codigoPostalBase}})&nbsp{{legajoSeleccionado.localidadBase}}
+						</td>
+						<td>
+							Argentina
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="glyphicon glyphicon-map-marker" aria-hidden="true">&nbsp({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
 						</td>
 						<td>
 							{{legajoSeleccionado.localidad.paisId}}
@@ -70,7 +96,7 @@
 
 			</table>
 
-			<table class="table table-striped"  ng-show="!cargando && GetOK && informaConfigruacion['Estudios']">
+			<table class="table table-striped"  ng-show="!cargando && GetOK && informaConfiguracion['Estudios']">
 				<thead>	
 					<tr>
 						<th>
@@ -84,7 +110,7 @@
 						</th>
 						<th>
 							Institución
-						</tg>
+						</th>
 					</tr>
 				</thead>	
 				<tbody ng-repeat="estudio in legajoSeleccionado.estudios">
@@ -107,11 +133,55 @@
 
 			</table>
 
+			<table class="table table-striped"  ng-show="!cargando && GetOK && informaConfiguracion['Documentacion']">
+				<thead>	
+					<tr>
+						<th>
+							Cuestionario
+						</th>
+						<th>
+							Apto Físico
+						</th>
+						<th>
+							Título
+						</th>
+						<th>
+							DNI
+						</th>
+						<th>
+							Foto
+						</th>
+					</tr>
+				</thead>	
+				<tbody>
+					<tr>
+						<td>
+							{{legajoSeleccionado.cuestionario | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							{{legajoSeleccionado.docAptoFisico | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							{{legajoSeleccionado.docTitulo | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							{{legajoSeleccionado.docDni | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							{{legajoSeleccionado.docFoto | date:'dd/MM/yyyy'}}
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+
+
+
 		</div>
 		<div class="panel-footer">
 			<button class="btn btn-primary" ng-click="cambiarInforme('Basico')">Info</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Estudios')">Estudios</button>
-			<button class="btn btn-primary" disabled>Documentación</button>
+			<button class="btn btn-primary" ng-click="cambiarInforme('Documentacion')">Documentación</button>
 			<button class="btn btn-primary" disabled>...</button>
 		</div>
 
