@@ -1,0 +1,57 @@
+<div class="alert alert-info" ng-show="cargando">Cargando...</div>
+<div class="container" ng-show="!cargando && (getCoordinacionesOK && getgruposOK)">
+  <h2>Grupo</h2>
+  <table class="table table-striped">
+    <tbody>
+      <td ng-repeat="coordinacion in coordinaciones | filter: { promocionId: coordinacion.promocionId }">
+        <img ng-src="{{coordinacion.coordinador.fotoPath}}" class="img-circle" width="33" height="33" alt="{{coordinacion.coordinador.nombre}}"><br>{{coordinacion.coordinador.nombre}}
+      </td>
+    </tbody>
+  </table>
+
+
+
+  <table class="table table-striped">
+    <tbody>
+      <tr ng-repeat="grupo in grupos">
+        <td>
+          {{grupo.promocionId}}
+        </td>
+        <td>
+          {{grupo.cuatrimestreId}}
+        </td>
+        <td>
+          {{grupo.modoId}}
+        </td>
+        <td>
+          {{grupo.turnoId}}
+        </td>
+        <td>
+          {{grupo.grupoId}}
+        </td>
+        <td>
+          {{grupo.legajo.legajoNro}}
+        </td>
+        <td>
+          {{grupo.grupoId}}
+        </td>
+        <td>
+          {{grupo.legajo.alumno.apellido}},&nbsp{{grupo.legajo.alumno.nombre}}
+        </td>
+        <!--        <td>
+          <table class="table table-striped">
+            <tbody>
+              <td ng-repeat="coordinacion in coordinaciones | filter: { promocionId: coordinacion.promocionId }">
+                <img  ng-src="{{coordinacion.coordinador.fotoPath}}" class="img-circle" width="33" height="33"  alt="{{coordinacion.coordinador.nombre}}"><br>{{coordinacion.coordinador.nombre}}
+              </td>
+            </tbody>
+          </table>
+        </td>-->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="alert alert-warning" ng-show="!cargando && ! (getgruposOK && getCoordinacionesOK)">
+  Las divisiones no fueron obtenidas, intente nuevamente.
+</div>

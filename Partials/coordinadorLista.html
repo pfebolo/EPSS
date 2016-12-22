@@ -1,0 +1,17 @@
+<div class="alert alert-info" ng-show="cargando">Cargando...</div>
+<div class="container" ng-show="!cargando && (GetCoordinadoresOK && GetCoordinacionesOK)">
+  <h2>Coordinadores</h2>
+  <div ng-repeat="step in coordinadores">
+    <div ng-if="$index % 3 === 0" ng-init="grupo =  coordinadores.slice($index, $index + 3)">
+      <div ng-repeat="coordinador in grupo" class="col-md-4">
+
+        <img ng-src="{{coordinador.fotoPath}}" class="img-circle" width="100" height="100" alt="{{coordinador.nombre}}"><br>{{coordinador.nombre}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="alert alert-warning" ng-show="!cargando && ! (GetCoordinadoresOK && GetCoordinacionesOK)">
+  Los Coordinadores no fueron obtenidos, intente nuevamente.
+</div>
