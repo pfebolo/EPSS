@@ -1,13 +1,13 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
 <div class="container" ng-show="!cargando && (getCoordinacionesOK && getCursosOK && getGruposOK)">
   
-  <div class="col-md-6">
+  <div class="col-md-7">
     <h2>Divisiones</h2>
     <table class="table table-striped">
       <theader>
         <tr>
           <th>
-            Promocion
+            Promoción
           </th>
           <th>
             Cuatrimestre
@@ -30,9 +30,13 @@
         <tr ng-repeat="curso in cursos" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(curso)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
           <td vertical-align="middle">
             {{curso.promocionId}}
+            <br>
+            {{obtenerAnioCursado(curso.promocionId,curso.cuatrimestreId)}}
           </td>
           <td vertical-align="middle">
             {{(curso.cuatrimestreId<100 ? 'Marzo' : 'Agosto')}}
+            <br>
+            {{obtenerCuatrimestreCursado(curso.cuatrimestreId)}}
           </td>
           <td vertical-align="middle">
             {{curso.modoId}}
@@ -58,7 +62,7 @@
       </tbody>
     </table>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-5">
     <h2>Estudiantes</h2>
     <table class="table table-striped">
     <theader>
