@@ -1,11 +1,16 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
 <div class="container" ng-show="!cargando && (GetCoordinadoresOK && GetCoordinacionesOK)">
-  <h2>Coordinadores</h2>
   <div ng-repeat="step in coordinadores">
-    <div ng-if="$index % 3 === 0" ng-init="grupo =  coordinadores.slice($index, $index + 3)">
-      <div ng-repeat="coordinador in grupo" class="col-md-4">
-
-        <img ng-src="{{coordinador.fotoPath}}" class="img-circle" width="100" height="100" alt="{{coordinador.nombre}}"><br>{{coordinador.nombre}}
+    <div ng-if="$index % 4 === 0" ng-init="grupo =  coordinadores.slice($index, $index + 4)" class="row stylish-panel">
+      <div ng-repeat="coordinador in grupo" class="col-md-3">
+        <div>
+          <img ng-src="{{coordinador.fotoPath}}" class="img-circle img-thumbnail" width="100" height="100" alt="{{coordinador.nombre}}">
+          <h2>{{coordinador.nombre}}</h2>
+          <p><span class="glyphicon glyphicon-earphone" aria-hidden="true">&nbsp{{coordinador.telefonoFijo}}&nbsp<span class="glyphicon glyphicon-phone" aria-hidden="true">&nbsp{{coordinador.telefonoCelular}}</p>
+          <p><span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp<a href="mailto:{{coordinador.email}}">{{coordinador.email}}</a></p>
+          
+          <p><span class="glyphicon glyphicon-tag" aria-hidden="true">&nbsp{{coordinador.comentarios}}</p>
+        </div>
       </div>
     </div>
   </div>
