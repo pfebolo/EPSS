@@ -22,5 +22,16 @@
     transition: 0.5s;
 }
 
+.header-cont {
+    width:100%;
+    position:fixed;
+    top:0px;
+    height: 60px;
+    z-index: 999;
+}
+
+.contenido{ 
+    margin-top: 60px;
+}
 
 

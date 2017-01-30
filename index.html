@@ -3,7 +3,7 @@
 
 <head>
     <meta name="encoding" charset="UTF-8" />
-    <html lang="es-AR" >
+    <html lang="es-AR">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EPSS</title>
     <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -12,29 +12,33 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a class="navbar-brand" href="#">
-                        <img alt="Brand" src="img/epssLogo.png" height="42" width="42">
-                    </a>
-                </li>
-                <!--<li><a class="navbar-link" href="#/guitarras">guitarras</a></li>-->
-                <!--<li><a class="navbar-link" href="#/legajoDigital">Modalidades</a></li>
+    <div class="header-cont">
+        <nav class="navbar navbar-default">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="navbar-brand" href="index.html">
+                            <img alt="Brand" src="img/epssLogo.png" height="42" width="42">
+                        </a>
+                    </li>
+                    <!--<li><a class="navbar-link" href="#/guitarras">guitarras</a></li>-->
+                    <!--<li><a class="navbar-link" href="#/legajoDigital">Modalidades</a></li>
                 <li><a class="navbar-link" href="#/alumnoLista">Estudiantes</a></li>-->
-                <li><a class="navbar-link" href="#/LegajosListaDetalle">Legajos</a></li>
-                <li><a class="navbar-link" href="#/CoordinadorLista">Coordinadores</a></li>
-                <li><a class="navbar-link" href="#/cursoLista">Divisiones</a></li>
-            </ul>
-    </nav>
+                    <li><a class="navbar-link" href="#/LegajosListaDetalle">Legajos</a></li>
+                    <li><a class="navbar-link" href="#/CoordinadorLista">Coordinadores</a></li>
+                    <li><a class="navbar-link" href="#/cursoLista">Divisiones</a></li>
 
-    <div ng-view>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                    <li><a class="navbar-link" href="#/LegajoActualizar">Editar Legajo</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div ng-view class="contenido">
 
     </div>
 
-    
-    
+
+
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
     <script type="text/javascript" src="lib/bootstrap/bootstrap.min.js "></script>
@@ -45,20 +49,20 @@
 
     <script type="text/javascript" src="lib/js/app.js"></script>
     <script type="text/javascript" src="lib/js/utiles.js"></script>
-   
+
     <script type="text/javascript" src="lib/js/legajoDigital.js"></script>
     <script type="text/javascript" src="lib/js/alumno.js"></script>
     <script type="text/javascript" src="lib/js/legajos.js"></script>
     <script type="text/javascript" src="lib/js/coordinador.js"></script>
     <script type="text/javascript" src="lib/js/curso.js"></script>
     <script type="text/javascript" src="lib/js/grupo.js"></script>
-       
+
 
     <script>
-      $(document).ready(function(){
-        $('[data-toogle="tooltip"]').tooltip();
-      })
-    </script>
+            $(document).ready(function () {
+                $('[data-toogle="tooltip"]').tooltip();
+            })
+        </script>
 </body>
 
 </html>
