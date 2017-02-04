@@ -1,96 +1,278 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
-
-<button type="button" class="btn btn-default" ng-click="cargarLegajo(legajos[1])">Default</button>
-
-<form novalidate name="myForm" class="col-md-6 css-form">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<div class="col-md-6">
-				<button class="btn btn-primary" ng-click="ActualizarLegajo(legajoSeleccionado)" ng-disabled="!(!myForm.$pristine && myForm.$valid)">Actualizar</button>
+<form novalidate name="myForm" class="css-form">
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="col-md-6">
+					<button class="btn btn-primary" ng-click="ActualizarLegajo(legajoSeleccionado)" ng-disabled="!myForm.$valid">Actualizar</button>
+				</div>
+				<div class="col-md-6">
+					<h4 class="text-right">Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>
+				</div>
+				<p class="text-right">{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}}&nbsp&nbsp&nbsp</p>
 			</div>
-			<div class="col-md-6">
-				<h4 class="text-right">Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>
-			</div>
-			<p class="text-right">{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}}&nbsp&nbsp&nbsp</p>
-		</div>
-		<div class="panel-body">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.apellido.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon" for="apellido">Apellido</span>
+							<input id="apellido" type="text" class="form-control" name="apellido" required placeholder="[Apellido(s)]" ng-model="legajoSeleccionado.alumno.apellido">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.nombre.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Nombre</span>
+							<input id="nombre" type="text" class="form-control" name="nombre" required placeholder="[nombre(s)]" ng-model="legajoSeleccionado.alumno.nombre">
+						</div>
+					</div>
+				</div>
 
-			<div class="input-group" ng-class="myForm.apellido.$valid ? 'has-success' : 'has-error'">
-				<span class="input-group-addon" for="apellido">Apellido</span>
-				<input id="apellido" type="text" class="form-control" name="apellido" required placeholder="[Apellido(s)]" ng-model="legajoSeleccionado.alumno.apellido">
-				<span class="input-group-addon">Nombre</span>
-				<input id="nombre" type="text" class="form-control" name="nombre" required placeholder="[nombre(s)]" ng-model="legajoSeleccionado.alumno.nombre">
-			</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.dni.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">DNI</span>
+							<input id="dni" type="text" class="form-control" name="dni" required placeholder="[Nro del DNI]" ng-model="legajoSeleccionado.dni">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.fechaNacimiento.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Fecha de Nacimiento</span>
+							<!--<input id="fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" placeholder="[Fecha de nacimiento]"             ng-model="legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'" >-->
+							<input id="fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.fechaNacimiento"
+								min="1917-01-01" max="2035-12-31" required />
+						</div>
+					</div>
+				</div>
 
-			<div class="input-group">
-				<span class="input-group-addon">DNI</span>
-				<input id="dni" type="text" class="form-control" name="dni" required placeholder="[Nro del DNI]" ng-model="legajoSeleccionado.dni">
-				<span class="input-group-addon">Fecha de Nacimiento</span>
-				<input id="fechaNacimiento" type="date" class="form-control" name="fechaNacimiento" placeholder="[Fecha de nacimiento]">
-			</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group" ng-class="myForm.lugarNacimiento.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Lugar de Nacimiento</span>
+							<input id="lugarNacimiento" type="text" class="form-control" name="lugarNacimiento" required placeholder="[Lugar de Nacimiento]"
+								ng-model="legajoSeleccionado.lugarNacimiento">
+						</div>
+					</div>
+				</div>
 
-			<div class="input-group">
-				<span class="input-group-addon">Lugar de Nacimiento</span>
-				<input id="lugarNacimiento" type="text" class="form-control" name="lugarNacimiento" required placeholder="[Lugar de Nacimiento]" ng-model="legajoSeleccionado.lugarNacimiento">
-			</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-send"></span>
+							</span>
+							<input id="email" type="text" class="form-control" name="email" placeholder="[Email]" ng-model="legajoSeleccionado.alumno.mail">
+						</div>
+					</div>
+				</div>
 
-			<div class="input-group">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-send"></span>
-				</span>
-				<input id="email" type="text" class="form-control" name="email" placeholder="[Email]" ng-model="legajoSeleccionado.alumno.mail">
-			</div>
-
-			<div class="input-group">
-				<span class="input-group-addon">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.telefono.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
 					<span class="glyphicon glyphicon-earphone"></span>
-				</span>
-				<input id="telefono" type="text" class="form-control" name="telefono" placeholder="[Nro de teléfono (fijo)]" ng-model="legajoSeleccionado.alumno.telefono">
-				<span class="input-group-addon">
+							</span>
+							<input id="telefono" type="text" class="form-control" name="telefono" placeholder="[Nro de teléfono (fijo)]" ng-model="legajoSeleccionado.alumno.telefono">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.celular.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
 					<span class="glyphicon glyphicon-phone"></span>
-				</span>
-				<input id="celular" type="text" class="form-control" name="celular" placeholder="[Nro de celular]" ng-model="legajoSeleccionado.alumno.celular">
+							</span>
+							<input id="celular" type="text" class="form-control" name="celular" placeholder="[Nro de celular]" ng-model="legajoSeleccionado.alumno.celular">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.calle.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
+					<span class="glyphicon glyphicon-home"></span>
+							</span>
+							<input id="calle" type="text" class="form-control" name="calle" placeholder="[Dirección: Calle]" ng-model="legajoSeleccionado.direccionCalle">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.nro.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
+					<span class="glyphicon glyphicon-home"></span>
+							</span>
+							<input id="nro" type="text" class="form-control" name="nro" placeholder="[Dirección: Nro]" ng-model="legajoSeleccionado.direccionNro">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group" ng-class="myForm.coordenaInterna.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
+					<span class="glyphicon glyphicon-home"></span>
+							</span>
+							<input id="coordenaInterna" type="text" class="form-control" name="coordenaInterna" placeholder="[Dirección: Barrio/Piso/Dpto/otros]"
+								ng-model="legajoSeleccionado.direccionCoordenadaInterna">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.codigoPostalBase.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
+						<span class="glyphicon glyphicon-home"></span>
+							</span>
+							<input id="codigoPostalBase" type="text" class="form-control" name="codigoPostalBase" pattern="^([A-Z]\d{4}[A-Z]{3}|\d{4})$"
+								placeholder="[Dirección: Código Postal]" ng-model="legajoSeleccionado.codigoPostalBase" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.localidadBase.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">
+						<span class="glyphicon glyphicon-home"></span>
+							</span>
+							<input id="localidadBase" type="text" class="form-control" name="localidadBase" placeholder="[Dirección: Localidad]" ng-model="legajoSeleccionado.localidadBase">
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="input-group">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-home"></span>
-				</span>
-				<input id="calle" type="text" class="form-control" name="calle" placeholder="[Dirección: Calle]" ng-model="legajoSeleccionado.direccionCalle">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-home"></span>
-				</span>
-				<input id="calle" type="text" class="form-control" name="calle" placeholder="[Dirección: Nro]" ng-model="legajoSeleccionado.direccionNro">
-			</div>
-
-			<div class="input-group">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-home"></span>
-				</span>
-				<input id="coordenaInterna" type="text" class="form-control" name="coordenaInterna" placeholder="[Dirección: Barrio/Piso/Dpto/otros]"
-					ng-model="legajoSeleccionado.direccionCoordenadaInterna">
-			</div>
-
-			<div class="input-group">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-home"></span>
-				</span>
-				<input id="codigoPostalBase" type="text" class="form-control" name="codigoPostalBase" pattern="^([A-Z]\d{4}[A-Z]{3}|\d{4})$"
-					placeholder="[Dirección: Código Postal]" ng-model="legajoSeleccionado.codigoPostalBase" required>
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-home"></span>
-				</span>
-				<input id="localidadBase" type="text" class="form-control" name="localidadBase" placeholder="[Dirección: Localidad]" ng-model="legajoSeleccionado.localidadBase">
+			<div class="panel-footer">
+				<div ng-show="!myForm.$valid">¡Hay errores en el formulario!</div>
 			</div>
 		</div>
+	</div>
+	<!-- ----------------------------------------------------------------------- -->
+	<!-- ----------------------------------------------------------------------- -->
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4 class="text-right">&nbspDatos Adicionales</h4>
+				<p class="text-right">&nbsp&nbsp&nbsp</p>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="'has-success'">
+							<span class="input-group-addon">Sexo</span>
+							<span class="input-group-addon"><input type="radio" name="r" ng-click="legajoSeleccionado.sexo='Femenino '" ng-checked="legajoSeleccionado.sexo!='Masculino'" ></span>
+							<span class="input-group-addon">Femenino</span>
+							<span class="input-group-addon"><input type="radio" name="r" ng-click="legajoSeleccionado.sexo='Masculino'" ng-checked="legajoSeleccionado.sexo==='Masculino'" ></span>
+							<span class="input-group-addon">Masculino</span>
+						</div>
+					</div>
+				</div>
 
-		<div class="panel-footer">
-			<div ng-show="!myForm.$valid">¡Hay errores en el formulario!</div>
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group" ng-class="'has-success'">
+							<span class="input-group-addon">Secundario Completo O ley mayor a 25 años</span>
+							<span class="input-group-addon"><input type="checkbox" ng-model="legajoSeleccionado.secundarioCompletoOley25"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.fechaIngreso.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Fecha de Ingreso</span>
+							<input id="fechaIngreso" type="text" class="form-control" name="fechaIngreso" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.fechaIngreso"
+								min="2010-01-01" max="2025-12-31" required />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.cuestionario.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Cuestionario</span>
+							<input id="cuestionario" type="text" class="form-control" name="cuestionario" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.cuestionario">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.pagoIniFecha.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Fecha de Pago Inicial</span>
+							<input id="pagoIniFecha" type="text" class="form-control" name="pagoIniFecha" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.pagoIniFecha"
+								min="2010-01-01" max="2025-12-31" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.pagoIniMonto.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Monto Pago Inicial</span>
+							<span class="input-group-addon">$</span>
+							<input id="pagoIniMonto" type="text" class="form-control" name="pagoIniMonto" placeholder="[$$$$$]" ng-model="legajoSeleccionado.pagoIniMonto">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.docAptoFisico.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Fecha Apto Físico</span>
+							<input id="docAptoFisico" type="text" class="form-control" name="docAptoFisico" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docAptoFisico"
+								min="2010-01-01" max="2025-12-31" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.docTitulo.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Fecha Título</span>
+							<input id="docTitulo" type="text" class="form-control" name="docTitulo" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docTitulo"
+								min="2010-01-01" max="2025-12-31" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.docDni.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Fecha DNI </span>
+							<input id="docDni" type="text" class="form-control" name="docDni" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docDni"
+								min="2010-01-01" max="2025-12-31" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.docFoto.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Fecha Foto</span>
+							<input id="docFoto" type="text" class="form-control" name="docFoto" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docFoto"
+								min="2010-01-01" max="2025-12-31" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group" ng-class="myForm.mail2.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">E-Mail alternativo</span>
+							<input id="mail2" type="email" class="form-control" name="mail2" placeholder="[Email]" ng-model="legajoSeleccionado.alumno.mail2">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group" ng-class="myForm.comentarios.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Comentarios</span>
+							<input id="comentarios" type="text" class="form-control" name="comentarios" placeholder="[Comentarios]" ng-model="legajoSeleccionado.comentarios">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="panel-footer">
+				<div ng-show="!myForm.$valid">¡Hay errores en el formulario!</div>
+			</div>
 		</div>
 	</div>
 </form>
 
-<div class="col-md-6">
+
+
+
+
+<!--<div class="col-md-6">
+	<button type="button" class="btn btn-default" ng-click="cargarLegajo(legajos[1])">Default-{{test}}</button>
 	<kbd>codigoPostalBase = {{codigoPostalBase.text}}</kbd><br/>
 	<kbd>myForm.codigoPostalBase.$error =  {{myForm.codigoPostalBase.$error}}</kbd><br/><br/>
 	<kbd>myForm.apellido.$error =  {{myForm.apellido.$error}}</kbd><br/><br/>
@@ -98,7 +280,7 @@
 	<kbd>myForm.$pristine = {{myForm.$pristine}}</kbd><br/>
 	<kbd>myForm.$valid = {{myForm.$valid}}</kbd><br/>
 	<kbd>myForm.$error = {{myForm.$error}}</kbd><br/><br/>
-</div>
+</div>-->
 
 <div class="alert alert-warning" ng-show="!cargando && !GetOK">
 	Los Legajos no fueron obtenidos, intente nuevamente.
