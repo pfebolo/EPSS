@@ -1,15 +1,15 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
-<div class="container col-md-5" ng-show="!cargando && GetOK">
+<div class="container col-md-5" ng-show="!cargando && GetOK && setearScroll()">
 	<div class="container col-md-6">
 		<h2>Legajos</h2>
 	</div>
 	<div class="container col-md-6">
 		<input type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
 	</div>
-	<div class="container col-md-12" style="max-height: 450px; overflow-y: scroll;">
+	<div class="container col-md-12" style="max-height: 450px; overflow-y: scroll;" id="lista">
 		<table class="table table-striped" >
 			<tbody ng-repeat="legajo in legajos |
-			filter:nombreapellidoFiltro | orderBy:alumno.apellido" >
+			filter:nombreapellidoFiltro | orderBy:alumno.apellido">
 				<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
 					<td>
 						{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
