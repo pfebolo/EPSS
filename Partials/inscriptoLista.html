@@ -1,6 +1,6 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
 <div class="container"  ng-show="!cargando && GetOK">
-  <h2>Estudiantes</h2>
+  <h2>Inscriptos</h2>
   <table class="table table-striped">
     <tbody>
       <tr ng-repeat="alumno in alumnos">
@@ -58,5 +58,5 @@
 </div>
 
 <div class="alert alert-warning"  ng-show="!cargando && !GetOK">
-   Los Estudiantes no fueron obtenidos, intente nuevamente.
+   Los inscriptos no fueron obtenidos, intente nuevamente.
 </div>
