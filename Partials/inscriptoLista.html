@@ -1,62 +1,54 @@
 <div class="alert alert-info" ng-show="cargando">Cargando...</div>
-<div class="container"  ng-show="!cargando && GetOK">
-  <h2>Inscriptos</h2>
-  <table class="table table-striped">
-    <tbody>
-      <tr ng-repeat="alumno in alumnos">
-        <td>
-          {{alumno.nombre}}
-        </td>
-        <td>
-          {{alumno.apellido}}
-        </td>
-        <td>
-          {{alumno.modalidad.nombre}}
-        </td>
-        <td>
-          {{alumno.mail}}
-        </td>
-        <td>
-          {{alumno.mail2}}
-        </td>
-        <td>
-          {{alumno.telefono}}
-        </td>
-        <td>
-          {{alumno.celular}}
-        </td>
-        <td>
-          {{alumno.como_conocio}}
-        </td>
-        <td>
-          {{alumno.grado_interes}}
-        </td>
-        <td>
-          {{alumno.fecha_interesado}}
-        </td>
-        <td>
-          {{alumno.comentario}}
-        </td>
-        <td>
-          {{alumno.provincia}}
-        </td>
-        <td>
-          {{alumno.situacion_inscripcion}}
-        </td>
-        <td>
-          {{alumno.situacion_especial}}
-        </td>
-        <td>
-          {{alumno.dni}}
-        </td>
-        <td>
-          {{alumno.domicilio}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container" ng-show="!cargando && GetOK">
+  <div class="col-md-6">
+    <div class="col-md-6">
+      <h2>Inscriptos</h2>
+    </div>
+    <div class="col-md-6">
+      <input type="text" ng-model="inscriptosFiltro">
+    </div>
+    <form novalidate name="myForm" class="css-form col-md-12">
+      <button class="btn btn-primary" ng-click="CrearLegajos()" ng-disabled="!myForm.$valid">Crear Legajos</button>
+      <div style="max-height: 450px; overflow-y: auto;">
+        <table class="table table-striped">
+          <theader>
+            <tr>
+              <th>
+                Nombre
+              </th>
+              <th>
+                Apellido
+              </th>
+              <th>
+                DNI
+              </th>
+              <th>
+                Legajo
+              </th>
+            </tr>
+          </theader>
+          <tbody>
+            <tr ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro">
+              <td>
+                {{inscripto.nombre}}
+              </td>
+              <td>
+                {{inscripto.apellido}}
+              </td>
+              <td>
+                {{inscripto.dni}}
+              </td>
+              <td>
+                <input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
 </div>
 
-<div class="alert alert-warning"  ng-show="!cargando && !GetOK">
-   Los inscriptos no fueron obtenidos, intente nuevamente.
+<div class="alert alert-warning" ng-show="!cargando && !GetOK">
+  Los inscriptos no fueron obtenidos, intente nuevamente.
 </div>

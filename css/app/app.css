@@ -34,4 +34,7 @@
     margin-top: 60px;
 }
 
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
 
