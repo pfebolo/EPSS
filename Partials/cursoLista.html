@@ -1,4 +1,4 @@
-<div class="alert alert-info" ng-show="cargando">Cargando...</div>
+<div class="spinner" ng-show="cargando" />
 <div class="container" ng-show="!cargando && (getCoordinacionesOK && getCursosOK && getGruposOK)">
 
   <div class="col-md-7">
@@ -98,6 +98,6 @@
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && ! (getCursosOK && getCoordinacionesOK && getGruposOK)">
+<div class="alert alert-warning" ng-show="!cargando && !(getCursosOK && getCoordinacionesOK && getGruposOK)">
   Las divisiones no fueron obtenidas, intente nuevamente.
 </div>

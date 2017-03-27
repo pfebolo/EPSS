@@ -1,5 +1,4 @@
-<div class="alert alert-info" ng-show="cargando">Cargando...</div>
-<div class="container" ng-show="!cargando && GetOK">
+<div class="container">
   <div class="col-md-6">
     <div class="col-md-6">
       <h2>Inscriptos</h2>
@@ -8,9 +7,12 @@
       <input type="text" ng-model="inscriptosFiltro">
     </div>
     <form novalidate name="myForm" class="css-form col-md-12">
-      <button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)" ng-disabled="!myForm.$valid">Crear Legajos</button>
-      <div style="max-height: 450px; overflow-y: auto;">
-        <table class="table table-striped">
+      <div class="col-md-6">
+        <button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)" ng-disabled="!myForm.$valid || actualizando || cargando">Crear Legajos</button>
+      </div>
+      <div class="spinner col-md-6" ng-show="actualizando || cargando" />
+      <div style="max-height: 450px; overflow-y: auto;" class="col-md-12">
+        <table class="table table-striped" ng-show="GetOK">
           <theader>
             <tr>
               <th>
