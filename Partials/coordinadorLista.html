@@ -1,5 +1,5 @@
 <div class="spinner" ng-show="cargando" />
-<div class="container" ng-show="!cargando && (GetCoordinadoresOK && GetCoordinacionesOK)">
+<div class="container" ng-show="!cargando && GetCoordinadoresOK">
   <div ng-repeat="CordinadoresAgrupado in coordinadoresAgupados">
     <div class="row stylish-panel">
       <div ng-repeat="coordinador in CordinadoresAgrupado" class="col-md-3">
@@ -16,6 +16,6 @@
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && ! (GetCoordinadoresOK && GetCoordinacionesOK)">
+<div class="alert alert-warning" ng-show="!cargando && ! GetCoordinadoresOK">
   Los Coordinadores no fueron obtenidos, intente nuevamente.
 </div>
