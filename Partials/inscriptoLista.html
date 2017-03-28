@@ -1,3 +1,14 @@
+<div class="alert alert-warning" ng-show="!cargando && !GetOK">
+  Los inscriptos no fueron obtenidos, intente nuevamente.
+</div>
+
+<div class="alert alert-danger" ng-show="error.hayError">
+  <p ng-repeat="error in error.errores">
+    <strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+  </p>
+</div>
+
+
 <div class="container" ng-style="myStyle">
   <div class="col-md-6">
     <div class="col-md-6">
@@ -51,6 +62,3 @@
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && !GetOK">
-  Los inscriptos no fueron obtenidos, intente nuevamente.
-</div>
