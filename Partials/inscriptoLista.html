@@ -10,7 +10,7 @@
 
 
 <div class="container" ng-style="myStyle">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="col-md-6">
       <h2>Inscriptos</h2>
     </div>
@@ -35,6 +35,19 @@
               <th>
                 DNI
               </th>
+              <th>mail</th>
+              <th>mail2</th>
+              <th>telefono</th>
+              <th>celular</th>
+              <th>comoConocio</th>
+              <th>modalidadId</th>
+              <th>gradoInteres</th>
+              <th>fechaInteresado</th>
+              <th>comentario</th>
+              <th>provincia</th>
+              <th>situacionInscripcion</th>
+              <th>situacionEspecial</th>
+              <th>domicilio</th>
               <th>
                 Legajo
               </th>
@@ -51,6 +64,20 @@
               <td>
                 {{inscripto.dni}}
               </td>
+              <td>{{inscripto.mail}}</td>
+              <td>{{inscripto.mail2}}</td>
+              <td>{{inscripto.telefono}}</td>
+              <td>{{inscripto.celular}}</td>
+              <td>{{inscripto.comoConocio}}</td>
+              <td>{{inscripto.modalidadId}}</td>
+              <td>{{inscripto.gradoInteres}}</td>
+              <td>{{inscripto.fechaInteresado}}</td>
+              <td>{{inscripto.comentario}}</td>
+              <td>{{inscripto.provincia}}</td>
+              <td>{{inscripto.situacionInscripcion}}</td>
+              <td>{{inscripto.situacionEspecial}}</td>
+              <td>{{inscripto.domicilio}}</td>
+
               <td>
                 <input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
               </td>
@@ -61,4 +88,3 @@
     </form>
   </div>
 </div>
-
