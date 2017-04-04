@@ -54,7 +54,7 @@
             <div class="media">
               <div class="row">
                 <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:criteriaMatch(curso)">
-                  <img class="media-object img-circle" class="" width="33" height="33" src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}"
+                  <img class="media-object img-circle" class="" width="33" height="33" src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" onerror="this.onerror=null;this.src='img/Persona.png';"
                     data-toogle="tooltip" title="{{coordinacion.coordinador.nombre}}">
                 </div>
               </div>
