@@ -1,5 +1,17 @@
-<div class= "divSpinner" ng-show="cargando">
-    <div class="spinner" />
+<div class="divSpinner" ng-show="cargando">
+	<div class="spinner" />
+</div>
+<div class="container">
+	<div class="row">
+		<div class="alert alert-warning" ng-show="!cargando && !GetOK">
+			Los Legajos no fueron obtenidos, intente nuevamente.
+		</div>
+		<div class="alert alert-danger" ng-show="error.hayError">
+			<p ng-repeat="error in error.errores">
+				<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+			</p>
+		</div>
+	</div>
 </div>
 <form novalidate name="myForm" class="css-form">
 	<div class="col-md-6">
@@ -9,9 +21,15 @@
 					<button class="btn btn-primary" ng-click="ActualizarLegajo(legajoSeleccionado)" ng-disabled="!myForm.$valid">Actualizar</button>
 				</div>
 				<div class="col-md-6">
-					<h4 class="text-right">Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>
+					<!--<h4 >Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>-->
+					<div class="input-group" ng-class="myForm.legajoNro.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" for="apellido">Nº:</span>
+						<input id="legajoNro" type="text" required class="form-control text-right" name="legajoNro" required placeholder="[legajoNro]"
+						 ng-model="legajoSeleccionado.legajoNro">
+					</div>
 				</div>
-				<p class="text-right">{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}}&nbsp&nbsp&nbsp</p>
+				<p class="text-right">
+					<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}} -->&nbsp&nbsp&nbsp</p>
 			</div>
 			<div class="panel-body">
 				<div class="row">
@@ -41,7 +59,7 @@
 							<span class="input-group-addon">Fecha de Nacimiento</span>
 							<!--<input id="fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" placeholder="[Fecha de nacimiento]"             ng-model="legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'" >-->
 							<input id="fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.fechaNacimiento"
-								min="1917-01-01" max="2035-12-31" required />
+							 min="1917-01-01" max="2035-12-31" required />
 						</div>
 					</div>
 				</div>
@@ -51,7 +69,7 @@
 						<div class="input-group" ng-class="myForm.lugarNacimiento.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Lugar de Nacimiento</span>
 							<input id="lugarNacimiento" type="text" class="form-control" name="lugarNacimiento" required placeholder="[Lugar de Nacimiento]"
-								ng-model="legajoSeleccionado.lugarNacimiento">
+							 ng-model="legajoSeleccionado.lugarNacimiento">
 						</div>
 					</div>
 				</div>
@@ -112,7 +130,7 @@
 					<span class="glyphicon glyphicon-home"></span>
 							</span>
 							<input id="coordenaInterna" type="text" class="form-control" name="coordenaInterna" placeholder="[Dirección: Barrio/Piso/Dpto/otros]"
-								ng-model="legajoSeleccionado.direccionCoordenadaInterna">
+							 ng-model="legajoSeleccionado.direccionCoordenadaInterna">
 						</div>
 					</div>
 				</div>
@@ -124,7 +142,7 @@
 						<span class="glyphicon glyphicon-home"></span>
 							</span>
 							<input id="codigoPostalBase" type="text" class="form-control" name="codigoPostalBase" pattern="^([A-Z]\d{4}[A-Z]{3}|\d{4})$"
-								placeholder="[Dirección: Código Postal]" ng-model="legajoSeleccionado.codigoPostalBase" required>
+							 placeholder="[Dirección: Código Postal]" ng-model="legajoSeleccionado.codigoPostalBase" required>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -180,7 +198,7 @@
 						<div class="input-group" ng-class="myForm.fechaIngreso.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Fecha de Ingreso</span>
 							<input id="fechaIngreso" type="text" class="form-control" name="fechaIngreso" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.fechaIngreso"
-								min="2010-01-01" max="2025-12-31" required />
+							 min="2010-01-01" max="2025-12-31" required />
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -196,7 +214,7 @@
 						<div class="input-group" ng-class="myForm.pagoIniFecha.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Fecha de Pago Inicial</span>
 							<input id="pagoIniFecha" type="text" class="form-control" name="pagoIniFecha" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.pagoIniFecha"
-								min="2010-01-01" max="2025-12-31" />
+							 min="2010-01-01" max="2025-12-31" />
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -213,14 +231,14 @@
 						<div class="input-group" ng-class="myForm.docAptoFisico.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Fecha Apto Físico</span>
 							<input id="docAptoFisico" type="text" class="form-control" name="docAptoFisico" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docAptoFisico"
-								min="2010-01-01" max="2025-12-31" />
+							 min="2010-01-01" max="2025-12-31" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="input-group" ng-class="myForm.docTitulo.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Fecha Título</span>
 							<input id="docTitulo" type="text" class="form-control" name="docTitulo" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docTitulo"
-								min="2010-01-01" max="2025-12-31" />
+							 min="2010-01-01" max="2025-12-31" />
 						</div>
 					</div>
 				</div>
@@ -230,14 +248,14 @@
 						<div class="input-group" ng-class="myForm.docDni.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Fecha DNI </span>
 							<input id="docDni" type="text" class="form-control" name="docDni" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docDni"
-								min="2010-01-01" max="2025-12-31" />
+							 min="2010-01-01" max="2025-12-31" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="input-group" ng-class="myForm.docFoto.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Fecha Foto</span>
 							<input id="docFoto" type="text" class="form-control" name="docFoto" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docFoto"
-								min="2010-01-01" max="2025-12-31" />
+							 min="2010-01-01" max="2025-12-31" />
 						</div>
 					</div>
 				</div>
@@ -268,22 +286,4 @@
 		</div>
 	</div>
 </form>
-
-
-
-
-
-<!--<div class="col-md-6">
-	<button type="button" class="btn btn-default" ng-click="cargarLegajo(legajos[1])">Default-{{test}}</button>
-	<kbd>codigoPostalBase = {{codigoPostalBase.text}}</kbd><br/>
-	<kbd>myForm.codigoPostalBase.$error =  {{myForm.codigoPostalBase.$error}}</kbd><br/><br/>
-	<kbd>myForm.apellido.$error =  {{myForm.apellido.$error}}</kbd><br/><br/>
-
-	<kbd>myForm.$pristine = {{myForm.$pristine}}</kbd><br/>
-	<kbd>myForm.$valid = {{myForm.$valid}}</kbd><br/>
-	<kbd>myForm.$error = {{myForm.$error}}</kbd><br/><br/>
-</div>-->
-
-<div class="alert alert-warning" ng-show="!cargando && !GetOK">
-	Los Legajos no fueron obtenidos, intente nuevamente.
 </div>

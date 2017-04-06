@@ -1,7 +1,7 @@
 <div class="divSpinner" ng-show="actualizando || cargando">
   <div class="spinner" />
 </div>
-<div class="container">
+<div class="container" ng-show="!cargando">
   <div class="row">
     <div class="alert alert-danger" ng-show="error.hayError">
       <p ng-repeat="error in error.errores">
