@@ -1,6 +1,5 @@
 <div class="divSpinner" ng-show="actualizando || cargando">
-  <div class="spinner" />
-</div>
+  <div class="spinner" /></div>
 <div class="container" ng-show="!cargando">
   <div class="row">
     <div class="alert alert-danger" ng-show="error.hayError">
@@ -65,76 +64,63 @@
           <p class="text-right">&nbsp</p>
         </div>
         <div class="panel-body">
-
           <table class="table table-striped">
             <tbody>
               <tr>
                 <td class="col-md-3">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp{{inscriptoSeleccionado.mail.replace("%40","@")}}
-						</td>
-						<td class="col-md-3">
-							<span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp{{inscriptoSeleccionado.mail2.replace("%40","@")}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="glyphicon glyphicon-earphone" aria-hidden="true">&nbsp{{inscriptoSeleccionado.telefono}}
-						</td>
-						<td>
-							<span class="glyphicon glyphicon-phone" aria-hidden="true">&nbsp{{inscriptoSeleccionado.celular}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp{{inscriptoSeleccionado.domicilio}}
-						</td>
-						<td>
-              <span class="glyphicon glyphicon-map-marker" aria-hidden="true">&nbsp{{inscriptoSeleccionado.provincia}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-              <span class="glyphicon glyphicon-registration-mark" aria-hidden="true">&nbsp{{inscriptoSeleccionado.modalidadId}}
-						</td>
-						<td>
-							<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true">&nbsp{{inscriptoSeleccionado.gradoInteres}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-              <span class="glyphicon glyphicon-question-sign" aria-hidden="true">&nbsp{{inscriptoSeleccionado.comoConocio}}
-						</td>
-						<td>
-							<span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp{{inscriptoSeleccionado.comentario}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
-						</td>
-						<td>
-							<span class="glyphicon glyphicon-info-sign" aria-hidden="true">&nbsp{{inscriptoSeleccionado.situacionEspecial}}
-						</td>
-					</tr>
-
-				</tbody>
-
-			</table>
-
-
-
-
-
-		</div>
-		<div class="panel-footer">
-      Interesado el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
-		</div>
-	</div>
-
-
-
-
-
+                  <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail.replace("%40","@")}}
+                </td>
+                <td class="col-md-3">
+                  <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail2.replace("%40","@")}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.telefono}}
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.celular}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.domicilio}}
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.provincia}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.modalidadId}}
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comoConocio}}
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comentario}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-footer">
+          Interesado el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+        </div>
+      </div>
     </div>
   </div>
 </div>
