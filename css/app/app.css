@@ -27,7 +27,7 @@
     position:fixed;
     top:0px;
     height: 60px;
-    z-index: 999;
+    z-index: 1;
 }
 
 .contenido{ 
@@ -39,17 +39,30 @@
 }
 
 
+.divSpinner {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border-style: solid;
+    background: rgba(140, 114, 114, 0.1)
+}
 
 /*spinner (http://tobiasahlin.com/spinkit/)*/
 .spinner {
-  width: 35px;
-  height: 35px;
-  margin: 0px auto;
-  background-color: royalblue;
+    position: inherit;
+    left: 50%;
+    top: 50%;
+    width: 35px;
+    height: 35px;
+    margin: 0px auto;
+    background-color: royalblue;
 
-  border-radius: 100%;  
-  -webkit-animation: sk-scaleout 0.3s infinite ease-in-out;
-  animation: sk-scaleout 1.0s infinite ease-in-out;
+    border-radius: 100%;  
+    -webkit-animation: sk-scaleout 0.3s infinite ease-in-out;
+    animation: sk-scaleout 1.0s infinite ease-in-out;
 }
 
 @-webkit-keyframes sk-scaleout {
