@@ -6,12 +6,17 @@
 		<h2>Legajos</h2>
 	</div>
 	<div class="container col-md-6">
-		<input type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
+		<div class="row">
+			<input type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro) />
+		</div>
+		<div class="row">
+			<input type="checkbox" ng-model="filtroDuplicados">&nbsp;filtrar duplicados.
+		</div>
 	</div>
 	<div class="container col-md-12" style="max-height: 450px; overflow-y: scroll;" id="lista">
 		<table class="table table-striped">
 			<tbody ng-repeat="legajo in legajos |
-			filter:nombreapellidoFiltro | orderBy:alumno.apellido">
+			filter:nombreapellidoFiltro | filter:filtrarDuplicados  | orderBy:alumno.apellido">
 				<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
 					<td>
 						{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
