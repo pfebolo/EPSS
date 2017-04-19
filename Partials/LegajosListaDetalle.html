@@ -1,6 +1,9 @@
 <div class="divSpinner" ng-show="cargando">
 	<div class="spinner" />
 </div>
+<div class="alert alert-warning" ng-show="!cargando && !GetOK">
+	Los Legajos no fueron obtenidos, intente nuevamente.
+</div>
 <div class="container col-md-5" ng-show="!cargando && GetOK && setearScroll()">
 	<div class="container col-md-6">
 		<h2>Legajos&nbsp;<span class="badge">{{(legajos.filter(filtrarDuplicados)).length}}</span></h2>
@@ -263,7 +266,4 @@
 			<button class="btn btn-primary" ng-click="editarLegajo(legajoSeleccionado)">Editar</button>
 		</div>
 	</div>
-
-	<div class="alert alert-warning" ng-show="!cargando && !GetOK">
-		Los Legajos no fueron obtenidos, intente nuevamente.
-	</div>
+</div>
