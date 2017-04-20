@@ -71,7 +71,7 @@
 				<tbody>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-user" aria-hidden="true">&nbspEdad:&nbsp{{edad}}
+							<span class="glyphicon glyphicon-user" aria-hidden="true" />&nbspEdad:&nbsp{{edad}}
 						</td>
 						<td>
 							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}&nbsp-&nbsp{{legajoSeleccionado.lugarNacimiento}}
@@ -79,7 +79,7 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp{{legajoSeleccionado.alumno.mail.replace("%40","@")}}
+							<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.mail.replace("%40","@")}}
 						</td>
 						<td>
 							
@@ -87,16 +87,16 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true" />
 							&nbsp{{legajoSeleccionado.alumno.telefono}}
 						</td>
 						<td>
-							<span class="glyphicon glyphicon-phone" aria-hidden="true">&nbsp{{legajoSeleccionado.alumno.celular}}
+							<span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.celular}}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
+							<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
 						</td>
 						<td>
 							{{legajoSeleccionado.direccionCoordenadaInterna}}
@@ -112,15 +112,18 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true">&nbsp({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
+							<span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
 						</td>
 						<td>
 							{{legajoSeleccionado.localidad.paisId}}
 						</td>
 					</tr>
-
+					<tr>
+						<td colspan="2">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{legajoSeleccionado.comentarios}}
+						</td>
+					</tr>
 				</tbody>
-
 			</table>
 
 			<table class="table table-striped"  ng-show="!cargando && GetOK && informaConfiguracion['Estudios']">
@@ -146,8 +149,8 @@
 				<tbody ng-repeat="estudio in legajoSeleccionado.estudios">
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:blue" ng-show="estudio.terminado"></span>
-							<span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color:deepskyblue" ng-show="!estudio.terminado"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:blue" ng-show="estudio.terminado"  />
+							<span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color:deepskyblue" ng-show="!estudio.terminado" />
 						</td>
 						<td>
 							{{estudio.nivelEstudioId}}
