@@ -18,11 +18,21 @@
 	</div>
 	<div class="container col-md-12" style="max-height: 450px; overflow-y: scroll;" id="lista">
 		<table class="table table-striped">
+            <theader>
+              <tr>
+                <th>Nombre</th>
+                <th class="text-center">DNI</th>
+                <th></th>
+              </tr>
+            </theader>
 			<tbody ng-repeat="legajo in legajos |
-			filter:nombreapellidoFiltro | filter:filtrarDuplicados  | orderBy:alumno.apellido">
+			filter:nombreapellidoFiltro | filter:filtrarDuplicados  | orderBy:'alumno.apellido'">
 				<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
 					<td>
 						{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
+					</td>
+					<td class="text-right">
+						{{legajo.dni}}
 					</td>
 					<td>
 						<button type="button" class="btn btn-info">
