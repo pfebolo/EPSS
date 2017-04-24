@@ -33,6 +33,7 @@
               <tr>
                 <th>Nombre</th>
                 <th class="text-center">DNI</th>
+                <th><span class="glyphicon glyphicon-star" aria-hidden="true" /></th>
                 <th>Legajo</th>
               </tr>
             </theader>
@@ -40,6 +41,7 @@
               <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
                 <td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
                 <td class="text-right">{{inscripto.dni}}</td>
+                <td class="text-right"><span class="glyphicon glyphicon-star" aria-hidden="true"  ng-show="inscripto.cuestionario!=null" /></td>
                 <td>
                   <input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
                 </td>
