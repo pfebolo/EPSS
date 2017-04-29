@@ -39,7 +39,7 @@
             <tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' ">
               <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
                 <td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
-                <td  class="text-right">{{inscripto.dni}}</td>
+                <td class="text-right">{{inscripto.dni}}</td>
                 <td>
                   <input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
                 </td>
@@ -99,11 +99,8 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td colspan="2">
                   <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comoConocio}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comentario}}
                 </td>
               </tr>
               <tr>
@@ -114,6 +111,12 @@
                   <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
                 </td>
               </tr>
+              <tr>
+                <td colspan="2">
+                  <span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comentario}}
+                </td>
+              </tr>
+
             </tbody>
           </table>
         </div>

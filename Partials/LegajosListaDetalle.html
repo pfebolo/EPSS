@@ -18,13 +18,14 @@
 	</div>
 	<div class="container col-md-12" style="max-height: 450px; overflow-y: scroll;" id="lista">
 		<table class="table table-striped">
-            <theader>
-              <tr>
-                <th>Nombre</th>
-                <th class="text-center">DNI</th>
-                <th></th>
-              </tr>
-            </theader>
+			<theader>
+				<tr>
+					<th>Nombre</th>
+					<th class="text-center">DNI</th>
+					<th><span class="glyphicon glyphicon-star" aria-hidden="true" /></th>
+					<th></th>
+				</tr>
+			</theader>
 			<tbody ng-repeat="legajo in legajos |
 			filter:nombreapellidoFiltro | filter:filtrarDuplicados  | orderBy:'alumno.apellido'">
 				<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
@@ -34,6 +35,7 @@
 					<td class="text-right">
 						{{legajo.dni}}
 					</td>
+					<td class="text-right"><span class="glyphicon glyphicon-star" aria-hidden="true" ng-show="legajo.cuestionario!=null" /></td>
 					<td>
 						<button type="button" class="btn btn-info">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -71,7 +73,7 @@
 				<tbody>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-user" aria-hidden="true">&nbspEdad:&nbsp{{edad}}
+							<span class="glyphicon glyphicon-user" aria-hidden="true" />&nbspEdad:&nbsp{{edad}}
 						</td>
 						<td>
 							{{legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'}}&nbsp-&nbsp{{legajoSeleccionado.lugarNacimiento}}
@@ -79,24 +81,23 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp{{legajoSeleccionado.alumno.mail.replace("%40","@")}}
+							<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.mail.replace("%40","@")}}
 						</td>
 						<td>
-							
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="glyphicon glyphicon-earphone" aria-hidden="true">
-							&nbsp{{legajoSeleccionado.alumno.telefono}}
-						</td>
-						<td>
-							<span class="glyphicon glyphicon-phone" aria-hidden="true">&nbsp{{legajoSeleccionado.alumno.celular}}
+
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true" /> &nbsp{{legajoSeleccionado.alumno.telefono}}
+						</td>
+						<td>
+							<span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.celular}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{legajoSeleccionado.direccionCalle}}&nbsp{{legajoSeleccionado.direccionNro}}
 						</td>
 						<td>
 							{{legajoSeleccionado.direccionCoordenadaInterna}}
@@ -112,25 +113,28 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true">&nbsp({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
+							<span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp({{legajoSeleccionado.localidad.codigoPostal.codigo}})&nbsp{{legajoSeleccionado.localidad.nombre}},&nbsp{{legajoSeleccionado.localidad.provinciaId}}
 						</td>
 						<td>
 							{{legajoSeleccionado.localidad.paisId}}
 						</td>
 					</tr>
-
+					<tr>
+						<td colspan="2">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{legajoSeleccionado.comentarios}}
+						</td>
+					</tr>
 				</tbody>
-
 			</table>
 
-			<table class="table table-striped"  ng-show="!cargando && GetOK && informaConfiguracion['Estudios']">
-				<thead>	
+			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Estudios']">
+				<thead>
 					<tr>
 						<th>Estudios</th>
 					</tr>
 					<tr>
 						<th>
-							
+
 						</th>
 						<th>
 							Nivel
@@ -142,12 +146,12 @@
 							Institución
 						</th>
 					</tr>
-				</thead>	
+				</thead>
 				<tbody ng-repeat="estudio in legajoSeleccionado.estudios">
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:blue" ng-show="estudio.terminado"></span>
-							<span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color:deepskyblue" ng-show="!estudio.terminado"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:blue" ng-show="estudio.terminado" />
+							<span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color:deepskyblue" ng-show="!estudio.terminado" />
 						</td>
 						<td>
 							{{estudio.nivelEstudioId}}
