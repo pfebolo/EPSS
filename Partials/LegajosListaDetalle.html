@@ -61,7 +61,7 @@
 			<p class="text-right">
 				<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}}-->&nbsp&nbsp&nbsp</p>
 		</div>
-		<div class="panel-body">
+		<div class="panel-body" style="height: 350px; overflow-y: scroll;">
 
 			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Basico']">
 				<thead>
@@ -270,6 +270,15 @@
 				</tbody>
 			</table>
 
+			<div ng-show="!cargando && GetOK && informaConfiguracion['Cuestionario']" role="navigation">
+				<ul class="nav nav-tabs">
+					<li ng-class="CuestionarioActivo==0 ? 'active':''"><a ng-click="CuestionarioActivo=0">Historia</a></li>
+					<li ng-class="CuestionarioActivo==1 ? 'active':''"><a ng-click="CuestionarioActivo=1">definición</a></li>
+					<li ng-class="CuestionarioActivo==2 ? 'active':''"><a ng-click="CuestionarioActivo=2">Situación</a></li>
+					<li ng-class="CuestionarioActivo==3 ? 'active':''"><a ng-click="CuestionarioActivo=3">Expectativas</a></li>
+				</ul>
+				<em>{{CuestionarioActivoText[CuestionarioActivo]}}</em>
+			</div>
 
 		</div>
 		<div class="panel-footer">
@@ -277,6 +286,7 @@
 			<button class="btn btn-primary" ng-click="cambiarInforme('Inscripcion')">Inscripcion</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Estudios')">Estudios</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Documentacion')">Documentación</button>
+			<button class="btn btn-primary" ng-click="cambiarInforme('Cuestionario')">Cuestionario</button>
 			<button class="btn btn-primary" ng-click="editarLegajo(legajoSeleccionado)">Editar</button>
 		</div>
 	</div>
