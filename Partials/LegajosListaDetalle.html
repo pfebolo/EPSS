@@ -272,10 +272,10 @@
 
 			<div ng-show="!cargando && GetOK && informaConfiguracion['Cuestionario']" role="navigation">
 				<ul class="nav nav-tabs">
-					<li ng-class="CuestionarioActivo==0 ? 'active':''"><a ng-click="CuestionarioActivo=0">Historia</a></li>
-					<li ng-class="CuestionarioActivo==1 ? 'active':''"><a ng-click="CuestionarioActivo=1">definición</a></li>
-					<li ng-class="CuestionarioActivo==2 ? 'active':''"><a ng-click="CuestionarioActivo=2">Situación</a></li>
-					<li ng-class="CuestionarioActivo==3 ? 'active':''"><a ng-click="CuestionarioActivo=3">Expectativas</a></li>
+					<li ng-class="CuestionarioActivo==0 ? 'active':''"><a ng-click="CuestionarioActivo=0">Historia     &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[0] !== null) && (CuestionarioActivoText[0] !== '')" /></a></li>
+					<li ng-class="CuestionarioActivo==1 ? 'active':''"><a ng-click="CuestionarioActivo=1">Definición   &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[1] !== null) && (CuestionarioActivoText[1] !== '')" /></a></li>
+					<li ng-class="CuestionarioActivo==2 ? 'active':''"><a ng-click="CuestionarioActivo=2">Situación    &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[2] !== null) && (CuestionarioActivoText[2] !== '')" /></a></li>
+					<li ng-class="CuestionarioActivo==3 ? 'active':''"><a ng-click="CuestionarioActivo=3">Expectativas &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[3] !== null) && (CuestionarioActivoText[3] !== '')" /></a></li>
 				</ul>
 				<em>{{CuestionarioActivoText[CuestionarioActivo]}}</em>
 			</div>
