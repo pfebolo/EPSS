@@ -22,7 +22,7 @@
 				<tr>
 					<th>Nombre</th>
 					<th class="text-center">DNI</th>
-					<th><span class="glyphicon glyphicon-star" aria-hidden="true" /></th>
+					<th><span class="glyphicon glyphicon-certificate small" aria-hidden="true" /></th>
 					<th></th>
 				</tr>
 			</theader>
@@ -35,7 +35,7 @@
 					<td class="text-right">
 						{{legajo.dni}}
 					</td>
-					<td class="text-right"><span class="glyphicon glyphicon-star" aria-hidden="true" ng-show="legajo.cuestionario!=null" /></td>
+					<td class="text-right"><span class="glyphicon glyphicon-certificate small" style="color: lightgreen" aria-hidden="true" ng-show="legajo.cuestionario!=null" /></td>
 					<td>
 						<button type="button" class="btn btn-info">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -128,6 +128,9 @@
 			</table>
 			<div ng-show="!cargando && GetOK && informaConfiguracion['Estudios']">
 				<strong>Estudios.</strong>
+				<div class="alert alert-warning" role="alert" ng-show="legajoSeleccionado.estudios.length==0">
+					El estudiante no ha declarado estudios, al menos debe indicar su situación respecto al secundario.
+				</div>
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -277,9 +280,16 @@
 					<li ng-class="CuestionarioActivo==3 ? 'active':''"><a ng-click="CuestionarioActivo=3">Expectativas &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[3] !== null) && (CuestionarioActivoText[3] !== '')" /></a></li>
 				</ul>
 				<em>{{CuestionarioActivoText[CuestionarioActivo]}}</em>
+				<br>
+				<div class="alert alert-info" role="alert" ng-show="CuestionarioActivoText[CuestionarioActivo]=='' || CuestionarioActivoText[CuestionarioActivo]==null">
+					El estudiante no ha dado esta información.
+				</div>
 			</div>
 			<div ng-show="!cargando && GetOK && informaConfiguracion['Trabajo']">
 				<strong>Datos de trabajos/empleos declarados.</strong>
+				<div class="alert alert-info" role="alert" ng-show="legajoSeleccionado.trabajos.length==0">
+					El estudiante no ha declarado trabajos.
+				</div>
 				<table class="table table-striped">
 					<thead>
 						<tr>
