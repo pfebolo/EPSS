@@ -61,7 +61,7 @@
 			<p class="text-right">
 				<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}}-->&nbsp&nbsp&nbsp</p>
 		</div>
-		<div class="panel-body">
+		<div class="panel-body" style="height: 350px; overflow-y: scroll;">
 
 			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Basico']">
 				<thead>
@@ -126,46 +126,45 @@
 					</tr>
 				</tbody>
 			</table>
+			<div ng-show="!cargando && GetOK && informaConfiguracion['Estudios']">
+				<strong>Estudios.</strong>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>
 
-			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Estudios']">
-				<thead>
-					<tr>
-						<th>Estudios</th>
-					</tr>
-					<tr>
-						<th>
+							</th>
+							<th>
+								Nivel
+							</th>
+							<th>
+								Título
+							</th>
+							<th>
+								Institución
+							</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="estudio in legajoSeleccionado.estudios">
+						<tr>
+							<td>
+								<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:blue" ng-show="estudio.terminado" />
+								<span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color:deepskyblue" ng-show="!estudio.terminado" />
+							</td>
+							<td>
+								{{estudio.nivelEstudioId}}
+							</td>
+							<td>
+								{{estudio.titulo}}
+							</td>
+							<td>
+								{{estudio.institucion}}
+							</td>
+						</tr>
+					</tbody>
 
-						</th>
-						<th>
-							Nivel
-						</th>
-						<th>
-							Título
-						</th>
-						<th>
-							Institución
-						</th>
-					</tr>
-				</thead>
-				<tbody ng-repeat="estudio in legajoSeleccionado.estudios">
-					<tr>
-						<td>
-							<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:blue" ng-show="estudio.terminado" />
-							<span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color:deepskyblue" ng-show="!estudio.terminado" />
-						</td>
-						<td>
-							{{estudio.nivelEstudioId}}
-						</td>
-						<td>
-							{{estudio.titulo}}
-						</td>
-						<td>
-							{{estudio.institucion}}
-						</td>
-					</tr>
-				</tbody>
-
-			</table>
+				</table>
+			</div>
 
 			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Documentacion']">
 				<thead>
@@ -270,6 +269,51 @@
 				</tbody>
 			</table>
 
+			<div ng-show="!cargando && GetOK && informaConfiguracion['Cuestionario']" role="navigation">
+				<ul class="nav nav-tabs">
+					<li ng-class="CuestionarioActivo==0 ? 'active':''"><a ng-click="CuestionarioActivo=0">Historia     &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[0] !== null) && (CuestionarioActivoText[0] !== '')" /></a></li>
+					<li ng-class="CuestionarioActivo==1 ? 'active':''"><a ng-click="CuestionarioActivo=1">Definición   &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[1] !== null) && (CuestionarioActivoText[1] !== '')" /></a></li>
+					<li ng-class="CuestionarioActivo==2 ? 'active':''"><a ng-click="CuestionarioActivo=2">Situación    &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[2] !== null) && (CuestionarioActivoText[2] !== '')" /></a></li>
+					<li ng-class="CuestionarioActivo==3 ? 'active':''"><a ng-click="CuestionarioActivo=3">Expectativas &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[3] !== null) && (CuestionarioActivoText[3] !== '')" /></a></li>
+				</ul>
+				<em>{{CuestionarioActivoText[CuestionarioActivo]}}</em>
+			</div>
+			<div ng-show="!cargando && GetOK && informaConfiguracion['Trabajo']">
+				<strong>Datos de trabajos/empleos declarados.</strong>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td class="col-md-1"></td>
+							<td class="col-md-8">
+							</td>
+							<td class="col-md-3">
+							</td>
+						</tr>
+					</thead>
+					<tbody ng-repeat="trabajo in legajoSeleccionado.trabajos">
+						<tr>
+							<td rowspan="2">{{$index + 1}}</td>
+							<td>
+								<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{trabajo.razonSocial}}
+							</td>
+							<td>
+								<span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{trabajo.telefono}}
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="glyphicon glyphicon-user" aria-hidden="true" />&nbsp{{trabajo.cargo}}
+							</td>
+							<td>
+								<span class="glyphicon glyphicon-hourglass" aria-hidden="true" />&nbsp{{trabajo.antiguedad}}
+							</td>
+						</tr>
+					</tbody>
+
+
+				</table>
+			</div>
+
 
 		</div>
 		<div class="panel-footer">
@@ -277,6 +321,8 @@
 			<button class="btn btn-primary" ng-click="cambiarInforme('Inscripcion')">Inscripcion</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Estudios')">Estudios</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Documentacion')">Documentación</button>
+			<button class="btn btn-primary" ng-click="cambiarInforme('Cuestionario')">Cuestionario</button>
+			<button class="btn btn-primary" ng-click="cambiarInforme('Trabajo')">Trabajo</button>
 			<button class="btn btn-primary" ng-click="editarLegajo(legajoSeleccionado)">Editar</button>
 		</div>
 	</div>
