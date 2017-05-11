@@ -6,8 +6,9 @@
     <html lang="es-AR">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EPSS</title>
-    <link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-datetimepicker.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/app/app.css">
     <link href="img/epssLogoBlanco.png" rel="shortcut icon">
 </head>
@@ -22,6 +23,7 @@
                             <img alt="Brand" src="img/epssLogo.png" height="42" width="42">
                         </a>
                     </li>
+                    <li><a class="navbar-link" href="#/interesadoLista">Interesados</a></li>
                     <li><a class="navbar-link" href="#/inscriptoLista">Inscriptos</a></li>
                     <li><a class="navbar-link" href="#/LegajosListaDetalle">Legajos</a></li>
                     <li><a class="navbar-link" href="#/CoordinadorLista">Coordinadores</a></li>
@@ -39,12 +41,17 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
     <script type="text/javascript" src="lib/bootstrap/bootstrap.min.js "></script>
+    <script type="text/javascript" src="lib/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="lib/bootstrap/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+
+
     <script type="text/javascript" src="lib/Angular/angular.min.js"></script>
     <script type="text/javascript" src="lib/Angular/angular-route.js"></script>
 
     <script type="text/javascript" src="lib/js/app.js"></script>
     <script type="text/javascript" src="lib/js/utiles.js"></script>
 
+    <script type="text/javascript" src="lib/js/interesado.js"></script>
     <script type="text/javascript" src="lib/js/inscripto.js"></script>
     <script type="text/javascript" src="lib/js/legajos.js"></script>
     <script type="text/javascript" src="lib/js/coordinador.js"></script>
@@ -53,10 +60,10 @@
 
 
     <script>
-            $(document).ready(function () {
-                $('[data-toogle="tooltip"]').tooltip();
-            })
-        </script>
+        $(document).ready(function () {
+            $('[data-toogle="tooltip"]').tooltip();
+        })
+    </script>
 </body>
 
 </html>
