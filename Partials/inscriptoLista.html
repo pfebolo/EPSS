@@ -16,16 +16,19 @@
   <div class="row" ng-show="GetOK || cargando">
     <div class="col-md-5">
       <div class="row">
-        <div class="col-md-6">
-          <h2>Inscriptos&nbsp;<span class="badge">{{inscriptos.length}}</span></h2>
-        </div>
-        <div class="col-md-6">
-          <input type="text" ng-model="inscriptosFiltro">
-        </div>
+        <h2>Inscriptos&nbsp;<span class="badge">{{inscriptos.length}}</span></h2>
       </div>
       <form novalidate name="myForm" class="css-form row">
-        <div class="row">
-          <button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)" ng-disabled="!myForm.$valid || actualizando || cargando">Crear Legajos</button>
+        <div class="row box-round no-gutter">
+          <div class="col-md-6">
+            <button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)" ng-disabled="!myForm.$valid || actualizando || cargando">Crear Legajos</button>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+              <input class="form-control" type="text" ng-model="inscriptosFiltro">
+            </div>
+          </div>
         </div>
         <div class="row" style="max-height: 450px; overflow-y: auto;  overflow-x: auto;">
           <table class="table table-striped">
