@@ -59,7 +59,7 @@
 							<span class="input-group-addon">Fecha de Nacimiento</span>
 							<!--<input id="fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" placeholder="[Fecha de nacimiento]"             ng-model="legajoSeleccionado.fechaNacimiento | date:'dd/MM/yyyy'" >-->
 							<input id="fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.fechaNacimiento"
-							 min="1917-01-01" max="2035-12-31" required />
+							 min="1917-01-01" max="2035-12-31" />
 						</div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 					<div class="col-md-12">
 						<div class="input-group" ng-class="myForm.lugarNacimiento.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Lugar de Nacimiento</span>
-							<input id="lugarNacimiento" type="text" class="form-control" name="lugarNacimiento" required placeholder="[Lugar de Nacimiento]"
+							<input id="lugarNacimiento" type="text" class="form-control" name="lugarNacimiento" placeholder="[Lugar de Nacimiento]"
 							 ng-model="legajoSeleccionado.lugarNacimiento">
 						</div>
 					</div>
