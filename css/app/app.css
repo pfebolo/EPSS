@@ -4,6 +4,22 @@
 
 }
 
+.no-gutter > [class*='col-'] {
+    padding-right:1px;
+    padding-left:0;
+}
+
+.box-round {
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 4px;
+    background-image: -webkit-linear-gradient(top, #d9edf7 0%, #c4e3f3 100%);
+    background-image:      -o-linear-gradient(top, #d9edf7 0%, #c4e3f3 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#d9edf7), to(#c4e3f3));
+    background-image:         linear-gradient(to bottom, #d9edf7 0%, #c4e3f3 100%);
+}
+
+
 .stylish-panel {
     padding: 20px 0;
     text-align: center;
