@@ -172,9 +172,15 @@
 			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Documentacion']">
 				<thead>
 					<tr>
-						<th>Fechas de entrega de Documentación</th>
+						<th colspan="7">Fechas de entrega y validación de Documentación</th>
 					</tr>
 					<tr>
+						<th>
+							
+						</th>
+						<th>
+							Compromiso
+						</th>
 						<th>
 							Cuestionario
 						</th>
@@ -195,19 +201,48 @@
 				<tbody>
 					<tr>
 						<td>
-							{{legajoSeleccionado.cuestionario | date:'dd/MM/yyyy'}}
+							Entrega
 						</td>
 						<td>
-							{{legajoSeleccionado.docAptoFisico | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.docCompromiso!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docCompromiso | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							{{legajoSeleccionado.docTitulo | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.cuestionario!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.cuestionario | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							{{legajoSeleccionado.docDni | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.docAptoFisico!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docAptoFisico | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							{{legajoSeleccionado.docFoto | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.docTitulo!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docTitulo | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docDni!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docDni | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docFoto!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docFoto | date:'dd/MM/yyyy'}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Validación
+						</td>
+						<td>
+							[No Aplica]
+						</td>
+						<td>
+							[No Aplica]
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docAptoFisicoValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docAptoFisicoValido | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docTituloValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docTituloValido | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docDnivalido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docDnivalido | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docFotoValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{legajoSeleccionado.docFotoValido | date:'dd/MM/yyyy'}}
 						</td>
 					</tr>
 				</tbody>
