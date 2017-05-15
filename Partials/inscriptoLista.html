@@ -1,131 +1,120 @@
 <div class="divSpinner" ng-show="actualizando || cargando">
-  <div class="spinner" /></div>
-<div class="container" ng-show="!cargando">
-  <div class="row">
-    <div class="alert alert-danger" ng-show="error.hayError">
-      <p ng-repeat="error in error.errores">
-        <strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
-      </p>
-    </div>
+  <div class="spinner" />
+</div>
+<div class="alert alert-danger" ng-show="error.hayError">
+  <p ng-repeat="error in error.errores">
+    <strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+  </p>
+</div>
+<div ng-show="!GetOK">
+  <div class="alert alert-warning" ng-show="!cargando">
+    Los inscriptos no fueron obtenidos, intente nuevamente.
   </div>
-  <div class="row" ng-show="!GetOK">
-    <div class="alert alert-warning" ng-show="!cargando">
-      Los inscriptos no fueron obtenidos, intente nuevamente.
-    </div>
-  </div>
-  <div class="row" ng-show="GetOK || cargando">
-    <div class="col-md-5">
-      <div class="row">
-        <h2>Inscriptos&nbsp;<span class="badge">{{inscriptos.length}}</span></h2>
+</div>
+<div ng-show="!cargando">
+  <div class="col-md-5" ng-show="GetOK || cargando">
+    <h2>Inscriptos&nbsp;<span class="badge">{{inscriptos.length}}</span></h2>
+    <div class="box-round">
+      <div class="col-md-6">
+        <button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)">Crear Legajos</button>
       </div>
-      <form novalidate name="myForm" class="css-form row">
-        <div class="row box-round no-gutter">
-          <div class="col-md-6">
-            <button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)" ng-disabled="!myForm.$valid || actualizando || cargando">Crear Legajos</button>
-          </div>
-          <div class="col-md-6">
-            <div class="input-group">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-              <input class="form-control" type="text" ng-model="inscriptosFiltro">
-            </div>
-          </div>
-        </div>
-        <div class="row" style="max-height: 450px; overflow-y: auto;  overflow-x: auto;">
-          <table class="table table-striped">
-            <theader>
-              <tr>
-                <th>Nombre</th>
-                <th class="text-center">DNI</th>
-                <th>Legajo</th>
-              </tr>
-            </theader>
-            <tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' ">
-              <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
-                <td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
-                <td class="text-right">{{inscripto.dni}}</td>
-                <td>
-                  <input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </form>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+        <input class="form-control" type="text" ng-model="inscriptosFiltro">
+      </div>
     </div>
-    <div class="col-md-1">
+    <div style="max-height: 425px; overflow-y: auto;  overflow-x: auto;">
+      <table class="table table-striped">
+        <theader>
+          <tr>
+            <th>Nombre</th>
+            <th class="text-center">DNI</th>
+            <th>Legajo</th>
+          </tr>
+        </theader>
+        <tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' ">
+          <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
+            <td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
+            <td class="text-right">{{inscripto.dni}}</td>
+            <td>
+              <input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="col-md-6">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="col-md-6">
-            <h4>{{inscriptoSeleccionado.apellido}},&nbsp{{inscriptoSeleccionado.nombre}}</h4>
-            DNI:&nbsp{{inscriptoSeleccionado.dni}}
-          </div>
-          <div class="col-md-6">
-            <h4 class="text-right">Nº:&nbsp{{inscriptoSeleccionado.legajoNro}}</h4>
-          </div>
-          <p class="text-right">&nbsp</p>
+  </div>
+  <div class="col-md-7">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="col-md-6">
+          <h4>{{inscriptoSeleccionado.apellido}},&nbsp{{inscriptoSeleccionado.nombre}}</h4>
+          DNI:&nbsp{{inscriptoSeleccionado.dni}}
         </div>
-        <div class="panel-body">
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <td class="col-md-3">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail.replace("%40","@")}}
-                </td>
-                <td class="col-md-3">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail2.replace("%40","@")}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.telefono}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.celular}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.domicilio}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.provincia}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.modalidadId}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comoConocio}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comentario}}
-                </td>
-              </tr>
+        <div class="col-md-6">
+          <h4 class="text-right">Nº:&nbsp{{inscriptoSeleccionado.legajoNro}}</h4>
+        </div>
+        <p class="text-right">&nbsp</p>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td class="col-md-3">
+                <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail.replace("%40","@")}}
+              </td>
+              <td class="col-md-3">
+                <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail2.replace("%40","@")}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.telefono}}
+              </td>
+              <td>
+                <span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.celular}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.domicilio}}
+              </td>
+              <td>
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.provincia}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.modalidadId}}
+              </td>
+              <td>
+                <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comoConocio}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
+              </td>
+              <td>
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comentario}}
+              </td>
+            </tr>
 
-            </tbody>
-          </table>
-        </div>
-        <div class="panel-footer">
-          Interesado el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
-        </div>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-footer">
+        Interesado el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
       </div>
     </div>
   </div>
