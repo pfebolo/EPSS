@@ -46,10 +46,10 @@
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.modo.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon" data-toggle="tooltip" title="Modalidad y turno">Modo</span>
-						<select class="form-control" id="sel1" name="modo" required ng-model="interesadoSeleccionado.modalidad.nombre"> 
-						<option>Presencial, turno mañana.</option>
-						<option>Presencial, turno noche.</option>
-						<option>Carrera a distancia</option>
+						<select class="form-control" id="sel1" name="modo" required> 
+						<option ng-click="interesadoSeleccionado.modalidad.id=1">Presencial, turno mañana.</option>
+						<option ng-click="interesadoSeleccionado.modalidad.id=1">Presencial, turno noche.</option>
+						<option ng-click="interesadoSeleccionado.modalidad.id=2">Carrera a distancia</option>
 					</select>
 					</div>
 				</div>
@@ -58,9 +58,9 @@
 					<div class="input-group" ng-class="'has-success'">
 						<span class="input-group-addon" data-toggle="tooltip" required title="Año a cursar">Año</span>
 						<select class="form-control" id="nmestreACursar" name="nmestreACursar"> 
-						<option>{{anios[0].descripcion}}.</option>
-						<option>{{anios[1].descripcion}}</option>
-						<option>{{anios[2].descripcion}}</option>
+						<option ng-click="anio=anios[0]">{{anios[0].descripcion}}.</option>
+						<option ng-click="anio=anios[1]">{{anios[1].descripcion}}</option>
+						<option ng-click="anio=anios[2]">{{anios[2].descripcion}}</option>
 					</select>
 					</div>
 				</div>
@@ -69,8 +69,8 @@
 					<div class="input-group" ng-class="'has-success'">
 						<span class="input-group-addon" data-toggle="tooltip" required title="Cuatrimestre a cursar">Cuatrimestre</span>
 						<select class="form-control" id="nmestreACursar" name="nmestreACursar"> 
-						<option>{{nmestres[0].descripcion}}.</option>
-						<option>{{nmestres[1].descripcion}}</option>
+						<option ng-click="nmestre=nmestres[0]">{{nmestres[0].descripcion}}.</option>
+						<option ng-click="nmestre=nmestres[1]">{{nmestres[1].descripcion}}</option>
 					</select>
 					</div>
 				</div>
@@ -110,7 +110,7 @@
 					<div class="input-group" ng-class="'has-success'">
 						<!--<input type="text"  class="form-control checkbox-title-has-success" ng-readonly="true" value="Titulo" data-toggle="tooltip" title="¿Entrega fotocopia de título secundario?" >-->
 						<span class="input-group-addon"><i class="fa fa-graduation-cap" aria-hidden="true" data-toggle="tooltip" title="¿Entrega fotocopia de título secundario?"></i></span>
-						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="interesadoSeleccionado.tituloDoc"></span>
+						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="docAPresentar.docTitulo"></span>
 					</div>
 				</div>
 
@@ -118,7 +118,7 @@
 					<div class="input-group" ng-class="'has-success'">
 						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="DNI" data-toggle="tooltip" title="¿Entrega fotocopia de DNI?" >-->
 						<span class="input-group-addon"><i class="fa fa-id-card-o" aria-hidden="true" data-toggle="tooltip" title="¿Entrega fotocopia de DNI?"></i></span>
-						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="interesadoSeleccionado.dniDoc"></span>
+						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="docAPresentar.docDni"></span>
 					</div>
 				</div>
 
@@ -126,7 +126,7 @@
 					<div class="input-group" ng-class="'has-success'">
 						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Apto Físico" data-toggle="tooltip" title="¿Entrega apto físico?" >-->
 						<span class="input-group-addon"><i class="fa fa-heartbeat" aria-hidden="true" data-toggle="tooltip" title="¿Entrega apto físico?"></i></span>
-						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="interesadoSeleccionado.aptoFisicoDoc"></span>
+						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="docAPresentar.docAptoFisico"></span>
 					</div>
 				</div>
 
@@ -134,7 +134,7 @@
 					<div class="input-group" ng-class="'has-success'">
 						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Foto" data-toggle="tooltip" title="¿Entrega foto de perfil?" >-->
 						<span class="input-group-addon"><i class="fa fa-camera" aria-hidden="true" data-toggle="tooltip" title="¿Entrega foto de perfil?"></i></span>
-						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="interesadoSeleccionado.fotoDoc"></span>
+						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="docAPresentar.docFoto"></span>
 					</div>
 				</div>
 
@@ -142,7 +142,7 @@
 					<div class="input-group" ng-class="'has-success'">
 						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Compromiso" data-toggle="tooltip" title="¿Firmó el acta de compromiso?" >-->
 						<span class="input-group-addon"><i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="¿Firmó el acta de compromiso?"></i></span>
-						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="interesadoSeleccionado.compromisoDoc"></span>
+						<span class="input-group-addon"><input type="checkbox" aria-label="..." ng-model="docAPresentar.docCompromiso"></span>
 					</div>
 				</div>
 
