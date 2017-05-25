@@ -128,7 +128,7 @@
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionInscripcion}}
               </td>
               <td>
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionEspecial}}
+                <span class="glyphicon glyphicon-bell" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionEspecial}}
               </td>
             </tr>
             <tr>
@@ -141,7 +141,10 @@
         </table>
       </div>
       <div class="panel-footer">
-        Interesado el:&nbsp{{interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+        <div class="col-md-10">
+          Interesado el:&nbsp{{interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+        </div>
+        <button class="btn btn-primary" ng-click="irAinscripcion(interesadoSeleccionado)">Inscripción</button>
       </div>
     </div>
   </div>
