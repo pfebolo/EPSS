@@ -36,55 +36,55 @@
 					</div>
 				</div>
 
-				<div class="col-md-6">
+				<div class="col-md-3">
 					<div class="input-group" ng-class="myForm.dni.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true" data-toggle="tooltip" title="Nro de DNI"></i></span>
-						<input id="dni" type="text" class="form-control" name="dni" required placeholder="[Nro del DNI]" ng-model="interesadoSeleccionado.dni">
+						<input id="dni" type="text" class="form-control" name="dni" required placeholder="[Nro. DNI]" ng-model="interesadoSeleccionado.dni" autofocus>
 					</div>
 				</div>
 
-				<div class="col-md-6">
-					<div class="input-group" ng-class="myForm.modo.$valid ? 'has-success' : 'has-error'">
-						<span class="input-group-addon" data-toggle="tooltip" title="Modalidad y turno">Modo</span>
-						<select class="form-control" id="sel1" name="modo" required> 
-						<option ng-click="interesadoSeleccionado.modalidad.id=1">Presencial, turno mañana.</option>
-						<option ng-click="interesadoSeleccionado.modalidad.id=1">Presencial, turno noche.</option>
-						<option ng-click="interesadoSeleccionado.modalidad.id=2">Carrera a distancia</option>
-					</select>
+				<div class="col-md-5">
+					<div class="input-group" ng-class="'has-success'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Modalidad">Modalidad</span>
+						<select class="form-control" ng-options="item as item.descripcion for item in modalidades" ng-model="modalidad"></select>
 					</div>
 				</div>
+
+				<div class="col-md-4">
+					<div class="input-group" ng-hide="modalidad.id!==1" ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Turno (solo para presencial)">Turno</span>
+						<select class="form-control"  ng-required="modalidad.id===1" name="turno"  ng-options="item as item.descripcion for item in turnos" ng-model="turno"></select>
+					</div>
+				</div>
+
+
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="'has-success'">
-						<span class="input-group-addon" data-toggle="tooltip" required title="Año a cursar">Año</span>
-						<select class="form-control" id="nmestreACursar" name="nmestreACursar"> 
-						<option ng-click="anio=anios[0]">{{anios[0].descripcion}}.</option>
-						<option ng-click="anio=anios[1]">{{anios[1].descripcion}}</option>
-						<option ng-click="anio=anios[2]">{{anios[2].descripcion}}</option>
-					</select>
+						<span class="input-group-addon" data-toggle="tooltip" title="Año A Cursar">Año</span>
+						<select class="form-control" ng-options="item as item.descripcion for item in anios" ng-model="anio"></select>
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="'has-success'">
 						<span class="input-group-addon" data-toggle="tooltip" required title="Cuatrimestre a cursar">Cuatrimestre</span>
-						<select class="form-control" id="nmestreACursar" name="nmestreACursar"> 
-						<option ng-click="nmestre=nmestres[0]">{{nmestres[0].descripcion}}.</option>
-						<option ng-click="nmestre=nmestres[1]">{{nmestres[1].descripcion}}</option>
-					</select>
+						<select class="form-control" ng-options="item as item.descripcion for item in nmestres" ng-model="nmestre"></select>
 					</div>
 				</div>
 
-
-
-				<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-send" data-toggle="tooltip" title="1er E-Mail" ></span></span>
-					<input id="email" type="text" class="form-control" name="email" placeholder="[1er Email]" ng-model="interesadoSeleccionado.mail">
+				<div class="col-md-12">
+					<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-send" data-toggle="tooltip" title="1er E-Mail" ></span></span>
+						<input id="email" type="text" class="form-control" name="email" placeholder="[1er Email]" ng-model="interesadoSeleccionado.mail">
+					</div>
 				</div>
 
-				<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-send" data-toggle="tooltip" title="2do E-Mail" ></span></span>
-					<input id="email" type="text" class="form-control" name="email" placeholder="[2do E-Mail]" ng-model="interesadoSeleccionado.mail2">
+				<div class="col-md-12">
+					<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-send" data-toggle="tooltip" title="2do E-Mail" ></span></span>
+						<input id="email" type="text" class="form-control" name="email" placeholder="[2do E-Mail]" ng-model="interesadoSeleccionado.mail2">
+					</div>
 				</div>
 
 				<div class="col-md-6">
@@ -101,9 +101,12 @@
 					</div>
 				</div>
 
-				<div class="input-group" ng-class="myForm.calle.$valid ? 'has-success' : 'has-error'">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-home" data-toggle="tooltip" title="Domicilio declarado" ></span></span>
-					<input id="calle" type="text" class="form-control" name="calle" placeholder="[Domicilio]" ng-model="interesadoSeleccionado.domicilio">
+				<div class="col-md-12">
+					<div class="input-group" ng-class="myForm.calle.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-home" data-toggle="tooltip" title="Domicilio declarado" ></span></span>
+						<input id="calle" type="text" class="form-control" name="calle" placeholder="[Domicilio]" ng-model="interesadoSeleccionado.domicilio"
+						 required>
+					</div>
 				</div>
 
 				<div class="col-md-2">
@@ -164,9 +167,8 @@
 
 			</div>
 
-			<div class="panel-footer">
-				<div class="col-md-8" ng-show="!myForm.$valid">¡Hay errores en el formulario!</div>
-				<div class="col-md-8" ng-show="myForm.$valid"></div>
+			<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error'">
+				<div class="col-md-8"><span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.<span></div>
 				<div>
 					<button class="btn btn-primary" ng-click="inscribir(interesadoSeleccionado)" ng-disabled="!myForm.$valid">Actualizar</button>
 					<button class="btn btn-default">Cancelar</button>
@@ -189,15 +191,13 @@
 			<div class="col-md-12">
 				<div class="input-group">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-bell" data-toggle="tooltip" title="Situación Especial" /></span>
-					<textarea class="form-control" ng-value="interesadoSeleccionado.situacionEspecial === 'Nada' ? null: interesadoSeleccionado.situacionEspecial"
-					 ng-readonly="true" placeholder="[Sin datos]"></textarea>
+					<textarea class="form-control" ng-value="interesadoSeleccionado.situacionEspecial" ng-readonly="true" placeholder="[Sin datos]"></textarea>
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="input-group">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Situación de Inscripción" /></span>
-					<textarea type="text" class="form-control" ng-value="interesadoSeleccionado.situacionInscripcion === 'Nada' ? null: interesadoSeleccionado.situacionInscripcion"
-					 ng-readonly="true" placeholder="[Sin datos]"></textarea>
+					<textarea type="text" class="form-control" ng-value="interesadoSeleccionado.situacionInscripcion" ng-readonly="true" placeholder="[Sin datos]"></textarea>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -228,4 +228,4 @@
 		<div class="panel-footer">
 		</div>
 	</div>
-</div>
+	</div>

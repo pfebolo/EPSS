@@ -21,6 +21,12 @@
     background-image: linear-gradient(to bottom, #d9edf7 0%, #c4e3f3 100%);
 }
 
+div .con-error  {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #a94442;
+}
+
 
 .stylish-panel {
     padding: 20px 0;
