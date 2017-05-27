@@ -4,19 +4,17 @@
 <div class="alert alert-warning" ng-show="!cargando && !GetOK">
 	Los Legajos no fueron obtenidos, intente nuevamente.
 </div>
-<div class="container col-md-5" ng-show="!cargando && GetOK && setearScroll()">
-	<div class="container col-md-6">
-		<h2>Legajos&nbsp;<span class="badge">{{(legajos.filter(filtrarDuplicados)).length}}</span></h2>
-	</div>
-	<div class="container col-md-6">
-		<div class="row">
-			<input type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro) />
+<div class="col-md-5" ng-show="!cargando && GetOK && setearScroll()">
+	<h2>Legajos&nbsp;<span class="badge">{{legajos.length}}</span></h2>
+	<div class="box-round">
+		<div class="col-md-6">
 		</div>
-		<!--<div class="row">
-			<input type="checkbox" ng-model="filtroDuplicados">&nbsp;filtrar duplicados.<span ng-show="filtroDuplicados" class="badge">{{(legajos.filter(buscarDuplicados)).length}}</span>
-		</div>-->
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
+		</div>
 	</div>
-	<div class="container col-md-12" style="max-height: 450px; overflow-y: scroll;" id="lista">
+	<div style="max-height: 425px; overflow-y: scroll;" id="lista">
 		<table class="table table-striped">
 			<theader>
 				<tr>
@@ -26,8 +24,7 @@
 					<th></th>
 				</tr>
 			</theader>
-			<tbody ng-repeat="legajo in legajos |
-			filter:nombreapellidoFiltro | filter:filtrarDuplicados  | orderBy:'alumno.apellido'">
+			<tbody ng-repeat="legajo in legajos | filter:nombreapellidoFiltro  | orderBy:'alumno.apellido'">
 				<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
 					<td>
 						{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
@@ -35,7 +32,8 @@
 					<td class="text-right">
 						{{legajo.dni}}
 					</td>
-					<td class="text-right"><span class="glyphicon glyphicon-certificate small" style="color: lightgreen" aria-hidden="true" ng-show="legajo.cuestionario!=null" /></td>
+					<td class="text-right"><span class="glyphicon glyphicon-certificate small" style="color: lightgreen" aria-hidden="true" ng-show="legajo.cuestionario!=null"
+						/></td>
 					<td>
 						<button type="button" class="btn btn-info">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -172,9 +170,15 @@
 			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Documentacion']">
 				<thead>
 					<tr>
-						<th>Fechas de entrega de Documentación</th>
+						<th colspan="7">Fechas de entrega y validación de Documentación</th>
 					</tr>
 					<tr>
+						<th>
+
+						</th>
+						<th>
+							Compromiso
+						</th>
 						<th>
 							Cuestionario
 						</th>
@@ -195,19 +199,58 @@
 				<tbody>
 					<tr>
 						<td>
-							{{legajoSeleccionado.cuestionario | date:'dd/MM/yyyy'}}
+							Entrega
 						</td>
 						<td>
-							{{legajoSeleccionado.docAptoFisico | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.docCompromiso!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.docCompromiso | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							{{legajoSeleccionado.docTitulo | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.cuestionario!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.cuestionario | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							{{legajoSeleccionado.docDni | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.docAptoFisico!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.docAptoFisico | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							{{legajoSeleccionado.docFoto | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.docTitulo!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.docTitulo | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docDni!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.docDni | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docFoto!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.docFoto | date:'dd/MM/yyyy'}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Validación
+						</td>
+						<td>
+							[No Aplica]
+						</td>
+						<td>
+							[No Aplica]
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docAptoFisicoValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'"
+							 aria-hidden="true" />&nbsp{{legajoSeleccionado.docAptoFisicoValido | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docTituloValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'"
+							 aria-hidden="true" />&nbsp{{legajoSeleccionado.docTituloValido | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docDnivalido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.docDnivalido | date:'dd/MM/yyyy'}}
+						</td>
+						<td>
+							<span ng-class="legajoSeleccionado.docFotoValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.docFotoValido | date:'dd/MM/yyyy'}}
 						</td>
 					</tr>
 				</tbody>

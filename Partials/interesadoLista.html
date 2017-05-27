@@ -1,157 +1,150 @@
 <div class="divSpinner" ng-show="cargando">
   <div class="spinner" />
 </div>
-<div class="container" ng-show="!cargando">
-  <div class="row">
-    <div class="alert alert-danger" ng-show="error.hayError">
-      <p ng-repeat="error in error.errores">
-        <strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
-      </p>
-    </div>
+<div class="alert alert-danger" ng-show="error.hayError">
+  <p ng-repeat="error in error.errores">
+    <strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+  </p>
+</div>
+<div ng-show="!GetOK">
+  <div class="alert alert-warning" ng-show="!cargando">
+    Los interesados no fueron obtenidos, intente nuevamente.
   </div>
-  <div class="row" ng-show="!GetOK">
-    <div class="alert alert-warning" ng-show="!cargando">
-      Los interesados no fueron obtenidos, intente nuevamente.
-    </div>
-  </div>
+</div>
 
-  <div class="row" ng-show="GetOK || cargando">
-    <div class="col-md-5">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Interesados&nbsp;<span class="badge">{{interesados.length}}</span></h2>
-        </div>
-      </div>
-      <div class="row box-round no-gutter">
-        <!--<div class="form-group col-md-6">
+<div ng-show="!cargando">
+  <div class="col-md-5" ng-show="GetOK || cargando">
+    <h2>Interesados&nbsp;<span class="badge">{{interesados.length}}</span></h2>
+    <div class="box-round">
+      <!--<div class="form-group col-md-6">
             <div id="dtFechaIni" class="input-group date">
               <input class="form-control" size="16" type="text" value="" readonly id="FechaINI" placeholder="Fecha Inicial" ng-model="fechaINI" ng-change="calcularFechaFIN(fechaINI)">
               <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
           </div>-->
-        <div class="col-md-6">
-          <div id="dtFechaFin" class="input-group date">
-            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-left" ></span></span>-->
-            <input class="form-control" type="text" readonly id="FechaFNI" ng-model="fechaFIN" ng-change="actualizarInteresados(fechaFIN)">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-right"></span></span>-->
-          </div>
-        </div>
-
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-          <input class="form-control" type="text" ng-model="interesadosFiltro">
+      <div class="col-md-6">
+        <div id="dtFechaFin" class="input-group date">
+          <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-left" ></span></span>-->
+          <input class="form-control" type="text" readonly id="FechaFNI" ng-model="fechaFIN" ng-change="actualizarInteresados(fechaFIN)">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-right"></span></span>-->
         </div>
       </div>
 
-
-      <script type="text/javascript">
-        // $('#dtFechaIni').datetimepicker({
-        //   language: 'es',
-        //   todayBtn: 'linked',
-        //   autoclose: true,
-        //   todayHighlight: true,
-        //   startView: 'month',
-        //   forceParse: false,
-        //   format: 'dd/mm/yyyy',
-        //   minView: 'month'
-        // });
-        $('#dtFechaFin').datetimepicker({
-          language: 'es',
-          todayBtn: 'linked',
-          autoclose: true,
-          todayHighlight: true,
-          startView: 'month',
-          forceParse: false,
-          format: 'dd/mm/yyyy',
-          minView: 'month'
-        })
-      </script>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+        <input class="form-control" type="text" ng-model="interesadosFiltro">
+      </div>
+    </div>
 
 
-      <div class="row" style="max-height: 400px; overflow-y: auto;  overflow-x: auto;">
+    <script type="text/javascript">
+      // $('#dtFechaIni').datetimepicker({
+      //   language: 'es',
+      //   todayBtn: 'linked',
+      //   autoclose: true,
+      //   todayHighlight: true,
+      //   startView: 'month',
+      //   forceParse: false,
+      //   format: 'dd/mm/yyyy',
+      //   minView: 'month'
+      // });
+      $('#dtFechaFin').datetimepicker({
+        language: 'es',
+        todayBtn: 'linked',
+        autoclose: true,
+        todayHighlight: true,
+        startView: 'month',
+        forceParse: false,
+        format: 'dd/mm/yyyy',
+        minView: 'month'
+      })
+    </script>
+
+
+    <div style="max-height: 425px; overflow-y: auto;  overflow-x: auto;">
+      <table class="table table-striped">
+        <theader>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+          </tr>
+        </theader>
+        <tbody ng-repeat="interesado in interesados | filter:interesadosFiltro | orderBy:'fechaInteresado':true">
+          <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
+            <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
+            <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="col-md-6">
+          <h4>{{interesadoSeleccionado.apellido}},&nbsp{{interesadoSeleccionado.nombre}}</h4>
+        </div>
+        <div class="col-md-6">
+          <h4 class="text-right">&nbsp{{interesadoSeleccionado.provincia}}</h4>
+        </div>
+        <p class="text-right">&nbsp</p>
+      </div>
+      <div class="panel-body">
         <table class="table table-striped">
-          <theader>
+          <tbody>
             <tr>
-              <th>Nombre</th>
-              <th>Fecha</th>
+              <td class="col-md-3">
+                <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{interesadoSeleccionado.mail}}
+              </td>
+              <td class="col-md-3">
+                <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{interesadoSeleccionado.mail2}}
+              </td>
             </tr>
-          </theader>
-          <tbody ng-repeat="interesado in interesados | filter:interesadosFiltro | orderBy:'fechaInteresado':true">
-            <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
-              <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
-              <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
+            <tr>
+              <td>
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{interesadoSeleccionado.telefono}}
+              </td>
+              <td>
+                <span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{interesadoSeleccionado.celular}}
+              </td>
             </tr>
+            <tr>
+              <td>
+                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{interesadoSeleccionado.modalidad.nombre}}
+              </td>
+              <td>
+                <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{interesadoSeleccionado.gradoInteres}}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.comoConocio}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionInscripcion}}
+              </td>
+              <td>
+                <span class="glyphicon glyphicon-bell" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionEspecial}}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{interesadoSeleccionado.comentario}}
+              </td>
+            </tr>
+
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="col-md-6">
-            <h4>{{interesadoSeleccionado.apellido}},&nbsp{{interesadoSeleccionado.nombre}}</h4>
-          </div>
-          <div class="col-md-6">
-            <h4 class="text-right">&nbsp{{interesadoSeleccionado.provincia}}</h4>
-          </div>
-          <p class="text-right">&nbsp</p>
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <td class="col-md-3">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{interesadoSeleccionado.mail}}
-                </td>
-                <td class="col-md-3">
-                  <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{interesadoSeleccionado.mail2}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{interesadoSeleccionado.telefono}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{interesadoSeleccionado.celular}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{interesadoSeleccionado.modalidad.nombre}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{interesadoSeleccionado.gradoInteres}}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.comoConocio}}
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionInscripcion}}
-                </td>
-                <td>
-                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionEspecial}}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{interesadoSeleccionado.comentario}}
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-        <div class="panel-footer">
+      <div class="panel-footer">
+        <div class="col-md-10">
           Interesado el:&nbsp{{interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
         </div>
+        <button class="btn btn-primary" ng-click="irAinscripcion(interesadoSeleccionado)">Inscripción</button>
       </div>
     </div>
   </div>
