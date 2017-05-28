@@ -1,5 +1,5 @@
 <div class="divSpinner" ng-show="actualizando || cargando">
-	<div class="spinner" />
+	<div class="spinner"></div>
 </div>
 <div class="alert alert-danger" ng-show="error.hayError">
 	<p ng-repeat="error in error.errores">
@@ -16,7 +16,7 @@
 		<h2>Inscriptos&nbsp;<span class="badge">{{inscriptos.length}}</span></h2>
 		<div class="box-round">
 			<div class="col-md-6">
-				<button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)">Crear Legajos</button>
+				<button class="btn btn-primary" ng-click="crearLegajos(inscriptos)">Crear Legajos</button>
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
@@ -143,7 +143,7 @@
 				<div class="col-md-4">
 					Inscripto el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
 				</div>
-				<!--<button class="btn btn-primary" ng-click="editarInscripcion(inscriptoSeleccionado)">Editar</button>-->
+				<button class="btn btn-primary" ng-click="editarInscripcion(inscriptoSeleccionado)">Editar</button>
 			</div>
 		</div>
 	</div>
