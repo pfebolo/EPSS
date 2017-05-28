@@ -137,10 +137,13 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					Interesado el:&nbsp{{inscriptoSeleccionado.fechaInteresadoOriginal | date:'dd/MM/yyyy'}}
 				</div>
-				Inscripto el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+				<div class="col-md-4">
+					Inscripto el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+				</div>
+				<!--<button class="btn btn-primary" ng-click="editarInscripcion(inscriptoSeleccionado)">Editar</button>-->
 			</div>
 		</div>
 	</div>
