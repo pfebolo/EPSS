@@ -9,6 +9,20 @@
     padding-left:0;
 }
 
+.stripped-row {
+    padding: 5px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #ddd;
+    display: table;
+    width: 100%;
+}
+
+div > .stripped-row:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+
 .box-round {
     padding: 5px;
     border: 1px solid;

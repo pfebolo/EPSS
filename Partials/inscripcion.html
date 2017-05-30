@@ -105,7 +105,7 @@
 					<div class="input-group" ng-class="myForm.calle.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-home" data-toggle="tooltip" title="Domicilio declarado" ></span></span>
 						<input id="calle" type="text" class="form-control" name="calle" placeholder="[Domicilio]" ng-model="interesadoSeleccionado.domicilio"
-						 required>
+						 ng-required="modalidad.id===2">
 					</div>
 				</div>
 
@@ -170,8 +170,8 @@
 			<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error'">
 				<div class="col-md-8"><span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.<span></div>
 				<div>
-					<button class="btn btn-primary" ng-click="inscribir(interesadoSeleccionado)" ng-disabled="!myForm.$valid">Actualizar</button>
-					<button class="btn btn-default">Cancelar</button>
+					<button class="btn btn-primary" ng-click="inscribir(interesadoSeleccionado)" ng-disabled="!myForm.$valid">Inscribir</button>
+					<button class="btn btn-default" ng-click="cancelarEdicion()">Cancelar</button>
 				</div>
 			</div>
 		</div>
@@ -200,6 +200,12 @@
 					<textarea type="text" class="form-control" ng-value="interesadoSeleccionado.situacionInscripcion" ng-readonly="true" placeholder="[Sin datos]"></textarea>
 				</div>
 			</div>
+			<div class="col-md-12">
+				<div class="input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="¿Como conoció?" /></span>
+					<input type="text" class="form-control" ng-value="interesadoSeleccionado.comoConocio" ng-readonly="true"  placeholder="[Sin datos]">
+				</div>
+			</div>
 			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-globe" data-toggle="tooltip" title="Provincia" /></span>
@@ -214,13 +220,13 @@
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="¿Como conoció?" /></span>
-					<input type="text" class="form-control" ng-value="interesadoSeleccionado.comoConocio" ng-readonly="true">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Fecha de consulta inicial" /></span>
+					<input type="text" class="form-control" ng-value="(interesadoSeleccionado.fechaInteresadoOriginal | date:'dd/MM/yyyy')" ng-readonly="true">
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Fecha de consulta inicial" /></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Fecha de inscripción" /></span>
 					<input type="text" class="form-control" ng-value="(interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy')" ng-readonly="true">
 				</div>
 			</div>
