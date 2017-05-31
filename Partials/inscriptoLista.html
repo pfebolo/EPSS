@@ -1,121 +1,150 @@
 <div class="divSpinner" ng-show="actualizando || cargando">
-  <div class="spinner" />
+	<div class="spinner"></div>
 </div>
 <div class="alert alert-danger" ng-show="error.hayError">
-  <p ng-repeat="error in error.errores">
-    <strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
-  </p>
+	<p ng-repeat="error in error.errores">
+		<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+	</p>
 </div>
 <div ng-show="!GetOK">
-  <div class="alert alert-warning" ng-show="!cargando">
-    Los inscriptos no fueron obtenidos, intente nuevamente.
-  </div>
+	<div class="alert alert-warning" ng-show="!cargando">
+		Los inscriptos no fueron obtenidos, intente nuevamente.
+	</div>
 </div>
 <div ng-show="!cargando">
-  <div class="col-md-5" ng-show="GetOK || cargando">
-    <h2>Inscriptos&nbsp;<span class="badge">{{inscriptos.length}}</span></h2>
-    <div class="box-round">
-      <div class="col-md-6">
-        <button class="btn btn-primary" ng-click="ActualizarInscriptos(inscriptos)">Crear Legajos</button>
-      </div>
-      <div class="input-group">
-        <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-        <input class="form-control" type="text" ng-model="inscriptosFiltro">
-      </div>
-    </div>
-    <div style="max-height: 425px; overflow-y: auto;  overflow-x: auto;">
-      <table class="table table-striped">
-        <theader>
-          <tr>
-            <th>Nombre</th>
-            <th class="text-center">DNI</th>
-            <th>Legajo</th>
-          </tr>
-        </theader>
-        <tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' ">
-          <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
-            <td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
-            <td class="text-right">{{inscripto.dni}}</td>
-            <td>
-              <input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="col-md-7">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <div class="col-md-6">
-          <h4>{{inscriptoSeleccionado.apellido}},&nbsp{{inscriptoSeleccionado.nombre}}</h4>
-          DNI:&nbsp{{inscriptoSeleccionado.dni}}
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-right">Nº:&nbsp{{inscriptoSeleccionado.legajoNro}}</h4>
-        </div>
-        <p class="text-right">&nbsp</p>
-      </div>
-      <div class="panel-body">
-        <table class="table table-striped">
-          <tbody>
-            <tr>
-              <td class="col-md-3">
-                <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail.replace("%40","@")}}
-              </td>
-              <td class="col-md-3">
-                <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail2.replace("%40","@")}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.telefono}}
-              </td>
-              <td>
-                <span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.celular}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.domicilio}}
-              </td>
-              <td>
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.provincia}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.modalidadId}}
-              </td>
-              <td>
-                <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comoConocio}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
-              </td>
-              <td>
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comentario}}
-              </td>
-            </tr>
+	<div class="col-md-5" ng-show="GetOK || cargando">
+		<h2>Inscriptos&nbsp;<span class="badge">{{inscriptos.length}}</span></h2>
+		<div class="box-round">
+			<div class="col-md-6">
+				<button class="btn btn-primary" ng-click="crearLegajos(inscriptos)">Crear Legajos</button>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+				<input class="form-control" type="text" ng-model="inscriptosFiltro">
+			</div>
+		</div>
+		<div style="max-height: 425px; overflow-y: auto;  overflow-x: auto;">
+			<table class="table table-striped">
+				<theader>
+					<tr>
+						<th>Nombre</th>
+						<th class="text-center">DNI</th>
+						<th>Legajo</th>
+					</tr>
+				</theader>
+				<tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' ">
+					<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
+						<td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
+						<td class="text-right">{{inscripto.dni}}</td>
+						<td>
+							<input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-7">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="col-md-6">
+					<h4>{{inscriptoSeleccionado.apellido}},&nbsp{{inscriptoSeleccionado.nombre}}</h4>
+					DNI:&nbsp{{inscriptoSeleccionado.dni}}
+				</div>
+				<div class="col-md-6">
+					<h4 class="text-right">Nº:&nbsp{{inscriptoSeleccionado.legajoNro}}</h4>
+				</div>
+				<p class="text-right">&nbsp</p>
+			</div>
+			<div class="panel-body">
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail.replace("%40","@")}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail2.replace("%40","@")}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.telefono}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.celular}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" title="Inscripto para empezar a cursar en el año y cuatrimestre indicado, de la carrera"></i>
+						<span ng-show="inscriptoSeleccionado.anioAcursar!==null">
+							{{inscriptoSeleccionado.anioAcursar}}{{inscriptoSeleccionado.anioAcursar===2 ? 'do' : 'er'}}&nbspaño,&nbsp{{inscriptoSeleccionado.nmestreAcursar}}{{inscriptoSeleccionado.nmestreAcursar===1 ? 'er' : 'do'}}&nbspcuatrimeste.
+						</span>
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.domicilio}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.provincia}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.modalidad.nombre}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comoConocio}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.comentario}}
+					</div>
 
-          </tbody>
-        </table>
-      </div>
-      <div class="panel-footer">
-        Interesado el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
-      </div>
-    </div>
-  </div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docTitulo===null}">
+						<i class="fa fa-graduation-cap" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de fotocopia de título secundario."></i><br>{{(inscriptoSeleccionado.docTitulo===null ? 'No entregó': inscriptoSeleccionado.docTitulo) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docDni===null}">
+						<i class="fa fa-id-card-o" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de fotocopia de fotocopia de DNI"></i><br>{{(inscriptoSeleccionado.docDni===null ? 'No entregó': inscriptoSeleccionado.docDni) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docAptoFisico===null}">
+						<i class="fa fa-heartbeat" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de apto físico"></i><br>{{(inscriptoSeleccionado.docAptoFisico===null ? 'No entregó': inscriptoSeleccionado.docAptoFisico) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docFoto===null}">
+						<i class="fa fa-camera" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de foto de perfil"></i><br>{{(inscriptoSeleccionado.docFoto===null ? 'No entregó': inscriptoSeleccionado.docFoto) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docCompromiso===null}">
+						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega firma del acta de compromiso"></i><br>{{(inscriptoSeleccionado.docCompromiso===null ? 'No entregó': inscriptoSeleccionado.docCompromiso) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2">
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="col-md-4">
+					Interesado el:&nbsp{{inscriptoSeleccionado.fechaInteresadoOriginal | date:'dd/MM/yyyy'}}
+				</div>
+				<div class="col-md-4">
+					Inscripto el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+				</div>
+				<button class="btn btn-primary" ng-click="irAEdicion(inscriptoSeleccionado)">Editar</button>
+			</div>
+		</div>
+	</div>
 </div>
