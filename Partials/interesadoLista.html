@@ -14,15 +14,11 @@
 
 <div ng-show="!cargando">
   <div class="col-md-5" ng-show="GetOK || cargando">
-    <h2>Interesados&nbsp;<span class="badge">{{interesados.length}}</span></h2>
+    <h2>Interesados&nbsp;
+      <span class="badge">{{interesados.length}}</span>
+        <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAcrearInteresado()" role="button"  data-toggle="tooltip" title="Dar de alta un nuevo interesado."></i>
+    </h2>
     <div class="box-round">
-      <!--<div class="form-group col-md-6">
-            <div id="dtFechaIni" class="input-group date">
-              <input class="form-control" size="16" type="text" value="" readonly id="FechaINI" placeholder="Fecha Inicial" ng-model="fechaINI" ng-change="calcularFechaFIN(fechaINI)">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-          </div>-->
       <div class="col-md-6">
         <div id="dtFechaFin" class="input-group date">
           <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-left" ></span></span>-->
