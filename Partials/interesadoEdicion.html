@@ -14,7 +14,6 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				Ficha de Interesado
-				<i class="fa fa-flag" aria-hidden="true" ng-class="interesadoEditando.seguimiento ? 'banderin-on fa-lg' : 'text-muted'" ng-model="interesadoEditando.seguimiento" data-toggle="tooltip" title="Interesado con prioridad" ng-click="setSeguimiento()"></i>
 			</div>
 			<div class="panel-body no-gutter">
 				<!-- E-Mail -->
@@ -29,7 +28,7 @@
 				<!-- Telefono -->
 				<div class="col-md-6 ">
 					<div class="input-group " ng-class="myForm.telefono.$valid ? 'has-success' : 'has-error' ">
-						<span class="input-group-addon "><span class="glyphicon glyphicon-earphone "data-toggle="tooltip " title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" ></span></span>
+						<span class="input-group-addon "><span class="glyphicon glyphicon-earphone" data-toggle="tooltip"  title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" ></span></span>
 						<input id="telefono " type="text " class="form-control " name="telefono " placeholder="[N° de teléfono]" ng-model="interesadoEditando.telefono" pattern="^0{0,1}\d{10}$|^0{0,1}\d{12}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$|^0{0,1}\d{2}-15-\d{4}-\d{4}$|^0{0,1}\d{3}-15-\d{3}-\d{4}$">
 					</div>
 				</div>
@@ -51,7 +50,7 @@
 				<!-- ¿Como Conocio? -->
 				<div class="col-md-12 ">
 					<div class="input-group " ng-class="myForm.comoConocio.$valid ? 'has-success' : 'has-error'">
-						<span class="input-group-addon "><i class="glyphicon glyphicon-question-sign" aria-hidden="true " data-toggle="tooltip " title="¿Como conoció a la Escuela? "></i></span>
+						<span class="input-group-addon "><i class="glyphicon glyphicon-question-sign" aria-hidden="true " data-toggle="tooltip " title="¿Como conoció a la Escuela?" ></i></span>
 						<input type="text" ng-model="interesadoEditando.comoConocio" name="comoConocio" required ng-hide="true" />
 						<div class="btn-group">
 							<div class="btn-group" role="group" ng-repeat="conocioOrigen in conocioOrigenes">
@@ -69,7 +68,7 @@
 						</span>
 						<div class="btn-group" role="group">
 							<div class="btn-group" role="group" ng-repeat="carrera in carreras">
-								<button type="button" class="btn" ng-class="interesadoEditando.carreraid==={{carrera.id}} ? 'btn-info' : 'btn-default'" ng-click="setCarrera($index)" ng-valid="false">{{carrera.descripcion}}</button>
+								<button type="button" class="btn" ng-class="interesadoEditando.carreraId==={{carrera.id}} ? 'btn-info' : 'btn-default'" ng-click="setCarrera($index)" ng-valid="false">{{carrera.descripcion}}</button>
 							</div>
 						</div>
 					</div>
@@ -79,10 +78,10 @@
 				<div class="col-md-4">
 					<div class="input-group " ng-class="myForm.modalidad.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad de cursada" /></span>
-						<input type="text" ng-model="interesadoEditando.modalidadid" name="modalidad" required ng-hide="true" />
+						<input type="text" ng-model="interesadoEditando.modalidadId" name="modalidad" required ng-hide="true" />
 						<div class="btn-group" role="group" aria-label="...">
-							<button class="btn" style="border-top-left-radius: 0;border-bottom-left-radius: 0;" ng-repeat="modalidad in modalidades" ng-class="interesadoEditando.modalidadid==={{modalidad.id}} ? 'btn-info' : 'btn-default'" ng-click="setModalidad($index)">{{modalidad.descripcion}}</button>
-							<!--<input type="text" ng-model="interesadoEditando.modalidadid" name="modalidad" required ng-hide="true" />-->
+							<button class="btn" style="border-top-left-radius: 0;border-bottom-left-radius: 0;" ng-repeat="modalidad in modalidades" ng-class="interesadoEditando.modalidadId==={{modalidad.id}} ? 'btn-info' : 'btn-default'" ng-click="setModalidad($index)">{{modalidad.descripcion}}</button>
+							<!--<input type="text" ng-model="interesadoEditando.modalidadId" name="modalidad" required ng-hide="true" />-->
 						</div>
 					</div>
 				</div>
@@ -90,12 +89,12 @@
 
 				<!--Turno-->
 				<div class="col-md-4 ">
-					<div class="input-group " ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'" ng-show="interesadoEditando.modalidadid===1">
+					<div class="input-group " ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'" ng-show="interesadoEditando.modalidadId===1">
 						<span class="input-group-addon ">
 							<i class="fa fa-sun-o" aria-hidden="true" data-toggle="tooltip" title="Turno de asistencia"></i>
 							<i class="fa fa-moon-o" aria-hidden="true" data-toggle="tooltip" title="Turno de asistencia"></i>
 						</span>
-						<input type="text" ng-model="interesadoEditando.turno" name="turno" ng-required="interesadoEditando.modalidadid===1" ng-hide="true" />
+						<input type="text" ng-model="interesadoEditando.turno" name="turno" ng-required="interesadoEditando.modalidadId===1" ng-hide="true" />
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn" ng-repeat="turno in turnos" ng-class="interesadoEditando.turno==='{{turno.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setTurno($index)">{{turno.descripcion}}</button>
 						</div>
@@ -106,8 +105,8 @@
 				<div class="col-md-5 ">
 					<div class="input-group " ng-class=" 'has-success' ">
 						<span class="input-group-addon ">
-						<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" title="Año de inscripción"></i>
-					</span>
+							<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" title="Año de inscripción"></i>
+						</span>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn" ng-repeat="anio in anios" ng-class="interesadoEditando.anioAcursar===({{anio.id}}) ? 'btn-info' : 'btn-default'" ng-click="setAnio($index)">{{anio.descripcion}}</button>
 						</div>
@@ -155,7 +154,7 @@
 				<div class="col-md-12 ">
 					<div class="input-group " ng-class=" 'has-success' ">
 						<span class="input-group-addon ">
-						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Situación Especial" />
+						<span class="glyphicon glyphicon-bell" data-toggle="tooltip" title="Situación Especial" />
 					</span>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn" ng-repeat="situacionEspecial in situacionesEspeciales" ng-class="interesadoEditando.situacionEspecial==='{{situacionEspecial.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setSituacionEspecial($index)">{{situacionEspecial.descripcion}}</button>
@@ -165,7 +164,7 @@
 
 				<div class="col-md-12 ">
 					<div class="input-group " ng-class="myForm.comentarios.$valid ? 'has-success' : 'has-error' ">
-						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil " data-toggle="tooltip " title="Comentarios " /></span>
+						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Comentarios" /></span>
 						<textarea id="comentarios " rows="1 " class="form-control " name="comentarios " placeholder="[Comentarios] " ng-model="interesadoEditando.comentario"></textarea>
 					</div>
 				</div>
@@ -176,10 +175,14 @@
 
 			<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error' ">
 				<div class="col-md-8 ">
-					<span ng-show="!myForm.$valid ">El formulario está incompleto o con información incorrecta.<span>
+					<span ng-show="!myForm.$valid ">El formulario está incompleto o con información incorrecta.</span>
+					<span ng-show="myForm.$valid ">
+						Interesado el:&nbsp{{interesadoEditando.fechaInteresado | date:'dd/MM/yyyy'}}
+						<i class="fa fa-flag" aria-hidden="true" ng-class="interesadoEditando.seguimiento ? 'banderin-danger fa-lg' : 'banderin-info'" ng-model="interesadoEditando.seguimiento" data-toggle="tooltip" title="Interesado con prioridad" ng-click="setSeguimiento()"></i>
+					</span>
 				</div>
 				<div>
-					<button class="btn btn-primary " ng-click="grabar(interesadoEditando) " ng-disabled="!myForm.$valid ">{{interesadoSrv.accion===accion_crear ? 'Crear' : 'Guardar'}}</button>
+					<button class="btn btn-primary " ng-click="grabar(interesadoEditando) " ng-disabled="!myForm.$valid ">{{accionLabel}}</button>
 					<button class="btn btn-default " ng-click="cancelarEdicion() ">Cancelar</button> 
 				</div>
 			</div>

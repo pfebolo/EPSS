@@ -26,7 +26,7 @@
 			</theader>
 			<tbody ng-repeat="legajo in legajos | filter:nombreapellidoFiltro  | orderBy:'alumno.apellido'">
 				<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
-					<td>
+					<td ng-init="$first ? cargarLegajo(legajo) :  null">
 						{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
 					</td>
 					<td class="text-right">

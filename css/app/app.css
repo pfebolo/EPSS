@@ -22,8 +22,12 @@ div > .stripped-row:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 
-.banderin-on {
-    color: yellow;
+.banderin-muted {
+    color: #777;
+}
+
+.banderin-danger {
+    color: #a94442;;
 }
 
 
