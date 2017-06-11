@@ -39,7 +39,7 @@
 				<div class="col-md-3">
 					<div class="input-group" ng-class="myForm.dni.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true" data-toggle="tooltip" title="Nro de DNI"></i></span>
-						<input id="dni" type="text" class="form-control" name="dni" required placeholder="[Nro. DNI]" ng-model="interesadoSeleccionado.dni" autofocus>
+						<input id="dni" type="text" class="form-control" name="dni" required placeholder="[Nro. DNI]" ng-model="interesadoSeleccionado.dni" autofocus pattern="^\d{1,8}$">
 					</div>
 				</div>
 
@@ -76,28 +76,28 @@
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-send" data-toggle="tooltip" title="1er E-Mail" ></span></span>
-						<input id="email" type="text" class="form-control" name="email" placeholder="[1er Email]" ng-model="interesadoSeleccionado.mail">
+						<input id="email" type="text" class="form-control" name="email" placeholder="[1er Email]" ng-model="interesadoSeleccionado.mail"  pattern="^(?:(?:[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+(?:(?:\.(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)*&quot;|[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+))*\.[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+)?)|(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)+&quot;))@(?:[a-zA-Z\d\-]+(?:\.[a-zA-Z\d\-]+)*|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])$">
 					</div>
 				</div>
 
 				<div class="col-md-12">
-					<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
+					<div class="input-group" ng-class="myForm.email2.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-send" data-toggle="tooltip" title="2do E-Mail" ></span></span>
-						<input id="email" type="text" class="form-control" name="email" placeholder="[2do E-Mail]" ng-model="interesadoSeleccionado.mail2">
+						<input id="email2" type="text" class="form-control" name="email2" placeholder="[2do E-Mail]" ng-model="interesadoSeleccionado.mail2"  pattern="^(?:(?:[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+(?:(?:\.(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)*&quot;|[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+))*\.[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+)?)|(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)+&quot;))@(?:[a-zA-Z\d\-]+(?:\.[a-zA-Z\d\-]+)*|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])$">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.telefono.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-earphone"data-toggle="tooltip" title="N° de teléfono fijo" ></span></span>
-						<input id="telefono" type="text" class="form-control" name="telefono" placeholder="[N° de teléfono fijo]" ng-model="interesadoSeleccionado.telefono">
+						<input id="telefono" type="text" class="form-control" name="telefono" placeholder="[N° de teléfono fijo]" ng-model="interesadoSeleccionado.telefono" pattern="^0{0,1}\d{10}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.celular.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-phone" data-toggle="tooltip" title="N° de teléfono celular" ></span></span>
-						<input id="celular" type="text" class="form-control" name="celular" placeholder="[N° de teléfono celular]" ng-model="interesadoSeleccionado.celular">
+						<input id="celular" type="text" class="form-control" name="celular" placeholder="[N° de teléfono celular]" ng-model="interesadoSeleccionado.celular"  pattern="^0{0,1}\d{12}$|^0{0,1}\d{2}-15-\d{4}-\d{4}$|^0{0,1}\d{3}-15-\d{3}-\d{4}$">
 					</div>
 				</div>
 
@@ -169,7 +169,7 @@
 			<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error'">
 				<div class="col-md-8"><span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.<span></div>
 				<div>
-					<button class="btn btn-primary" ng-click="inscribir(interesadoSeleccionado)" ng-disabled="!myForm.$valid">Inscribir</button>
+					<button class="btn btn-primary" ng-click="inscribir(interesadoSeleccionado)" ng-disabled="!myForm.$valid">{{accionLabel}}</button>
 					<button class="btn btn-default" ng-click="cancelarEdicion()">Cancelar</button>
 				</div>
 			</div>

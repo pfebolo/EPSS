@@ -30,7 +30,7 @@
 
       <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-        <input class="form-control" type="text" ng-model="interesadosFiltro">
+        <input class="form-control" type="text" ng-model="interesadosFiltro" ng-change=reseleccionar(interesadosFiltro)>
       </div>
     </div>
 
@@ -69,8 +69,8 @@
           </tr>
         </theader>
         <tbody ng-repeat="interesado in interesados | filter:interesadosFiltro | orderBy:'fechaInteresado':true">
-          <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
-            <td ng-init="$first ? cargarInteresado(interesado) :  null">{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
+          <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)" ng-init="reseleccionar(interesadosFiltro)">
+            <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
             <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
             <td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesado.seguimiento"></i></td>
           </tr>

@@ -32,9 +32,9 @@
 						<th>Legajo</th>
 					</tr>
 				</theader>
-				<tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' ">
+				<tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' " ng-init="reseleccionar(inscriptosFiltro)">
 					<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
-						<td ng-init="$first ? cargarInscripto(inscripto) :  null" >{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
+						<td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
 						<td class="text-right">{{inscripto.dni}}</td>
 						<td>
 							<input id="LegajoNro" type="text" class="form-control text-right" name="LegajoNro" placeholder="[legajo]" ng-model="inscripto.legajoNro">
