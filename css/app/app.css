@@ -22,6 +22,14 @@ div > .stripped-row:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 
+.banderin-muted {
+    color: #777;
+}
+
+.banderin-danger {
+    color: #a94442;;
+}
+
 
 .box-round {
     padding: 5px;

@@ -20,7 +20,7 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-				<input class="form-control" type="text" ng-model="inscriptosFiltro">
+				<input class="form-control" type="text" ng-model="inscriptosFiltro"  ng-change=reseleccionar(inscriptosFiltro)>
 			</div>
 		</div>
 		<div style="max-height: 425px; overflow-y: auto;  overflow-x: auto;">
@@ -32,7 +32,7 @@
 						<th>Legajo</th>
 					</tr>
 				</theader>
-				<tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' ">
+				<tbody ng-repeat="inscripto in inscriptos | filter:inscriptosFiltro | orderBy:'apellido' " ng-init="reseleccionar(inscriptosFiltro)">
 					<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInscripto(inscripto)">
 						<td>{{inscripto.apellido}},&nbsp;{{inscripto.nombre}}</td>
 						<td class="text-right">{{inscripto.dni}}</td>
