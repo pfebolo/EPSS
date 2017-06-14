@@ -14,15 +14,11 @@
 
 <div ng-show="!cargando">
   <div class="col-md-5" ng-show="GetOK || cargando">
-    <h2>Interesados&nbsp;<span class="badge">{{interesados.length}}</span></h2>
+    <h2>Interesados&nbsp;
+      <span class="badge">{{interesados.length}}</span>
+        <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAcrearInteresado()" role="button"  data-toggle="tooltip" title="Dar de alta un nuevo interesado."></i>
+    </h2>
     <div class="box-round">
-      <!--<div class="form-group col-md-6">
-            <div id="dtFechaIni" class="input-group date">
-              <input class="form-control" size="16" type="text" value="" readonly id="FechaINI" placeholder="Fecha Inicial" ng-model="fechaINI" ng-change="calcularFechaFIN(fechaINI)">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-          </div>-->
       <div class="col-md-6">
         <div id="dtFechaFin" class="input-group date">
           <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-left" ></span></span>-->
@@ -34,7 +30,7 @@
 
       <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-        <input class="form-control" type="text" ng-model="interesadosFiltro">
+        <input class="form-control" type="text" ng-model="interesadosFiltro" ng-change=reseleccionar(interesadosFiltro)>
       </div>
     </div>
 
@@ -67,16 +63,19 @@
       <table class="table table-striped">
         <theader>
           <tr>
-            <th>Nombre</th>
-            <th>Fecha</th>
+            <th class="col-md-8">Nombre</th>
+            <th class="col-md-3">Fecha</th>
+            <th class="col-md-1"><i class="fa fa-flag" aria-hidden="true"></i></th>
           </tr>
         </theader>
         <tbody ng-repeat="interesado in interesados | filter:interesadosFiltro | orderBy:'fechaInteresado':true">
-          <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
+          <tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)" ng-init="reseleccionar(interesadosFiltro)">
             <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
             <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
+            <td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesado.seguimiento"></i></td>
           </tr>
         </tbody>
+       
       </table>
     </div>
   </div>
@@ -96,7 +95,7 @@
           <tbody>
             <tr>
               <td class="col-md-3">
-                <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{interesadoSeleccionado.mail}}
+                <span class="glyphicon glyphicon-send" aria-hidden="true" data-toggle="tooltip" title="E-Mail" />&nbsp{{interesadoSeleccionado.mail}}
               </td>
               <td class="col-md-3">
                 <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{interesadoSeleccionado.mail2}}
@@ -104,7 +103,7 @@
             </tr>
             <tr>
               <td>
-                <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{interesadoSeleccionado.telefono}}
+                <span class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip"  title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" />&nbsp{{interesadoSeleccionado.telefono}}
               </td>
               <td>
                 <span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{interesadoSeleccionado.celular}}
@@ -112,28 +111,36 @@
             </tr>
             <tr>
               <td>
-                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{interesadoSeleccionado.modalidad.nombre}}
+                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad de cursada" />&nbsp{{interesadoSeleccionado.modalidad.nombre}}{{interesadoSeleccionado.modalidadId===1 ? ',&nbsp'.concat(interesadoSeleccionado.turno) :  null }}
               </td>
               <td>
-                <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{interesadoSeleccionado.gradoInteres}}
+                <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" data-toggle="tooltip" title="Grado de interés" />&nbsp{{interesadoSeleccionado.gradoInteres}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" title="Año de inscripción"></i>&nbsp{{interesadoSeleccionado.anioAcursar}}{{interesadoSeleccionado.anioAcursar!==2 ? 'er' : 'do'}}&nbspAño.
+              </td>
+              <td>
+                <i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" title="Cuatrimestre de inscripción"></i>&nbsp{{interesadoSeleccionado.nmestreAcursar}}{{interesadoSeleccionado.nmestreAcursar===1 ? 'er' : 'do'}}&nbspCuatrimestre.
               </td>
             </tr>
             <tr>
               <td colspan="2">
-                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.comoConocio}}
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"  data-toggle="tooltip " title="¿Como conoció a la Escuela?" />&nbsp{{interesadoSeleccionado.comoConocio}}
               </td>
             </tr>
             <tr>
               <td>
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionInscripcion}}
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"  data-toggle="tooltip" title="Situación Particular" />&nbsp{{interesadoSeleccionado.situacionInscripcion}}
               </td>
               <td>
-                <span class="glyphicon glyphicon-bell" aria-hidden="true" />&nbsp{{interesadoSeleccionado.situacionEspecial}}
+                <span class="glyphicon glyphicon-bell" aria-hidden="true" data-toggle="tooltip" title="Situación Especial" />&nbsp{{interesadoSeleccionado.situacionEspecial}}
               </td>
             </tr>
             <tr>
               <td colspan="2">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{interesadoSeleccionado.comentario}}
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Comentarios" />&nbsp{{interesadoSeleccionado.comentario}}
               </td>
             </tr>
 
@@ -141,9 +148,11 @@
         </table>
       </div>
       <div class="panel-footer">
-        <div class="col-md-10">
+        <div class="col-md-8">
           Interesado el:&nbsp{{interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+          <i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesadoSeleccionado.seguimiento"></i>
         </div>
+        <button class="btn btn-primary" ng-click="irAEdicionInteresado(interesadoSeleccionado)">Edición</button>
         <button class="btn btn-primary" ng-click="irAinscripcion(interesadoSeleccionado)">Inscripción</button>
       </div>
     </div>

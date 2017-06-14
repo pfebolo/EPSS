@@ -22,6 +22,14 @@ div > .stripped-row:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 
+.banderin-muted {
+    color: #777;
+}
+
+.banderin-danger {
+    color: #a94442;;
+}
+
 
 .box-round {
     padding: 5px;
@@ -76,6 +84,16 @@ div .con-error  {
      vertical-align: middle;
 }
 
+
+.divModalBase {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    background: rgba(140, 114, 114, 0.3)
+}
 
 .divSpinner {
     position: absolute;
