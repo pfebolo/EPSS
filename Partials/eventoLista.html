@@ -1,0 +1,149 @@
+<div class="divSpinner" ng-show="actualizando || cargando">
+	<div class="spinner"></div>
+</div>
+<div class="alert alert-danger" ng-show="error.hayError">
+	<p ng-repeat="error in error.errores">
+		<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+	</p>
+</div>
+<div ng-show="!GetOK">
+	<div class="alert alert-warning" ng-show="!cargando">
+		Los eventos no fueron obtenidos, intente nuevamente.
+	</div>
+</div>
+<div ng-show="!cargando">
+	<div class="col-md-5" ng-show="GetOK || cargando">
+		<h2>
+			Eventos&nbsp;
+			<span class="badge">{{eventos.length}}</span>
+			<i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearEvento()" role="button" data-toggle="tooltip" title="Dar de alta un nuevo evento."></i>
+		</h2>
+		<div class="box-round">
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+				<input class="form-control" type="text" ng-model="eventosFiltro" ng-change=reseleccionar(eventosFiltro)>
+			</div>
+		</div>
+		<div style="max-height: 425px; overflow-y: auto;  overflow-x: auto;">
+			<table class="table table-striped">
+				<theader>
+					<tr>
+						<th>Título</th>
+						<th class="text-center">Fecha</th>
+						<th>Lugar</th>
+					</tr>
+				</theader>
+				<tbody ng-repeat="evento in eventos | filter:eventosFiltro | orderBy:'fecha':true " ng-init="reseleccionar(eventosFiltro)">
+					<tr ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarEvento(evento)">
+						<td>{{evento.titulo}}</td>
+						<td class="text-right">{{evento.fecha | date:'dd/MM/yyyy'}}</td>
+						<td>{{evento.lugar.nombre}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--<div class="col-md-7">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<div class="col-md-6">
+					<h4>{{eventoSeleccionado.apellido}},&nbsp{{eventoSeleccionado.nombre}}</h4>
+					DNI:&nbsp{{eventoSeleccionado.dni}}
+				</div>
+				<div class="col-md-6">
+					<h4 class="text-right">Nº:&nbsp{{eventoSeleccionado.legajoNro}}</h4>
+				</div>
+				<p class="text-right">&nbsp</p>
+			</div>
+			<div class="panel-body">
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{eventoSeleccionado.mail.replace("%40","@")}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{eventoSeleccionado.mail2.replace("%40","@")}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{eventoSeleccionado.telefono}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{eventoSeleccionado.celular}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" title="Evento para empezar a cursar en el año y cuatrimestre indicado, de la carrera"></i>
+						<span ng-show="eventoSeleccionado.anioAcursar!==null">
+							{{eventoSeleccionado.anioAcursar}}{{eventoSeleccionado.anioAcursar===2 ? 'do' : 'er'}}&nbspaño,&nbsp{{eventoSeleccionado.nmestreAcursar}}{{eventoSeleccionado.nmestreAcursar===1 ? 'er' : 'do'}}&nbspcuatrimeste.
+						</span>
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{eventoSeleccionado.domicilio}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp{{eventoSeleccionado.provincia}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{eventoSeleccionado.modalidad.nombre}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{eventoSeleccionado.gradoInteres}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{eventoSeleccionado.comoConocio}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{eventoSeleccionado.situacionInscripcion}}
+					</div>
+					<div class="col-md-6">
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{eventoSeleccionado.situacionEspecial}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{eventoSeleccionado.comentario}}
+					</div>
+
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-2" ng-class="{'bg-warning': eventoSeleccionado.docTitulo===null}">
+						<i class="fa fa-graduation-cap" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de fotocopia de título secundario."></i><br>{{(eventoSeleccionado.docTitulo===null ? 'No entregó': eventoSeleccionado.docTitulo) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': eventoSeleccionado.docDni===null}">
+						<i class="fa fa-id-card-o" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de fotocopia de fotocopia de DNI"></i><br>{{(eventoSeleccionado.docDni===null ? 'No entregó': eventoSeleccionado.docDni) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': eventoSeleccionado.docAptoFisico===null}">
+						<i class="fa fa-heartbeat" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de apto físico"></i><br>{{(eventoSeleccionado.docAptoFisico===null ? 'No entregó': eventoSeleccionado.docAptoFisico) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': eventoSeleccionado.docFoto===null}">
+						<i class="fa fa-camera" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de foto de perfil"></i><br>{{(eventoSeleccionado.docFoto===null ? 'No entregó': eventoSeleccionado.docFoto) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2" ng-class="{'bg-warning': eventoSeleccionado.docCompromiso===null}">
+						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega firma del acta de compromiso"></i><br>{{(eventoSeleccionado.docCompromiso===null ? 'No entregó': eventoSeleccionado.docCompromiso) | date:'dd/MM/yyyy'}}
+					</div>
+					<div class="col-md-2">
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="col-md-4">
+					Interesado el:&nbsp{{eventoSeleccionado.fechaInteresadoOriginal | date:'dd/MM/yyyy'}}
+				</div>
+				<div class="col-md-4">
+					Evento el:&nbsp{{eventoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+				</div>
+				<button class="btn btn-primary" ng-click="irAEdicion(eventoSeleccionado)">Editar</button>
+			</div>
+		</div>
+	</div>-->
+</div>
