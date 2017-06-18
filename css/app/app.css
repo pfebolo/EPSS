@@ -49,6 +49,43 @@ div .con-error  {
     border-color: #a94442;
 }
 
+i.icon-pointer:hover {
+   cursor: pointer;
+}
+
+i.icon-primary:hover,
+i.icon-primary:focus {
+  color: #286090;
+}
+.icon-success {
+  color: #3c763d;
+}
+i.icon-success:hover,
+i.icon-success:focus {
+  color: #2b542c;
+}
+.icon-info {
+  color: #31708f;
+}
+i.icon-info:hover,
+i.icon-info:focus {
+  color: #245269;
+}
+.icon-warning {
+  color: #8a6d3b;
+}
+i.icon-warning:hover,
+i.icon-warning:focus {
+  color: #66512c;
+}
+.icon-danger {
+  color: #a94442;
+}
+i.icon-danger:hover,
+i.icon-danger:focus {
+  color: #843534;
+}
+
 
 .stylish-panel {
     padding: 20px 0;
