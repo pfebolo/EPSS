@@ -38,7 +38,7 @@
 					</tr>
 				</theader>
 				<tbody>
-					<tr ng-repeat="evento in eventos | filter:eventosFiltro | orderBy:'fecha':true " ng-init="reseleccionar(eventosFiltro)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarEvento(evento)">
+					<tr ng-repeat="evento in eventos | filter:eventosFiltro | orderBy:'fecha':true " ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarEvento(evento)">
 						<td>{{evento.titulo}}</td>
 						<td class="text-right">{{evento.fecha | date:'dd/MM/yyyy'}}</td>
 						<td class="text-center">
@@ -89,7 +89,7 @@
 						</tr>
 					</theader>
 					<tbody>
-						<tr ng-repeat="interesadoEvento in interesadosEventos | orderBy:'interesado.fechaInteresado':true">
+						<tr ng-repeat="interesadoEvento in interesadosEventos | orderBy:'interesado.apellido'">
 							<td>{{interesadoEvento.interesado.apellido}},&nbsp;{{interesadoEvento.interesado.nombre}}</td>
 							<td>{{interesadoEvento.interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
 							<td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesadoEvento.interesado.seguimiento"></i></td>
