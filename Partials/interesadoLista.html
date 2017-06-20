@@ -95,7 +95,7 @@
                 <span class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip" title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" />&nbsp{{interesadoSeleccionado.telefono}}&nbsp{{interesadoSeleccionado.celular}}
               </td>
               <td class="col-md-4">
-                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad de cursada" />&nbsp{{interesadoSeleccionado.modalidad.nombre}}{{interesadoSeleccionado.modalidadId===1 ? ',&nbsp'.concat(interesadoSeleccionado.turno) : null }}
+                <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad de cursada" />&nbsp{{interesadoSeleccionado.modalidad.nombre}}{{interesadoSeleccionado.modalidadId===1 && interesadoSeleccionado.turno!==null ? ',&nbsp'.concat(interesadoSeleccionado.turno) : null }}
               </td>
             </tr>
             <tr>
