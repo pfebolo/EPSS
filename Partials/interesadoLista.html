@@ -188,10 +188,9 @@
   <div class="col-md-3 "></div>
   <div class="col-md-6 " style='top: 33%'>
     <div class="panel panel-info ">
-      <div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i><em>&nbsp{{interesadoSeleccionado.nombre}}&nbsp{{interesadoSeleccionado.apellido}} invitado al evento {{interesadoEventoEditando.evento.titulo}} el día {{interesadoEventoEditando.evento.fecha | date:'dd/MM/yyyy'}}</em> 
+      <div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i><em>&nbsp<strong>{{interesadoSeleccionado.nombre}}&nbsp{{interesadoSeleccionado.apellido}}</strong> invitado al evento <strong>{{interesadoEventoEditando.evento.titulo}}</strong> el día <strong>{{interesadoEventoEditando.evento.fecha | date:'dd/MM/yyyy'}}</strong></em> 
       </div>
       <div class="panel-body">
-
         <form novalidate name="myForm" class="css-form" autocomplete="off">
           <div class="input-group" ng-class="'has-success'">
             <span class="input-group-addon" data-toggle="tooltip" title="Observación de la invitación">Observación</span>
@@ -202,8 +201,8 @@
       </div>
       <div class="panel-footer ">
         <div class="text-right">
-          <button class="btn btn-default" ng-click="closeModal()" autofocus>Cancelar</button>
           <button class="btn btn-primary" ng-click="actualizarObservacion(interesadoEventoEditando)" autofocus>Actualizar</button>
+          <button class="btn btn-default" ng-click="closeModal()" autofocus>Cancelar</button>
         </div>
       </div>
     </div>
