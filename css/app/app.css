@@ -122,6 +122,12 @@ i.icon-danger:focus {
 }
 
 
+.divzindexBase {
+    position: absolute;
+    z-index: 20;
+}
+
+
 .divModalBase {
     position: absolute;
     left: 0px;
