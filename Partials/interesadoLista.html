@@ -15,26 +15,30 @@
 <div ng-show="!cargando">
   <div class="col-md-5" ng-show="GetOK || cargando">
     <h2>Interesados&nbsp;
+      <span class="badge">{{interesadosFiltradosYOrdenados.length}}</span>/
       <span class="badge">{{interesados.length}}</span>
       <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAcrearInteresado()" role="button" data-toggle="tooltip" title="Dar de alta un nuevo interesado."></i>
     </h2>
     <div class="box-round">
-      <div class="col-md-6">
-        <div id="dtFechaFin" class="input-group date">
-          <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-left" ></span></span>-->
+      <div class="col-md-4">
+        <!--<div id="dtFechaFin" class="input-group date">
           <input class="form-control" type="text" readonly id="FechaFNI" ng-model="fechaFIN" ng-change="actualizarInteresados(fechaFIN)">
           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-          <!--<span class="input-group-addon"><span class="glyphicon glyphicon-menu-right"></span></span>-->
+        </div>-->
+        <div class="input-group">
+          <span class="input-group-btn"><button class="btn btn-default" type="button" ng-click="mostrarPagina(pagina-1)">&laquo;</button></span>
+          <input type="text" class="form-control text-center" readonly ng-model="pagina" data-toggle="tooltip" title="Página mostrada.">
+          <span class="input-group-btn"><button class="btn btn-default" type="button" ng-click="mostrarPagina(pagina+1)">&raquo;</button></span>
         </div>
       </div>
-
+      <div class="col-md-2">
+        <input type="text" class="form-control text-center" readonly ng-model="paginas" data-toggle="tooltip" title="Páginas de los resultados filtrados.">
+      </div>
       <div class="input-group">
         <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
         <input class="form-control" type="text" ng-model="interesadosFiltro" ng-change=reseleccionar(interesadosFiltro)>
       </div>
     </div>
-
-
     <script type="text/javascript">
       // $('#dtFechaIni').datetimepicker({
       //   language: 'es',
@@ -69,7 +73,7 @@
           </tr>
         </theader>
         <tbody>
-          <tr ng-repeat="interesado in interesados | filter:interesadosFiltro | orderBy:'fechaInteresado':true" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
+          <tr ng-repeat="interesado in interesadosFiltradosYOrdenadosPagina" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
             <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
             <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
             <td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesado.seguimiento"></i></td>
@@ -188,7 +192,7 @@
   <div class="col-md-3 "></div>
   <div class="col-md-6 " style='top: 33%'>
     <div class="panel panel-info ">
-      <div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i><em>&nbsp<strong>{{interesadoSeleccionado.nombre}}&nbsp{{interesadoSeleccionado.apellido}}</strong> invitado al evento <strong>{{interesadoEventoEditando.evento.titulo}}</strong> el día <strong>{{interesadoEventoEditando.evento.fecha | date:'dd/MM/yyyy'}}</strong></em> 
+      <div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i><em>&nbsp<strong>{{interesadoSeleccionado.nombre}}&nbsp{{interesadoSeleccionado.apellido}}</strong> invitado al evento <strong>{{interesadoEventoEditando.evento.titulo}}</strong> el día <strong>{{interesadoEventoEditando.evento.fecha | date:'dd/MM/yyyy'}}</strong></em>
       </div>
       <div class="panel-body">
         <form novalidate name="myForm" class="css-form" autocomplete="off">
