@@ -90,14 +90,14 @@
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.telefono.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-earphone"data-toggle="tooltip" title="N° de teléfono fijo" ></span></span>
-						<input id="telefono" type="text" class="form-control" name="telefono" placeholder="[N° de teléfono fijo]" ng-model="interesadoSeleccionado.telefono" pattern="^0{0,1}\d{10}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$">
+						<input id="telefono" type="text" class="form-control" name="telefono" placeholder="[N° de teléfono fijo]" ng-model="interesadoSeleccionado.telefono" pattern="^0{0,1}[123456789]\d{9}$|^[123456789]\d{7}$|^0{0,1}[123456789]\d-\d{4}-\d{4}$|^[123456789]\d{3}-\d{4}$|^0{0,1}[123456789]\d{2}-\d{3}-\d{4}$">
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.celular.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-phone" data-toggle="tooltip" title="N° de teléfono celular" ></span></span>
-						<input id="celular" type="text" class="form-control" name="celular" placeholder="[N° de teléfono celular]" ng-model="interesadoSeleccionado.celular"  pattern="^0{0,1}\d{12}$|^0{0,1}\d{2}-15-\d{4}-\d{4}$|^0{0,1}\d{3}-15-\d{3}-\d{4}$">
+						<input id="celular" type="text" class="form-control" name="celular" placeholder="[N° de teléfono celular]" ng-model="interesadoSeleccionado.celular"  pattern="^0{0,1}[123456789]\d{11}$|^[123456789]\d{9}$|^0{0,1}[123456789]\d-15-\d{4}-\d{4}$|^15-[123456789]\d{3}-\d{4}$|^0{0,1}[123456789]\d{2}-15-\d{3}-\d{4}$">
 					</div>
 				</div>
 
@@ -168,7 +168,7 @@
 
 			<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error'">
 				<div class="col-md-8"><span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.<span></div>
-				<div>
+				<div class="text-right">
 					<button class="btn btn-primary" ng-click="inscribir(interesadoSeleccionado)" ng-disabled="!myForm.$valid">{{accionLabel}}</button>
 					<button class="btn btn-default" ng-click="cancelarEdicion()">Cancelar</button>
 				</div>

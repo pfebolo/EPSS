@@ -78,10 +78,9 @@
 				<div class="col-md-4">
 					<div class="input-group " ng-class="myForm.modalidad.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad de cursada" /></span>
-						<input type="text" ng-model="interesadoEditando.modalidadId" name="modalidad" required ng-hide="true" />
+						<input type="text" ng-model="interesadoEditando.modalidadId" name="modalidad" ng-hide="true" />
 						<div class="btn-group" role="group" aria-label="...">
 							<button class="btn" style="border-top-left-radius: 0;border-bottom-left-radius: 0;" ng-repeat="modalidad in modalidades" ng-class="interesadoEditando.modalidadId==={{modalidad.id}} ? 'btn-info' : 'btn-default'" ng-click="setModalidad($index)">{{modalidad.descripcion}}</button>
-							<!--<input type="text" ng-model="interesadoEditando.modalidadId" name="modalidad" required ng-hide="true" />-->
 						</div>
 					</div>
 				</div>
@@ -94,7 +93,7 @@
 							<i class="fa fa-sun-o" aria-hidden="true" data-toggle="tooltip" title="Turno de asistencia"></i>
 							<i class="fa fa-moon-o" aria-hidden="true" data-toggle="tooltip" title="Turno de asistencia"></i>
 						</span>
-						<input type="text" ng-model="interesadoEditando.turno" name="turno" ng-required="interesadoEditando.modalidadId===1" ng-hide="true" />
+						<input type="text" ng-model="interesadoEditando.turno" name="turno" ng-hide="true" />
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn" ng-repeat="turno in turnos" ng-class="interesadoEditando.turno==='{{turno.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setTurno($index)">{{turno.descripcion}}</button>
 						</div>
