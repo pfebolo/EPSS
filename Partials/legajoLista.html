@@ -322,7 +322,7 @@
 					<li ng-class="CuestionarioActivo==2 ? 'active':''"><a ng-click="CuestionarioActivo=2">Situación    &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[2] !== null) && (CuestionarioActivoText[2] !== '')" /></a></li>
 					<li ng-class="CuestionarioActivo==3 ? 'active':''"><a ng-click="CuestionarioActivo=3">Expectativas &nbsp<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="(CuestionarioActivoText[3] !== null) && (CuestionarioActivoText[3] !== '')" /></a></li>
 				</ul>
-				<em>{{CuestionarioActivoText[CuestionarioActivo]}}</em>
+					<em style="white-space:pre-wrap;">{{CuestionarioActivoText[CuestionarioActivo]}}</em>
 				<br>
 				<div class="alert alert-info" role="alert" ng-show="CuestionarioActivoText[CuestionarioActivo]=='' || CuestionarioActivoText[CuestionarioActivo]==null">
 					El estudiante no ha dado esta información.
