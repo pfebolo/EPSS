@@ -6,6 +6,10 @@ y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/sp
 
 ## [Unreleased]
 ### Added
+- Se agrega la eliminación de una ficha de Interesado
+
+## [0.9.1] - 2017-06-27
+### Added
 - Archivo CHANGELOG.md que se usará para documentar el historial de cambios, basado en el proyecto de código abierto CHANGELOG.
 
 ### Fixed
