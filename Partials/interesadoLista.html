@@ -41,9 +41,12 @@
       <table class="table table-striped table-condensed table-hover">
         <theader>
           <tr>
-            <th class="col-md-8">Nombre</th>
+            <th class="col-md-7">Nombre</th>
             <th class="col-md-3">Fecha</th>
-            <th class="col-md-1"><i class="fa fa-flag" aria-hidden="true"></i></th>
+            <th class="col-md-1"><i class="fa fa-flag icon-pointer" aria-hidden="true" data-toggle="tooltip" title="Seguimiento"></i></th>
+            <!--<th class="col-md-1"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></th>-->
+            <th class="col-md-1"><span  ng-class="{'miBadgeWarning': filtrarDuplicado,'miBadge': !filtrarDuplicado}" ><i class="fa fa-files-o icon-pointer" aria-hidden="true"  data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></span></th>
+
           </tr>
         </theader>
         <tbody>
@@ -51,6 +54,7 @@
             <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
             <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
             <td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesado.seguimiento"></i></td>
+            <td><span class="badge" style="background-color: #ec971f" ng-show="interesado.duplicado"><i class="fa fa-files-o" aria-hidden="true"  data-toggle="tooltip" title="¡Posible duplicado!"></i></span></td>
           </tr>
         </tbody>
 
@@ -61,6 +65,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h4>{{interesadoSeleccionado.apellido}},&nbsp{{interesadoSeleccionado.nombre}}</h4>
+        
       </div>
       <div class="panel-body">
         <table class="table table-striped table-condensed">
@@ -107,9 +112,10 @@
         </table>
       </div>
       <div class="panel-footer">
-        <div class="col-md-4">
+        <div class="col-md-6">
           Interesado el:&nbsp{{interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
-          <i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesadoSeleccionado.seguimiento"></i>
+          <i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesadoSeleccionado.seguimiento"  data-toggle="tooltip" title="Seguimiento"></i>
+          <span class="badge" style="background-color: #ec971f" ng-show="interesadoSeleccionado.duplicado"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" title="¡Posible duplicado!"></i></span>
         </div>
         <div class="text-right">
           <button class="btn btn-danger" ng-click="showModalEliminarInteresado(interesadoSeleccionado)">Eliminar</button>
