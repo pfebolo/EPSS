@@ -15,29 +15,24 @@
 		</div>
 	</div>
 	<div style="max-height: 425px; overflow-y: scroll;" id="lista">
-		<table class="table table-striped">
+		<table class="table table-striped table-condensed table-hover">
 			<theader>
 				<tr>
 					<th>Nombre</th>
 					<th class="text-center">DNI</th>
 					<th><span class="glyphicon glyphicon-certificate small" aria-hidden="true" /></th>
-					<th></th>
 				</tr>
 			</theader>
 			<tbody>
-				<tr ng-repeat="legajo in legajos | filter:nombreapellidoFiltro  | orderBy:'alumno.apellido'" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
+				<!--<tr ng-repeat="legajo in legajos | filter:nombreapellidoFiltro  | orderBy:'alumno.apellido'" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">-->
+				<tr ng-repeat="legajo in legajosFiltrados" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
 					<td>
 						{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
 					</td>
 					<td class="text-right">
 						{{legajo.dni}}
 					</td>
-					<td class="text-right"><span class="glyphicon glyphicon-certificate small" style="color: lightgreen" aria-hidden="true" ng-show="legajo.cuestionario!=null"
-						/></td>
-					<td>
-						<button type="button" class="btn btn-info">
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button>
+					<td class="text-right"><span class="glyphicon glyphicon-certificate small" style="color: lightgreen" aria-hidden="true" ng-show="legajo.cuestionario!=null"	/>
 					</td>
 				</tr>
 			</tbody>
