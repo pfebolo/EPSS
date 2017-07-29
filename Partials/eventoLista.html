@@ -67,9 +67,16 @@
 				<p class="text-right">&nbsp</p>
 			</div>
 			<div class="panel-body">
-				<div class="col-md-12">
-					<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{eventoSeleccionado.lugar.nombre}}
-				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-home" aria-hidden="true" data-toggle="tooltip" title="Lugar donde se realizará el evento."/>&nbsp{{eventoSeleccionado.lugar.nombre}}
+					</div>
+				</div>				
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"  data-toggle="tooltip" title="Comentario."/>&nbsp{{eventoSeleccionado.observacion}}
+					</div>
+				</div>				
 			</div>
 			<div class="panel-footer text-right">
 				<button class="btn btn-danger" ng-click="irAEliminarEvento(eventoSeleccionado)">Eliminar</button>
