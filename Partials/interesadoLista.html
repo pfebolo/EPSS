@@ -51,7 +51,7 @@
         </theader>
         <tbody>
           <tr ng-repeat="interesado in interesadosFiltradosYOrdenadosPagina" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
-            <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
+            <td>{{interesado.apellido.trim()}},&nbsp;{{interesado.nombre.trim()}}</td>
             <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
             <td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesado.seguimiento"></i></td>
             <td><span class="badge" style="background-color: #ec971f" ng-show="interesado.duplicado"><i class="fa fa-files-o" aria-hidden="true"  data-toggle="tooltip" title="¡Posible duplicado!"></i></span></td>
