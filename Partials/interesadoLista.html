@@ -139,22 +139,42 @@
       <div style="max-height: 140px; overflow-y: auto;  overflow-x: auto;">
         <!--Tabla de Eventos Asignados-->
         <table class="table table-striped table-hover table-condensed" ng-show="!altaEvento">
+					<theader>
+						<tr>
+							<th class="col-md-1">Fecha</th>
+              <th class="col-md-3">Título</th>
+              <th class="col-md-7">Observación</th>
+							<th class="col-md-1">
+                <i class="fa fa-calendar-check-o" aria-hidden="true"  data-toggle="tooltip" title="Asistencia."></i></th>
+              </th>
+						</tr>
+					</theader>
           <tbody>
             <tr ng-repeat="interesadoEvento in interesadosEventos | orderBy:'evento.fecha':true">
               <td class="col-md-1">{{interesadoEvento.evento.fecha | date:'dd/MM/yyyy'}}</td>
-              <td>{{interesadoEvento.evento.titulo}}</td>
-              <td>{{interesadoEvento.observacion}}&nbsp<i class="fa  fa-pencil icon-primary icon-pointer" aria-hidden="true" ng-hide="interesadoEvento.asistente" ng-click="showModalInvitacionObservacion(interesadoEvento)"></i></td>
-              <td><i class="fa fa-calendar-check-o" aria-hidden="true" ng-show="interesadoEvento.asistente"></i></td>
+              <td class="col-md-3">{{interesadoEvento.evento.titulo}}</td>
+              <td class="col-md-7">{{interesadoEvento.observacion}}&nbsp<i class="fa  fa-pencil icon-primary icon-pointer" aria-hidden="true" ng-hide="interesadoEvento.asistente" ng-click="showModalInvitacionObservacion(interesadoEvento)"></i></td>
+              <td class="col-md-1"><i class="icon-primary" aria-hidden="true" ng-class="interesadoEvento.asistente ? 'fa fa-calendar-check-o' : 'fa fa-calendar-o '" ng-show="interesadoEvento.evento.estadoFecha<=0" /></td>
             </tr>
           </tbody>
         </table>
 
         <!--Tabla de Eventos A Asignar-->
         <table class="table table-striped table-hover table-condensed" ng-show="altaEvento">
+          <theader>
+						<tr>
+							<th class="col-md-1">Fecha</th>
+              <th class="col-md-3">Título</th>
+              <th class="col-md-7">Observación</th>
+							<th class="col-md-1">
+              </th>
+						</tr>
+					</theader>
           <tbody>
             <tr ng-repeat="evento in eventosFuturos | orderBy:'fecha'">
-              <td>{{evento.titulo}}</td>
               <td>{{evento.fecha | date:'dd/MM/yyyy'}}</td>
+              <td>{{evento.titulo}}</td>
+              <td>{{evento.observacion}}</td>
               <td><i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAAgregarInteresadoEvento(evento,interesadoSeleccionado)" role="button" data-toggle="tooltip" title="Agregar al interesado al evento."></i></td>
             </tr>
           </tbody>
