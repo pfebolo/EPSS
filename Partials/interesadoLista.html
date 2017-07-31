@@ -43,7 +43,7 @@
           <tr>
             <th class="col-md-7">Nombre</th>
             <th class="col-md-3">Fecha</th>
-            <th class="col-md-1"><i class="fa fa-flag icon-pointer" aria-hidden="true" data-toggle="tooltip" title="Seguimiento"></i></th>
+            <th class="col-md-1"><span  ng-class="{'banderin-danger': filtrarSeguimiento,'banderin-info': !filtrarSeguimiento}" ><i class="fa fa-flag icon-pointer" aria-hidden="true" data-toggle="tooltip" title="Seguimiento" ng-click="filtrarSeguimiento=!filtrarSeguimiento;reseleccionar(interesadosFiltro)"></i></span></th>
             <!--<th class="col-md-1"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></th>-->
             <th class="col-md-1"><span  ng-class="{'miBadgeWarning': filtrarDuplicado,'miBadge': !filtrarDuplicado}" ><i class="fa fa-files-o icon-pointer" aria-hidden="true"  data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></span></th>
 

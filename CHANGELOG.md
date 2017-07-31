@@ -12,6 +12,7 @@ y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/sp
 - Se mejora la búsqueda en Interesados y Legajos para contemplar la concatenación de Apellido y Nombre.
 - Se mejora la recarga de la lista al regresar de una edición/creación de interesado, filtra por el interesado creado/editado.
 - Se agrega el campo 'Medio de Contacto' a la ficha de interesados.
+- Se agrega filtro por 'seguimiento' en la lista de interesados, al clickear sobre el banderin del título.
 
 
 ### Fixed
