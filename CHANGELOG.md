@@ -6,11 +6,13 @@ y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/sp
 
 ## [Unreleased] - 2017-08-01
 ### Added
-- Se agrega lel campo observación a los eventos.
+- Se agrega el campo observación a los eventos.
 - Se modifica la lista de invitados a un evento colocando Teléfono y e-Mail, también se iconiza la observación.
 - Se mejora la indicación de asistencia a un evento en la lista de eventos asociados a un interesado.
 - Se mejora la búsqueda en Interesados y Legajos para contemplar la concatenación de Apellido y Nombre.
 - Se mejora la recarga de la lista al regresar de una edición/creación de interesado, filtra por el interesado creado/editado.
+- Se agrega el campo 'Medio de Contacto' a la ficha de interesados.
+
 
 ### Fixed
 - Se arregla la busqueda de valores númericos en Legajo.
