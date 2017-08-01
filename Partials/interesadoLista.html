@@ -18,7 +18,9 @@
       <span class="badge">{{interesadosFiltradosYOrdenados.length}}</span>/
       <span class="badge">{{interesados.length}}</span>
       <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAcrearInteresado()" role="button" data-toggle="tooltip" title="Dar de alta un nuevo interesado."></i>
+      <i class="fa text-primary"  ng-class="{'fa-spinner': procesandoCSV, 'fa-pulse': procesandoCSV,'fa-file-excel-o': !procesandoCSV, 'fa-border': !procesandoCSV}" aria-hidden="true" ng-click="!procesandoCSV ? irABajarInteresado() : null" role="button" data-toggle="tooltip" title="Exportar a excel." id="bajando"><a id="ancla"></a></i>
     </h2>
+    
     <div class="box-round">
       <div class="col-md-4">
         <div class="input-group">
@@ -44,9 +46,7 @@
             <th class="col-md-7">Nombre</th>
             <th class="col-md-3">Fecha</th>
             <th class="col-md-1"><span  ng-class="{'banderin-danger': filtrarSeguimiento,'banderin-info': !filtrarSeguimiento}" ><i class="fa fa-flag icon-pointer" aria-hidden="true" data-toggle="tooltip" title="Seguimiento" ng-click="filtrarSeguimiento=!filtrarSeguimiento;reseleccionar(interesadosFiltro)"></i></span></th>
-            <!--<th class="col-md-1"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></th>-->
             <th class="col-md-1"><span  ng-class="{'miBadgeWarning': filtrarDuplicado,'miBadge': !filtrarDuplicado}" ><i class="fa fa-files-o icon-pointer" aria-hidden="true"  data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></span></th>
-
           </tr>
         </theader>
         <tbody>
