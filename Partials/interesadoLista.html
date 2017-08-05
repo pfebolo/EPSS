@@ -18,7 +18,9 @@
       <span class="badge">{{interesadosFiltradosYOrdenados.length}}</span>/
       <span class="badge">{{interesados.length}}</span>
       <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAcrearInteresado()" role="button" data-toggle="tooltip" title="Dar de alta un nuevo interesado."></i>
+      <i class="fa text-primary"  ng-class="{'fa-spinner': procesandoCSV, 'fa-pulse': procesandoCSV,'fa-file-excel-o': !procesandoCSV, 'fa-border': !procesandoCSV}" aria-hidden="true" ng-click="!procesandoCSV ? irABajarInteresado() : null" role="button" data-toggle="tooltip" title="Exportar a excel." id="bajando"><a id="ancla"></a></i>
     </h2>
+    
     <div class="box-round">
       <div class="col-md-4">
         <div class="input-group">
@@ -43,15 +45,13 @@
           <tr>
             <th class="col-md-7">Nombre</th>
             <th class="col-md-3">Fecha</th>
-            <th class="col-md-1"><i class="fa fa-flag icon-pointer" aria-hidden="true" data-toggle="tooltip" title="Seguimiento"></i></th>
-            <!--<th class="col-md-1"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></th>-->
+            <th class="col-md-1"><span  ng-class="{'banderin-danger': filtrarSeguimiento,'banderin-info': !filtrarSeguimiento}" ><i class="fa fa-flag icon-pointer" aria-hidden="true" data-toggle="tooltip" title="Seguimiento" ng-click="filtrarSeguimiento=!filtrarSeguimiento;reseleccionar(interesadosFiltro)"></i></span></th>
             <th class="col-md-1"><span  ng-class="{'miBadgeWarning': filtrarDuplicado,'miBadge': !filtrarDuplicado}" ><i class="fa fa-files-o icon-pointer" aria-hidden="true"  data-toggle="tooltip" title="¡Posible duplicado!" ng-click="filtrarDuplicado=!filtrarDuplicado;reseleccionar(interesadosFiltro)"></i></span></th>
-
           </tr>
         </theader>
         <tbody>
           <tr ng-repeat="interesado in interesadosFiltradosYOrdenadosPagina" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
-            <td>{{interesado.apellido}},&nbsp;{{interesado.nombre}}</td>
+            <td>{{interesado.apellido.trim()}},&nbsp;{{interesado.nombre.trim()}}</td>
             <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
             <td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesado.seguimiento"></i></td>
             <td><span class="badge" style="background-color: #ec971f" ng-show="interesado.duplicado"><i class="fa fa-files-o" aria-hidden="true"  data-toggle="tooltip" title="¡Posible duplicado!"></i></span></td>
@@ -104,6 +104,15 @@
               </td>
             </tr>
             <tr>
+              <td>
+                <i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Medio de Contacto"></i>&nbsp{{interesadoSeleccionado.medioDeContacto.nombre}}
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
               <td colspan="3">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Comentarios" />&nbsp{{interesadoSeleccionado.comentario}}
               </td>
@@ -139,22 +148,42 @@
       <div style="max-height: 140px; overflow-y: auto;  overflow-x: auto;">
         <!--Tabla de Eventos Asignados-->
         <table class="table table-striped table-hover table-condensed" ng-show="!altaEvento">
+					<theader>
+						<tr>
+							<th class="col-md-1">Fecha</th>
+              <th class="col-md-3">Título</th>
+              <th class="col-md-7">Observación</th>
+							<th class="col-md-1">
+                <i class="fa fa-calendar-check-o" aria-hidden="true"  data-toggle="tooltip" title="Asistencia."></i></th>
+              </th>
+						</tr>
+					</theader>
           <tbody>
             <tr ng-repeat="interesadoEvento in interesadosEventos | orderBy:'evento.fecha':true">
               <td class="col-md-1">{{interesadoEvento.evento.fecha | date:'dd/MM/yyyy'}}</td>
-              <td>{{interesadoEvento.evento.titulo}}</td>
-              <td>{{interesadoEvento.observacion}}&nbsp<i class="fa  fa-pencil icon-primary icon-pointer" aria-hidden="true" ng-hide="interesadoEvento.asistente" ng-click="showModalInvitacionObservacion(interesadoEvento)"></i></td>
-              <td><i class="fa fa-calendar-check-o" aria-hidden="true" ng-show="interesadoEvento.asistente"></i></td>
+              <td class="col-md-3">{{interesadoEvento.evento.titulo}}</td>
+              <td class="col-md-7">{{interesadoEvento.observacion}}&nbsp<i class="fa  fa-pencil icon-primary icon-pointer" aria-hidden="true" ng-hide="interesadoEvento.asistente" ng-click="showModalInvitacionObservacion(interesadoEvento)"></i></td>
+              <td class="col-md-1"><i class="icon-primary" aria-hidden="true" ng-class="interesadoEvento.asistente ? 'fa fa-calendar-check-o' : 'fa fa-calendar-o '" ng-show="interesadoEvento.evento.estadoFecha<=0" /></td>
             </tr>
           </tbody>
         </table>
 
         <!--Tabla de Eventos A Asignar-->
         <table class="table table-striped table-hover table-condensed" ng-show="altaEvento">
+          <theader>
+						<tr>
+							<th class="col-md-1">Fecha</th>
+              <th class="col-md-3">Título</th>
+              <th class="col-md-7">Observación</th>
+							<th class="col-md-1">
+              </th>
+						</tr>
+					</theader>
           <tbody>
             <tr ng-repeat="evento in eventosFuturos | orderBy:'fecha'">
-              <td>{{evento.titulo}}</td>
               <td>{{evento.fecha | date:'dd/MM/yyyy'}}</td>
+              <td>{{evento.titulo}}</td>
+              <td>{{evento.observacion}}</td>
               <td><i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAAgregarInteresadoEvento(evento,interesadoSeleccionado)" role="button" data-toggle="tooltip" title="Agregar al interesado al evento."></i></td>
             </tr>
           </tbody>

@@ -67,8 +67,15 @@
 				<p class="text-right">&nbsp</p>
 			</div>
 			<div class="panel-body">
-				<div class="col-md-12">
-					<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{eventoSeleccionado.lugar.nombre}}
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-home" aria-hidden="true" data-toggle="tooltip" title="Lugar donde se realizará el evento." />&nbsp{{eventoSeleccionado.lugar.nombre}}
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Comentario." />&nbsp{{eventoSeleccionado.observacion}}
+					</div>
 				</div>
 			</div>
 			<div class="panel-footer text-right">
@@ -77,7 +84,10 @@
 			</div>
 		</div>
 
-		<div class="alert alert-warning alert-dismissible divzindexBase" role="alert" ng-class="alertClass" >
+
+
+		<!-- Invitados -->
+		<div class="alert alert-warning alert-dismissible divzindexBase" role="alert" ng-class="alertClass">
 			<button type="button" class="close" ng-click="closeAlert()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<strong>Cuidado!</strong>No se puede cambiar la asistencia, pasado los 7 días del evento.
 		</div>
@@ -88,18 +98,41 @@
 				<table class="table table-striped table-hover table-condensed">
 					<theader>
 						<tr>
-							<th class="col-md-4"><i class="fa fa-flag" aria-hidden="true"></i>&nbspNombre</th>
-							<th class="col-md-6">Observación</th>
-							<th class="col-md-1"><i class="fa fa-trash-o" aria-hidden="true"></i></th>
-							<th class="col-md-1"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></th>
+							<th class="col-md-3"><i class="fa fa-flag" aria-hidden="true"></i>&nbspNombre</th>
+
+							<th class="col-md-4"><span class="glyphicon glyphicon-send " data-toggle="tooltip" title="E-Mail">&nbspe-mail</th>
+							<th class="col-md-2"><span class="glyphicon glyphicon-earphone " data-toggle="tooltip" title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" >&nbspTeléfono</th>
+
+							<th class="col-md-3">
+								<div class="col-md-4">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Comentario."/>
+								</div>
+								<div class="col-md-4">							
+									<i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" title="Eliminar."></i>
+								</div>
+								<div class="col-md-4">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"  data-toggle="tooltip" title="Asistencia."></i></th>
+								</div>
 						</tr>
 					</theader>
 					<tbody>
 						<tr ng-repeat="interesadoEvento in interesadosEventos | orderBy:'interesado.apellido'">
 							<td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesadoEvento.interesado.seguimiento"></i>&nbsp{{interesadoEvento.interesado.apellido}},&nbsp;{{interesadoEvento.interesado.nombre}}</td>
-							<td>{{interesadoEvento.observacion}}</td>
-							<td><i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarInteresadoEvento(interesadoEvento)" ng-hide="(eventoSeleccionado.estadoFecha<0) || interesadoEvento.asistente"></i></td>
-							<td><i class="icon-primary icon-pointer" aria-hidden="true" ng-class="interesadoEvento.asistente ? 'fa fa-calendar-check-o' : 'fa fa-calendar-o '" ng-click="irASwapAsistenteInteresadoEvento(interesadoEvento,eventoSeleccionado.estadoFecha)" ng-show="eventoSeleccionado.estadoFecha<=0" </i></td>
+
+							<td>{{interesadoEvento.interesado.mail}}</td>
+							<td>{{interesadoEvento.interesado.telefono}}&nbsp;{{interesadoEvento.interesado.celular}}</td>
+							
+							<td>
+								<div class="col-md-4">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"  data-toggle="tooltip" title="{{interesadoEvento.observacion}}" ng-show="interesadoEvento.observacion!=null && interesadoEvento.observacion.trim()!=''" />
+								</div>
+								<div class="col-md-4">
+									<i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarInteresadoEvento(interesadoEvento)" ng-hide="(eventoSeleccionado.estadoFecha<0) || interesadoEvento.asistente" />
+								</div>
+								<div class="col-md-4">
+									<i class="icon-primary icon-pointer" aria-hidden="true" ng-class="interesadoEvento.asistente ? 'fa fa-calendar-check-o' : 'fa fa-calendar-o '" ng-click="irASwapAsistenteInteresadoEvento(interesadoEvento,eventoSeleccionado.estadoFecha)" ng-show="eventoSeleccionado.estadoFecha<=0" />
+								</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>

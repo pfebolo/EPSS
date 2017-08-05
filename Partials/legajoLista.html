@@ -27,7 +27,7 @@
 				<!--<tr ng-repeat="legajo in legajos | filter:nombreapellidoFiltro  | orderBy:'alumno.apellido'" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">-->
 				<tr ng-repeat="legajo in legajosFiltrados" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
 					<td>
-						{{legajo.alumno.apellido}},&nbsp{{legajo.alumno.nombre}}
+						{{legajo.alumno.apellido.trim()}},&nbsp{{legajo.alumno.nombre.trim()}}
 					</td>
 					<td class="text-right">
 						{{legajo.dni}}

@@ -4,11 +4,28 @@ Todos los cambios notables del proyecto serán documentados en este archivo.
 El formato está basado en la especificación [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased] - 2017-08-01
 ### Added
-- Se agrega la eliminación de una ficha de Interesado
+- Se agrega el campo observación a los eventos.
+- Se modifica la lista de invitados a un evento colocando Teléfono y e-Mail, también se iconiza la observación.
+- Se mejora la indicación de asistencia a un evento en la lista de eventos asociados a un interesado.
+- Se mejora la búsqueda en Interesados y Legajos para contemplar la concatenación de Apellido y Nombre.
+- Se mejora la recarga de la lista al regresar de una edición/creación de interesado, filtra por el interesado creado/editado.
+- Se agrega el campo 'Medio de Contacto' a la ficha de interesados.
+- Se agrega filtro por 'seguimiento' en la lista de interesados, al clickear sobre el banderin del título.
 
-## [0.9.1] - 2017-06-27
+
+### Fixed
+- Se arregla la busqueda de valores númericos en Legajo.
+
+## [0.10.0] - 2017-07-12
+### Added
+- Se agrega la eliminación de una ficha de Interesado.
+- Se agrega eliminación de interesado, con PIN de confirmación.
+- Se agrega reglas de duplicación de interesados, y se destacan en la lista correspondiente.
+- Se mejora la busqueda permitiendo busquedas insensitivas en lista de interesados y de Legajos.
+
+## [0.9.1] - 2017-07-05
 ### Added
 - Archivo CHANGELOG.md que se usará para documentar el historial de cambios, basado en el proyecto de código abierto CHANGELOG.
 

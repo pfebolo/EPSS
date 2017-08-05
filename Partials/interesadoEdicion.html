@@ -161,6 +161,19 @@
 					</div>
 				</div>
 
+				<!--Medios de Contacto-->
+				<div class="col-md-12 ">
+					<div class="input-group " ng-class=" 'has-success' ">
+						<span class="input-group-addon ">
+						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Medio de contacto para el registro como interesado"></i>
+					</span>
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn" ng-repeat="medioDeContacto in mediosDeContacto" ng-class="interesadoEditando.medioDeContactoId==={{medioDeContacto.id}} ? 'btn-info' : 'btn-default'" ng-click="setMediosDeContacto($index)">{{medioDeContacto.descripcion}}</button>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="col-md-12 ">
 					<div class="input-group " ng-class="myForm.comentarios.$valid ? 'has-success' : 'has-error' ">
 						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Comentarios" /></span>
