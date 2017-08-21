@@ -82,8 +82,8 @@
 
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.email2.$valid ? 'has-success' : 'has-error'">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-send" data-toggle="tooltip" title="2do E-Mail" ></span></span>
-						<input id="email2" type="text" class="form-control" name="email2" placeholder="[2do E-Mail]" ng-model="interesadoSeleccionado.mail2"  pattern="^(?:(?:[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+(?:(?:\.(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)*&quot;|[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+))*\.[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+)?)|(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)+&quot;))@(?:[a-zA-Z\d\-]+(?:\.[a-zA-Z\d\-]+)*|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])$">
+						<span class="input-group-addon"><span class="fa fa-check-circle-o" data-toggle="tooltip" title="Estado de envío de e-mail de Bienvenida" ></span></span>
+						<input id="email2" type="text" class="form-control" name="email2" ng-model="interesadoSeleccionado.mail2" ng-readonly="true">
 					</div>
 				</div>
 
