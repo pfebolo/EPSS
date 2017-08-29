@@ -1,6 +1,7 @@
 {
     "env": {
-        "browser": true
+        "browser": true,
+        "jasmine": true
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -26,6 +27,7 @@
     },
     "globals": {
         "angular": true,
-        "EPSSApp":  true
+        "EPSSApp":  true,
+        "module":  true
     }
 }
