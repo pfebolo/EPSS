@@ -5,7 +5,9 @@
 	Los Legajos no fueron obtenidos, intente nuevamente.
 </div>
 <div class="col-md-5" ng-show="!cargando && GetOK && setearScroll()">
-	<h2>Legajos&nbsp;<span class="badge">{{legajos.length}}</span></h2>
+	<h2>Legajos&nbsp;<span class="badge">{{legajos.length}}</span>
+	<i class="fa text-primary"  ng-class="{'fa-spinner': procesandoCSV, 'fa-pulse': procesandoCSV,'fa-file-excel-o': !procesandoCSV, 'fa-border': !procesandoCSV}" aria-hidden="true" ng-click="!procesandoCSV ? irABajarInteresado() : null" role="button" data-toggle="tooltip" title="Exportar a excel." id="bajando"><a id="ancla"></a></i>
+	</h2>
 	<div class="box-round">
 		<div class="col-md-6">
 		</div>
