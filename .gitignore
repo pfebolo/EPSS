@@ -1,3 +1,4 @@
 Thumbs.db
 data/config.json
 img/fotos/*.*
+node_modules/*
