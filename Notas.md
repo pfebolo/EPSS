@@ -1,5 +1,10 @@
 # Notas
 
+## AngularJS 
+web: https://angularjs.org/
+versiones: https://code.angularjs.org/
+
+
 ## Componentes de Terceros
 
 ### DataPicker
