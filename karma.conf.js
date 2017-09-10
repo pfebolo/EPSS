@@ -19,9 +19,9 @@ module.exports = function (config) {
 			'./lib/js/test.js',
 			'./lib/js/modulos.js',
 			'./lib/js/utiles.js',
-			'./lib/js/test.spec.js',
+			'./lib/js/utiles.test.js',
 			'./lib/js/app.js',
-			//'./lib/js/app.test.js',
+			'./lib/js/app.test.js',
 			// './lib/js/servicios/legajoSrv.js',
 			// './lib/js/servicios/legajoSrv.test.js'
 		],
