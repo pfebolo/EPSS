@@ -16,10 +16,14 @@ module.exports = function (config) {
 			'./node_modules/angular/angular.js',
 			'./node_modules/angular-mocks/angular-mocks.js',
 			'./lib/Angular/angular-route.js',
+			'./lib/js/test.js',
 			'./lib/js/modulos.js',
-			//'./lib/js/app.js',
 			'./lib/js/utiles.js',
-			'./lib/js/test.spec.js'
+			'./lib/js/test.spec.js',
+			'./lib/js/app.js',
+			//'./lib/js/app.test.js',
+			// './lib/js/servicios/legajoSrv.js',
+			// './lib/js/servicios/legajoSrv.test.js'
 		],
 
 		// list of files to exclude
