@@ -7,6 +7,7 @@ y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/sp
 ## [Unreleased] - 2017-09-12
 ### Added
 - Se actualiza AngulaJS a version 1.6.x
+- Se oculta PIN de eliminación de interesados, al ingresarlo, simil password.
 
 ### Fixed
 - Se corrige detección de duplicado en edición de interesados.
