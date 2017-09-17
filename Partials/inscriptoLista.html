@@ -91,7 +91,7 @@
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-registration-mark" aria-hidden="true"  data-toggle="tooltip" title="Modalidad" />&nbsp{{inscriptoSeleccionado.modalidad.nombre}}
+						<span class="glyphicon glyphicon-registration-mark" aria-hidden="true"  data-toggle="tooltip" title="Modalidad" />&nbsp{{inscriptoSeleccionado.modalidad.nombre}}{{inscriptoSeleccionado.modalidad.id===1 && inscriptoSeleccionado.turno!==null ? ',&nbsp'.concat(inscriptoSeleccionado.turno) : null }}
 					</div>
 					<div class="col-md-6">
 						<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"  data-toggle="tooltip" title="Grado de Interés" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
