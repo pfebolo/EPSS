@@ -1,5 +1,10 @@
 # Notas
 
+## AngularJS 
+web: https://angularjs.org/
+versiones: https://code.angularjs.org/
+
+
 ## Componentes de Terceros
 
 ### DataPicker
@@ -11,19 +16,23 @@
 ## Unit Test
 ### Jasmine  + Karma
 #### Instalación
-Desde la carpeta root
-npm init
-sudo npm install -g karma-cli
-npm install karma karma-jasmine jasmine-core karma-chrome-launcher --save-dev
-npm install karma-spec-reporter --save-dev
+##### Desde la carpeta root
+* npm init
+  * se crea el archivo _package.json_ <-- importante para tner la configuración de paquetes _npm_ instalados
+* sudo npm install -g karma-cli
+* npm install karma karma-jasmine jasmine-core karma-chrome-launcher --save-dev
+* npm install karma-spec-reporter --save-dev
 #### Configuración
-En la carpeta root
-crear el archivo karma.conf.js con 
-karma init
+##### En la carpeta root
+* crear el archivo _karma.conf.js_ con **karma init**
 #### Ejecución
-Desde la carpeta con el archivo de configuración
-karma start
-
+##### Desde la carpeta con el archivo de configuración
+* karma start
+    - Si es indica instalar el paquete, entonces es necesario ejecutar la Re-Instalación 
+#### Re-Instalación de los paquetes de npm
+##### _Es necesario cuando se cambia de ramas_  (automatizar)
+* npm install       
+    - Este comando usa el archivo _package.json_ para determinar los paquetes necesarios
 
 
 
