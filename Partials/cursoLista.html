@@ -8,7 +8,7 @@
       <theader>
         <tr>
           <th>
-            Promoción
+            Año
           </th>
           <th>
             Cuatrimestre
@@ -46,7 +46,7 @@
             {{curso.modoId}}
           </td>
           <td vertical-align="middle">
-            {{curso.turnoId}}
+            {{curso.turnoId !== 'Virtual'  ? curso.turnoId : null}}
           </td>
           <td>
             {{indexChar(curso.cursoId)}}
