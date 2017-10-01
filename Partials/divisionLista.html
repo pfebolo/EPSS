@@ -34,12 +34,12 @@
         <tr ng-repeat="division in divisiones" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)"
           ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
           <td vertical-align="middle">
-            {{division.cursosXxx.anioInicio}}
-            <br> {{ordinales[division.cursosXxx.anioLectivo]}} año.
+            {{division.cursos.anioInicio}}
+            <br> {{ordinales[division.cursos.anioLectivo-1]}} año.
           </td>
           <td vertical-align="middle">
-            {{meses[division.cursosXxx.mesInicio-1]}}-{{meses[division.cursosXxx.mesFinal-1]}}<br>
-              {{ordinales[division.cursosXxx.nmestreLectivo]}} Cuatrimestre.
+            {{meses[division.cursos.mesInicio-1]}}-{{meses[division.cursos.mesFinal-1]}}<br>
+              {{ordinales[division.cursos.nmestreLectivo-1]}} Cuatrimestre.
           </td>
           <td vertical-align="middle">
             {{division.modoId}}
@@ -85,10 +85,10 @@
         <tbody>
           <tr ng-repeat="grupo in grupos  | filter:criteriaMatch(divisionSeleccionado)">
             <td>
-              {{grupo.legajoXxx.legajoNro}}
+              {{grupo.legajo.legajoNro}}
             </td>
             <td>
-              {{grupo.legajoXxx.alumno.apellido}},&nbsp{{grupo.legajoXxx.alumno.nombre}}
+              {{grupo.legajo.alumno.apellido}},&nbsp{{grupo.legajo.alumno.nombre}}
             </td>
           </tr>
         </tbody>
