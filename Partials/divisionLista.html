@@ -1,14 +1,14 @@
 <div class= "divSpinner" ng-show="cargando">
     <div class="spinner" />
 </div>
-<div class="container" ng-show="!cargando && (getCoordinacionesOK && getCursosOK && getGruposOK)">
+<div class="container" ng-show="!cargando && (getCoordinacionesOK && getDivisionesOK && getGruposOK)">
   <div class="col-md-7">
     <h2>Divisiones</h2>
     <table class="table table-striped">
       <theader>
         <tr>
           <th>
-            Promoción
+            Año
           </th>
           <th>
             Cuatrimestre
@@ -31,30 +31,29 @@
         </tr>
       </theader>
       <tbody>
-        <tr ng-repeat="curso in cursos" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(curso)"
+        <tr ng-repeat="division in divisiones" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)"
           ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
           <td vertical-align="middle">
-            {{curso.promocionId}}
-            <br> {{obtenerAnioCursado(curso.promocionId,curso.cuatrimestreId)}}
+            {{division.cursos.anioInicio}}
+            <br> {{ordinales[division.cursos.anioLectivo-1]}} año.
           </td>
           <td vertical-align="middle">
-            {{(curso.cuatrimestreId
-            <100 ? 'Marzo' : 'Agosto')}} <br>
-              {{obtenerCuatrimestreCursado(curso.cuatrimestreId)}}
+            {{meses[division.cursos.mesInicio-1]}}-{{meses[division.cursos.mesFinal-1]}}<br>
+              {{ordinales[division.cursos.nmestreLectivo-1]}} Cuatrimestre.
           </td>
           <td vertical-align="middle">
-            {{curso.modoId}}
+            {{division.modoId}}
           </td>
           <td vertical-align="middle">
-            {{curso.turnoId}}
+            {{division.turnoId !== 'Virtual'  ? division.turnoId : null}}
           </td>
           <td>
-            {{indexChar(curso.cursoId)}}
+            {{division.divisionId}}
           </td>
           <td>
             <div class="media">
               <div class="row">
-                <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:criteriaMatch(curso)">
+                <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:criteriaMatch(division)">
                   <img class="media-object img-circle" class="" width="33" height="33" src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" onerror="this.onerror=null;this.src='img/Persona.png';"
                     data-toogle="tooltip" title="{{coordinacion.coordinador.nombre}}">
                 </div>
@@ -62,7 +61,7 @@
             </div>
           </td>
           <td class="text-right">
-            <span class="badge">{{obtenerCantidadAlumnos(curso)}}</span>
+            <span class="badge">{{obtenerCantidadAlumnos(division)}}</span>
           </td>
         </tr>
       </tbody>
@@ -84,7 +83,7 @@
         </theader>
 
         <tbody>
-          <tr ng-repeat="grupo in grupos  | filter:criteriaMatch(cursoSeleccionado)">
+          <tr ng-repeat="grupo in grupos  | filter:criteriaMatch(divisionSeleccionado)">
             <td>
               {{grupo.legajo.legajoNro}}
             </td>
@@ -99,6 +98,6 @@
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && !(getCursosOK && getCoordinacionesOK && getGruposOK)">
+<div class="alert alert-warning" ng-show="!cargando && !(getDivisionesOK && getCoordinacionesOK && getGruposOK)">
   Las divisiones no fueron obtenidas, intente nuevamente.
 </div>
