@@ -176,7 +176,6 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h4 class="text-right">&nbspDatos Adicionales</h4>
-				<p class="text-right">&nbsp&nbsp&nbsp</p>
 			</div>
 			<div class="panel-body">
 				<div class="row">
@@ -259,6 +258,21 @@
 						<div class="input-group" ng-class="myForm.docFoto.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon">Fecha Foto OK</span>
 							<input id="docFoto" type="text" class="form-control" name="docFoto" placeholder="[aaaa-mm-dd]" ng-model="legajoSeleccionado.docFotoValido" min="2010-01-01" max="2025-12-31" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.libroMatriz.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Libro Matriz</span>
+							<input id="libroMatriz" type="number" class="form-control" name="libroMatriz" placeholder="Nro de Libro Matriz" ng-model="legajoSeleccionado.libroMatriz" min="0" max="9999" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.folio.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Folio</span>
+							<input id="folio" type="number" class="form-control" name="folio" placeholder="Nro. de Folio" ng-model="legajoSeleccionado.folio" min="1" max="9999" />
 						</div>
 					</div>
 				</div>
