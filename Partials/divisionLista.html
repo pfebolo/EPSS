@@ -4,7 +4,10 @@
 <div class="container" ng-show="!cargando && (getCoordinacionesOK && getDivisionesOK && getGruposOK)">
   <div class="col-md-7">
     <div class="col-md-3">
-        <h2>Divisiones</h2>
+        <h2>
+          Divisiones
+          <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearDivision()" role="button" data-toggle="tooltip" title="Dar de alta una nueva División."></i>
+        </h2>
     </div>
     <div class="col-md-9 text-right">
       <br>
