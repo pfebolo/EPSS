@@ -1,0 +1,184 @@
+<div class="container">
+	<div class="row">
+		<div class="alert alert-danger" ng-show="error.hayError">
+			<p ng-repeat="error in error.errores">
+				<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-7">
+	<form novalidate name="myForm" class="css-form" autocomplete="off">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Ficha de División
+			</div>
+			<div class="panel-body no-gutter">
+				<div class="col-md-12">
+					<h3>Curso</h3>
+				</div>
+		
+
+				<!-- Carrera -->
+				<div class="col-md-6">
+					<div class="input-group" ng-class="myForm.carrera.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Carrera"><span class="glyphicon glyphicon-home" aria-hidden="true" /></span>
+						<input type="text" ng-model="carrera.carreraId" name="carrera" ng-hide="true" required/>
+						<select class="form-control" ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carrera"></select>
+					</div>
+				</div>
+	
+				<!-- Modos: [Presencial , A Distancia] -->
+				<div class="col-md-6 ">
+					<div class="input-group " ng-class="myForm.modo.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Modo de cursada">
+							<i class="fa fa-users" aria-hidden="true"></i>&thinsp;/
+							<i class="fa fa-desktop" aria-hidden="true"></i>
+						</span>
+						<input type="text" ng-model="cursoEditando.modoId" name="modo" required ng-hide="true" />
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn" ng-repeat="modo in modoLista" ng-class="cursoEditando.modoId==='{{modo.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setModo($index)">{{modo.descripcion}}</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Anio Inicio-->
+				<div class="col-md-4">
+					<div class="input-group" ng-class="myForm.anioInicio.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon ">
+							<i aria-hidden="true" data-toggle="tooltip" title="Año calendario en que se inicia el dictado el curso.">Año Inicio</i>
+						</span>
+						<input type="number" class="form-control" name="anioInicio" placeholder="[aaaa]" ng-model="cursoEditando.anioInicio" min="2015" max="2099" required/>
+					</div>
+				</div>
+
+				<!-- Mes Inicio-->
+				<div class="col-md-4">
+					<div class="input-group" ng-class="myForm.mesInicio.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon ">
+							<i aria-hidden="true" data-toggle="tooltip" title="Mes Calendario en que se inicia el dictado del curso.">Mes Inicio</i>
+						</span>
+						<input type="number" class="form-control" name="mesInicio" placeholder="[mm]" ng-model="cursoEditando.mesInicio" min="1" max="12" required/>
+					</div>
+				</div>
+
+				<!-- Mes Final-->
+				<div class="col-md-4">
+					<div class="input-group" ng-class="myForm.mesFinal.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal ? 'has-success' : 'has-error'">
+						<span class="input-group-addon ">
+							<i aria-hidden="true" data-toggle="tooltip" title="Mes Calendario en que finaliza el dictado del curso.">Mes Final</i>
+						</span>
+						<input type="number" class="form-control" name="mesFinal" placeholder="[mm]" ng-model="cursoEditando.mesFinal" min="1" max="12" required/>
+					</div>
+				</div>
+
+
+				<!-- Anio lectivo-->
+				<div class="col-md-4">
+					<div class="input-group" ng-class="myForm.anioLectivo.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon ">
+							<i aria-hidden="true" data-toggle="tooltip" title="Año lectivo al cual pertenece el curso.">Año Lectivo</i>
+						</span>
+						<input type="number" class="form-control" name="anioLectivo" placeholder="[1,2,3...]" ng-model="cursoEditando.anioLectivo" min="1" max="99" required/>
+					</div>
+				</div>
+
+				<!-- mmestre Lectivo-->
+				<div class="col-md-4">
+					<div class="input-group" ng-class="myForm.mmestreLectivo.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon ">
+							<i aria-hidden="true" data-toggle="tooltip" title="Cuatrimestre lectivo al cual pertenece el curso.">Cuatrimestre Lectivo</i>
+						</span>
+						<input type="number" class="form-control" name="mmestreLectivo" placeholder="[1,2]" ng-model="cursoEditando.nmestreLectivo" min="1" max="12" required/>
+					</div>
+				</div>
+
+
+				<!-- Comentario de Curso -->
+				<div class="col-md-12">
+					<div class="input-group " ng-class="myForm.comentarioCurso.$valid ? 'has-success' : 'has-error' ">
+						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre el curso." /></span>
+						<input type="text" class="form-control" name="comentarioCurso" placeholder="[Observación/Comentario] " ng-model="cursoEditando.comentario">
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<h3>División</h3>
+				</div>
+
+				<!-- Turnos: [Mañana, Noche, Virtual] -->
+				<div class="col-md-9">
+					<div class="input-group " ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Turno de cursada">
+							<i class="fa fa-users" aria-hidden="true"></i>
+						</span>
+						<input type="text" ng-model="divisionEditando.turnoId" name="turno" required ng-hide="true" />
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn" ng-repeat="turno in turnoLista" ng-class="divisionEditando.turnoId==='{{turno.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setTurno($index)">{{turno.descripcion}}</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Division: [A,B,C...] -->
+				<div class="col-md-12">
+					<div class="input-group " ng-class="myForm.division.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="División de cursada">
+							<i class="fa fa-users" aria-hidden="true"></i>
+						</span>
+						<input type="text" ng-model="divisionEditando.divisionId" name="division" required ng-hide="true" />
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn" ng-repeat="division in divisionLista" ng-class="divisionEditando.divisionId==='{{division.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setDivision($index)">{{division.descripcion}}</button>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Comentario de División -->
+				<div class="col-md-12">
+					<div class="input-group " ng-class="myForm.comentarioDivision.$valid ? 'has-success' : 'has-error' ">
+						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre la división." /></span>
+						<input type="text" class="form-control" name="comentarioDivision" placeholder="[Observación/Comentario] " ng-model="divisionEditando.comentario">
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error' ">
+				<div class="col-md-8 ">
+					<span ng-show="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">El formulario está incompleto o con información incorrecta.</span>
+				</div>
+				<div class="text-right">
+					<button class="btn btn-primary " ng-click="grabar(cursoEditando,divisionEditando) " ng-disabled="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">{{accionLabel}}</button>
+					<button class="btn btn-default " ng-click="cancelarEdicion() ">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="divModalBase " ng-show="modalOpen ">
+	<div class="col-md-4 "></div>
+	<div class="col-md-4 " style='top: 33%'>
+		<div class="panel panel-info ">
+			<div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i> &nbsp Ficha de Evento
+			</div>
+			<div class="panel-body ">
+				{{msjModal}}.
+			</div>
+			<div class="panel-footer ">
+				<div class="col-md-9"></div>
+				<button class="btn btn-primary" ng-click="closeModal()" autofocus>cerrar</button>
+			</div>
+		</div>
+	</div>
+</div>
