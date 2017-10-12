@@ -13,9 +13,13 @@
 	<form novalidate name="myForm" class="css-form" autocomplete="off">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				Ficha de Cursos y sus Divisiones
+				Ficha de División
 			</div>
 			<div class="panel-body no-gutter">
+				<div class="col-md-12">
+					<h3>Curso</h3>
+				</div>
+		
 
 				<!-- Carrera -->
 				<div class="col-md-6">
@@ -92,13 +96,52 @@
 				</div>
 
 
-				<!-- Observación -->
+				<!-- Comentario de Curso -->
 				<div class="col-md-12">
-					<div class="input-group " ng-class="myForm.observacion.$valid ? 'has-success' : 'has-error' ">
-						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre la realización del evento." /></span>
-						<input type="text" class="form-control" name="observacion" placeholder="[Observación/Comentario] " ng-model="cursoEditando.comentario">
+					<div class="input-group " ng-class="myForm.comentarioCurso.$valid ? 'has-success' : 'has-error' ">
+						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre el curso." /></span>
+						<input type="text" class="form-control" name="comentarioCurso" placeholder="[Observación/Comentario] " ng-model="cursoEditando.comentario">
 					</div>
 				</div>
+
+				<div class="col-md-12">
+					<h3>División</h3>
+				</div>
+
+				<!-- Turnos: [Mañana, Noche, Virtual] -->
+				<div class="col-md-9">
+					<div class="input-group " ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Turno de cursada">
+							<i class="fa fa-users" aria-hidden="true"></i>
+						</span>
+						<input type="text" ng-model="divisionEditando.turnoId" name="turno" required ng-hide="true" />
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn" ng-repeat="turno in turnoLista" ng-class="divisionEditando.turnoId==='{{turno.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setTurno($index)">{{turno.descripcion}}</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Division: [A,B,C...] -->
+				<div class="col-md-12">
+					<div class="input-group " ng-class="myForm.division.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="División de cursada">
+							<i class="fa fa-users" aria-hidden="true"></i>
+						</span>
+						<input type="text" ng-model="divisionEditando.divisionId" name="division" required ng-hide="true" />
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn" ng-repeat="division in divisionLista" ng-class="divisionEditando.divisionId==='{{division.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setDivision($index)">{{division.descripcion}}</button>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Comentario de División -->
+				<div class="col-md-12">
+					<div class="input-group " ng-class="myForm.comentarioDivision.$valid ? 'has-success' : 'has-error' ">
+						<span class="input-group-addon "><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre la división." /></span>
+						<input type="text" class="form-control" name="comentarioDivision" placeholder="[Observación/Comentario] " ng-model="divisionEditando.comentario">
+					</div>
+				</div>
+
 
 
 			</div>
@@ -108,7 +151,7 @@
 					<span ng-show="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">El formulario está incompleto o con información incorrecta.</span>
 				</div>
 				<div class="text-right">
-					<button class="btn btn-primary " ng-click="grabar(cursoEditando) " ng-disabled="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">{{accionLabel}}</button>
+					<button class="btn btn-primary " ng-click="grabar(cursoEditando,divisionEditando) " ng-disabled="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">{{accionLabel}}</button>
 					<button class="btn btn-default " ng-click="cancelarEdicion() ">Cancelar</button>
 				</div>
 			</div>
