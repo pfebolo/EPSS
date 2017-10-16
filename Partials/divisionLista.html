@@ -51,6 +51,9 @@
           <th class="text-right">
             <span class="badge">{{grupos.length}}</span>
           </th>
+          <th class="text-center" >
+            <i class="fa fa-trash-o icon-danger icon-pointer" />
+          </th>
         </tr>
       </theader>
       <tbody>
@@ -85,6 +88,9 @@
           </td>
           <td class="text-right">
             <span class="badge">{{obtenerCantidadAlumnos(division)}}</span>
+          </td>
+          <td class="text-center" vertical-align="middle">
+            <i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarDivision(division)" ng-hide="obtenerCantidadAlumnos(division)>0"/>
           </td>
         </tr>
       </tbody>
