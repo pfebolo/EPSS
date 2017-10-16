@@ -1,6 +1,20 @@
 <div class= "divSpinner" ng-show="cargando">
     <div class="spinner" />
 </div>
+<div class="container">
+	<div class="row">
+    <div class="alert alert-warning" ng-show="!cargando && !(getDivisionesOK && getCoordinacionesOK && getGruposOK)">
+        Las divisiones no fueron obtenidas, intente nuevamente.
+    </div>
+  </div>
+  <div class="row">
+		<div class="alert alert-danger" ng-show="error.hayError">
+			<p ng-repeat="error in error.errores">
+				<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+			</p>
+		</div>
+	</div>
+</div>
 <div class="container" ng-show="!cargando && (getCoordinacionesOK && getDivisionesOK && getGruposOK)">
   <div class="col-md-7">
     <div class="col-md-5">
@@ -107,6 +121,3 @@
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && !(getDivisionesOK && getCoordinacionesOK && getGruposOK)">
-  Las divisiones no fueron obtenidas, intente nuevamente.
-</div>
