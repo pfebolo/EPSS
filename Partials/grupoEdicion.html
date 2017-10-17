@@ -1,0 +1,42 @@
+<div class="divSpinner" ng-show="cargando">
+	<div class="spinner" />
+</div>
+<div class="alert alert-warning" ng-show="!cargando && !GetOK">
+	Los Legajos no fueron obtenidos, intente nuevamente.
+</div>
+<div class="col-md-5" ng-show="!cargando && GetOK && setearScroll()">
+	<h2>Legajos&nbsp;<span class="badge">{{legajos.length}}</span>
+	</h2>
+	<div class="box-round">
+		<div class="col-md-6">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
+		</div>
+	</div>
+	<div style="max-height: 425px; overflow-y: scroll;" id="lista">
+		<table class="table table-striped table-condensed table-hover">
+			<theader>
+				<tr>
+					<th>Nombre</th>
+					<th class="text-center">DNI</th>
+					<th><span class="glyphicon glyphicon-certificate small" aria-hidden="true" /></th>
+				</tr>
+			</theader>
+			<tbody>
+				<tr ng-repeat="legajo in legajosFiltrados" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarLegajo(legajo)">
+					<td>
+						{{legajo.alumno.apellido.trim()}},&nbsp{{legajo.alumno.nombre.trim()}}
+					</td>
+					<td class="text-right">
+						{{legajo.dni}}
+					</td>
+					<td class="text-right"><span class="glyphicon glyphicon-certificate small" style="color: lightgreen" aria-hidden="true" ng-show="legajo.cuestionario!=null"	/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
