@@ -49,11 +49,10 @@
             Coordinación
           </th>
           <th class="text-right">
-            <span class="badge">{{grupos.length}}</span>
+            <span class="badge">{{(grupos | filter:filtroCarrera(carreraSeleccionada))  .length}}</span>
           </th>
           <th class="text-center" >
-            <i class="fa fa-trash-o icon-danger icon-pointer" />
-          </th>
+          </th> 
         </tr>
       </theader>
       <tbody>
@@ -90,7 +89,9 @@
             <span class="badge">{{obtenerCantidadAlumnos(division)}}</span>
           </td>
           <td class="text-center" vertical-align="middle">
-            <i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarDivision(division)" ng-hide="obtenerCantidadAlumnos(division)>0"/>
+            <i class="fa fa-pencil-square-o icon-primary icon-pointer" aria-hidden="true" ng-click="irAEditarDivision(division)"/>
+            <br>
+            <i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarDivision(division)" ng-hide="obtenerCantidadAlumnos(division)+obtenerCantidadCoordinadores(division)>0"/>
           </td>
         </tr>
       </tbody>
@@ -98,7 +99,7 @@
   </div>
   <div class="col-md-5">
     <h2>Estudiantes
-      <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo."></i>
+      <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null" ></i>
     </h2>
     <div style="max-height: 450px; overflow-y: auto;">
       <table class="table table-striped">
