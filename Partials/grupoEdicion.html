@@ -28,6 +28,12 @@
 			</span>
 			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
 		</div>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-filter"></span>
+			</span>
+			<input class="form-control" type="text" ng-model="legajosSeleccionados" ng-change=reseleccionarMasivo(legajosSeleccionados)>
+		</div>
 	</div>
 	<div style="max-height: 425px; overflow-y: scroll;" id="lista">
 		<table class="table table-striped table-condensed table-hover">
