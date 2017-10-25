@@ -1,6 +1,20 @@
 <div class= "divSpinner" ng-show="cargando">
     <div class="spinner" />
 </div>
+<div class="container">
+	<div class="row">
+    <div class="alert alert-warning" ng-show="!cargando && !(getDivisionesOK && getCoordinacionesOK && getGruposOK)">
+        Las divisiones no fueron obtenidas, intente nuevamente.
+    </div>
+  </div>
+  <div class="row">
+		<div class="alert alert-danger" ng-show="error.hayError">
+			<p ng-repeat="error in error.errores">
+				<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+			</p>
+		</div>
+	</div>
+</div>
 <div class="container" ng-show="!cargando && (getCoordinacionesOK && getDivisionesOK && getGruposOK)">
   <div class="col-md-7">
     <div class="col-md-5">
@@ -35,8 +49,10 @@
             Coordinación
           </th>
           <th class="text-right">
-            <span class="badge">{{grupos.length}}</span>
+            <span class="badge">{{(grupos | filter:filtroCarrera(carreraSeleccionada))  .length}}</span>
           </th>
+          <th class="text-center" >
+          </th> 
         </tr>
       </theader>
       <tbody>
@@ -72,12 +88,19 @@
           <td class="text-right">
             <span class="badge">{{obtenerCantidadAlumnos(division)}}</span>
           </td>
+          <td class="text-center" vertical-align="middle">
+            <i class="fa fa-pencil-square-o icon-primary icon-pointer" aria-hidden="true" ng-click="irAEditarDivision(division)"/>
+            <br>
+            <i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarDivision(division)" ng-hide="obtenerCantidadAlumnos(division)+obtenerCantidadCoordinadores(division)>0"/>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="col-md-5">
-    <h2>Estudiantes</h2>
+    <h2>Estudiantes
+      <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null" ></i>
+    </h2>
     <div style="max-height: 450px; overflow-y: auto;">
       <table class="table table-striped">
         <theader>
@@ -107,6 +130,3 @@
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && !(getDivisionesOK && getCoordinacionesOK && getGruposOK)">
-  Las divisiones no fueron obtenidas, intente nuevamente.
-</div>
