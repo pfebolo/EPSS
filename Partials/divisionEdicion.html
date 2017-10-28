@@ -21,13 +21,17 @@
 
 				<!-- Carrera -->
 				<div class="col-md-6">
-					<div class="input-group" ng-class="myForm.carrera.$valid ? 'has-success' : 'has-error'">
+					<div class="input-group" ng-class="myForm.carrera.$valid ? 'has-success' : 'has-error'" ng-hide="esEdicion()">
 						<span class="input-group-addon" data-toggle="tooltip" title="Carrera"><span class="glyphicon glyphicon-home" aria-hidden="true" /></span>
 						<input type="text" ng-model="carrera.carreraId" name="carrera" ng-hide="true" required/>
 						<select class="form-control" ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carrera"></select>
 					</div>
+					<div class="input-group" ng-class="'has-success'" ng-show="esEdicion()">
+						<span class="input-group-addon" data-toggle="tooltip" title="Carrera"><span class="glyphicon glyphicon-home" aria-hidden="true" /></span>
+						<input  class="form-control" type="text" ng-model="carrera.descripcion" ng-readonly="true" />
+					</div>
 				</div>
-	
+
 				<!-- Modos: [Presencial , A Distancia] -->
 				<div class="col-md-6 ">
 					<div class="input-group " ng-class="myForm.modo.$valid ? 'has-success' : 'has-error'">
@@ -37,7 +41,7 @@
 						</span>
 						<input type="text" ng-model="cursoEditando.modoId" name="modo" required ng-hide="true" />
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn" ng-repeat="modo in modoLista" ng-class="cursoEditando.modoId==='{{modo.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setModo($index)">{{modo.descripcion}}</button>
+							<button type="button" class="btn" ng-repeat="modo in modoLista" ng-class="cursoEditando.modoId==='{{modo.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setModo($index)" >{{modo.descripcion}}</button>
 						</div>
 					</div>
 				</div>
@@ -48,7 +52,7 @@
 						<span class="input-group-addon ">
 							<i aria-hidden="true" data-toggle="tooltip" title="Año calendario en que se inicia el dictado el curso.">Año Inicio</i>
 						</span>
-						<input type="number" class="form-control" name="anioInicio" placeholder="[aaaa]" ng-model="cursoEditando.anioInicio" min="2015" max="2099" required/>
+						<input type="number" class="form-control" name="anioInicio" placeholder="[aaaa]" ng-model="cursoEditando.anioInicio" min="2015" max="2099" required ng-readonly="esEdicion()" />
 					</div>
 				</div>
 
@@ -58,7 +62,7 @@
 						<span class="input-group-addon ">
 							<i aria-hidden="true" data-toggle="tooltip" title="Mes Calendario en que se inicia el dictado del curso.">Mes Inicio</i>
 						</span>
-						<input type="number" class="form-control" name="mesInicio" placeholder="[mm]" ng-model="cursoEditando.mesInicio" min="1" max="12" required/>
+						<input type="number" class="form-control" name="mesInicio" placeholder="[mm]" ng-model="cursoEditando.mesInicio" min="1" max="12" required ng-readonly="esEdicion()" />
 					</div>
 				</div>
 
@@ -68,7 +72,7 @@
 						<span class="input-group-addon ">
 							<i aria-hidden="true" data-toggle="tooltip" title="Mes Calendario en que finaliza el dictado del curso.">Mes Final</i>
 						</span>
-						<input type="number" class="form-control" name="mesFinal" placeholder="[mm]" ng-model="cursoEditando.mesFinal" min="1" max="12" required/>
+						<input type="number" class="form-control" name="mesFinal" placeholder="[mm]" ng-model="cursoEditando.mesFinal" min="1" max="12" required ng-readonly="esEdicion()" />
 					</div>
 				</div>
 
@@ -79,7 +83,7 @@
 						<span class="input-group-addon ">
 							<i aria-hidden="true" data-toggle="tooltip" title="Año lectivo al cual pertenece el curso.">Año Lectivo</i>
 						</span>
-						<input type="number" class="form-control" name="anioLectivo" placeholder="[1,2,3...]" ng-model="cursoEditando.anioLectivo" min="1" max="99" required/>
+						<input type="number" class="form-control" name="anioLectivo" placeholder="[1,2,3...]" ng-model="cursoEditando.anioLectivo" min="1" max="99" required ng-readonly="esEdicion()"/>
 					</div>
 				</div>
 
@@ -89,7 +93,7 @@
 						<span class="input-group-addon ">
 							<i aria-hidden="true" data-toggle="tooltip" title="Cuatrimestre lectivo al cual pertenece el curso.">Cuatrimestre Lectivo</i>
 						</span>
-						<input type="number" class="form-control" name="mmestreLectivo" placeholder="[1,2]" ng-model="cursoEditando.nmestreLectivo" min="1" max="12" required/>
+						<input type="number" class="form-control" name="mmestreLectivo" placeholder="[1,2]" ng-model="cursoEditando.nmestreLectivo" min="1" max="12" required ng-readonly="esEdicion()" />
 					</div>
 				</div>
 
@@ -142,18 +146,23 @@
 					</div>
 				</div>
 			
-				<div class="col-md-4">
-					<div class="col-md-12">
-						<h3>Coordinación</h3>
-					</div>
+
+
 				
-					<span id='GrupoOperativo'>
-						<img src="img/Persona.png" width="75" height="75" class="img-circle img-thumbnail"  droppable-area allow-droppable-area id="placeholderGrupoOperativo">
-					</span>
-					<span id='Taller'>
-						<img src="img/Persona.png" width="75" height="75" class="img-circle img-thumbnail"  droppable-area allow-droppable-area id="placeholderTaller">
-					</span>
-				</div>
+				<div class="col-md-4">
+						<div class="col-md-12">
+							<h3>Coordinación</h3>
+						</div>
+						<span ng-repeat="coordinador in coordinadorSeleccionado" id="{{spanIds[$index]}}">
+							<img droppable-area allow-droppable-area ng-src="{{coordinador.fotoPath}}"  onerror="this.onerror=null;this.src=img/Persona.png;" class="img-circle img-thumbnail" width="75" height="75" alt="{{coordinador.nombre}}" data-toogle="tooltip" title="{{coordinador.nombre}}" id="{{coordinador.nombre}}" coordindex="{{coordinador.coordinadorId}}">
+						</span>
+						<span id='GrupoOperativo' ng-show="coordinacionOriginal.length===0">
+							<img src="img/Persona.png" width="75" height="75" class="img-circle img-thumbnail"  droppable-area allow-droppable-area id="placeholderGrupoOperativo">
+						</span>
+						<span id='Taller' ng-show="coordinacionOriginal.length<=1">
+							<img src="img/Persona.png" width="75" height="75" class="img-circle img-thumbnail"  droppable-area allow-droppable-area id="placeholderTaller">
+						</span>
+					</div>
 			</div>
 
 
