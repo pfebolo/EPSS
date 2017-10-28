@@ -3,7 +3,7 @@
 </div>
 <div class="container">
 	<div class="row">
-    <div class="alert alert-warning" ng-show="!cargando && !(getDivisionesOK && getCoordinacionesOK && getGruposOK)">
+    <div class="alert alert-warning" ng-show="!cargando && error.hayError">
         Las divisiones no fueron obtenidas, intente nuevamente.
     </div>
   </div>
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 </div>
-<div class="container" ng-show="!cargando && (getCoordinacionesOK && getDivisionesOK && getGruposOK)">
+<div class="container" ng-show="!cargando && !error.hayError">
   <div class="col-md-7">
     <div class="col-md-5">
         <h2>
@@ -79,8 +79,7 @@
             <div class="media">
               <div class="row">
                 <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division)">
-                  <img class="media-object img-circle" class="" width="33" height="33" src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" onerror="this.onerror=null;this.src='img/Persona.png';"
-                    data-toogle="tooltip" title="{{coordinacion.coordinador.nombre}}">
+                  <img class="media-object img-circle" class="" width="33" height="33" ng-src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" data-toogle="tooltip" title="{{coordinacion.dispositivoId + ': ' + coordinacion.coordinador.nombre}}">
                 </div>
               </div>
             </div>
