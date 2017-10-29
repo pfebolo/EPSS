@@ -112,14 +112,14 @@
 					</div>
 
 					<!-- Turnos: [Mañana, Noche, Virtual] -->
-					<div class="col-md-9">
+					<div class="col-md-9" ng-show="cursoEditando.modoId==='Presencial'">
 						<div class="input-group " ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon" data-toggle="tooltip" title="Turno de cursada">
 								<i class="fa fa-users" aria-hidden="true"></i>
 							</span>
 							<input type="text" ng-model="divisionEditando.turnoId" name="turno" required ng-hide="true" />
 							<div class="btn-group" role="group" aria-label="...">
-								<button type="button" class="btn" ng-repeat="turno in turnoLista" ng-class="divisionEditando.turnoId==='{{turno.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setTurno($index)">{{turno.descripcion}}</button>
+								<button type="button" class="btn" ng-repeat="turno in turnoLista" ng-class="divisionEditando.turnoId==='{{turno.descripcion}}' ? 'btn-info' : 'btn-default'" ng-click="setTurno($index)" ng-show="turno.mostrar" >{{turno.descripcion}}</button>
 							</div>
 						</div>
 					</div>
@@ -150,19 +150,15 @@
 
 				
 				<div class="col-md-4">
-						<div class="col-md-12">
-							<h3>Coordinación</h3>
-						</div>
-						<span ng-repeat="coordinador in coordinadorSeleccionado" id="{{spanIds[$index]}}">
-							<img droppable-area allow-droppable-area ng-src="{{coordinador.fotoPath}}"  onerror="this.onerror=null;this.src=img/Persona.png;" class="img-circle img-thumbnail" width="75" height="75" alt="{{coordinador.nombre}}" data-toogle="tooltip" title="{{coordinador.nombre}}" id="{{coordinador.nombre}}" coordindex="{{coordinador.coordinadorId}}">
-						</span>
-						<span id='GrupoOperativo' ng-show="coordinacionOriginal.length===0">
-							<img src="img/Persona.png" width="75" height="75" class="img-circle img-thumbnail"  droppable-area allow-droppable-area id="placeholderGrupoOperativo">
-						</span>
-						<span id='Taller' ng-show="coordinacionOriginal.length<=1">
-							<img src="img/Persona.png" width="75" height="75" class="img-circle img-thumbnail"  droppable-area allow-droppable-area id="placeholderTaller">
-						</span>
+					<div class="col-md-12">
+						<h3>Coordinación</h3>
 					</div>
+					<span ng-repeat="dispositivo in dispositivosXCarrera">
+						<span id="{{dispositivo.dispositivoId}}" droppable-area allow-droppable-area>
+							<img ng-src="{{coordSeleccionado[dispositivo.dispositivoId].fotoPath}}" width="75" height="75" class="img-circle img-thumbnail" id="{{'placeHolder'+ dispositivo.dispositivoId}}" data-toggle="tooltip" title="{{dispositivo.dispositivoId}}">
+						</span>
+					</span>
+				</div>
 			</div>
 
 
