@@ -107,7 +107,7 @@
           </tr>
         </theader>
         <tbody>
-          <tr ng-repeat="grupo in grupos | filter:filtroGrupo(grupoEditando)">
+          <tr ng-repeat="grupo in grupos | filter:filtroGrupo(grupoEditando) | orderBy:orderApellidoYNombre">
 						<td>
 							<i class="fa fa-arrow-circle-left text-danger" aria-hidden="true" ng-click="eliminarEstudianteDeGrupo(grupoEditando,grupo.legajo)" role="button" data-toggle="tooltip" title="'Agregar a' + ' ddd'"></i>
 						</td>
