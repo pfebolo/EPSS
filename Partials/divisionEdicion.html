@@ -158,20 +158,16 @@
 							</div>
 						</div>
 					</div>
-				
-
-
 					
 					<div class="col-md-4">
 						<h3>Coordinación</h3>
-					</div>
-					<span ng-repeat="dispositivo in dispositivosXCarrera">
-						<span id="{{dispositivo.dispositivoId}}" droppable-area allow-droppable-area ng-dblclick="eliminarCoordinacion(dispositivo.dispositivoId)">
-							<img ng-src="{{coordSeleccionado[dispositivo.dispositivoId].fotoPath}}" width="75" height="75" class="img-circle img-thumbnail" id="{{'placeHolder'+ dispositivo.dispositivoId}}" data-toggle="tooltip" title="{{dispositivo.dispositivoId}}">
+						<span ng-repeat="dispositivo in dispositivosXCarrera">
+							<span id="{{dispositivo.dispositivoId}}" droppable-area allow-droppable-area ng-dblclick="eliminarCoordinacion(dispositivo.dispositivoId)">
+								<img ng-src="{{coordSeleccionado[dispositivo.dispositivoId].fotoPath}}" width="75" height="75" class="img-circle img-thumbnail" id="{{'placeHolder'+ dispositivo.dispositivoId}}" data-toggle="tooltip" title="{{dispositivo.dispositivoId}}">
+							</span>
 						</span>
-					</span>
 					</div>
-
+				</div>
 
 
 				<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error' ">
