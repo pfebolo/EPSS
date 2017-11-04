@@ -29,7 +29,7 @@
     </div>
     <div>
       <table class="table table-striped">
-        <theader>
+        <thead>
           <tr>
             <th>
               Año
@@ -55,8 +55,8 @@
             <th class="text-center">
             </th>
           </tr>
-        </theader>
-        <tbody>
+        </thead>
+        <tbody style="max-height: 125px">
           <tr ng-repeat="division in divisiones | filter:filtroCarrera(carreraSeleccionada)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
             <td vertical-align="middle">
               {{division.curso.anioInicio}}
@@ -103,9 +103,9 @@
     <h2>Estudiantes
       <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null" ></i>
     </h2>
-    <div style="max-height: 450px; overflow-y: auto;">
+    <div>
       <table class="table table-striped">
-        <theader>
+        <thead>
           <tr>
             <th>
               Legajo
@@ -114,10 +114,10 @@
               Nombre
             </th>
           </tr>
-        </theader>
+        </thead>
 
         <tbody>
-          <tr ng-repeat="grupo in grupos | filter:filtroDivision(divisionSeleccionado)">
+          <tr ng-repeat="grupo in grupos | filter:filtroDivision(divisionSeleccionado) |  orderBy:orderApellidoYNombre">
             <td>
               {{grupo.legajo.legajoNro}}
             </td>
