@@ -80,7 +80,7 @@
             <td>
               <div class="media">
                 <div class="row">
-                  <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division)">
+                  <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division) | orderBy:'dispositivoId'">
                     <img class="media-object img-circle" class="" width="33" height="33" ng-src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" data-toogle="tooltip" title="{{coordinacion.dispositivoId + ': ' + coordinacion.coordinador.nombre}}">
                   </div>
                 </div>
