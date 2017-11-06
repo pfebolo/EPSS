@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="alert alert-warning" ng-show="!cargando && !getLegajosOK && !getGruposOK">
 			Los Legajos y/o los integrantes del grupo no fueron obtenidos, intente nuevamente.
-			/div>
+		</div>
 	</div>
 	<div class="row">
 		<div class="alert alert-danger" ng-show="error.hayError">
@@ -109,7 +109,7 @@
         <tbody>
           <tr ng-repeat="grupo in grupos | filter:filtroGrupo(grupoEditando) | orderBy:orderApellidoYNombre">
 						<td>
-							<i class="fa fa-arrow-circle-left text-danger" aria-hidden="true" ng-click="eliminarEstudianteDeGrupo(grupoEditando,grupo.legajo)" role="button" data-toggle="tooltip" title="'Agregar a' + ' ddd'"></i>
+							<i class="fa fa-arrow-circle-left text-danger" aria-hidden="true" ng-click="eliminarEstudianteDeGrupo(grupoEditando,grupo.legajo)" role="button" data-toggle="tooltip" title="Sacar del grupo."></i>
 						</td>
             <td class="text-right">
               {{grupo.legajo.legajoNro}}
