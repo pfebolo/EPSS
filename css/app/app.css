@@ -251,11 +251,22 @@ border-top,.border-right,.border-bottom,.border-left,.border {
   border-width:1px;
   }
 
+  .sheet {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always;
+  }
+
   @media print {
-    .noImprimir {
-      display: none;
-    }
     body {
       font-family: "Arial" , serif;
+      color: #000;
+      background: #fff;
+      width: 100%;
+      margin: 0;
+      padding: 0;
     }
+    div.A4           .sheet { width: 210mm; height: 296mm }
   }
