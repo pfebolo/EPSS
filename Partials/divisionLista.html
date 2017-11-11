@@ -29,7 +29,7 @@
     </div>
     <div>
       <table class="table table-striped">
-        <theader>
+        <thead>
           <tr>
             <th>
               Año
@@ -55,8 +55,8 @@
             <th class="text-center">
             </th>
           </tr>
-        </theader>
-        <tbody>
+        </thead>
+        <tbody style="max-height: 125px">
           <tr ng-repeat="division in divisiones | filter:filtroCarrera(carreraSeleccionada)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
             <td vertical-align="middle">
               {{division.curso.anioInicio}}
@@ -80,7 +80,7 @@
             <td>
               <div class="media">
                 <div class="row">
-                  <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division)">
+                  <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division) | orderBy:'dispositivoId'">
                     <img class="media-object img-circle" class="" width="33" height="33" ng-src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" data-toogle="tooltip" title="{{coordinacion.dispositivoId + ': ' + coordinacion.coordinador.nombre}}">
                   </div>
                 </div>
@@ -102,10 +102,11 @@
   <div class="col-md-5">
     <h2>Estudiantes
       <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null" ></i>
+      <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null" ></i>
     </h2>
-    <div style="max-height: 450px; overflow-y: auto;">
+    <div>
       <table class="table table-striped">
-        <theader>
+        <thead>
           <tr>
             <th>
               Legajo
@@ -114,10 +115,10 @@
               Nombre
             </th>
           </tr>
-        </theader>
+        </thead>
 
         <tbody>
-          <tr ng-repeat="grupo in grupos | filter:filtroDivision(divisionSeleccionado)">
+          <tr ng-repeat="grupo in grupos | filter:filtroDivision(divisionSeleccionado) |  orderBy:orderApellidoYNombre">
             <td>
               {{grupo.legajo.legajoNro}}
             </td>

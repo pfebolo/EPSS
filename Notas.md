@@ -11,7 +11,19 @@ versiones: https://code.angularjs.org/
 
 > MALOT, Sebastien. "DateTime Picker · Bootstrap Component." DateTime Picker · Bootstrap. N.p., 3 Mar. 2017. Web. 11 May 2017. <http://www.malot.fr/bootstrap-datetimepicker/>.
 
+## Servidor Web usando nodeJS (https://nodejs.org/es/)
+### Módulo http-server
+#### Instalación
+Ejecutar desde la línea de comando:
+```
+npm install -g http-server
+```
+> Observar el modificador '-g' que implica instalación del módulo a nivel global.
 
+luego, cambiar a la carpeta root del sitio y ejecutar:  
+```
+http-server -c-1
+```
 
 ## Unit Test
 ### Jasmine  + Karma
