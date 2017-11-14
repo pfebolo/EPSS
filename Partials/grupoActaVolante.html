@@ -61,6 +61,9 @@
 							</ul>
 						</nav>
 					</td>
+					<td class="text-right">
+						<button type="button" class="btn btn-primary" ng-click="imprimir()"><i class="fa fa-print" aria-hidden="true"></i></button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -138,17 +141,19 @@
 						<tbody>
 							<tr ng-repeat="grupo in grupoSeleccionado.slice(pagina*lineasXPagina, ((pagina+1)*lineasXPagina))">
 								<td class="text-right">
-									{{$index+(pagina*lineasXPagina)+1}}
+									{{$index+1}}
 								</td>
-								<td>
+								<td class="text-right">
+									{{grupo.legajo.libroMatriz | number}}
 								</td>
-								<td>
+								<td class="text-right">
+									{{grupo.legajo.folio | number}}
 								</td>
 								<td class="text-right">
 									{{grupo.legajo.dni | number}}
 								</td>
 								<td>
-									{{grupo.legajo.alumno.apellido}},&nbsp{{grupo.legajo.alumno.nombre}}
+									{{grupo.legajo.alumno.apellido.trim()}}{{grupo.legajo.alumno.apellido===null ? '' :',&nbsp'}}{{grupo.legajo.alumno.nombre.trim()}}
 								</td>
 								<td>
 								</td>
@@ -171,7 +176,7 @@
 					</div>
 					<div class="col-xs-12 row">
 						<div class="col-xs-4">Alumnos Inscriptos:
-							<strong>&nbsp{{grupoSeleccionado.length}}</strong>
+							<strong>&nbsp{{pagina===(paginas.length-1) ? estudiantesUltimaLinea : lineasXPagina}}</strong>
 						</div>
 						<div class="col-xs-2">Aprobados:...........</div>
 						<div class="col-xs-3">Desaprobados:...........</div>
