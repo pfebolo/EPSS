@@ -48,7 +48,7 @@
 						</div>
 					</td>
 					<td class="text-right">
-						<span class="badge">{{grupoSeleccionado.length}}</span>
+						<span class="badge">{{grupoSeleccionado.length-lineasXPagina+estudiantesUltimaLinea}}</span>
 					</td>
 				</tr>
 				<tr>
@@ -109,7 +109,7 @@
 						<div class="col-xs-2 text-right text-uppercase">{{grupoEditando.modoId}}</div>
 					</div>
 					<div>
-						<div class="col-xs-3">ASIGNATURA:</div>
+						<div class="col-xs-3">ASIGNATURA:...............................................................................................</div>
 						<div class="col-xs-6"></div>
 						<div class="col-xs-3 text-right text-uppercase">{{grupoEditando.turnoId !== 'Virtual' ? 'Turno ' + grupoEditando.turnoId : null}}</div>
 					</div>
@@ -168,6 +168,9 @@
 				<!-- Pie -->
 				<div class="col-xs-12">
 					<div class="col-xs-12 row">
+						<div>
+							<br>
+						</div>
 						<div class="col-xs-5">Presidente:
 							<strong>&nbsp{{profesora}}</strong>
 						</div>
