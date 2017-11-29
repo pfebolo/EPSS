@@ -213,3 +213,61 @@ i.icon-danger:focus {
   }
 }
 /*end spinner*/
+
+
+
+/** Paper sizes **/
+div.A3           .sheet { width: 297mm; height: 419mm }
+div.A3.landscape .sheet { width: 420mm; height: 297mm }
+div.A4           .sheet { width: 210mm; height: 297mm }
+div.A4.landscape .sheet { width: 297mm; height: 209mm }
+div.A5           .sheet { width: 148mm; height: 209mm }
+div.A5.landscape .sheet { width: 210mm; height: 147mm }
+
+/** Bordes **/
+border-top,.border-right,.border-bottom,.border-left,.border {
+  border-color:#ccc;
+  border-style:solid;
+  border-width:0;
+  }
+  
+  .border-top {
+  border-top-width:1px;
+  }
+  
+  .border-right {
+  border-right-width:1px;
+  }
+  
+  .border-bottom {
+  border-bottom-width:1px;
+  }
+  
+  .border-left {
+  border-left-width:1px;
+  }
+  
+  .border {
+  border-width:1px;
+  }
+
+  .sheet {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always;
+  }
+
+  @media print {
+    body {
+      font-family: Arial , serif;
+      color: #000;
+      background: #fff;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    div.A4           .sheet { width: 210mm; height: 297mm }
+
+  }

@@ -1,0 +1,155 @@
+<div class= "divSpinner" ng-show="cargando">
+    <div class="spinner" />
+</div>
+<div class="container">
+	<div class="row">
+    <div class="alert alert-warning" ng-show="!cargando && error.hayError">
+			Los datos de esta página no fueron procesados correctamente, intente nuevamente.
+    </div>
+  </div>
+  <div class="row">
+		<div class="alert alert-danger" ng-show="error.hayError">
+			<p ng-repeat="error in error.errores">
+				<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="container" ng-show="!cargando && !error.hayError">
+  <div class="col-md-7">
+    <div class="col-md-5">
+        <h2>
+          Divisiones
+          <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearDivision()" role="button" data-toggle="tooltip" title="Dar de alta una nueva División."></i>
+        </h2>
+    </div>
+    <div class="col-md-7 text-right">
+      <br>
+      <select ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carreraSeleccionada"></select>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Año
+            </th>
+            <th>
+              Cuatrimestre
+            </th>
+            <th>
+              Modalidad
+            </th>
+            <th>
+              Turno
+            </th>
+            <th>
+              Div
+            </th>
+            <th>
+              Coordinación
+            </th>
+            <th class="text-right">
+              <span class="badge">{{(grupos | filter:filtroCarrera(carreraSeleccionada)).length}}</span>
+            </th>
+            <th class="text-center">
+            </th>
+          </tr>
+        </thead>
+        <tbody style="max-height: 125px">
+          <tr ng-repeat="division in divisiones | filter:filtroCarrera(carreraSeleccionada)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
+            <td vertical-align="middle">
+              {{division.curso.anioInicio}}
+              <br> {{ordinales[division.curso.anioLectivo-1]}} año.
+            </td>
+            <td vertical-align="middle">
+              {{meses[division.curso.mesInicio-1]}}-{{meses[division.curso.mesFinal-1]}}
+              <br> {{ordinales[division.curso.nmestreLectivo-1]}} Cuatrimestre.
+            </td>
+            <td vertical-align="middle">
+              {{division.modoId}}
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null}}" />
+            </td>
+            <td vertical-align="middle">
+              {{division.turnoId !== 'Virtual' ? division.turnoId : null}}
+            </td>
+            <td data-toggle="tooltip" title="{{division.comentario}}">
+              {{division.divisionId}}
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null}}" />
+            </td>
+            <td>
+              <div class="media">
+                <div class="row">
+                  <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division) | orderBy:'dispositivoId'">
+                    <img class="media-object img-circle" class="" width="33" height="33" ng-src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" data-toogle="tooltip" title="{{coordinacion.dispositivoId + ': ' + coordinacion.coordinador.nombre}}">
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="text-right">
+              <span class="badge">{{obtenerCantidadAlumnos(division)}}</span>
+            </td>
+            <td class="text-center" vertical-align="middle">
+              <i class="fa fa-pencil-square-o icon-primary icon-pointer" aria-hidden="true" ng-click="irAEditarDivision(division)" />
+              <br>
+              <i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarDivision(division)" ng-hide="obtenerCantidadAlumnos(division)+obtenerCantidadCoordinadores(division)>0" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <h2>Estudiantes
+      <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null" ></i>
+      <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null" ></i>
+    </h2>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Legajo
+            </th>
+            <th>
+              Nombre
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="grupo in grupos | filter:filtroDivision(divisionSeleccionado) |  orderBy:orderApellidoYNombre">
+            <td>
+              {{grupo.legajo.legajoNro}}
+            </td>
+            <td>
+              {{grupo.legajo.alumno.apellido}},&nbsp{{grupo.legajo.alumno.nombre}}
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="divModalBase " ng-show="modalOpen ">
+	<div class="col-md-4 "></div>
+	<div class="col-md-4 " style='top: 33%'>
+		<div class="panel panel-info ">
+			<div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i> &nbsp Ficha de Evento
+			</div>
+			<div class="panel-body ">
+				{{msjModal}}.
+			</div>
+			<div class="panel-footer ">
+				<div class="col-md-9"></div>
+				<button class="btn btn-primary" ng-click="closeModal()" autofocus>cerrar</button>
+			</div>
+		</div>
+	</div>
+</div>

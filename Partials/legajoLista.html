@@ -5,7 +5,9 @@
 	Los Legajos no fueron obtenidos, intente nuevamente.
 </div>
 <div class="col-md-5" ng-show="!cargando && GetOK && setearScroll()">
-	<h2>Legajos&nbsp;<span class="badge">{{legajos.length}}</span></h2>
+	<h2>Legajos&nbsp;<span class="badge">{{legajos.length}}</span>
+	<i class="fa text-primary"  ng-class="{'fa-spinner': procesandoCSV, 'fa-pulse': procesandoCSV,'fa-file-excel-o': !procesandoCSV, 'fa-border': !procesandoCSV}" aria-hidden="true" ng-click="!procesandoCSV ? irABajarInteresado() : null" role="button" data-toggle="tooltip" title="Exportar a excel." id="bajando"><a id="ancla"></a></i>
+	</h2>
 	<div class="box-round">
 		<div class="col-md-6">
 		</div>
@@ -113,6 +115,14 @@
 						</td>
 					</tr>
 					<tr>
+						<td>
+							<span class="fa fa-book" aria-hidden="true" data-toggle="tooltip" title="Libro Matriz." />&nbsp{{legajoSeleccionado.libroMatriz}}
+						</td>
+						<td>
+							<span class="fa fa-file-text" aria-hidden="true" data-toggle="tooltip" title="Folio de Libro Matriz" />&nbsp{{legajoSeleccionado.folio}}
+						</td>
+					</tr>
+					<tr>
 						<td colspan="2">
 							<span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{legajoSeleccionado.comentarios}}
 						</td>
@@ -197,28 +207,28 @@
 							Entrega
 						</td>
 						<td>
-							<span ng-class="legajoSeleccionado.docCompromiso!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
-							/>&nbsp{{legajoSeleccionado.docCompromiso | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.alumno.docCompromiso!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.alumno.docCompromiso | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
 							<span ng-class="legajoSeleccionado.cuestionario!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
 							/>&nbsp{{legajoSeleccionado.cuestionario | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							<span ng-class="legajoSeleccionado.docAptoFisico!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
-							/>&nbsp{{legajoSeleccionado.docAptoFisico | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.alumno.docAptoFisico!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.alumno.docAptoFisico | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							<span ng-class="legajoSeleccionado.docTitulo!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
-							/>&nbsp{{legajoSeleccionado.docTitulo | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.alumno.docTitulo!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.alumno.docTitulo | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							<span ng-class="legajoSeleccionado.docDni!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
-							/>&nbsp{{legajoSeleccionado.docDni | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.alumno.docDni!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.alumno.docDni | date:'dd/MM/yyyy'}}
 						</td>
 						<td>
-							<span ng-class="legajoSeleccionado.docFoto!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
-							/>&nbsp{{legajoSeleccionado.docFoto | date:'dd/MM/yyyy'}}
+							<span ng-class="legajoSeleccionado.alumno.docFoto!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true"
+							/>&nbsp{{legajoSeleccionado.alumno.docFoto | date:'dd/MM/yyyy'}}
 						</td>
 					</tr>
 					<tr>
@@ -261,51 +271,64 @@
 				<tbody>
 					<tr>
 						<td class="col-md-3">
-							<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.mail.replace("%40","@")}}
+							<span class="glyphicon glyphicon-send" aria-hidden="true"  data-toggle="tooltip" title="E-Mail" />&nbsp{{legajoSeleccionado.alumno.mail.replace("%40","@")}}
 						</td>
 						<td class="col-md-3">
-							<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.mail2.replace("%40","@")}}
+							<span class="glyphicon glyphicon-send" aria-hidden="true"  data-toggle="tooltip" title="Estado envió de mail de Bienvenida" />&nbsp{{legajoSeleccionado.alumno.mail2.replace("%40","@")}}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.telefono}}
+							<span class="glyphicon glyphicon-earphone" aria-hidden="true"  data-toggle="tooltip" title="Télefono Fijo" />&nbsp{{legajoSeleccionado.alumno.telefono}}
 						</td>
 						<td>
-							<span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.celular}}
+							<span class="glyphicon glyphicon-phone" aria-hidden="true"  data-toggle="tooltip" title="Télefono Celular" />&nbsp{{legajoSeleccionado.alumno.celular}}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-home" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.domicilio}}
+							<span class="glyphicon glyphicon-home" aria-hidden="true"  data-toggle="tooltip" title="Domicilio" />&nbsp{{legajoSeleccionado.alumno.domicilio}}
 						</td>
 						<td>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.provincia}}
+							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"  data-toggle="tooltip" title="Provincia" />&nbsp{{legajoSeleccionado.alumno.provincia}}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.modalidad.nombre}}
+							<span class="glyphicon glyphicon-registration-mark" aria-hidden="true"  data-toggle="tooltip" title="Modalidad" />&nbsp{{legajoSeleccionado.alumno.modalidad.nombre}}
 						</td>
 						<td>
-							<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.gradoInteres}}
+							<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"  data-toggle="tooltip" title="Grado de Interés" />&nbsp{{legajoSeleccionado.alumno.gradoInteres}}
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<span class="glyphicon glyphicon-question-sign" aria-hidden="true"  data-toggle="tooltip" title="Conocio por" />&nbsp{{legajoSeleccionado.alumno.comoConocio}}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-question-sign" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.comoConocio}}
+							<span class="glyphicon glyphicon-info-sign" aria-hidden="true"  data-toggle="tooltip" title="Situación Inscripción" />&nbsp{{legajoSeleccionado.alumno.situacionInscripcion}}
 						</td>
 						<td>
-							<span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.comentario}}
+							<span class="glyphicon glyphicon-info-sign" aria-hidden="true"  data-toggle="tooltip" title="Situación Especial" />&nbsp{{legajoSeleccionado.alumno.situacionEspecial}}
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.situacionInscripcion}}
-						</td>
-						<td>
-							<span class="glyphicon glyphicon-info-sign" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.situacionEspecial}}
-						</td>
+							<td>
+								<i class="fa fa-university fa-fw" aria-hidden="true" data-toggle="tooltip" title="Carrera a cursar"></i>&nbsp{{legajoSeleccionado.alumno.carrera.descripcion}}
+							</td>
+							<td>
+								<i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" title="Inscripto para empezar a cursar en el año y cuatrimestre indicado, de la carrera"></i>
+								<span ng-show="legajoSeleccionado.alumno.anioAcursar!==null">
+									{{legajoSeleccionado.alumno.anioAcursar}}{{legajoSeleccionado.alumno.anioAcursar===2 ? 'do' : 'er'}}&nbspaño,&nbsp{{legajoSeleccionado.alumno.nmestreAcursar}}{{legajoSeleccionado.alumno.nmestreAcursar===1 ? 'er' : 'do'}}&nbspcuatrimeste.
+								</span>
+							</td>
+						</tr>
+					<tr>
+							<td colspan="2">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"  data-toggle="tooltip" title="Comentario" />&nbsp{{legajoSeleccionado.alumno.comentario}}
+							</td>
 					</tr>
 				</tbody>
 			</table>
