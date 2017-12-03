@@ -22,8 +22,8 @@ module.exports = function (config) {
 			'./lib/js/utiles.test.js',
 			'./lib/js/app.js',
 			'./lib/js/app.test.js',
-			// './lib/js/servicios/legajoSrv.js',
-			// './lib/js/servicios/legajoSrv.test.js'
+			'./lib/js/servicios/legajoSrv.js',
+			'./lib/js/servicios/legajoSrv.test.js'
 		],
 
 		// list of files to exclude

@@ -6,3 +6,5 @@ temp*.*
 
 runWebServer\.sh
 run\.epss\.front\.desktop
+
+*.desktop
