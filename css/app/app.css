@@ -30,6 +30,9 @@ div > .stripped-row:nth-of-type(odd) {
     color: #a94442;;
 }
 
+.banderin-alert {
+  color: #eef06f;;
+}
 
 .box-round {
     padding: 5px;
