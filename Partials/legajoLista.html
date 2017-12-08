@@ -5,7 +5,7 @@
 	Los Legajos no fueron obtenidos, intente nuevamente.
 </div>
 <div class="col-md-5" ng-show="!cargando && GetOK && setearScroll()">
-	<h2>Legajos&nbsp;<span class="badge">{{legajos.length}}</span>
+	<h2>Legajos&nbsp;<span class="badge">{{legajosFiltrados.length}}</span>
 	<i class="fa text-primary"  ng-class="{'fa-spinner': procesandoCSV, 'fa-pulse': procesandoCSV,'fa-file-excel-o': !procesandoCSV, 'fa-border': !procesandoCSV}" aria-hidden="true" ng-click="!procesandoCSV ? irABajarInteresado() : null" role="button" data-toggle="tooltip" title="Exportar a excel." id="bajando"><a id="ancla"></a></i>
 	</h2>
 	<div class="box-round">
@@ -13,7 +13,7 @@
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
+			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro,filtrarSeguimiento)>
 		</div>
 	</div>
 	<div style="max-height: 425px; overflow-y: scroll;" id="lista">
@@ -22,6 +22,7 @@
 				<tr>
 					<th>Nombre</th>
 					<th class="text-center">DNI</th>
+					<th class="col-md-1"><span  ng-class="{'banderin-danger': filtrarSeguimiento,'banderin-info': !filtrarSeguimiento}" ><i class="fa fa-flag icon-pointer" aria-hidden="true" data-toggle="tooltip" title="Seguimiento" ng-click="filtrarSeguimiento=!filtrarSeguimiento;reseleccionar(nombreapellidoFiltro,filtrarSeguimiento)"></i></span></th>
 					<th><span class="glyphicon glyphicon-certificate small" aria-hidden="true" /></th>
 				</tr>
 			</theader>
@@ -34,6 +35,7 @@
 					<td class="text-right">
 						{{legajo.dni}}
 					</td>
+					<td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="legajo.seguimiento"></i></td>
 					<td class="text-right"><span class="glyphicon glyphicon-certificate small" style="color: lightgreen" aria-hidden="true" ng-show="legajo.cuestionario!=null"	/>
 					</td>
 				</tr>
@@ -47,11 +49,11 @@
 		<div class="panel-heading">
 			<div class="col-md-6">
 				<h4>{{legajoSeleccionado.alumno.apellido}},&nbsp{{legajoSeleccionado.alumno.nombre}}</h4>
-				DNI:&nbsp{{legajoSeleccionado.dni}}
+				<i class="fa fa-flag banderin-alertOn" aria-hidden="true" ng-show="legajoSeleccionado.seguimiento"  data-toggle="tooltip" title="Seguimiento"></i>
 			</div>
 			<div class="col-md-6">
 				<h4 class="text-right">Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>
-
+				<p class="text-right">DNI:&nbsp{{legajoSeleccionado.dni}}<p>
 			</div>
 			<p class="text-right">
 				<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}}-->&nbsp&nbsp&nbsp</p>

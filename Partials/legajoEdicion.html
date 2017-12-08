@@ -24,6 +24,7 @@
 						<input id="legajoNro" type="text" required class="form-control text-right" name="legajoNro" required placeholder="[legajoNro]" ng-model="legajoSeleccionado.legajoNro">
 					</div>
 				</div>
+				<i class="fa fa-flag" aria-hidden="true" ng-class="legajoSeleccionado.seguimiento ? 'banderin-alertOn fa-lg' : 'banderin-alertOff'" ng-model="legajoSeleccionado.seguimiento" data-toggle="tooltip" title="Interesado con prioridad" ng-click="setSeguimiento()"></i>
 				<p class="text-right">
 					<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}} -->&nbsp&nbsp&nbsp</p>
 			</div>
