@@ -30,9 +30,14 @@ div > .stripped-row:nth-of-type(odd) {
     color: #a94442;;
 }
 
-.banderin-alert {
+.banderin-alertOn {
   color: #eef06f;;
 }
+
+.banderin-alertOff {
+  color: #000000;;
+}
+
 
 .box-round {
     padding: 5px;
