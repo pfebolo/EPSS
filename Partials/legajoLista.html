@@ -47,19 +47,24 @@
 <div class="col-md-7" ng-show="!cargando && GetOK">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<div class="col-md-6">
+			<div class="col-md-9">
 				<h4>{{legajoSeleccionado.alumno.apellido}},&nbsp{{legajoSeleccionado.alumno.nombre}}</h4>
 				<i class="fa fa-flag banderin-alertOn" aria-hidden="true" ng-show="legajoSeleccionado.seguimiento"  data-toggle="tooltip" title="Seguimiento"></i>
+				<span>
+					<span class="label label-info">{{legajoSeleccionado.estadoEstudianteId}}</span>
+					<span class="label label-info">{{getCursandoCurso(cicloDeVida)}}</span>
+				</span>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-3">
 				<h4 class="text-right">Nº:&nbsp{{legajoSeleccionado.legajoNro}}</h4>
 				<p class="text-right">DNI:&nbsp{{legajoSeleccionado.dni}}<p>
 			</div>
-			<p class="text-right">
-				<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}}-->&nbsp&nbsp&nbsp</p>
+			<span style="font-family:DejaVuSans,'Arial Unicode MS',sans-serif;font-size: 16px;">
+				<!-- Grafica linea de tiempo de los cursos tomados -->
+				{{getCicloDeVida(cicloDeVida)}}
+			</span>
 		</div>
 		<div class="panel-body" style="height: 350px; overflow-y: scroll;">
-
 			<table class="table table-striped" ng-show="!cargando && GetOK && informaConfiguracion['Basico']">
 				<thead>
 					<tr>
