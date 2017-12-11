@@ -24,11 +24,30 @@
 						<input id="legajoNro" type="text" required class="form-control text-right" name="legajoNro" required placeholder="[legajoNro]" ng-model="legajoSeleccionado.legajoNro">
 					</div>
 				</div>
-				<i class="fa fa-flag" aria-hidden="true" ng-class="legajoSeleccionado.seguimiento ? 'banderin-alertOn fa-lg' : 'banderin-alertOff'" ng-model="legajoSeleccionado.seguimiento" data-toggle="tooltip" title="Interesado con prioridad" ng-click="setSeguimiento()"></i>
+				<i class="fa fa-flag" aria-hidden="true" ng-class="legajoSeleccionado.seguimiento ? 'banderin-alertOn fa-lg' : 'banderin-alertOff'" ng-model="legajoSeleccionado.seguimiento" data-toggle="tooltip" title="Marcar (o desmarcar) el seguimiento del estudiante." ng-click="setSeguimiento()"></i>
 				<p class="text-right">
-					<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}} -->&nbsp&nbsp&nbsp</p>
+					<!--{{obtenerAnioCursado(legajoSeleccionadoCursoActivo.promocionId)}},&nbsp{{obtenerCuatrimestreCursado(legajoSeleccionadoCursoActivo.cuatrimestreId)}},&nbsp{{legajoSeleccionadoCursoActivo.modoId}},&nbsp{{legajoSeleccionadoCursoActivo.turnoId}} -->
+					&nbsp&nbsp&nbsp
+				</p>
 			</div>
 			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6">
+						
+				<div class="input-group" ng-class="'has-success'">
+					<span class="input-group-addon" data-toggle="tooltip" title="Estado">Estado</span>
+					<select class="form-control" ng-options="item as item.estadoEstudianteId for item in EstadosEstudiante" ng-model="estadoEstudianteNuevo"></select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group" ng-class="myForm.razonSuspension.$valid ? 'has-success' : 'has-error'">
+					<span class="input-group-addon">Motivo</span>
+					<input id="razonSuspension" type="text" class="form-control" name="razonSuspension" placeholder="Motivo del estado" ng-model="legajoSeleccionado.razonSuspension">
+				</div>
+			</div>
+	
+			</div>
+			
 				<div class="row">
 					<div class="col-md-6">
 						<div class="input-group" ng-class="myForm.apellido.$valid ? 'has-success' : 'has-error'">
