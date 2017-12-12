@@ -51,7 +51,7 @@
 				<h4>{{legajoSeleccionado.alumno.apellido}},&nbsp{{legajoSeleccionado.alumno.nombre}}</h4>
 				<i class="fa fa-flag banderin-alertOn" aria-hidden="true" ng-show="legajoSeleccionado.seguimiento"  data-toggle="tooltip" title="Seguimiento"></i>
 				<span>
-					<span class="label label-info">{{legajoSeleccionado.estadoEstudianteId}}</span>
+					<span ng-class="legajoSeleccionado.estadoEstudiante.ActaVolante ? 'label label-success' : 'label label-warning'">{{legajoSeleccionado.estadoEstudianteId}}{{legajoSeleccionado.razonSuspension.length>0 ? ' ('+ legajoSeleccionado.razonSuspension + ')': ''}}</span>
 					<span class="label label-info">{{getCursandoCurso(cicloDeVida)}}</span>
 				</span>
 			</div>
