@@ -113,7 +113,8 @@
             </tr>
             <tr>
               <td colspan="3">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Comentarios" />&nbsp{{interesadoSeleccionado.comentario}}
+                <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"/> -->
+                <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="Comentarios" />&nbsp{{interesadoSeleccionado.comentario}}
               </td>
             </tr>
           </tbody>
@@ -147,22 +148,24 @@
       <div style="max-height: 140px; overflow-y: auto;  overflow-x: auto;">
         <!--Tabla de Eventos Asignados-->
         <table class="table table-striped table-hover table-condensed" ng-show="!altaEvento">
-					<theader>
+					<thead>
 						<tr>
 							<th class="col-md-1">Fecha</th>
               <th class="col-md-3">Título</th>
-              <th class="col-md-7">Observación</th>
+              <th class="col-md-7">Comentario</th>
 							<th class="col-md-1">
                 <i class="fa fa-calendar-check-o" aria-hidden="true"  data-toggle="tooltip" title="Asistencia."></i></th>
               </th>
 						</tr>
-					</theader>
+					</thead>
           <tbody>
             <tr ng-repeat="interesadoEvento in interesadosEventos | orderBy:'evento.fecha':true">
               <td class="col-md-1">{{interesadoEvento.evento.fecha | date:'dd/MM/yyyy'}}</td>
               <td class="col-md-3">{{interesadoEvento.evento.titulo}}</td>
               <td class="col-md-7">{{interesadoEvento.observacion}}&nbsp<i class="fa  fa-pencil icon-primary icon-pointer" aria-hidden="true" ng-hide="interesadoEvento.asistente" ng-click="showModalInvitacionObservacion(interesadoEvento)"></i></td>
-              <td class="col-md-1"><i class="icon-primary" aria-hidden="true" ng-class="interesadoEvento.asistente ? 'fa fa-calendar-check-o' : 'fa fa-calendar-o '" ng-show="interesadoEvento.evento.estadoFecha<=0" /></td>
+              <td class="col-md-1">
+                <i class="icon-primary" aria-hidden="true" data-toggle="tooltip" title="Editar comentarios" ng-class="interesadoEvento.asistente ? 'fa fa-calendar-check-o' : 'fa fa-calendar-o '" ng-show="interesadoEvento.evento.estadoFecha<=0" />
+              </td>
             </tr>
           </tbody>
         </table>
