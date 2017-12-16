@@ -26,7 +26,7 @@
 		</div>
 		<div style="max-height: 425px; overflow-y: auto;  overflow-x: auto;">
 			<table class="table table-hover">
-				<theader>
+				<thead>
 					<tr>
 						<th>Título</th>
 						<th class="text-center">Fecha</th>
@@ -35,8 +35,11 @@
 							<i class="fa fa-desktop" aria-hidden="true"></i>
 						</th>
 						<th>Lugar</th>
+						<th>
+							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="Comentario." />
+						</th>
 					</tr>
-				</theader>
+				</thead>
 				<tbody>
 					<tr ng-repeat="evento in eventosFiltradosYOrdenados " ng-class="{'selected':$index==selectedRow, 'danger':evento.estadoFecha < 0 , 'success': evento.estadoFecha > 0, 'warning':evento.estadoFecha === 0 }" ng-click="setClickedRow($index);cargarEvento(evento)">
 						<td>{{evento.titulo}}</td>
@@ -46,6 +49,9 @@
 							<i class="fa fa-users" aria-hidden="true" ng-show="evento.tipoId===1"></i>
 						</td>
 						<td>{{evento.lugar.nombre}}</td>
+						<td>
+							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{evento.observacion}}" ng-show="{{evento.observacion!=null && evento.observacion!=''}}" />
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -74,7 +80,6 @@
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-12">
-						<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Comentario." />&nbsp{{eventoSeleccionado.observacion}} -->
 						<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="Comentario." />&nbsp{{eventoSeleccionado.observacion}}
 					</div>
 				</div>

@@ -176,7 +176,10 @@
 
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.comentarios.$valid ? 'has-success' : 'has-error'">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Comentarios" /></span>
+						<span class="input-group-addon">
+							<!-- <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Comentarios" /> -->
+							<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Comentarios" />
+						</span>
 						<textarea id="comentarios" rows="1" class="form-control" name="comentarios" placeholder="[Comentarios]" ng-model="interesadoEditando.comentario"></textarea>
 					</div>
 				</div>

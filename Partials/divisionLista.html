@@ -68,14 +68,14 @@
             </td>
             <td vertical-align="middle">
               {{division.modoId}}
-              <i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null}}" />
+              <i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null && division.curso.comentario!=''}}" />
             </td>
             <td vertical-align="middle">
               {{division.turnoId !== 'Virtual' ? division.turnoId : null}}
             </td>
             <td data-toggle="tooltip" title="{{division.comentario}}">
               {{division.divisionId}}
-              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null}}" />
+              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
             </td>
             <td>
               <div class="media">
