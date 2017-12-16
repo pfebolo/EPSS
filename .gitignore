@@ -4,3 +4,7 @@ img/fotos/*.*
 node_modules/*
 temp*.*
 
+runWebServer\.sh
+run\.epss\.front\.desktop
+
+*.desktop
