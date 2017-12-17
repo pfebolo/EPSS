@@ -24,10 +24,13 @@
         </h2>
     </div>
     <div class="col-md-12">
-      <div class="col-md-5">
+      <div class="col-md-3">
+        <select ng-options="estadoDivision as estadoDivision.estadoDivisionId for estadoDivision in estadosDivision" ng-model="estadoDivisionSeleccionado"></select>
+      </div>
+      <div class="col-md-3">
         <select ng-options="modo as modo.modoId for modo in modos" ng-model="modoSeleccionado"></select>
       </div>
-      <div class="col-md-7 text-right">
+      <div class="col-md-6 text-right">
         <select ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carreraSeleccionada"></select>
       </div>
     </div>
@@ -61,7 +64,7 @@
           </tr>
         </thead>
         <tbody style="max-height: 125px">
-          <tr ng-repeat="division in divisiones | filter:filtroDivisiones(carreraSeleccionada,modoSeleccionado)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
+          <tr ng-repeat="division in divisiones | filter:filtroDivisiones(carreraSeleccionada,modoSeleccionado,estadoDivisionSeleccionado)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
             <td vertical-align="middle">
               {{division.curso.anioInicio}}
               <br> {{ordinales[division.curso.anioLectivo-1]}} año.
