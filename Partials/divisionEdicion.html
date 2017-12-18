@@ -151,7 +151,17 @@
 								</div>
 							</div>
 						</div>
-						
+
+						<!-- Estado Division-->
+						<div class="col-md-6">
+							<div class="input-group" ng-class="'has-success'">
+								<span class="input-group-addon ">
+										<i class="fa fa-tachometer" aria-hidden="true" data-toggle="tooltip" title="Estado." />
+								</span>
+								<select class="form-control" ng-options="item as item.estadoDivisionId for item in estadosDivision" ng-model="estadoDivisionSeleccionado" ng-disabled="esEdicion()"></select>
+							</div>
+						</div>
+
 						<!-- Comentario de División -->
 						<div class="col-md-12">
 							<div class="input-group " ng-class="myForm.comentarioDivision.$valid ? 'has-success' : 'has-error' ">
