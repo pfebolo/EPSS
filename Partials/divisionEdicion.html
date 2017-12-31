@@ -151,7 +151,17 @@
 								</div>
 							</div>
 						</div>
-						
+
+						<!-- Estado Division-->
+						<div class="col-md-6">
+							<div class="input-group" ng-class="'has-success'">
+								<span class="input-group-addon ">
+										<i class="fa fa-tachometer" aria-hidden="true" data-toggle="tooltip" title="Estado." />
+								</span>
+								<select class="form-control" ng-options="item as item.estadoDivisionId for item in estadosDivision" ng-model="estadoDivisionSeleccionado" ng-disabled="true"></select>
+							</div>
+						</div>
+
 						<!-- Comentario de División -->
 						<div class="col-md-12">
 							<div class="input-group " ng-class="myForm.comentarioDivision.$valid ? 'has-success' : 'has-error' ">
@@ -176,10 +186,12 @@
 
 
 				<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error' ">
-					<div class="col-md-8 ">
+					<div class="col-md-6 ">
 						<span ng-show="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">El formulario está incompleto o con información incorrecta.</span>
 					</div>
+					
 					<div class="text-right">
+						<button class="btn btn-primary " ng-click="iniciar(cursoEditando,divisionEditando) " ng-show="myForm.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal && divisionEditando.estadoDivisionId===estadoDivisionMap.EnPreparacion" data-toggle="tooltip" title="Cambiar el estado de la división a estado Cursando.">Iniciar</button>
 						<button class="btn btn-primary " ng-click="grabar(cursoEditando,divisionEditando) " ng-disabled="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">{{accionLabel}}</button>
 						<button class="btn btn-default " ng-click="cancelarEdicion() ">Cancelar</button>
 					</div>
