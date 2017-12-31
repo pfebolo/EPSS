@@ -17,15 +17,22 @@
 </div>
 <div class="container" ng-show="!cargando && !error.hayError">
   <div class="col-md-7">
-    <div class="col-md-5">
+    <div class="col-md-12">
         <h2>
           Divisiones
           <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearDivision()" role="button" data-toggle="tooltip" title="Dar de alta una nueva División."></i>
         </h2>
     </div>
-    <div class="col-md-7 text-right">
-      <br>
-      <select ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carreraSeleccionada"></select>
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <select ng-options="estadoDivision as estadoDivision.estadoDivisionId for estadoDivision in estadosDivision" ng-model="estadoDivisionSeleccionado"></select>
+      </div>
+      <div class="col-md-3">
+        <select ng-options="modo as modo.modoId for modo in modos" ng-model="modoSeleccionado"></select>
+      </div>
+      <div class="col-md-6 text-right">
+        <select ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carreraSeleccionada"></select>
+      </div>
     </div>
     <div>
       <table class="table table-striped">
@@ -57,7 +64,7 @@
           </tr>
         </thead>
         <tbody style="max-height: 125px">
-          <tr ng-repeat="division in divisiones | filter:filtroCarrera(carreraSeleccionada)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
+          <tr ng-repeat="division in divisiones | filter:filtroDivisiones(carreraSeleccionada,modoSeleccionado,estadoDivisionSeleccionado)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
             <td vertical-align="middle">
               {{division.curso.anioInicio}}
               <br> {{ordinales[division.curso.anioLectivo-1]}} año.
@@ -68,14 +75,14 @@
             </td>
             <td vertical-align="middle">
               {{division.modoId}}
-              <i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null}}" />
+              <i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null && division.curso.comentario!=''}}" />
             </td>
             <td vertical-align="middle">
               {{division.turnoId !== 'Virtual' ? division.turnoId : null}}
             </td>
             <td data-toggle="tooltip" title="{{division.comentario}}">
               {{division.divisionId}}
-              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null}}" />
+              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
             </td>
             <td>
               <div class="media">
@@ -101,8 +108,11 @@
   </div>
   <div class="col-md-5">
     <h2>Estudiantes
-      <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null" ></i>
-      <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null" ></i>
+      <span ng-show=(estadoDivisionSeleccionado.estadoDivisionId==='Cursando')>
+        <!-- estadoDivisionSeleccionado -->
+        <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null"></i>
+        <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null"></i>
+      </span>
     </h2>
     <div>
       <table class="table table-striped">

@@ -193,7 +193,9 @@
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.comentarios.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Comentarios" /></span>
+							<!-- <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Comentarios" /> -->
+							<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Comentarios" />
+						</span>
 						<textarea id="comentarios" rows="1" class="form-control" name="comentarios" placeholder="[Comentarios]" ng-model="interesadoSeleccionado.comentario"></textarea>
 					</div>
 				</div>
@@ -248,11 +250,19 @@
 					<textarea type="text" class="form-control" ng-value="interesadoSeleccionado.situacionInscripcion" ng-readonly="true" placeholder="[Sin datos]"></textarea>
 				</div>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="¿Como conoció?" /></span>
 					<input type="text" class="form-control" ng-value="interesadoSeleccionado.comoConocio" ng-readonly="true" placeholder="[Sin datos]">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Medio de contacto para el registro como interesado"></i>
+					</span>
+					<input type="text" class="form-control" ng-value="interesadoSeleccionado.medioDeContacto.nombre" ng-readonly="true" placeholder="[Sin datos]">
 				</div>
 			</div>
 			<div class="col-md-6">

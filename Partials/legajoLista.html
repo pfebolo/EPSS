@@ -131,7 +131,8 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<span class="glyphicon glyphicon-pencil" aria-hidden="true" />&nbsp{{legajoSeleccionado.comentarios}}
+							<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true" /> -->
+							<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Comentario." />&nbsp{{legajoSeleccionado.comentarios}}
 						</td>
 					</tr>
 				</tbody>
@@ -309,8 +310,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td>
 							<span class="glyphicon glyphicon-question-sign" aria-hidden="true"  data-toggle="tooltip" title="Conocio por" />&nbsp{{legajoSeleccionado.alumno.comoConocio}}
+						</td>
+						<td>
+							<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Medio de Contacto" />&nbsp{{legajoSeleccionado.alumno.medioDeContacto.nombre}}
 						</td>
 					</tr>
 					<tr>
@@ -334,7 +338,9 @@
 						</tr>
 					<tr>
 							<td colspan="2">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"  data-toggle="tooltip" title="Comentario" />&nbsp{{legajoSeleccionado.alumno.comentario}}
+								<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"  data-toggle="tooltip" title="Comentario" /> -->
+								<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Comentario." />
+								&nbsp{{legajoSeleccionado.alumno.comentario}}
 							</td>
 					</tr>
 				</tbody>
