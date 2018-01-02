@@ -3,7 +3,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="alert alert-warning" ng-show="!cargando && !getLegajosOK && !getGruposOK">
+		<div class="alert alert-warning" ng-show="!cargando && error.hayError">
 			Los Legajos y/o los integrantes del grupo no fueron obtenidos, intente nuevamente.
 		</div>
 	</div>
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 </div>
-<div class="col-md-5" ng-show="!cargando && getLegajosOK && getGruposOK">
+<div class="col-md-5" ng-show="!cargando && !error.hayError">
 	<h2>Legajos&nbsp;
 		<span class="badge">{{legajos.length}}</span>
 	</h2>
@@ -26,13 +26,13 @@
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-filter"></span>
 			</span>
-			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro)>
+			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change="reseleccionar(legajos, nombreapellidoFiltro)">
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-filter"></span>
 			</span>
-			<input class="form-control" type="text" ng-model="legajosSeleccionados" ng-change=reseleccionarMasivo(legajosSeleccionados)>
+			<input class="form-control" type="text" ng-model="legajosSeleccionados" ng-change="reseleccionarMasivo(legajos, legajosSeleccionados)">
 		</div>
 	</div>
 	<div style="max-height: 390px; overflow-y: scroll;" id="lista">
@@ -61,7 +61,7 @@
 	</div>
 </div>
 
-<div class="col-md-7" ng-show="!cargando && getLegajosOK && getGruposOK">
+<div class="col-md-7" ng-show="!cargando && !error.hayError">
 		<table class="table table-striped">
 		<tbody>
 			<tr>
