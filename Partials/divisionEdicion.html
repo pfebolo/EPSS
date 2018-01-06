@@ -191,7 +191,7 @@
 					</div>
 					
 					<div class="text-right">
-						<button class="btn btn-primary " ng-click="promover(cursoEditando,divisionEditando) " ng-show="myForm.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal && divisionEditando.estadoDivisionId===estadoDivisionMap.Cursando" data-toggle="tooltip" title="Asignar a todos los estudiantes a un curso superior o egresarlos y cambiar el estado de la división a 'Terminado'.">Promover</button>
+						<button class="btn btn-primary " ng-click="seleccionarDivision() " ng-show="myForm.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal && divisionEditando.estadoDivisionId===estadoDivisionMap.Cursando" data-toggle="tooltip" title="Asignar a todos los estudiantes a un curso superior o egresarlos y cambiar el estado de la división a 'Terminado'.">Promover</button>
 						<button class="btn btn-primary " ng-click="iniciar(cursoEditando,divisionEditando) " ng-show="myForm.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal && divisionEditando.estadoDivisionId===estadoDivisionMap.EnPreparacion" data-toggle="tooltip" title="Cambiar el estado de la división a estado Cursando.">Iniciar</button>
 						<button class="btn btn-primary " ng-click="grabar(cursoEditando,divisionEditando) " ng-disabled="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">{{accionLabel}}</button>
 						<button class="btn btn-default " ng-click="cancelarEdicion() ">Cancelar</button>
@@ -260,7 +260,7 @@
 									</tr>
 								</thead>
 								<tbody style="max-height: 125px">
-									<tr ng-repeat="division in DivisionesDestinoPromocion" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
+									<tr ng-repeat="division in DivisionesDestinoPromocion" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarDivisionDestino(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
 										<td vertical-align="middle">
 											{{division.curso.anioInicio}}
 											<br> {{ordinales[division.curso.anioLectivo-1]}} año.
@@ -296,10 +296,10 @@
 
 				</div>
 				<div class="panel-footer ">
-					<div class="col-md-6 col-xs-3"></div>
+					<div class="col-md-6 col-xs-3">{{divisionDestino}}</div>
 					<div class="text-right">
-						<button class="btn btn-warning" ng-click="egresar(cursoEditando,divisionEditando)" ng-show="(selectedRow === null)">Egresar</button>
-						<button class="btn btn-primary" ng-click="promoverPP(cursoEditando,divisionEditando)" ng-show="(selectedRow !== null)">Promover</button>
+						<button class="btn btn-warning" ng-click="egresar(divisionEditando)" ng-show="(selectedRow === null)">Egresar</button>
+						<button class="btn btn-primary" ng-click="promover(divisionEditando,divisionDestino)" ng-show="(selectedRow !== null)">Promover</button>
 						<button class="btn btn-default" ng-click="closeModalPromover() ">Cancelar</button>
 					</div>
 				</div>
