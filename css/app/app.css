@@ -182,7 +182,7 @@ i.icon-danger:focus {
     top: 0px;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 200;
     border-style: solid;
     background: rgba(140, 114, 114, 0.1)
 }
