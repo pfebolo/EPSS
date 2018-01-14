@@ -25,13 +25,13 @@
     </div>
     <div class="col-md-12">
       <div class="col-md-3">
-        <select ng-options="estadoDivision as estadoDivision.estadoDivisionId for estadoDivision in estadosDivision" ng-model="estadoDivisionSeleccionado"></select>
+        <select ng-options="estadoDivision as estadoDivision.estadoDivisionId for estadoDivision in estadosDivision" ng-model="estadoDivisionSeleccionado" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
       </div>
       <div class="col-md-3">
-        <select ng-options="modo as modo.modoId for modo in modos" ng-model="modoSeleccionado"></select>
+        <select ng-options="modo as modo.modoId for modo in modos" ng-model="modoSeleccionado" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
       </div>
       <div class="col-md-6 text-right">
-        <select ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carreraSeleccionada"></select>
+        <select ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carreraSeleccionada" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
       </div>
     </div>
     <div>
@@ -108,7 +108,7 @@
   </div>
   <div class="col-md-5">
     <h2>Estudiantes
-      <span ng-show=(estadoDivisionSeleccionado.estadoDivisionId==='Cursando')>
+      <span ng-show=(estadoDivisionSeleccionado.estadoDivisionId!==$scope.estadoDivisionMap.Terminado)>
         <!-- estadoDivisionSeleccionado -->
         <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null"></i>
         <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null"></i>

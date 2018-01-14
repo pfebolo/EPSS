@@ -19,19 +19,19 @@
 
 
 <div ng-show="!cargando && !error.hayError">
-	<div class="col-md-7">
+	<div class="col-md-7 col-xs-9">
 		<form novalidate name="myForm" class="css-form" autocomplete="off">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					Ficha de División
 				</div>
 				<div class="panel-body no-gutter">
-					<div class="col-md-12">
+					<div class="col-sm-12">
 						<h3>Curso</h3>
 					</div>
 			
 					<!-- Carrera -->
-					<div class="col-md-6">
+					<div class="col-sm-6">
 						<div class="input-group" ng-class="myForm.carrera.$valid ? 'has-success' : 'has-error'" ng-hide="esEdicion()">
 							<span class="input-group-addon" data-toggle="tooltip" title="Carrera">
 								<span class="glyphicon glyphicon-home" aria-hidden="true" /></span>
@@ -46,7 +46,7 @@
 					</div>
 				
 					<!-- Modos: [Presencial , A Distancia] -->
-					<div class="col-md-6 ">
+					<div class="col-sm-6 ">
 						<div class="input-group " ng-class="myForm.modo.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon" data-toggle="tooltip" title="Modo de cursada">
 								<i class="fa fa-users" aria-hidden="true"></i>&thinsp;/
@@ -60,7 +60,7 @@
 					</div>
 
 					<!-- Anio Inicio-->
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="input-group" ng-class="myForm.anioInicio.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon ">
 								<i aria-hidden="true" data-toggle="tooltip" title="Año calendario en que se inicia el dictado el curso.">Año Inicio</i>
@@ -70,7 +70,7 @@
 					</div>
 
 					<!-- Mes Inicio-->
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="input-group" ng-class="myForm.mesInicio.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon ">
 								<i aria-hidden="true" data-toggle="tooltip" title="Mes Calendario en que se inicia el dictado del curso.">Mes Inicio</i>
@@ -80,7 +80,7 @@
 					</div>
 
 					<!-- Mes Final-->
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="input-group" ng-class="myForm.mesFinal.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal ? 'has-success' : 'has-error'">
 							<span class="input-group-addon ">
 								<i aria-hidden="true" data-toggle="tooltip" title="Mes Calendario en que finaliza el dictado del curso.">Mes Final</i>
@@ -91,7 +91,7 @@
 
 
 					<!-- Anio lectivo-->
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="input-group" ng-class="myForm.anioLectivo.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon ">
 								<i aria-hidden="true" data-toggle="tooltip" title="Año lectivo al cual pertenece el curso.">Año Lectivo</i>
@@ -101,7 +101,7 @@
 					</div>
 
 					<!-- mmestre Lectivo-->
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<div class="input-group" ng-class="myForm.mmestreLectivo.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon ">
 								<i aria-hidden="true" data-toggle="tooltip" title="Cuatrimestre lectivo al cual pertenece el curso.">Cuatrimestre Lectivo</i>
@@ -112,7 +112,7 @@
 
 
 					<!-- Comentario de Curso -->
-					<div class="col-md-12">
+					<div class="col-sm-12">
 						<div class="input-group " ng-class="myForm.comentarioCurso.$valid ? 'has-success' : 'has-error' ">
 							<span class="input-group-addon ">
 								<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre el curso." />
@@ -121,13 +121,13 @@
 						</div>
 					</div>
 
-					<div class="col-md-8">
-						<div class="col-md-12">
+					<div class="col-sm-8">
+						<div class="col-sm-12">
 							<h3>División</h3>
 						</div>
 
 						<!-- Turnos: [Mañana, Noche, Virtual] -->
-						<div class="col-md-9" ng-show="cursoEditando.modoId==='Presencial'">
+						<div class="col-sm-9" ng-show="cursoEditando.modoId==='Presencial'">
 							<div class="input-group " ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
 								<span class="input-group-addon" data-toggle="tooltip" title="Turno de cursada">
 									<i class="fa fa-users" aria-hidden="true"></i>
@@ -140,7 +140,7 @@
 						</div>
 
 						<!-- Division: [A,B,C...] -->
-						<div class="col-md-12">
+						<div class="col-sm-12">
 							<div class="input-group " ng-class="myForm.division.$valid ? 'has-success' : 'has-error'">
 								<span class="input-group-addon" data-toggle="tooltip" title="División de cursada">
 									<i class="fa fa-users" aria-hidden="true"></i>
@@ -153,17 +153,17 @@
 						</div>
 
 						<!-- Estado Division-->
-						<div class="col-md-6">
+						<div class="col-sm-6">
 							<div class="input-group" ng-class="'has-success'">
 								<span class="input-group-addon ">
 										<i class="fa fa-tachometer" aria-hidden="true" data-toggle="tooltip" title="Estado." />
 								</span>
-								<select class="form-control" ng-options="item as item.estadoDivisionId for item in estadosDivision" ng-model="estadoDivisionSeleccionado" ng-disabled="esEdicion()"></select>
+								<select class="form-control" ng-options="item as item.estadoDivisionId for item in estadosDivision" ng-model="estadoDivisionSeleccionado" ng-disabled="true"></select>
 							</div>
 						</div>
 
 						<!-- Comentario de División -->
-						<div class="col-md-12">
+						<div class="col-sm-12">
 							<div class="input-group " ng-class="myForm.comentarioDivision.$valid ? 'has-success' : 'has-error' ">
 								<span class="input-group-addon ">
 									<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre la división." />
@@ -174,7 +174,7 @@
 						</div>
 					</div>
 					
-					<div class="col-md-4">
+					<div class="col-sm-4">
 						<h3>Coordinación</h3>
 						<span ng-repeat="dispositivo in dispositivosXCarrera">
 							<span id="{{dispositivo.dispositivoId}}" droppable-area allow-droppable-area ng-dblclick="eliminarCoordinacion(dispositivo.dispositivoId)">
@@ -186,10 +186,13 @@
 
 
 				<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error' ">
-					<div class="col-md-8 ">
+					<div class="col-sm-6 ">
 						<span ng-show="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">El formulario está incompleto o con información incorrecta.</span>
 					</div>
+					
 					<div class="text-right">
+						<button class="btn btn-primary " ng-click="seleccionarDivision() " ng-show="myForm.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal && divisionEditando.estadoDivisionId===estadoDivisionMap.Cursando" data-toggle="tooltip" title="Asignar a todos los estudiantes a un curso superior o egresarlos y cambiar el estado de la división a 'Terminado'.">Promover</button>
+						<button class="btn btn-primary " ng-click="iniciar(cursoEditando,divisionEditando) " ng-show="myForm.$valid && cursoEditando.mesInicio<=cursoEditando.mesFinal && divisionEditando.estadoDivisionId===estadoDivisionMap.EnPreparacion" data-toggle="tooltip" title="Cambiar el estado de la división a estado Cursando.">Iniciar</button>
 						<button class="btn btn-primary " ng-click="grabar(cursoEditando,divisionEditando) " ng-disabled="!myForm.$valid || cursoEditando.mesInicio>cursoEditando.mesFinal">{{accionLabel}}</button>
 						<button class="btn btn-default " ng-click="cancelarEdicion() ">Cancelar</button>
 					</div>
@@ -197,7 +200,7 @@
 			</div>
 		</form>
 	</div>
-	<div class="col-md-5" >
+	<div class="col-md-5 col-xs-3" >
 		<span ng-repeat="coord in coordinadores">
 			<mi-coordinador-foto draggable-thing coordinador="coord"/>
 		</span>
@@ -206,20 +209,100 @@
 
 
 
-<!-- Modal -->
-<div class="divModalBase " ng-show="modalOpen ">
-	<div class="col-md-4 "></div>
-	<div class="col-md-4 " style='top: 33%'>
+<!-- Modal Base-->
+<div class="divModalBase" ng-show="modalBaseOpen">
+	<div class="col-sm-4 "></div>
+	<div class="col-sm-4 " style='top: 33%'>
 		<div class="panel panel-info ">
-			<div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i> &nbsp Ficha de Evento
+			<div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i> &nbsp Ficha de División
 			</div>
 			<div class="panel-body ">
-				{{msjModal}}.
+				{{msjModalBase}}.
 			</div>
 			<div class="panel-footer ">
-				<div class="col-md-9"></div>
-				<button class="btn btn-primary" ng-click="closeModal()" autofocus>cerrar</button>
+				<div class="col-sm-9"></div>
+				<button class="btn btn-primary" ng-click="closeModalBase()" autofocus>cerrar</button>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- Modal Promover-->
+<div class="divModalBase" ng-show="modalPromoverOpen">
+		<div class="col-md-3 col-xs-1"></div>
+		<div class="col-md-6 col-xs-10" style='top: 10%'>
+			<div class="panel panel-info ">
+				<div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i> &nbsp Lista de Divisiones Destino
+				</div>
+				<div class="panel-body ">
+					<div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>
+											Año
+										</th>
+										<th>
+											Cuatrimestre
+										</th>
+										<th>
+											Modalidad
+										</th>
+										<th>
+											Turno
+										</th>
+										<th>
+											Div
+										</th>
+										<th>
+											Coordinación
+										</th>
+									</tr>
+								</thead>
+								<tbody style="max-height: 125px">
+									<tr ng-repeat="division in DivisionesDestinoPromocion" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarDivisionDestino(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
+										<td vertical-align="middle">
+											{{division.curso.anioInicio}}
+											<br> {{ordinales[division.curso.anioLectivo-1]}} año.
+										</td>
+										<td vertical-align="middle">
+											{{meses[division.curso.mesInicio-1]}}-{{meses[division.curso.mesFinal-1]}}
+											<br> {{ordinales[division.curso.nmestreLectivo-1]}} Cuatrimestre.
+										</td>
+										<td vertical-align="middle">
+											{{division.modoId}}
+											<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null && division.curso.comentario!=''}}" />
+										</td>
+										<td vertical-align="middle">
+											{{division.turnoId !== 'Virtual' ? division.turnoId : null}}
+										</td>
+										<td data-toggle="tooltip" title="{{division.comentario}}">
+											{{division.divisionId}}
+											<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
+										</td>
+										<td>
+											<div class="media">
+												<div class="row">
+													<div class="col-md-6 col-xs-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division) | orderBy:'dispositivoId'">
+														<img class="media-object img-circle" class="" width="33" height="33" ng-src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" data-toogle="tooltip" title="{{coordinacion.dispositivoId + ': ' + coordinacion.coordinador.nombre}}">
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+				</div>
+				<div class="panel-footer ">
+					<div class="col-md-6 col-xs-3"></div>
+					<div class="text-right">
+						<button class="btn btn-warning" ng-click="egresar(divisionEditando)" ng-show="(selectedRow === null)">Egresar</button>
+						<button class="btn btn-primary" ng-click="promover(divisionEditando,divisionDestino)" ng-show="(selectedRow !== null)">Promover</button>
+						<button class="btn btn-default" ng-click="closeModalPromover() ">Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
