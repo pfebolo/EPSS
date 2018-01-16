@@ -109,9 +109,9 @@
   <div class="col-md-5">
     <h2>Estudiantes
       <span ng-show=(estadoDivisionSeleccionado.estadoDivisionId!==$scope.estadoDivisionMap.Terminado)>
-        <!-- estadoDivisionSeleccionado -->
         <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null"></i>
         <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null"></i>
+        <i class="fa fa-file-powerpoint-o  text-primary" aria-hidden="true" ng-click="irARegAsistenciaGrupo()" role="button" data-toggle="tooltip" title="Crear registro de asistencia para el Grupo." ng-hide="divisionSeleccionado===null"></i>
       </span>
     </h2>
     <div>
