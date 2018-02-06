@@ -1,4 +1,5 @@
 {
     "servidor": "http://localhost:5000/",
-    "PIN": 10000
+    "PIN": 10000,
+    "ingresanteMin": 5000 
 }
