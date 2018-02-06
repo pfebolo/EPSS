@@ -9,11 +9,21 @@
 	<i class="fa text-primary"  ng-class="{'fa-spinner': procesandoCSV, 'fa-pulse': procesandoCSV,'fa-file-excel-o': !procesandoCSV, 'fa-border': !procesandoCSV}" aria-hidden="true" ng-click="!procesandoCSV ? irABajarInteresado() : null" role="button" data-toggle="tooltip" title="Exportar a excel." id="bajando"><a id="ancla"></a></i>
 	</h2>
 	<div class="box-round">
-		<div class="col-md-6">
+		<div class="col-md-2">
+			<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-child" aria-hidden="true" data-toggle="tooltip" title="Mostrar solo Ingresantes"></i>
+					</span>
+					<span class="input-group-addon">
+						<input type="checkbox" aria-label="..." ng-model="soloIngresantes" ng-change=reseleccionar(nombreapellidoFiltro,filtrarSeguimiento,soloIngresantes)>
+					</span>
+				</div>			
+		</div>
+		<div class="col-md-4">
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro,filtrarSeguimiento)>
+			<input class="form-control" type="text" ng-model="nombreapellidoFiltro" ng-change=reseleccionar(nombreapellidoFiltro,filtrarSeguimiento,soloIngresantes)>
 		</div>
 	</div>
 	<div style="max-height: 425px; overflow-y: scroll;" id="lista">
