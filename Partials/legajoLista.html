@@ -159,17 +159,20 @@
 						<th class="col-sm-2 small">
 							Fecha-Hora
 						</th>
-						<th class="col-sm-10 small">
+						<th class="col-sm-9 small">
 							Comentario
+						</th>
+						<th class="col-sm-1 small">
+							<i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="showModalInteraccion(legajoSeleccionado)" role="button" data-toggle="tooltip" title="Dar de alta un nuevo comentario."></i>
 						</th>
 					</tr>
 				</thead>
-				<tbody ng-repeat="interaccion in interacciones">
+				<tbody ng-repeat="interaccion in interacciones | orderBy : interaccionId : true">
 					<tr>
 						<td class="col-sm-2 small">
 							{{interaccion.fecha | date:'dd/MM/yyyy - HH:mm'}}
 						</td>
-						<td class="col-sm-10">
+						<td class="col-sm-10" colspan=2>
 							{{interaccion.comentario}}
 						</td>
 					</tr>
@@ -454,3 +457,34 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+<!-- Modal - Interaccion de un estudiante-->
+<div class="divModalBase " ng-show="modalInteraccionOpen">
+  <div class="col-md-3 "></div>
+  <div class="col-md-6 " style='top: 33%'>
+    <div class="panel panel-info ">
+      <div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i>{{interaccionEditando.fecha | date:'dd/MM/yyyy - HH:mm'}}
+      </div>
+      <div class="panel-body">
+        <form novalidate name="myForm" class="css-form" autocomplete="off">
+          <div class="input-group" ng-class="'has-success'">
+            <span class="input-group-addon" data-toggle="tooltip" title="Comentario">Comentario</span>
+            <textarea class="form-control" name="interaccion" ng-model="interaccionEditando.comentario"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer ">
+        <div class="text-right">
+          <button class="btn btn-primary" ng-click="agregarInteraccion(interaccionEditando)" autofocus>Agregar</button>
+          <button class="btn btn-default" ng-click="closeModalInteraccion()" autofocus>Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal - Interaccion de un estudiante-->
