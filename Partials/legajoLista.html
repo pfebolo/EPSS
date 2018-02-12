@@ -172,8 +172,11 @@
 						<td class="col-sm-2 small">
 							{{interaccion.fecha | date:'dd/MM/yyyy - HH:mm'}}
 						</td>
-						<td class="col-sm-10" colspan=2>
+						<td class="col-sm-9">
 							{{interaccion.comentario}}
+						</td>
+						<td class="col-sm-1" >
+							<i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="eliminarInteraccion(interaccion)" ng-hide="((ahora - interaccion.interaccionId)>1200)" />
 						</td>
 					</tr>
 				</tbody>
