@@ -18,10 +18,12 @@
 <div class="container" ng-show="!cargando && !error.hayError">
   <div class="col-md-9">
     <div class="col-md-12">
-        <h2>
+        <h2 class="col-md-3">
           Distribución
-          <i class="fa fa-circle" ng-class="'rangoEtario-' + {{$index}}" ng-repeat="d in [].constructor(10) track by $index" aria-hidden="true" data-toggle="tooltip" title="{{$index.toString()+'x'}}"></i>
         </h2>
+        <div class="col-md-9">
+          <select ng-options="estadoDivision as estadoDivision.estadoDivisionId for estadoDivision in estadosDivision" ng-model="estadoDivisionSeleccionado" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
+        </div>
     </div>
     <div class="col-md-12">
       <div class="col-md-5">
@@ -51,7 +53,10 @@
               Coord
             </th>
             <th>
-              Estudiantes
+              Estudiantes&nbsp;<i class="fa fa-circle" ng-class="'rangoEtario-' + {{$index}}" ng-repeat="d in [].constructor(10) track by $index" aria-hidden="true" data-toggle="tooltip" title="{{$index.toString()+'x'}}"></i>
+            </th>
+            <th>
+              Resumen
             </th>
           </tr>
         </thead>
@@ -73,10 +78,14 @@
                 </div>
               </div>
             </td>
-            <td class="col-sm-9">
+            <td class="col-sm-8">
               <div class="row">
                  <i ng-repeat="estudiante in obtenerAlumnosXDivision(division)" class="fa fa-2x" ng-class="(estudiante.legajo.sexo==='Masculino' ? 'fa-male ' : 'fa-female ') + 'rangoEtario-' + obtenerRangoEtario(estudiante.legajo.fechaNacimiento)" aria-hidden="true" data-toggle="tooltip" title="{{estudiante.legajo.legajoNro}}/{{estudiante.legajo.sexo}}/{{estudiante.legajo.fechaNacimiento | date:'dd-MM-yyyy'}}/{{obtenerRangoEtario(estudiante.legajo.fechaNacimiento)}}"/>
               </div>
+            </td>
+            <td>
+              <span class="badge"><i class="fa fa-female" aria-hidden="true" />&nbsp;{{obtenerCantidadMujeres(division)}}</span>
+              <span class="badge"><i class="fa fa-male" aria-hidden="true" />&nbsp;{{obtenerCantidadHombres(division)}}</span>
             </td>
           </tr>
         </tbody>
@@ -86,9 +95,6 @@
   <div class="col-md-3">
     <h2>Estudiantes
       <span ng-show=(estadoDivisionSeleccionado.estadoDivisionId!==$scope.estadoDivisionMap.Terminado)>
-        <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null"></i>
-        <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null"></i>
-        <i class="fa fa-file-powerpoint-o  text-primary" aria-hidden="true" ng-click="irARegAsistenciaGrupo()" role="button" data-toggle="tooltip" title="Crear registro de asistencia para el Grupo." ng-hide="divisionSeleccionado===null"></i>
       </span>
     </h2>
     <div>
@@ -96,13 +102,10 @@
         <thead>
           <tr>
             <th>
-              L
+              Leg.
             </th>
             <th>
-              Nom
-            </th>
-            <th>
-              E
+              Nombre
             </th>
           </tr>
         </thead>
@@ -114,9 +117,6 @@
             </td>
             <td>
               {{grupo.legajo.alumno.apellido}},&nbsp{{grupo.legajo.alumno.nombre}}
-            </td>
-            <td>
-              {{grupo.legajo.estadoEstudianteId}}
             </td>
           </tr>
         </tbody>
