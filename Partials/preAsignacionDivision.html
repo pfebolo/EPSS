@@ -1,0 +1,148 @@
+<div class= "divSpinner" ng-show="cargando">
+    <div class="spinner" />
+</div>
+<div class="container">
+	<div class="row">
+    <div class="alert alert-warning" ng-show="!cargando && error.hayError">
+			Los datos de esta página no fueron procesados correctamente, intente nuevamente.
+    </div>
+  </div>
+  <div class="row">
+		<div class="alert alert-danger" ng-show="error.hayError">
+			<p ng-repeat="error in error.errores">
+				<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="container" ng-show="!cargando && !error.hayError">
+  <div class="col-md-9">
+    <div class="col-md-12">
+        <h2 class="col-md-3">
+          Distribución
+        </h2>
+        <div class="col-md-9">
+          <select ng-options="estadoDivision as estadoDivision.estadoDivisionId for estadoDivision in estadosDivision" ng-model="estadoDivisionSeleccionado" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
+        </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-5">
+        <select ng-options="carrera as carrera.descripcion for carrera in carreras" ng-model="carreraSeleccionada" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
+      </div>
+      <div class="col-md-2">
+        <select ng-options="modo as modo.modoId for modo in modos" ng-model="modoSeleccionado" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
+      </div>
+      <div class="col-md-2">
+        <select ng-options="turno as turno.turnoId for turno in turnos" ng-model="turnoSeleccionado" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
+      </div>
+      <div class="col-md-3">
+        <select ng-options="nmestre as nmestre.descripcion for nmestre in nmestres" ng-model="nmestreLectivoSeleccionado" ng-change="selectedRow = null;divisionSeleccionado=null"></select>
+      </div>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-right">
+              <span class="badge">{{(grupos | filter:filtroGrupos(carreraSeleccionada,modoSeleccionado,estadoDivisionSeleccionado,turnoSeleccionado,anioLectivoSeleccionado,nmestreLectivoSeleccionado.nmestreId)).length}}</span>
+            </th>
+            <th>
+              Div
+            </th>
+            <th>
+              Coord
+            </th>
+            <th>
+              Estudiantes&nbsp;<i class="fa fa-circle" ng-class="'rangoEtario-' + {{$index}}" ng-repeat="d in [].constructor(10) track by $index" aria-hidden="true" data-toggle="tooltip" title="{{$index.toString()+'x'}}"></i>
+            </th>
+            <th>
+              Resumen
+            </th>
+          </tr>
+        </thead>
+        <tbody style="max-height: 125px">
+          <tr ng-repeat="division in divisiones | filter:filtroDivisiones(carreraSeleccionada,modoSeleccionado,estadoDivisionSeleccionado,turnoSeleccionado,anioLectivoSeleccionado,nmestreLectivoSeleccionado.nmestreId)" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarGrupo(division)" ng-style="{'background-color':($index==selectedRow ? 'yellow':'')}">
+            <td class="text-right">
+              <span class="badge">{{obtenerCantidadAlumnos(division)}}</span>
+            </td>
+            <td>
+              {{division.divisionId}}
+              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
+            </td>
+            <td>
+              <div class="media">
+                <div class="row">
+                  <div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(division) | orderBy:'dispositivoId'">
+                    <img class="media-object img-circle" class="" width="33" height="33" ng-src="{{coordinacion.coordinador.fotoPath}}" onerror="this.onerror=null;this.src='img/Persona.png';" alt="{{coordinacion.coordinador.nombre}}" data-toogle="tooltip" title="{{coordinacion.dispositivoId + ': ' + coordinacion.coordinador.nombre}}">
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="col-sm-8">
+              <div class="row">
+                 <i ng-repeat="estudiante in obtenerAlumnosXDivision(division)" class="fa fa-2x" ng-class="(estudiante.legajo.sexo==='Masculino' ? 'fa-male ' : 'fa-female ') + 'rangoEtario-' + obtenerRangoEtario(estudiante.legajo.fechaNacimiento)" aria-hidden="true" data-toggle="tooltip" title="{{estudiante.legajo.legajoNro}}/{{estudiante.legajo.sexo}}/{{estudiante.legajo.fechaNacimiento | date:'dd-MM-yyyy'}}/{{obtenerRangoEtario(estudiante.legajo.fechaNacimiento)}}"/>
+              </div>
+            </td>
+            <td>
+              <span class="badge"><i class="fa fa-female" aria-hidden="true" />&nbsp;{{obtenerCantidadMujeres(division)}}</span>
+              <span class="badge"><i class="fa fa-male" aria-hidden="true" />&nbsp;{{obtenerCantidadHombres(division)}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h2>Estudiantes
+      <span ng-show=(estadoDivisionSeleccionado.estadoDivisionId!==$scope.estadoDivisionMap.Terminado)>
+      </span>
+    </h2>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Leg.
+            </th>
+            <th>
+              Nombre
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="grupo in grupos | filter:filtroDivision(divisionSeleccionado) |  orderBy:orderApellidoYNombre">
+            <td>
+              {{grupo.legajo.legajoNro}}
+            </td>
+            <td>
+              {{grupo.legajo.alumno.apellido}},&nbsp{{grupo.legajo.alumno.nombre}}
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="divModalBase " ng-show="modalOpen ">
+	<div class="col-md-4 "></div>
+	<div class="col-md-4 " style='top: 33%'>
+		<div class="panel panel-info ">
+			<div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i> &nbsp Ficha de Evento
+			</div>
+			<div class="panel-body ">
+				{{msjModal}}.
+			</div>
+			<div class="panel-footer ">
+				<div class="col-md-9"></div>
+				<button class="btn btn-primary" ng-click="closeModal()" autofocus>cerrar</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -279,3 +279,38 @@ border-top,.border-right,.border-bottom,.border-left,.border {
     div.A4           .sheet { width: 210mm; height: 297mm }
 
   }
+
+
+  
+.rangoEtario-0 {
+  color: rgb(204,204,204);
+}
+.rangoEtario-1 {
+  color: rgb(153,255,204);
+}
+.rangoEtario-2 {
+  color: rgb(204,204,153);
+}
+.rangoEtario-3 {
+  color: rgb(255,204,153);
+}
+.rangoEtario-4 {
+  color: rgb(204,153,255);
+}
+.rangoEtario-5 {
+  color: rgb(153,204,255);
+}
+.rangoEtario-6 {
+  color: rgb(255,153,204);
+}
+.rangoEtario-7 {
+  color: rgb(0,255,204);
+}
+.rangoEtario-8 {
+  color: rgb(204,204,255);
+}
+.rangoEtario-9 {
+  color: rgb(255,255,153);
+}
+
+
