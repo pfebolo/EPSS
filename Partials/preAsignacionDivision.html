@@ -82,12 +82,12 @@
               <div class="row">
                 <i ng-repeat="estudiante in obtenerAlumnosXDivision(division)" 
                 class="fa fa-2x" 
-                ng-class="(estudiante.legajo.sexo==='Masculino' ? 'fa-male ' : 'fa-female ') + 'rangoEtario-' + obtenerRangoEtario(estudiante.legajo.fechaNacimiento)" aria-hidden="true"  
+                ng-class="colorear(estudiante)" aria-hidden="true"  
                 data-toggle="popover"
                 data-original-title="<b>{{estudiante.legajo.alumno.apellido}},&nbsp{{estudiante.legajo.alumno.nombre}}</b>"
                 data-selector="true"
                 data-html="true" 
-                data-content="Legajo:{{estudiante.legajo.legajoNro}}<br>Edad:{{obtenerEdad(estudiante.legajo.fechaNacimiento)}}" 
+                data-content="{{popoverContent(estudiante)}}" 
                 data-trigger="hover"
                 data-placement="bottom">
                 </i>

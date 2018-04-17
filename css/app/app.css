@@ -312,5 +312,7 @@ border-top,.border-right,.border-bottom,.border-left,.border {
 .rangoEtario-9 {
   color: rgb(255,255,153);
 }
-
+.subrrayado {
+  text-decoration: underline;
+}
 
