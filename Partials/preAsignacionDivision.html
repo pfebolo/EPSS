@@ -80,7 +80,17 @@
             </td>
             <td class="col-sm-8">
               <div class="row">
-                 <i ng-repeat="estudiante in obtenerAlumnosXDivision(division)" class="fa fa-2x" ng-class="(estudiante.legajo.sexo==='Masculino' ? 'fa-male ' : 'fa-female ') + 'rangoEtario-' + obtenerRangoEtario(estudiante.legajo.fechaNacimiento)" aria-hidden="true" data-toggle="tooltip" title="{{estudiante.legajo.legajoNro}}/{{estudiante.legajo.sexo}}/{{estudiante.legajo.fechaNacimiento | date:'dd-MM-yyyy'}}/{{obtenerRangoEtario(estudiante.legajo.fechaNacimiento)}}"/>
+                <i ng-repeat="estudiante in obtenerAlumnosXDivision(division)" 
+                class="fa fa-2x" 
+                ng-class="colorear(estudiante)" aria-hidden="true"  
+                data-toggle="popover"
+                data-original-title="<b>{{estudiante.legajo.alumno.apellido}},&nbsp{{estudiante.legajo.alumno.nombre}}</b>"
+                data-selector="true"
+                data-html="true" 
+                data-content="{{popoverContent(estudiante)}}" 
+                data-trigger="hover"
+                data-placement="bottom">
+                </i>
               </div>
             </td>
             <td>
