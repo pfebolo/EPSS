@@ -206,16 +206,7 @@
 							<span class="input-group-addon">Femenino</span>
 							<span class="input-group-addon"><input type="radio" name="r" ng-click="legajoSeleccionado.sexo='Masculino'" ng-checked="legajoSeleccionado.sexo==='Masculino'" ></span>
 							<span class="input-group-addon">Masculino</span>
-						</div>
-					</div>
-				</div>
-
-
-
-				<div class="row">
-					<div class="col-md-12">
-						<div class="input-group" ng-class="'has-success'">
-							<span class="input-group-addon">Secundario Completo O ley mayor a 25 años</span>
+							<span class="input-group-addon">Sec Completo O ley 25 años</span>
 							<span class="input-group-addon"><input type="checkbox" ng-model="legajoSeleccionado.secundarioCompletoOley25"></span>
 						</div>
 					</div>
@@ -319,6 +310,43 @@
 
 			<div class="panel-footer">
 				<div ng-show="!myForm.$valid">¡Hay errores en el formulario!</div>
+			</div>
+		</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4 class="text-right">&nbspDatos Inscripción</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-6">
+					<div class="input-group" ng-class="'has-success'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Año A Cursar">Año</span>
+						<select class="form-control" ng-options="item as item.descripcion for item in anios" ng-model="anioAcursar"></select>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="input-group" ng-class="'has-success'">
+						<span class="input-group-addon" data-toggle="tooltip" required title="Cuatrimestre a cursar">Cuatrimestre</span>
+						<select class="form-control" ng-options="item as item.descripcion for item in nmestres" ng-model="nmestreAcursar"></select>
+					</div>
+				</div>
+
+				<div class="col-md-5">
+					<div class="input-group" ng-class="'has-success'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Modalidad">Modalidad</span>
+						<select class="form-control" ng-options="item as item.descripcion for item in modalidades" ng-model="modalidad"></select>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="input-group" ng-hide="modalidad.id!==1" ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" title="Turno (solo para presencial)">Turno</span>
+						<select class="form-control" ng-required="modalidad.id===1" name="turno" ng-options="item as item.descripcion for item in turnos" ng-model="turno"></select>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				...
 			</div>
 		</div>
 	</div>
