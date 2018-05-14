@@ -337,7 +337,19 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad" />&nbsp{{legajoSeleccionado.alumno.modalidad.nombre}}
+							<i class="fa fa-university fa-fw" aria-hidden="true" data-toggle="tooltip" title="Carrera a cursar"></i>&nbsp{{legajoSeleccionado.alumno.carrera.descripcion}}
+						</td>
+						<td>
+							<i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" title="Inscripto para empezar a cursar en el año y cuatrimestre indicado, de la carrera"></i>
+							<span ng-show="legajoSeleccionado.alumno.anioAcursar!==null">
+								{{legajoSeleccionado.alumno.anioAcursar}}{{legajoSeleccionado.alumno.anioAcursar===2 ? 'do' : 'er'}}&nbspaño,&nbsp{{legajoSeleccionado.alumno.nmestreAcursar}}{{legajoSeleccionado.alumno.nmestreAcursar===1 ? 'er' : 'do'}}&nbspcuatrimeste.
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- <span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad" />&nbsp{{legajoSeleccionado.alumno.modalidad.nombre}} -->
+							<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" title="Modalidad" />&nbsp{{legajoSeleccionado.alumno.modalidad.nombre}}{{legajoSeleccionado.alumno.modalidad.id===1 && legajoSeleccionado.alumno.turno!==null ? ',&nbsp'.concat(legajoSeleccionado.alumno.turno) : null }}
 						</td>
 						<td>
 							<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" data-toggle="tooltip" title="Grado de Interés" />&nbsp{{legajoSeleccionado.alumno.gradoInteres}}
@@ -360,19 +372,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<i class="fa fa-university fa-fw" aria-hidden="true" data-toggle="tooltip" title="Carrera a cursar"></i>&nbsp{{legajoSeleccionado.alumno.carrera.descripcion}}
-						</td>
-						<td>
-							<i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" title="Inscripto para empezar a cursar en el año y cuatrimestre indicado, de la carrera"></i>
-							<span ng-show="legajoSeleccionado.alumno.anioAcursar!==null">
-								{{legajoSeleccionado.alumno.anioAcursar}}{{legajoSeleccionado.alumno.anioAcursar===2 ? 'do' : 'er'}}&nbspaño,&nbsp{{legajoSeleccionado.alumno.nmestreAcursar}}{{legajoSeleccionado.alumno.nmestreAcursar===1 ? 'er' : 'do'}}&nbspcuatrimeste.
-							</span>
-						</td>
-					</tr>
-					<tr>
 						<td colspan="2">
-							<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"  data-toggle="tooltip" title="Comentario" /> -->
 							<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Comentario." /> &nbsp{{legajoSeleccionado.alumno.comentario}}
 						</td>
 					</tr>
