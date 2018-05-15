@@ -312,7 +312,7 @@
 				<div ng-show="!myForm.$valid">¡Hay errores en el formulario!</div>
 			</div>
 		</div>
-		<div class="panel panel-primary">
+		<div class="panel panel-primary" >
 			<div class="panel-heading">
 				<h4 class="text-right">&nbspDatos Inscripción</h4>
 			</div>
@@ -320,28 +320,28 @@
 				<div class="col-md-6">
 					<div class="input-group" ng-class="'has-success'">
 						<span class="input-group-addon" data-toggle="tooltip" title="Año A Cursar">Año</span>
-						<select class="form-control" ng-options="item as item.descripcion for item in anios" ng-model="anioAcursar"></select>
+						<select class="form-control" ng-options="item as item.descripcion for item in anios" ng-model="anioAcursar" ng-disabled="editarInscripcion"></select>
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="'has-success'">
 						<span class="input-group-addon" data-toggle="tooltip" required title="Cuatrimestre a cursar">Cuatrimestre</span>
-						<select class="form-control" ng-options="item as item.descripcion for item in nmestres" ng-model="nmestreAcursar"></select>
+						<select class="form-control" ng-options="item as item.descripcion for item in nmestres" ng-model="nmestreAcursar" ng-disabled="editarInscripcion"></select>
 					</div>
 				</div>
 
 				<div class="col-md-5">
 					<div class="input-group" ng-class="'has-success'">
 						<span class="input-group-addon" data-toggle="tooltip" title="Modalidad">Modalidad</span>
-						<select class="form-control" ng-options="item as item.descripcion for item in modalidades" ng-model="modalidad"></select>
+						<select class="form-control" ng-options="item as item.descripcion for item in modalidades" ng-model="modalidad" ng-disabled="editarInscripcion"></select>
 					</div>
 				</div>
 
 				<div class="col-md-4">
 					<div class="input-group" ng-hide="modalidad.id!==1" ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon" data-toggle="tooltip" title="Turno (solo para presencial)">Turno</span>
-						<select class="form-control" ng-required="modalidad.id===1" name="turno" ng-options="item as item.descripcion for item in turnos" ng-model="turno"></select>
+						<select class="form-control" ng-required="modalidad.id===1" name="turno" ng-options="item as item.descripcion for item in turnos" ng-model="turno" ng-disabled="editarInscripcion"></select>
 					</div>
 				</div>
 			</div>
