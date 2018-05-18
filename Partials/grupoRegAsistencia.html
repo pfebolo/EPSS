@@ -43,7 +43,7 @@
 							<div class="row">
 								<div class="col-md-6" ng-repeat="coordinacion in coordinaciones | filter:filtroDivision(grupoEditando)">
 									<img class="media-object img-circle" width="33" height="33" ng-src="{{coordinacion.coordinador.fotoPath}}" alt="{{coordinacion.coordinador.nombre}}" onerror="this.onerror=null;this.src='img/Persona.png';" data-toogle="tooltip" title="{{coordinacion.coordinador.nombre}}" ng-click="setProfesora(coordinacion.coordinador.nombre)">
-								</div>
+								</div> 
 							</div>
 						</div>
 					</td>
@@ -55,7 +55,7 @@
 					<td colspan="2">
 						<div class="input-group date form_datetimeINI" >
 							<span class="input-group-addon ">
-								<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" title="Fecha inicial de cursada"></i>
+								<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha inicial de cursada"></i>
 							</span>
 							<input type="text" class="form-control" name="fecha" ng-model="fechaINI" readonly required ng-change="calcularDias(fechaINI,fechaFIN)" />
 						</div>
@@ -72,7 +72,7 @@
 						<!-- Fecha-->
 						<div class="input-group date form_datetimeFIN">
 							<span class="input-group-addon ">
-								<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" title="Fecha final de cursada"></i>
+								<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha final de cursada"></i>
 							</span>
 							<input type="text" class="form-control" name="fecha" ng-model="fechaFIN" readonly required ng-change="calcularDias(fechaINI,fechaFIN)" />
 						</div>
@@ -90,7 +90,7 @@
 					<td colspan="7">
 						<div class="input-group">
 							<span class="input-group-addon">
-								<span class="glyphicon glyphicon-home" data-toggle="tooltip" title="Asignatura"></span>
+								<span class="glyphicon glyphicon-home" data-toggle="tooltip" data-original-title="Asignatura"></span>
 							</span>
 							<input id="asignatura" type="text" class="form-control" name="asignatura" placeholder="[Asignatura]" ng-model="asignatura">
 						</div>

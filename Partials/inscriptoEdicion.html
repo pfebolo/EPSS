@@ -40,7 +40,7 @@
 				<div class="col-md-3">
 					<div class="input-group" ng-class="myForm.dni.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<i class="fa fa-id-card" aria-hidden="true" data-toggle="tooltip" title="Nro de DNI"></i>
+							<i class="fa fa-id-card" aria-hidden="true" data-toggle="tooltip" data-original-title="Nro de DNI"></i>
 						</span>
 						<input id="dni" type="text" class="form-control" name="dni" required placeholder="[Nro. DNI]" ng-model="interesadoSeleccionado.dni" autofocus pattern="^\d{1,8}$">
 					</div>
@@ -48,14 +48,14 @@
 
 				<div class="col-md-5">
 					<div class="input-group" ng-class="'has-success'">
-						<span class="input-group-addon" data-toggle="tooltip" title="Modalidad">Modalidad</span>
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Modalidad">Modalidad</span>
 						<select class="form-control" ng-options="item as item.descripcion for item in modalidades" ng-model="modalidad"></select>
 					</div>
 				</div>
 
 				<div class="col-md-4">
 					<div class="input-group" ng-hide="modalidad.id!==1" ng-class="myForm.turno.$valid ? 'has-success' : 'has-error'">
-						<span class="input-group-addon" data-toggle="tooltip" title="Turno (solo para presencial)">Turno</span>
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Turno (solo para presencial)">Turno</span>
 						<select class="form-control" ng-required="modalidad.id===1" name="turno" ng-options="item as item.descripcion for item in turnos" ng-model="turno"></select>
 					</div>
 				</div>
@@ -64,14 +64,14 @@
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="'has-success'">
-						<span class="input-group-addon" data-toggle="tooltip" title="Año A Cursar">Año</span>
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Año A Cursar">Año</span>
 						<select class="form-control" ng-options="item as item.descripcion for item in anios" ng-model="anio"></select>
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="input-group" ng-class="'has-success'">
-						<span class="input-group-addon" data-toggle="tooltip" required title="Cuatrimestre a cursar">Cuatrimestre</span>
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Cuatrimestre a cursar" required>Cuatrimestre</span>
 						<select class="form-control" ng-options="item as item.descripcion for item in nmestres" ng-model="nmestre"></select>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-send" data-toggle="tooltip" title="1er E-Mail"></span>
+							<span class="glyphicon glyphicon-send" data-toggle="tooltip" data-original-title="1er E-Mail"></span>
 						</span>
 						<input id="email" type="text" class="form-control" name="email" placeholder="[1er Email]" ng-model="interesadoSeleccionado.mail" pattern="^(?:(?:[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+(?:(?:\.(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)*&quot;|[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+))*\.[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+)?)|(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)+&quot;))@(?:[a-zA-Z\d\-]+(?:\.[a-zA-Z\d\-]+)*|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])$">
 					</div>
@@ -88,7 +88,7 @@
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.email2.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<span class="fa fa-check-circle-o" data-toggle="tooltip" title="Estado de envío de e-mail de Bienvenida"></span>
+							<span class="fa fa-check-circle-o" data-toggle="tooltip" data-original-title="Estado de envío de e-mail de Bienvenida"></span>
 						</span>
 						<input id="email2" type="text" class="form-control" name="email2" ng-model="interesadoSeleccionado.mail2" ng-readonly="true">
 					</div>
@@ -97,7 +97,7 @@
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.telefono.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-earphone" data-toggle="tooltip" title="N° de teléfono fijo"></span>
+							<span class="glyphicon glyphicon-earphone" data-toggle="tooltip" data-original-title="N° de teléfono fijo"></span>
 						</span>
 						<input id="telefono" type="text" class="form-control" name="telefono" placeholder="[N° de teléfono fijo]" ng-model="interesadoSeleccionado.telefono" pattern="^0{0,1}[123456789]\d{9}$|^[123456789]\d{7}$|^0{0,1}[123456789]\d-\d{4}-\d{4}$|^[123456789]\d{3}-\d{4}$|^0{0,1}[123456789]\d{2}-\d{3}-\d{4}$">
 					</div>
@@ -106,7 +106,7 @@
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.celular.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-phone" data-toggle="tooltip" title="N° de teléfono celular"></span>
+							<span class="glyphicon glyphicon-phone" data-toggle="tooltip" data-original-title="N° de teléfono celular"></span>
 						</span>
 						<input id="celular" type="text" class="form-control" name="celular" placeholder="[N° de teléfono celular]" ng-model="interesadoSeleccionado.celular" pattern="^0{0,1}[123456789]\d{11}$|^[123456789]\d{9}$|^0{0,1}[123456789]\d-15-\d{4}-\d{4}$|^15-[123456789]\d{3}-\d{4}$|^0{0,1}[123456789]\d{2}-15-\d{3}-\d{4}$">
 					</div>
@@ -115,7 +115,7 @@
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.calle.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<span class="glyphicon glyphicon-home" data-toggle="tooltip" title="Domicilio declarado"></span>
+							<span class="glyphicon glyphicon-home" data-toggle="tooltip" data-original-title="Domicilio declarado"></span>
 						</span>
 						<input id="calle" type="text" class="form-control" name="calle" placeholder="[Domicilio]" ng-model="interesadoSeleccionado.domicilio" ng-required="modalidad.id===2">
 					</div>
@@ -123,9 +123,9 @@
 
 				<div class="col-md-2">
 					<div class="input-group" ng-class="'has-success'">
-						<!--<input type="text"  class="form-control checkbox-title-has-success" ng-readonly="true" value="Titulo" data-toggle="tooltip" title="¿Entrega fotocopia de título secundario?" >-->
+						<!--<input type="text"  class="form-control checkbox-title-has-success" ng-readonly="true" value="Titulo" data-toggle="tooltip" data-original-title="¿Entrega fotocopia de título secundario?" >-->
 						<span class="input-group-addon">
-							<i class="fa fa-graduation-cap" aria-hidden="true" data-toggle="tooltip" title="¿Entrega fotocopia de título secundario?"></i>
+							<i class="fa fa-graduation-cap" aria-hidden="true" data-toggle="tooltip" data-original-title="¿Entrega fotocopia de título secundario?"></i>
 						</span>
 						<span class="input-group-addon">
 							<input type="checkbox" aria-label="..." ng-model="docAPresentar.docTitulo">
@@ -135,9 +135,9 @@
 
 				<div class="col-md-2">
 					<div class="input-group" ng-class="'has-success'">
-						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="DNI" data-toggle="tooltip" title="¿Entrega fotocopia de DNI?" >-->
+						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="DNI" data-toggle="tooltip" data-original-title="¿Entrega fotocopia de DNI?" >-->
 						<span class="input-group-addon">
-							<i class="fa fa-id-card-o" aria-hidden="true" data-toggle="tooltip" title="¿Entrega fotocopia de DNI?"></i>
+							<i class="fa fa-id-card-o" aria-hidden="true" data-toggle="tooltip" data-original-title="¿Entrega fotocopia de DNI?"></i>
 						</span>
 						<span class="input-group-addon">
 							<input type="checkbox" aria-label="..." ng-model="docAPresentar.docDni">
@@ -147,9 +147,9 @@
 
 				<div class="col-md-2">
 					<div class="input-group" ng-class="'has-success'">
-						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Apto Físico" data-toggle="tooltip" title="¿Entrega apto físico?" >-->
+						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Apto Físico" data-toggle="tooltip" data-original-title="¿Entrega apto físico?" >-->
 						<span class="input-group-addon">
-							<i class="fa fa-heartbeat" aria-hidden="true" data-toggle="tooltip" title="¿Entrega apto físico?"></i>
+							<i class="fa fa-heartbeat" aria-hidden="true" data-toggle="tooltip" data-original-title="¿Entrega apto físico?"></i>
 						</span>
 						<span class="input-group-addon">
 							<input type="checkbox" aria-label="..." ng-model="docAPresentar.docAptoFisico">
@@ -159,9 +159,9 @@
 
 				<div class="col-md-2">
 					<div class="input-group" ng-class="'has-success'">
-						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Foto" data-toggle="tooltip" title="¿Entrega foto de perfil?" >-->
+						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Foto" data-toggle="tooltip" data-original-title="¿Entrega foto de perfil?" >-->
 						<span class="input-group-addon">
-							<i class="fa fa-camera" aria-hidden="true" data-toggle="tooltip" title="¿Entrega foto de perfil?"></i>
+							<i class="fa fa-camera" aria-hidden="true" data-toggle="tooltip" data-original-title="¿Entrega foto de perfil?"></i>
 						</span>
 						<span class="input-group-addon">
 							<input type="checkbox" aria-label="..." ng-model="docAPresentar.docFoto">
@@ -171,9 +171,9 @@
 
 				<div class="col-md-2">
 					<div class="input-group" ng-class="'has-success'">
-						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Compromiso" data-toggle="tooltip" title="¿Firmó el acta de compromiso?" >-->
+						<!--<input type="text" class="form-control checkbox-title-has-success"  ng-readonly="true" value="Compromiso" data-toggle="tooltip" data-original-title="¿Firmó el acta de compromiso?" >-->
 						<span class="input-group-addon">
-							<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="¿Firmó el acta de compromiso?"></i>
+							<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" data-original-title="¿Firmó el acta de compromiso?"></i>
 						</span>
 						<span class="input-group-addon">
 							<input type="checkbox" aria-label="..." ng-model="docAPresentar.docCompromiso">
@@ -193,8 +193,8 @@
 				<div class="col-md-12">
 					<div class="input-group" ng-class="myForm.comentarios.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon">
-							<!-- <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Comentarios" /> -->
-							<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Comentarios" />
+							<!-- <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Comentarios" /> -->
+							<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Comentarios" />
 						</span>
 						<textarea id="comentarios" rows="1" class="form-control" name="comentarios" placeholder="[Comentarios]" ng-model="interesadoSeleccionado.comentario"></textarea>
 					</div>
@@ -231,7 +231,7 @@
 			<div class="col-md-12">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="fa fa-university fa-fw" data-toggle="tooltip" title="Carrera a cursar" /></span>
+						<span class="fa fa-university fa-fw" data-toggle="tooltip" data-original-title="Carrera a cursar" /></span>
 						<input type="text" class="form-control" ng-value="interesadoSeleccionado.carrera.descripcion" ng-readonly="true" placeholder="[Sin datos]">
 					
 				</div>
@@ -239,28 +239,28 @@
 			<div class="col-md-12">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-bell" data-toggle="tooltip" title="Situación Especial" /></span>
+						<span class="glyphicon glyphicon-bell" data-toggle="tooltip" data-original-title="Situación Especial" /></span>
 					<textarea class="form-control" ng-value="interesadoSeleccionado.situacionEspecial" ng-readonly="true" placeholder="[Sin datos]"></textarea>
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Situación de Inscripción" /></span>
+						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-original-title="Situación de Inscripción" /></span>
 					<textarea type="text" class="form-control" ng-value="interesadoSeleccionado.situacionInscripcion" ng-readonly="true" placeholder="[Sin datos]"></textarea>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" title="¿Como conoció?" /></span>
+						<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-original-title="¿Como conoció?" /></span>
 					<input type="text" class="form-control" ng-value="interesadoSeleccionado.comoConocio" ng-readonly="true" placeholder="[Sin datos]">
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Medio de contacto para el registro como interesado"></i>
+						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Medio de contacto para el registro como interesado"></i>
 					</span>
 					<input type="text" class="form-control" ng-value="interesadoSeleccionado.medioDeContacto.nombre" ng-readonly="true" placeholder="[Sin datos]">
 				</div>
@@ -268,28 +268,28 @@
 			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-globe" data-toggle="tooltip" title="Provincia" /></span>
+						<span class="glyphicon glyphicon-globe" data-toggle="tooltip" data-original-title="Provincia" /></span>
 					<input type="text" class="form-control" ng-value="interesadoSeleccionado.provincia" ng-readonly="true">
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-sort" data-toggle="tooltip" title="Grado de interés" /></span>
+						<span class="glyphicon glyphicon-sort" data-toggle="tooltip" data-original-title="Grado de interés" /></span>
 					<input type="text" class="form-control" ng-value="interesadoSeleccionado.gradoInteres" ng-readonly="true">
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Fecha de consulta inicial" /></span>
+						<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-original-title="Fecha de consulta inicial" /></span>
 					<input type="text" class="form-control" ng-value="(interesadoSeleccionado.fechaInteresadoOriginal | date:'dd/MM/yyyy')" ng-readonly="true">
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Fecha de inscripción" /></span>
+						<span class="glyphicon glyphicon-calendar" data-toggle="tooltip" data-original-title="Fecha de inscripción" /></span>
 					<input type="text" class="form-control" ng-value="(interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy')" ng-readonly="true">
 				</div>
 			</div>

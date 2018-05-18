@@ -19,7 +19,7 @@
 				<!-- Título -->
 				<div class="col-md-6">
 					<div class="input-group " ng-class="myForm.titulo.$valid ? 'has-success' : 'has-error' ">
-						<span class="input-group-addon" data-toggle="tooltip" title="Título del evento" >§</span>
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Título del evento" >§</span>
 						<input type="text" class="form-control" name="titulo" required placeholder="[Título] " ng-model="eventoEditando.titulo">
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 				<!-- Tipo de Evento: [Presencia , Virtual] -->
 				<div class="col-md-4 ">
 					<div class="input-group " ng-class="myForm.tipoEvento.$valid ? 'has-success' : 'has-error'">
-						<span class="input-group-addon" data-toggle="tooltip" title="Tipo de Evento">
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Tipo de Evento">
 							<i class="fa fa-users" aria-hidden="true"></i>&thinsp;/
 							<i class="fa fa-desktop" aria-hidden="true"></i>
 						</span>
@@ -42,7 +42,7 @@
 				<div class="col-md-6">
 					<div class="input-group" ng-class="myForm.fecha.$valid ? 'has-success' : 'has-error'">
 						<span class="input-group-addon ">
-							<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" title="Fecha del evento"></i>
+							<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha del evento"></i>
 						</span>
 						<input type="text" class="form-control" name="fecha" placeholder="[aaaa-mm-dd]" ng-model="eventoEditando.fecha" min="1917-01-01" max="2035-12-31" required/>
 					</div>
@@ -51,7 +51,7 @@
 				<!-- Lugar -->
 				<div class="col-md-5">
 					<div class="input-group" ng-class="myForm.lugar.$valid ? 'has-success' : 'has-error'">
-						<span class="input-group-addon" data-toggle="tooltip" title="Lugar del evento"><span class="glyphicon glyphicon-home" aria-hidden="true" /></span>
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Lugar del evento"><span class="glyphicon glyphicon-home" aria-hidden="true" /></span>
 						<input type="text" ng-model="lugar.id" name="lugar" ng-hide="true" required/>
 						<select class="form-control" ng-options="lugar as lugar.nombre for lugar in lugares" ng-model="lugar"></select>
 					</div>
@@ -61,8 +61,8 @@
 				<div class="col-md-12">
 					<div class="input-group " ng-class="myForm.observacion.$valid ? 'has-success' : 'has-error' ">
 						<span class="input-group-addon ">
-							<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Observación o comentario sobre la realización del evento." /> -->
-							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="Observación o comentario sobre la realización del evento." />
+							<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-original-title="Observación o comentario sobre la realización del evento." /> -->
+							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="Observación o comentario sobre la realización del evento." />
 						</span>
 						<input type="text" class="form-control" name="observacion" placeholder="[Observación/Comentario] " ng-model="eventoEditando.observacion">
 					</div>
