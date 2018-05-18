@@ -20,7 +20,7 @@
     <div class="col-md-12">
         <h2>
           Divisiones
-          <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearDivision()" role="button" data-toggle="tooltip" title="Dar de alta una nueva División."></i>
+          <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearDivision()" role="button" data-toggle="tooltip" data-original-title="Dar de alta una nueva División."></i>
         </h2>
     </div>
     <div class="col-md-12">
@@ -75,14 +75,14 @@
             </td>
             <td vertical-align="middle">
               {{division.modoId}}
-              <i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null && division.curso.comentario!=''}}" />
+              <i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" data-original-title="{{division.curso.comentario}}" ng-show="{{division.curso.comentario!=null && division.curso.comentario!=''}}" />
             </td>
             <td vertical-align="middle">
               {{division.turnoId !== 'Virtual' ? division.turnoId : null}}
             </td>
-            <td data-toggle="tooltip" title="{{division.comentario}}">
+            <td vertical-align="middle"">
               {{division.divisionId}}
-              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
+              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
             </td>
             <td>
               <div class="media">
@@ -109,9 +109,9 @@
   <div class="col-md-5">
     <h2>Estudiantes
       <span ng-show=(estadoDivisionSeleccionado.estadoDivisionId!==$scope.estadoDivisionMap.Terminado)>
-        <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" title="Editar un Grupo." ng-hide="divisionSeleccionado===null"></i>
-        <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null"></i>
-        <i class="fa fa-file-powerpoint-o  text-primary" aria-hidden="true" ng-click="irARegAsistenciaGrupo()" role="button" data-toggle="tooltip" title="Crear registro de asistencia para el Grupo." ng-hide="divisionSeleccionado===null"></i>
+        <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irAEditarGrupo()" role="button" data-toggle="tooltip" data-original-title="Editar un Grupo." ng-hide="divisionSeleccionado===null"></i>
+        <i class="fa fa-file-text-o text-primary" aria-hidden="true" ng-click="irAActaVolanteGrupo()" role="button" data-toggle="tooltip" data-original-title="Crear una acta volante para el Grupo." ng-hide="divisionSeleccionado===null"></i>
+        <i class="fa fa-file-powerpoint-o  text-primary" aria-hidden="true" ng-click="irARegAsistenciaGrupo()" role="button" data-toggle="tooltip" data-original-title="Crear registro de asistencia para el Grupo." ng-hide="divisionSeleccionado===null"></i>
       </span>
     </h2>
     <div>

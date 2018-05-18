@@ -62,20 +62,20 @@
 						<span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp{{inscriptoSeleccionado.mail.replace("%40","@")}}
 					</div>
 					<div class="col-md-6">
-						<i class="fa fa-check-circle-o" aria-hidden="true" data-toggle="tooltip" title="Estado de envío de e-mail de Bienvenida"></i>&nbsp{{inscriptoSeleccionado.mail2}}
+						<i class="fa fa-check-circle-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Estado de envío de e-mail de Bienvenida"></i>&nbsp{{inscriptoSeleccionado.mail2}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip" title="Télefono Fijo" />&nbsp{{inscriptoSeleccionado.telefono}}
+						<span class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip" data-original-title="Télefono Fijo" />&nbsp{{inscriptoSeleccionado.telefono}}
 					</div>
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-phone" aria-hidden="true"  data-toggle="tooltip" title="Télefono Celular" />&nbsp{{inscriptoSeleccionado.celular}}
+						<span class="glyphicon glyphicon-phone" aria-hidden="true"  data-toggle="tooltip" data-original-title="Télefono Celular" />&nbsp{{inscriptoSeleccionado.celular}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-12">
-						<i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" title="Inscripto para empezar a cursar en el año y cuatrimestre indicado, de la carrera"></i>
+						<i class="fa fa-calendar" aria-hidden="true" data-toggle="tooltip" data-original-title="Inscripto para empezar a cursar en el año y cuatrimestre indicado, de la carrera"></i>
 						<span ng-show="inscriptoSeleccionado.anioAcursar!==null">
 							{{inscriptoSeleccionado.anioAcursar}}{{inscriptoSeleccionado.anioAcursar===2 ? 'do' : 'er'}}&nbspaño,&nbsp{{inscriptoSeleccionado.nmestreAcursar}}{{inscriptoSeleccionado.nmestreAcursar===1 ? 'er' : 'do'}}&nbspcuatrimeste.
 						</span>
@@ -83,62 +83,62 @@
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-home" aria-hidden="true"  data-toggle="tooltip" title="Domicilio" />&nbsp{{inscriptoSeleccionado.domicilio}}
+						<span class="glyphicon glyphicon-home" aria-hidden="true"  data-toggle="tooltip" data-original-title="Domicilio" />&nbsp{{inscriptoSeleccionado.domicilio}}
 					</div>
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"  data-toggle="tooltip" title="Provincia" />&nbsp{{inscriptoSeleccionado.provincia}}
+						<span class="glyphicon glyphicon-map-marker" aria-hidden="true"  data-toggle="tooltip" data-original-title="Provincia" />&nbsp{{inscriptoSeleccionado.provincia}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-registration-mark" aria-hidden="true"  data-toggle="tooltip" title="Modalidad" />&nbsp{{inscriptoSeleccionado.modalidad.nombre}}{{inscriptoSeleccionado.modalidad.id===1 && inscriptoSeleccionado.turno!==null ? ',&nbsp'.concat(inscriptoSeleccionado.turno) : null }}
+						<span class="glyphicon glyphicon-registration-mark" aria-hidden="true"  data-toggle="tooltip" data-original-title="Modalidad" />&nbsp{{inscriptoSeleccionado.modalidad.nombre}}{{inscriptoSeleccionado.modalidad.id===1 && inscriptoSeleccionado.turno!==null ? ',&nbsp'.concat(inscriptoSeleccionado.turno) : null }}
 					</div>
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"  data-toggle="tooltip" title="Grado de Interés" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
+						<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"  data-toggle="tooltip" data-original-title="Grado de Interés" />&nbsp{{inscriptoSeleccionado.gradoInteres}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-question-sign" aria-hidden="true"  data-toggle="tooltip" title="Conocio por" />&nbsp{{inscriptoSeleccionado.comoConocio}}
+						<span class="glyphicon glyphicon-question-sign" aria-hidden="true"  data-toggle="tooltip" data-original-title="Conocio por" />&nbsp{{inscriptoSeleccionado.comoConocio}}
 					</div>
 					<div class="col-md-6">
-						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Medio de Contacto" />&nbsp{{inscriptoSeleccionado.medioDeContacto.nombre}}
+						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Medio de Contacto" />&nbsp{{inscriptoSeleccionado.medioDeContacto.nombre}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"  data-toggle="tooltip" title="Situación Inscripción" />&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"  data-toggle="tooltip" data-original-title="Situación Inscripción" />&nbsp{{inscriptoSeleccionado.situacionInscripcion}}
 					</div>
 					<div class="col-md-6">
-						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"  data-toggle="tooltip" title="Situación Especial" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
-					</div>
-				</div>
-				<div class="stripped-row">
-					<div class="col-md-12">
-						<i class="fa fa-university fa-fw" aria-hidden="true" data-toggle="tooltip" title="Carrera a cursar"></i>&nbsp{{inscriptoSeleccionado.carrera.descripcion}}</nbsp>
+						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"  data-toggle="tooltip" data-original-title="Situación Especial" />&nbsp{{inscriptoSeleccionado.situacionEspecial}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-12">
-						<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" title="Comentario" /> -->
-						<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="Comentario" />&nbsp{{inscriptoSeleccionado.comentario}}
+						<i class="fa fa-university fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Carrera a cursar"></i>&nbsp{{inscriptoSeleccionado.carrera.descripcion}}</nbsp>
+					</div>
+				</div>
+				<div class="stripped-row">
+					<div class="col-md-12">
+						<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-original-title="Comentario" /> -->
+						<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Comentario" />&nbsp{{inscriptoSeleccionado.comentario}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docTitulo===null}">
-						<i class="fa fa-graduation-cap" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de fotocopia de título secundario."></i><br>{{(inscriptoSeleccionado.docTitulo===null ? 'No entregó': inscriptoSeleccionado.docTitulo) | date:'dd/MM/yyyy'}}
+						<i class="fa fa-graduation-cap" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha de entrega de fotocopia de título secundario."></i><br>{{(inscriptoSeleccionado.docTitulo===null ? 'No entregó': inscriptoSeleccionado.docTitulo) | date:'dd/MM/yyyy'}}
 					</div>
 					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docDni===null}">
-						<i class="fa fa-id-card-o" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de fotocopia de fotocopia de DNI"></i><br>{{(inscriptoSeleccionado.docDni===null ? 'No entregó': inscriptoSeleccionado.docDni) | date:'dd/MM/yyyy'}}
+						<i class="fa fa-id-card-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha de entrega de fotocopia de fotocopia de DNI"></i><br>{{(inscriptoSeleccionado.docDni===null ? 'No entregó': inscriptoSeleccionado.docDni) | date:'dd/MM/yyyy'}}
 					</div>
 					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docAptoFisico===null}">
-						<i class="fa fa-heartbeat" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de apto físico"></i><br>{{(inscriptoSeleccionado.docAptoFisico===null ? 'No entregó': inscriptoSeleccionado.docAptoFisico) | date:'dd/MM/yyyy'}}
+						<i class="fa fa-heartbeat" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha de entrega de apto físico"></i><br>{{(inscriptoSeleccionado.docAptoFisico===null ? 'No entregó': inscriptoSeleccionado.docAptoFisico) | date:'dd/MM/yyyy'}}
 					</div>
 					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docFoto===null}">
-						<i class="fa fa-camera" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega de foto de perfil"></i><br>{{(inscriptoSeleccionado.docFoto===null ? 'No entregó': inscriptoSeleccionado.docFoto) | date:'dd/MM/yyyy'}}
+						<i class="fa fa-camera" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha de entrega de foto de perfil"></i><br>{{(inscriptoSeleccionado.docFoto===null ? 'No entregó': inscriptoSeleccionado.docFoto) | date:'dd/MM/yyyy'}}
 					</div>
 					<div class="col-md-2" ng-class="{'bg-warning': inscriptoSeleccionado.docCompromiso===null}">
-						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" title="Fecha de entrega firma del acta de compromiso"></i><br>{{(inscriptoSeleccionado.docCompromiso===null ? 'No entregó': inscriptoSeleccionado.docCompromiso) | date:'dd/MM/yyyy'}}
+						<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Fecha de entrega firma del acta de compromiso"></i><br>{{(inscriptoSeleccionado.docCompromiso===null ? 'No entregó': inscriptoSeleccionado.docCompromiso) | date:'dd/MM/yyyy'}}
 					</div>
 					<div class="col-md-2">
 					</div>
@@ -152,7 +152,7 @@
 					Inscripto el:&nbsp{{inscriptoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
 				</div>
 				<div class="text-right">
-					<button class="btn btn-danger" ng-click="showModalCancelarInscripto(inscriptoSeleccionado)" data-toggle="tooltip" title="Cancelar la inscripción (retornar a interesado)">Cancelar</button>
+					<button class="btn btn-danger" ng-click="showModalCancelarInscripto(inscriptoSeleccionado)" data-toggle="tooltip" data-original-title="Cancelar la inscripción (retornar a interesado)">Cancelar</button>
 					<button class="btn btn-primary" ng-click="irAEdicion(inscriptoSeleccionado)">Editar</button>
 				</div>
 			</div>
@@ -173,7 +173,7 @@
       <div class="panel-body">
         <form novalidate name="myForm" class="css-form" autocomplete="off">
           <div class="input-group" ng-class="myForm.PIN.$valid ? 'has-success' : 'has-error'">
-            <span class="input-group-addon" data-toggle="tooltip" title="Pin de confirmación">PIN</span>
+            <span class="input-group-addon" data-toggle="tooltip" data-original-title="Pin de confirmación">PIN</span>
             <input type="password" class="form-control" name="PIN" ng-model="cancelarInscriptoPIN" placeholder="[1234]" pattern="\d{4}" maxlength="4" ng-keyup="cancelarInscriptoPINErroneo=false" autofocus required min="0" max="9999">
           </div>
         </form>
