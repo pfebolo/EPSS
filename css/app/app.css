@@ -38,6 +38,18 @@ div > .stripped-row:nth-of-type(odd) {
   color: #000000;;
 }
 
+.cuestionario-alertOff {
+  color: #000000;
+}
+
+.cuestionario-alertOn {
+  color: lightgreen;
+}
+
+.cuestionario-alertOff {
+  color: #000000;
+}
+
 
 .box-round {
     padding: 5px;
