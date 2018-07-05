@@ -118,7 +118,7 @@
 						<i class="fa fa-university fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Carrera a cursar"></i>&nbsp{{inscriptoSeleccionado.carrera.descripcion}}</nbsp>
 					</div>
 					<div class="col-md-6">
-						<i class="glyphicon glyphicon-flag" aria-hidden="true" data-toggle="tooltip" data-original-title="Nacionalidad"></i>&nbsp{{inscriptoSeleccionado.nacionalidad.nacionalidad}}</nbsp>
+						<img ng-src="img/banderas/{{inscriptoSeleccionado.nacionalidad.paisId+'.png'}}" alt="{{inscriptoSeleccionado.nacionalidad.paisId}}" data-toggle="tooltip" data-original-title="Nacionalidad"/>&nbsp{{inscriptoSeleccionado.nacionalidad.nacionalidad}}
 					</div>
 				</div>
 				<div class="stripped-row">
