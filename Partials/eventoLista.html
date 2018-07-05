@@ -16,7 +16,7 @@
 		<h2>
 			Eventos&nbsp;
 			<span class="badge">{{eventos.length}}</span>
-			<i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearEvento()" role="button" data-toggle="tooltip" title="Dar de alta un nuevo evento."></i>
+			<i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="irACrearEvento()" role="button" data-toggle="tooltip" data-original-title="Dar de alta un nuevo evento."></i>
 		</h2>
 		<div class="box-round">
 			<div class="input-group">
@@ -36,7 +36,7 @@
 						</th>
 						<th>Lugar</th>
 						<th>
-							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="Comentario." />
+							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="Comentario." />
 						</th>
 					</tr>
 				</thead>
@@ -50,7 +50,7 @@
 						</td>
 						<td>{{evento.lugar.nombre}}</td>
 						<td>
-							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{evento.observacion}}" ng-show="{{evento.observacion!=null && evento.observacion!=''}}" />
+							<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="{{evento.observacion}}" ng-show="{{evento.observacion!=null && evento.observacion!=''}}" />
 						</td>
 					</tr>
 				</tbody>
@@ -75,12 +75,12 @@
 			<div class="panel-body">
 				<div class="stripped-row">
 					<div class="col-md-12">
-						<span class="glyphicon glyphicon-home" aria-hidden="true" data-toggle="tooltip" title="Lugar donde se realizará el evento." />&nbsp{{eventoSeleccionado.lugar.nombre}}
+						<span class="glyphicon glyphicon-home" aria-hidden="true" data-toggle="tooltip" data-original-title="Lugar donde se realizará el evento." />&nbsp{{eventoSeleccionado.lugar.nombre}}
 					</div>
 				</div>
 				<div class="stripped-row">
 					<div class="col-md-12">
-						<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="Comentario." />&nbsp{{eventoSeleccionado.observacion}}
+						<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="Comentario." />&nbsp{{eventoSeleccionado.observacion}}
 					</div>
 				</div>
 			</div>
@@ -106,18 +106,18 @@
 						<tr>
 							<th class="col-md-3"><i class="fa fa-flag" aria-hidden="true"></i>&nbspNombre</th>
 
-							<th class="col-md-4"><span class="glyphicon glyphicon-send " data-toggle="tooltip" title="E-Mail">&nbspe-mail</th>
-							<th class="col-md-2"><span class="glyphicon glyphicon-earphone " data-toggle="tooltip" title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" >&nbspTeléfono</th>
+							<th class="col-md-4"><span class="glyphicon glyphicon-send " data-toggle="tooltip" data-original-title="E-Mail">&nbspe-mail</th>
+							<th class="col-md-2"><span class="glyphicon glyphicon-earphone " data-toggle="tooltip" data-original-title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" >&nbspTeléfono</th>
 
 							<th class="col-md-3">
 								<div class="col-md-4">
-									<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="Comentario."/>
+									<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="Comentario."/>
 								</div>
 								<div class="col-md-4">							
-									<i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" title="Eliminar."></i>
+									<i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Eliminar."></i>
 								</div>
 								<div class="col-md-4">
-									<i class="fa fa-calendar-check-o" aria-hidden="true"  data-toggle="tooltip" title="Asistencia."></i></th>
+									<i class="fa fa-calendar-check-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="Asistencia."></i></th>
 								</div>
 						</tr>
 					</thead>
@@ -130,7 +130,7 @@
 							
 							<td>
 								<div class="col-md-4">
-									<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" title="{{interesadoEvento.observacion}}" ng-show="interesadoEvento.observacion!=null && interesadoEvento.observacion.trim()!=''" />
+									<i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" data-original-title="{{interesadoEvento.observacion}}" ng-show="interesadoEvento.observacion!=null && interesadoEvento.observacion.trim()!=''" />
 								</div>
 								<div class="col-md-4">
 									<i class="fa fa-trash-o icon-danger icon-pointer" aria-hidden="true" ng-click="irAEliminarInteresadoEvento(interesadoEvento)" ng-hide="(eventoSeleccionado.estadoFecha<0) || interesadoEvento.asistente" />

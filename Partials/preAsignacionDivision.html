@@ -53,7 +53,7 @@
               Coord
             </th>
             <th>
-              Estudiantes&nbsp;<i class="fa fa-circle" ng-class="'rangoEtario-' + {{$index}}" ng-repeat="d in [].constructor(10) track by $index" aria-hidden="true" data-toggle="tooltip" title="{{$index.toString()+'x'}}"></i>
+              Estudiantes&nbsp;<i class="fa fa-circle" ng-class="'rangoEtario-' + {{$index}}" ng-repeat="d in [].constructor(10) track by $index" aria-hidden="true" data-toggle="tooltip" data-original-title="{{$index.toString()+'x'}}"></i>
             </th>
             <th>
               Resumen
@@ -67,7 +67,7 @@
             </td>
             <td>
               {{division.divisionId}}
-              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
+              <i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="{{division.comentario}}" ng-show="{{division.comentario!=null && division.comentario!=''}}" />
             </td>
             <td>
               <div class="media">

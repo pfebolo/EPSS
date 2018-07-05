@@ -316,3 +316,8 @@ border-top,.border-right,.border-bottom,.border-left,.border {
   text-decoration: underline;
 }
 
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/paint-order */
+.delineado {
+  -webkit-text-stroke: 1px black;
+  paint-order: stroke fill;
+}
