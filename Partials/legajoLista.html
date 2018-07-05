@@ -121,8 +121,11 @@
 						<td>
 							<span class="glyphicon glyphicon-earphone" aria-hidden="true" /> &nbsp{{legajoSeleccionado.alumno.telefono}}
 						</td>
-						<td colspan="2">
+						<td>
 							<span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{legajoSeleccionado.alumno.celular}}
+						</td>
+						<td>
+							<img ng-src="img/banderas/{{legajoSeleccionado.alumno.nacionalidad.paisId+'.png'}}" alt="{{legajoSeleccionado.alumno.nacionalidad.paisId}}" data-toggle="tooltip" data-original-title="Nacionalidad"/>&nbsp{{legajoSeleccionado.alumno.nacionalidad.nacionalidad}}
 						</td>
 					</tr>
 					<tr>
