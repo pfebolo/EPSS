@@ -33,20 +33,18 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-6">
-						
-				<div class="input-group" ng-class="'has-success'">
-					<span class="input-group-addon" data-toggle="tooltip" data-original-title="Estado">Estado</span>
-					<select class="form-control" ng-options="item as item.estadoEstudianteId for item in EstadosEstudiante" ng-model="estadoEstudianteNuevo"></select>
+						<div class="input-group" ng-class="'has-success'">
+							<span class="input-group-addon" data-toggle="tooltip" data-original-title="Estado">Estado</span>
+							<select class="form-control" ng-options="item as item.estadoEstudianteId for item in EstadosEstudiante" ng-model="estadoEstudianteNuevo"></select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group" ng-class="myForm.razonSuspension.$valid ? 'has-success' : 'has-error'">
+							<span class="input-group-addon">Motivo</span>
+							<input id="razonSuspension" type="text" class="form-control" name="razonSuspension" placeholder="Motivo del estado" ng-model="legajoSeleccionado.razonSuspension">
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="input-group" ng-class="myForm.razonSuspension.$valid ? 'has-success' : 'has-error'">
-					<span class="input-group-addon">Motivo</span>
-					<input id="razonSuspension" type="text" class="form-control" name="razonSuspension" placeholder="Motivo del estado" ng-model="legajoSeleccionado.razonSuspension">
-				</div>
-			</div>
-	
-			</div>
 			
 				<div class="row">
 					<div class="col-md-6">
@@ -113,7 +111,7 @@
 							<span class="input-group-addon">
 					<span class="glyphicon glyphicon-phone" data-toggle="tooltip" data-original-title="Teléfono Celular" ></span>
 							</span>
-							<input id="celular" type="text" class="form-control" name="celular" placeholder="[Nro de celular]" ng-model="legajoSeleccionado.alumno.celular" pattern="^549[123456789]\d{9}$">
+							<input id="celular" type="text" class="form-control" name="celular" placeholder="[Nro de celular]" ng-model="legajoSeleccionado.alumno.celular" pattern="^\+549[123456789]\d{9}$">
 						</div>
 					</div>
 				</div>
@@ -124,7 +122,7 @@
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-home" data-toggle="tooltip" data-original-title="Domicilio declarado" ></span>
 							</span>
-							<input id="domicilio" type="text" class="form-control" name="domicilio" placeholder="[Doicilio Declarado]" ng-model="legajoSeleccionado.alumno.domicilio" ng-readonly="true">
+							<input id="domicilio" type="text" class="form-control" name="domicilio" placeholder="[Domicilio Declarado]" ng-model="legajoSeleccionado.alumno.domicilio" ng-readonly="true">
 						</div>
 					</div>
 				</div>
@@ -177,6 +175,19 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group" ng-class="'has-success'">
+							<span class="input-group-addon" required>
+								<img ng-src="img/banderas/{{nacionalidad.paisId+'.png'}}" alt="{{nacionalidad.paisId}}" data-toggle="tooltip" data-original-title="Nacionalidad"/>
+							</span>
+							<select class="form-control" ng-options="item as item.nacionalidad for item in nacionalidades" ng-model="nacionalidad"></select>
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 
 			<div class="panel-footer">
