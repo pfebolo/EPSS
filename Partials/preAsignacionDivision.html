@@ -53,7 +53,7 @@
               Coord
             </th>
             <th>
-              Estudiantes&nbsp;<i class="fa fa-circle" ng-class="'rangoEtario-' + {{$index}}" ng-repeat="d in [].constructor(10) track by $index" aria-hidden="true" data-toggle="tooltip" data-original-title="{{$index.toString()+'x'}}"></i>
+              Estudiantes&nbsp;<i class="fa fa-circle" ng-class="'rangoEtario-' + {{(9-$index)}}" ng-repeat="d in [].constructor(10) track by $index" aria-hidden="true" data-toggle="tooltip" data-original-title="{{(9-$index).toString()+'x'}}"></i>
             </th>
             <th>
               Resumen
