@@ -466,8 +466,8 @@
 			<button class="btn btn-primary" ng-click="cambiarInforme('Documentacion')">Documentación</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Cuestionario')">Cuestionario</button>
 			<button class="btn btn-primary" ng-click="cambiarInforme('Trabajo')">Trabajo</button>
-			<button class="btn btn-primary" ng-click="editarLegajo(legajoSeleccionado)">Editar</button>
-			<button class="btn btn-danger" ng-click="showModalEliminarLegajo(legajoSeleccionado)">Eliminar</button>
+			<button class="btn btn-primary" data-toggle="tooltip" data-original-title="Editar" ng-click="editarLegajo(legajoSeleccionado)"><span class="fa fa-pencil" /></button>
+			<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" ng-click="showModalEliminarLegajo(legajoSeleccionado)"><span class="fa fa-trash-o" /></button>
 		</div>
 	</div>
 </div>
