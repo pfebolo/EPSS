@@ -191,7 +191,7 @@
 				<div class="col-md-8">
 					<span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.</span>
 					<span ng-show="myForm.$valid">
-						Interesado el:&nbsp{{interesadoEditando.fechaInteresado | date:'dd/MM/yyyy'}}
+						Interesado el.:&nbsp{{interesadoEditando.fechaInteresado | date:'dd/MM/yyyy'}}<br>Actualizado el:&nbsp{{interesadoEditando.fechaActualizacion | date:'dd/MM/yyyy HH:mm'}}
 						<i class="fa fa-flag" aria-hidden="true" ng-class="interesadoEditando.seguimiento ? 'banderin-danger fa-lg' : 'banderin-alertOff'" ng-model="interesadoEditando.seguimiento" data-toggle="tooltip" data-original-title="Interesado con prioridad" ng-click="setSeguimiento()"></i>
 						<span  ng-class="{'miBadgeWarning': itemDuplicado}" ><i class="fa fa-files-o icon-pointer" aria-hidden="true" ng-show="itemDuplicado" data-toggle="tooltip" data-original-title="¡Posible duplicado!" ></i></span>
 					</span>
