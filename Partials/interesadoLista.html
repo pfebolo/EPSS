@@ -52,7 +52,7 @@
         <tbody>
           <tr ng-repeat="interesado in interesadosFiltradosYOrdenadosPagina" ng-class="{'selected':$index==selectedRow}" ng-click="setClickedRow($index);cargarInteresado(interesado)">
             <td>{{interesado.apellido.trim()}},&nbsp;{{interesado.nombre.trim()}}</td>
-            <td>{{interesado.fechaInteresado | date:'dd/MM/yyyy'}}</td>
+            <td>{{interesado.fechaActualizacion | date:'dd/MM/yy HH:mm'}}</td>
             <td><i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesado.seguimiento"></i></td>
             <td><span class="badge" style="background-color: #ec971f" ng-show="interesado.duplicado"><i class="fa fa-files-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="¡Posible duplicado!"></i></span></td>
           </tr>
@@ -150,7 +150,7 @@
       </div>
       <div class="panel-footer">
         <div class="col-md-6">
-          Interesado el:&nbsp{{interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}
+          Interesado el.:&nbsp{{interesadoSeleccionado.fechaInteresado | date:'dd/MM/yyyy'}}<br>Actualizado el:&nbsp{{interesadoSeleccionado.fechaActualizacion | date:'dd/MM/yyyy HH:mm'}}
           <i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesadoSeleccionado.seguimiento"  data-toggle="tooltip" data-original-title="Seguimiento"></i>
           <span class="badge" style="background-color: #ec971f" ng-show="interesadoSeleccionado.duplicado"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" data-original-title="¡Posible duplicado!"></i></span>
         </div>
