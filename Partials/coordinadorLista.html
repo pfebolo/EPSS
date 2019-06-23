@@ -1,7 +1,23 @@
 <div class="divSpinner" ng-show="cargando">
   <div class="spinner" />
 </div>
-<div class="container" ng-show="!cargando && GetCoordinadoresOK">
+
+<div class="container" ng-show="!cargando && error.hayError">
+	<div class="row">
+		<div class="alert alert-warning">
+			Los datos de esta página no fueron procesados correctamente, intente nuevamente.
+		</div>
+	</div>
+	<div class="row">
+		<div class="alert alert-danger">
+			<p ng-repeat="error in error.errores">
+				<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="container" ng-show="!cargando && !error.hayError"">
   <div ng-repeat="CordinadoresAgrupado in coordinadoresAgupados">
     <div class="row stylish-panel">
       <div ng-repeat="coordinador in CordinadoresAgrupado" class="col-md-3">
@@ -19,9 +35,6 @@
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && ! GetCoordinadoresOK">
-  Los Coordinadores no fueron obtenidos, intente nuevamente.
-</div>
 
 <!-- Modal - Edición de Coordinador-->
 <div class="divModalBase " ng-show="modalCoordinadorOpen">
@@ -103,13 +116,5 @@
       </div>
     </form>
   </div>
-  <!-- <div class="panel-footer ">
-        <div class="text-right">
-          <button class="btn btn-primary" ng-click="actualizarCoordinador(coordinadorEditando)" autofocus>Agregar</button>
-          <button class="btn btn-default" ng-click="closeModalCoordinador()" autofocus>Cancelar</button>
-        </div>
-      </div> -->
-</div>
-</div>
 </div>
 <!-- Fin Modal - Edición de Coordinador-->
