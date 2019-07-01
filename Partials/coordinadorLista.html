@@ -22,7 +22,7 @@
     <div class="row stylish-panel">
       <div ng-repeat="coordinador in CordinadoresAgrupado" class="col-md-3">
         <div>
-          <img ng-src="{{coordinador.fotoPath}}" onerror="this.onerror=null;this.src='img/Persona.png';" class="img-circle img-thumbnail" width="100" height="100" alt="{{coordinador.nombre}}">
+          <img ng-src="{{coordinador.fotoPath}}" class="img-circle img-thumbnail" width="100" height="100" alt="{{coordinador.nombre}}">
           <span class="fa fa-pencil-square-o icon-primary icon-pointer text-right" ng-click="showModalCoordinador(coordinador)"></span>
           <h4>{{coordinador.nombre}}</h4>
           <small class="text-left">
@@ -38,7 +38,7 @@
 
 
 <!-- Modal - Edición de Coordinador-->
-<div class="divModalBase " ng-show="modalCoordinadorOpen">
+<div class="divModalBase" ng-show="modalCoordinadorOpen">
   <div class="col-md-2 "></div>
   <div class="col-md-8 " style='top: 33%'>
     <form novalidate name="myForm" class="css-form" autocomplete="off">
