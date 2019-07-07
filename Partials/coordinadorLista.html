@@ -1,23 +1,160 @@
-<div class= "divSpinner" ng-show="cargando">
-    <div class="spinner" />
+<div class="divSpinner" ng-show="cargando">
+  <div class="spinner" />
 </div>
-<div class="container" ng-show="!cargando && GetCoordinadoresOK">
-  <div ng-repeat="CordinadoresAgrupado in coordinadoresAgupados">
-    <div class="row stylish-panel">
-      <div ng-repeat="coordinador in CordinadoresAgrupado" class="col-md-3">
-        <div>
-          <img ng-src="{{coordinador.fotoPath}}"  onerror="this.onerror=null;this.src='img/Persona.png';" class="img-circle img-thumbnail" width="100" height="100" alt="{{coordinador.nombre}}">
-          <h4>{{coordinador.nombre}}</h4>
-          <p><span class="glyphicon glyphicon-earphone" aria-hidden="true">&nbsp{{coordinador.telefonoFijo}}&nbsp<span class="glyphicon glyphicon-phone" aria-hidden="true">&nbsp{{coordinador.telefonoCelular}}</p>
-          <p><span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp<a href="mailto:{{coordinador.email}}">{{coordinador.email}}</a></p>
-          
-          <p><span class="glyphicon glyphicon-tag" aria-hidden="true">&nbsp{{coordinador.comentarios}}</p>
+
+<div class="container" ng-show="!cargando && error.hayError">
+  <div class="row">
+    <div class="alert alert-warning">
+      Los datos de esta página no fueron procesados correctamente, intente nuevamente.
+    </div>
+  </div>
+  <div class="row">
+    <div class="alert alert-danger">
+      <p ng-repeat="error in error.errores">
+        <strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container" ng-show="!cargando && !error.hayError">
+  <h2>
+    <div class="row">
+      Coordinadoras/es&nbsp;
+      <span class="badge">{{(coordinadores | filter:filtroSeteado).length}}</span>
+      <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="showModalCoordinador(null,'Agregar')" role="button" data-toggle="tooltip" data-original-title="Dar de alta un nuevo coordinador."></i>
+    </div>
+  </h2>
+  <div class="row">
+    <span type="button" class="btn btn-xs" ng-class="mostrarActivos ? 'btn-success' : 'btn-default'" ng-click="mostrarActivos=!mostrarActivos;mostrarCoordinadores(coordinadores)" data-toggle="tooltip" data-original-title="Mostrar/Ocultar los coordinadores activos.">Activo
+      <span class="fa fa-circle icon-success" aria-hidden="true"/>
+    </span>
+    <span type="button" class="btn btn-xs" ng-class="mostrarDesactivos ? 'btn-danger' : 'btn-default'" ng-click="mostrarDesactivos=!mostrarDesactivos;mostrarCoordinadores(coordinadores)" data-toggle="tooltip" data-original-title="Mostrar/Ocultar los coordinadores des-activos.">Desactivos
+      <span class="fa fa-circle icon-danger" aria-hidden="true"/>
+    </span>
+  </div>
+  <div class="col-md-12">
+    <div ng-repeat="CordinadoresAgrupado in coordinadoresAgupados" class="stylish-panel row">
+      <div ng-repeat="coordinador in CordinadoresAgrupado" >
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-10">
+                <img ng-src="{{coordinador.fotoPath}}" class="img-circle img-thumbnail" width="100" height="100" alt="{{coordinador.nombre}}">
+              </div>
+              <div class="col-md-2">
+                <div class="row">
+                  <span type="button" class="btn fa fa-pencil-square-o icon-primary" ng-click="showModalCoordinador(coordinador)" data-toggle="tooltip" data-original-title="Editar coordinador/a."></span>
+                </div>
+                <div class="row">
+                  <span class="fa fa-circle " ng-class="coordinador.activo ? 'icon-success' : 'icon-danger'" aria-hidden="true"></span>
+                </div>
+                <div>
+                  <span class="fa fa-comment-o" aria-hidden="true" ng-hide="coordinador.comentarios=='' || coordinador.comentarios==null"  data-toggle="tooltip" data-original-title="{{coordinador.comentarios}}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <h4>{{coordinador.nombre}}</h4>
+          </div>
+          <small class="text-center">
+            <div class="row">
+              <span class="glyphicon glyphicon-earphone" aria-hidden="true" />&nbsp{{coordinador.telefonoFijo}}&nbsp<span class="glyphicon glyphicon-phone" aria-hidden="true" />&nbsp{{coordinador.telefonoCelular}}</div>
+            <div class="row">
+              <span class="glyphicon glyphicon-send" aria-hidden="true" />&nbsp<a href="mailto:{{coordinador.email}}">{{coordinador.email}}</a>
+            </div>
+          </small>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="alert alert-warning" ng-show="!cargando && ! GetCoordinadoresOK">
-  Los Coordinadores no fueron obtenidos, intente nuevamente.
+
+<!-- Modal - Edición de Coordinador-->
+<div class="divModalBase" ng-show="modalCoordinadorOpen">
+  <div class="col-md-2 "></div>
+  <div class="col-md-8 " style='top: 33%'>
+    <form novalidate name="myForm" class="css-form" autocomplete="off">
+      <div class="panel panel-primary">
+
+        <div class="panel-heading">
+          <i class="fa fa-info-circle fa-lg .text-info "></i>
+          Ficha de Coordinador/ra: {{coordinadorEditando.nombre}}
+          <span type="button" class="btn btn-xs" ng-class="coordinadorEditando.activo ? 'btn-success' : 'btn-danger'" ng-click="coordinadorEditando.activo=!coordinadorEditando.activo" data-toggle="tooltip" data-original-title="Activar o Desactivar al coordinador">
+            {{(coordinadorEditando.activo ? 'Activo': 'Des-activo')}}
+            <span class="fa fa-circle"  ng-class="coordinadorEditando.activo ? 'icon-success' : 'icon-danger'" aria-hidden="true"/>
+          </span>
+        </div>
+
+        <div class="panel-body no-gutter">
+          <div id="datos_principales" class="row">
+            <div id="foto" class="col-md-2">
+              <!-- class="img-circle img-thumbnail" -->
+              <img ng-src="{{coordinadorEditando.fotoPath}}" onerror="this.onerror=null;this.src='img/Persona.png';" width="100" height="100" alt="{{coordinador.nombre}}">
+            </div>
+            <div id="datos" class="col-md-10">
+              <div id="nombre" class="col-md-12">
+                <div class="input-group" ng-class="myForm.nombre.$valid ? 'has-success' : 'has-error'">
+                  <span class="input-group-addon" for="nombre">Nombre</span>
+                  <input id="nombre" type="text" class="form-control" name="nombre" required placeholder="[Nombre y Apellido]" ng-model="coordinadorEditando.nombre">
+                </div>
+              </div>
+
+              <div id="telefonoFijo" class="col-md-6">
+                <div class="input-group" ng-class="myForm.telefonoFijo.$valid ? 'has-success' : 'has-error'">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip" data-original-title="Télefono Fijo"></i>
+                  </span>
+                  <input id="telefonoFijo" type="text" class="form-control" name="telefonoFijo" required placeholder="[Teléfono Fijo]" ng-model="coordinadorEditando.telefonoFijo" autofocus pattern="^\+549[123456789]\d{9}$|^0{0,1}\d{10}$|^0{0,1}\d{12}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$|^0{0,1}\d{2}-15-\d{4}-\d{4}$|^0{0,1}\d{3}-15-\d{3}-\d{4}$">
+                </div>
+              </div>
+
+              <div id="celular" class="col-md-6">
+                <div class="input-group" ng-class="myForm.celular.$valid ? 'has-success' : 'has-error'">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-phone" aria-hidden="true" data-toggle="tooltip" data-original-title="Celular"></i>
+                  </span>
+                  <input id="celular" type="text" class="form-control" name="celular" required placeholder="[Celular]" ng-model="coordinadorEditando.telefonoCelular" autofocus pattern="^\+549[123456789]\d{9}$|^0{0,1}\d{10}$|^0{0,1}\d{12}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$|^0{0,1}\d{2}-\d{4}-\d{4}$|^0{0,1}\d{3}-\d{3}-\d{4}$|^0{0,1}\d{2}-15-\d{4}-\d{4}$|^0{0,1}\d{3}-15-\d{3}-\d{4}$">
+                </div>
+              </div>
+
+              <div id="email" class="col-md-12">
+                <div class="input-group" ng-class="myForm.email.$valid ? 'has-success' : 'has-error'">
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-send" data-toggle="tooltip" data-original-title="1er E-Mail"></span>
+                  </span>
+                  <input id="email" type="text" class="form-control" name="email" placeholder="[e-mail]" ng-model="coordinadorEditando.email" pattern="^(?:(?:[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+(?:(?:\.(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)*&quot;|[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+))*\.[\w`~!#$%^&*\-=+;:{}&apos;|,?\/]+)?)|(?:&quot;(?:\\?[\w`~!#$%^&*\-=+;:{}&apos;|,?\/\.()<>\[\] @]|\\&quot;|\\\\)+&quot;))@(?:[a-zA-Z\d\-]+(?:\.[a-zA-Z\d\-]+)*|\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])$">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="comentarios" class="row">
+            <div id="comentarios" class="col-md-12">
+              <div class="input-group" ng-class="myForm.comentarios.$valid ? 'has-success' : 'has-error'">
+                <span class="input-group-addon">
+                  <i class="fa fa-comment-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Comentarios" />
+                </span>
+                <textarea id="comentarios" rows="1" class="form-control" name="comentarios" placeholder="[Comentarios]" ng-model="coordinadorEditando.comentarios"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error'">
+          <div class="col-md-8">
+            <span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.
+              <span>
+          </div>
+          <div class="text-right">
+            <button class="btn btn-primary" ng-click="agregarCoordinador(coordinadorEditando)" ng-disabled="!myForm.$valid" autofocus ng-hide="editando">Agregar</button>
+            <button class="btn btn-primary" ng-click="actualizarCoordinador(coordinadorEditando)" ng-disabled="!myForm.$valid" autofocus ng-show="editando">Actualizar</button>
+            <button class="btn btn-default" ng-click="closeModalCoordinador()" autofocus>Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
+<!-- Fin Modal - Edición de Coordinador-->
