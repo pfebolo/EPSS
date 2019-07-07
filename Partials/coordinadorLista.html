@@ -18,6 +18,10 @@
 </div>
 
 <div class="container" ng-show="!cargando && !error.hayError">
+  <h2>Coordinadoras/es&nbsp;
+    <span class="badge">{{coordinadores.length}}</span>
+      <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="showModalCoordinador(null,'Agregar')" role="button" data-toggle="tooltip" data-original-title="Dar de alta un nuevo coordinador."></i>
+  </h2>
   <div ng-repeat=" CordinadoresAgrupado in coordinadoresAgupados">
     <div class="row stylish-panel">
       <div ng-repeat="coordinador in CordinadoresAgrupado" class="col-md-3">
@@ -109,8 +113,8 @@
               <span>
           </div>
           <div class="text-right">
-            <!-- <button class="btn btn-primary" ng-click="inscribir(coordinadorEditando)" ng-disabled="!myForm.$valid">{{accionLabel}}</button> -->
-            <button class="btn btn-primary" ng-click="actualizarCoordinador(coordinadorEditando)" ng-disabled="!myForm.$valid" autofocus>Actualizar</button>
+            <button class="btn btn-primary" ng-click="agregarCoordinador(coordinadorEditando)" ng-disabled="!myForm.$valid" autofocus ng-hide="editando">Agregar</button>
+            <button class="btn btn-primary" ng-click="actualizarCoordinador(coordinadorEditando)" ng-disabled="!myForm.$valid" autofocus ng-show="editando">Actualizar</button>
             <button class="btn btn-default" ng-click="closeModalCoordinador()" autofocus>Cancelar</button>
           </div>
         </div>
