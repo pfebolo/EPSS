@@ -81,3 +81,45 @@ http-server -c-1
 > ref: <https://gist.github.com/brianclements/841ea7bffdb01346392c>
 
 ## Integration Test (en breve)
+
+## Docker
+
+### Contenedor
+
+ID: 3ddcee65189b
+
+Iniciar contenedor
+
+```(sh)
+docker start 3ddcee65189b
+```
+
+Parar contenedor
+
+```(sh)
+docker stop 3ddcee65189b
+```
+
+Entrar al contenedor
+
+```(sh)
+docker exec -it 3ddcee65189b bash
+```
+
+actualizar el contenedor
+
+```(sh)
+docker container cp EPSS.Front/ 3ddcee65189b:/home/pablo
+```
+
+listar contendores activos
+
+```(sh)
+docker ps
+```
+
+buscar ip de un contenedor activo
+
+```(sh)
+docker inspect 3ddcee65189b | grep IPAddress
+```
