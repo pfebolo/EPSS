@@ -9,6 +9,11 @@
     padding-left:0;
 }
 
+.no-gutter-deep div[class*='col-'] {
+  padding-right:1px;
+  padding-left:0;
+}
+
 .stripped-row {
     padding: 5px;
     border-top-width: 1px;
