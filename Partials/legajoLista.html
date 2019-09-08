@@ -459,6 +459,7 @@
 
 			<div id="Informe" ng-show="!cargando && GetOK && informaConfiguracion['Informe']">
 				<strong>Informes de coordinadoras/es</strong>
+				<!-- <i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="showModalInformeCrear(legajoSeleccionado,informes)()" role="button" data-toggle="tooltip" data-original-title="Dar de alta un nuevo informe."></i> -->
 				<div class="alert alert-info" role="alert" ng-show="informes.length==0">
 					El estudiante no tiene informes.
 				</div>
@@ -474,7 +475,6 @@
 								</div>
 								<div class="col-md-1 text-center">
 									<div class="col-md-12">
-										<!-- <i class="fa fa-file-text-o" data-toggle="tooltip" data-original-title="Informe" aria-hidden="true" /> -->
 										<span class="fa-stack fa-lg icon-primary icon-pointer" data-toggle="tooltip" data-original-title="Mostrar" aria-hidden="true" ng-click="showModalInforme(informe)">
 											<i class="fa fa-search fa-stack-1x text-danger" />
 											<i class="fa fa-file-text-o fa fa-stack-1x" />
@@ -574,12 +574,17 @@
 
 <!-- Modal - Edición de un informe-->
 <div class="divModalBase " ng-show="modalInformeOpen">
-	<div class="col-md-1 "></div>
+	<div class="col-md-1"></div>
 	<div class="col-md-10" style='top: 5%'>
 		<div class="panel panel-info ">
 			<div class="panel-heading ">
 				<table>
 					<tr>
+						<td>
+							{{informeEditando.anioLectivo}}° año
+
+						</td>
+						<td>&nbsp;</td>
 						<td>
 							<img class="media-object img-circle" class="" width="33" height="33" ng-src="{{informeEditando.coordinador.fotoPath}}" alt="{{informeEditando.coordinador.nombre}}" data-toogle="tooltip" data-original-title="{{informeEditando.coordinador.nombre}}">
 						</td>
@@ -604,8 +609,8 @@
 			</div>
 			<div class="panel-footer ">
 				<div class="text-right">
-					<button class="btn btn-primary" ng-click="actualizarInforme(informeEditando)" ng-hide="soloMostrar" autofocus>Actualizar</button>
-					<button class="btn btn-default" ng-click="closeModalInforme()" autofocus>Cancelar</button>
+					<button class="btn btn-primary" accesskey="a" ng-click="actualizarInforme(informeEditando)" ng-hide="soloMostrar" autofocus><u>A</u>ctualizar</button>
+					<button class="btn btn-default" accesskey="c" ng-click="closeModalInforme()" autofocus><u>C</u>ancelar</button>
 				</div>
 			</div>
 		</div>
