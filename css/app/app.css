@@ -9,6 +9,17 @@
     padding-left:0;
 }
 
+.no-gutter-deep div[class*='col-'] {
+  padding-right:1px;
+  padding-left:0;
+}
+
+.no-gutter-span  {
+  padding-top:0px;
+  padding-bottom:0px;
+}
+
+
 .stripped-row {
     padding: 5px;
     border-top-width: 1px;
