@@ -43,7 +43,7 @@
 							<span class="input-group-addon ">
 								<i aria-hidden="true" data-toggle="tooltip" data-original-title="Año lectivo al cual pertenece el curso.">Año Lectivo</i>
 							</span>
-							<input type="number" class="form-control text-center" name="anioLectivo" placeholder="[1,2,3...]" ng-model="informeEditando.anioLectivo" min="1" max="3" required />
+							<input type="number" class="form-control text-center" name="anioLectivo" placeholder="[1,2,3...]" ng-model="informeEditando.anioLectivo" min="1" max="3" required ng-change="obtenerInforme(legajoSeleccionado.alumno.alumnoId,coordSeleccionado.coordinadorId,informeEditando.anioLectivo)"/>
 						</div>
 					</div>
 
