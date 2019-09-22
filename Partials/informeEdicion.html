@@ -28,43 +28,48 @@
 				<div class="panel-body no-gutter">
 
 					<!-- Coordinadora-->
-					<div class="col-sm-6">
+					<div class="col-sm-9">
 						<div class="input-group" ng-class="myForm.firmante.$valid ? 'has-success' : 'has-error'" droppable-area allow-droppable-area>
 							<span id="CSI" class="input-group-addon no-gutter-span" ng-dblclick="eliminarCoordinacion()">
-								<img ng-src="{{coordSeleccionado.fotoPath}}" width="30" height="30" class="media-object img-circle" id="{{'placeHolder'+ coordSeleccionado.nombre}}" data-toggle="tooltip" data-original-title="{{coordSeleccionado.nombre}}">
+								<img ng-src="{{coordSeleccionado.fotoPath}}" width="30" height="30" class="media-object img-circle" id="{{'placeHolder'+ coordSeleccionado.nombre}}" data-toggle="tooltip" data-original-title="Coordinadora firmante del informe.">
 							</span>
 							<input type="text" class="form-control text-center" name="firmante" placeholder="Coordinadora firmante" ng-model="coordSeleccionado.nombre" required readonly/>
 						</div>
 					</div>
 
 					<!-- Anio lectivo-->
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<div class="input-group" ng-class="myForm.anioLectivo.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon ">
-								<i aria-hidden="true" data-toggle="tooltip" data-original-title="Año lectivo al cual pertenece el curso.">Año Lectivo</i>
+								<i aria-hidden="true" data-toggle="tooltip" data-original-title="Año lectivo del informe.">Año Lectivo</i>
 							</span>
 							<input type="number" class="form-control text-center" name="anioLectivo" placeholder="[1,2,3...]" ng-model="informeEditando.anioLectivo" min="1" max="3" required ng-change="obtenerInforme(legajoSeleccionado.alumno.alumnoId,coordSeleccionado.coordinadorId,informeEditando.anioLectivo)"/>
 						</div>
 					</div>
 
 					<!-- Legajo-->
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<div class="input-group" ng-class="myForm.legajo.$valid ? 'has-success' : 'has-error'">
 							<span class="input-group-addon ">
-								<i aria-hidden="true" data-toggle="tooltip" data-original-title="Legajo">Legajo</i>
+								<i aria-hidden="true" data-toggle="tooltip" data-original-title="Nro de Legajo del estudiante">Legajo</i>
 							</span>
-							<input type="number" class="form-control text-right" id="legajoNro" name="legajo" placeholder="[Nro de Legajo]" ng-model="legajoNro" min="1" required ng-change="obtenerLegajo(legajoNro)" pattern="\d+" />
+							<input type="number" class="form-control text-right" id="legajoNro" name="legajo" placeholder="[Nro]" ng-model="legajoNro" min="1" required ng-change="obtenerLegajo(legajoNro)" pattern="\d+" />
 						</div>
 					</div>
 
 					<!-- Nombre Estudiante-->
-					<div class="col-sm-6">
+					<div class="col-sm-7">
 						<div class="input-group" ng-class="myForm.nombreEstudiante.$valid ? 'has-success' : 'has-error'">
 							<span id="CSI" class="input-group-addon no-gutter-span">
 								<i aria-hidden="true" data-toggle="tooltip" data-original-title="Nombre y apellido del Estudiante">Estudiante</i>
 							</span>
 							<input type="text" class="form-control text-center" tabindex="-1" 	name="nombreEstudiante" ng-model="legajoSeleccionado.alumno.apellidoYNombre" required readonly />
 						</div>
+					</div>
+
+					<!-- Fecha Actualizacion-->
+					<div class="col-sm-2">
+						<input type="text" class="form-control text-center" tabindex="-1" name="fechaActualizacion" ng-model="informeEditando.fechaActualizacion | date:'dd/MM/yyyy HH:mm'" readonly ng-show="esEdicion()" data-toggle="tooltip" data-original-title="Fecha de la última actualización del informe." />
 					</div>
 				
 					<!-- Informe -->
@@ -79,16 +84,21 @@
 						</div>
 					</div>
 				</div>
+<!-- esEditable:{{esEditable()}}<br>
+tt:{{tiempoTranscurrido()}}<br>
+f.act:{{informeEditando.fechaActualizacion}}<br>
+f.act.trasn:{{fechaActualizacion()}}<br>
+f.actual:{{fechaactual()}}<br> -->
 
-
-				<div class="panel-footer " ng-class="myForm.$valid ? '' : 'con-error' ">
+				<div class="panel-footer " ng-class="myForm.$valid && esEditable() ? '' : 'con-error' ">
 					<div class="col-sm-6 ">
 						<span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.</span>
+						<span ng-show="myForm.$valid && !esEditable()">El informe no se puede editar (solo es editable durante una semana luego de la creación).</span>
 					</div>
 					
 					<div class="text-right">
-						<button class="btn btn-primary " ng-click="grabar(informeEditando,coordSeleccionado,legajoSeleccionado,false) " ng-disabled="!myForm.$valid">Grabar</button>
-						<button class="btn btn-primary " ng-click="grabar(informeEditando,coordSeleccionado,legajoSeleccionado,true) " ng-disabled="!myForm.$valid">Grabar y Seguir</button>
+						<button class="btn btn-primary " ng-click="grabar(informeEditando,coordSeleccionado,legajoSeleccionado,false) " ng-disabled="!(myForm.$valid && esEditable())">Grabar</button>
+						<button class="btn btn-primary " ng-click="grabar(informeEditando,coordSeleccionado,legajoSeleccionado,true) "  ng-disabled="!(myForm.$valid && esEditable())">Grabar y Seguir</button>
 						<button class="btn btn-default " ng-click="cancelarEdicion() ">Cancelar</button>
 					</div>
 				</div>
