@@ -93,7 +93,7 @@ f.actual:{{fechaactual()}}<br> -->
 				<div class="panel-footer " ng-class="myForm.$valid && esEditable() ? '' : 'con-error' ">
 					<div class="col-sm-6 ">
 						<span ng-show="!myForm.$valid">El formulario está incompleto o con información incorrecta.</span>
-						<span ng-show="myForm.$valid && !esEditable()">El informe no se puede editar (solo es editable durante una semana luego de la creación).</span>
+						<span ng-show="myForm.$valid && !esEditable()">El informe no se puede editar (solo es editable durante {{diasEditable}} día(s) luego de la creación).</span>
 					</div>
 					
 					<div class="text-right">
