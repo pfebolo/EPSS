@@ -1,9 +1,9 @@
 # Notas
 
-## AngularJS 
-web: https://angularjs.org/
-versiones: https://code.angularjs.org/
+## AngularJS
 
+web: <https://angularjs.org/>
+versiones: <https://code.angularjs.org/>
 
 ## Componentes de Terceros
 
@@ -11,42 +11,59 @@ versiones: https://code.angularjs.org/
 
 > MALOT, Sebastien. "DateTime Picker · Bootstrap Component." DateTime Picker · Bootstrap. N.p., 3 Mar. 2017. Web. 11 May 2017. <http://www.malot.fr/bootstrap-datetimepicker/>.
 
-## Servidor Web usando nodeJS (https://nodejs.org/es/)
+## Servidor Web usando nodeJS (<https://nodejs.org/es/>)
+
 ### Módulo http-server
+
 #### Instalación
+
 Ejecutar desde la línea de comando:
-```
+
+```(sh)
 npm install -g http-server
 ```
+
 > Observar el modificador '-g' que implica instalación del módulo a nivel global.
 
 luego, cambiar a la carpeta root del sitio y ejecutar:  
-```
+
+```(sh)
 http-server -c-1
 ```
 
 ## Unit Test
+
 ### Jasmine  + Karma
+
 #### Instalación
+
 ##### Desde la carpeta root
+
 * npm init
   * se crea el archivo _package.json_ <-- importante para tener la configuración de paquetes _npm_ instalados
 * sudo npm install -g karma-cli
 * npm install karma karma-jasmine jasmine-core karma-chrome-launcher --save-dev
 * npm install karma-spec-reporter --save-dev
+
 #### Configuración
+
 ##### En la carpeta root
+
 * crear el archivo _karma.conf.js_ con **karma init**
+
 #### Ejecución
+
 ##### Desde la carpeta con el archivo de configuración
+
 * karma start
-    - Si se indica instalar el paquete, entonces es necesario ejecutar la Re-Instalación 
+  * Si se indica instalar el paquete, entonces es necesario ejecutar la Re-Instalación
+
 #### Re-Instalación de los paquetes de npm
+
 ##### _Es necesario cuando se cambia de ramas_  (automatizar)
-* npm install       
-    - Este comando usa el archivo _package.json_ para determinar los paquetes necesarios
 
-
+* npm install
+  * Este comando usa el archivo _package.json_ para determinar los paquetes necesarios
 
 ## Commit conventions
 
@@ -60,10 +77,49 @@ http-server -c-1
 * **test**: Adding missing tests
 * **chore**: Changes to the build process or auxiliary tools and libraries such as documentation
   generation
-> ref: <https://gist.github.com/brianclements/841ea7bffdb01346392c>
 
+> ref: <https://gist.github.com/brianclements/841ea7bffdb01346392c>
 
 ## Integration Test (en breve)
 
+## Docker
 
+### Contenedor
 
+ID: 3ddcee65189b
+
+Iniciar contenedor
+
+```(sh)
+docker start 3ddcee65189b
+```
+
+Parar contenedor
+
+```(sh)
+docker stop 3ddcee65189b
+```
+
+Entrar al contenedor
+
+```(sh)
+docker exec -it 3ddcee65189b bash
+```
+
+actualizar el contenedor
+
+```(sh)
+docker container cp EPSS.Front/ 3ddcee65189b:/home/pablo
+```
+
+listar contendores activos
+
+```(sh)
+docker ps
+```
+
+buscar ip de un contenedor activo
+
+```(sh)
+docker inspect 3ddcee65189b | grep IPAddress
+```
