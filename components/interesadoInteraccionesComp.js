@@ -7,7 +7,7 @@ interesadosMod.component('pafInteresadoInteracciones', {  // This name is what A
 		interesado : '<pafInteresado',
 		interacciones : '<pafInteracciones',
 		agregar :'<pafAgregar',
-		eliminar : '<pafEliminar'
+		cargar : '<pafCargar'
 	},
 	controller: 'interesadoInteraccionesControlador'
 });
