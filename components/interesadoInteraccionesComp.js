@@ -6,7 +6,7 @@ interesadosMod.component('pafInteresadoInteracciones', {  // This name is what A
 	bindings: {
 		interesado : '<pafInteresado',
 		interacciones : '<pafInteracciones',
-		agregar :'<pafAgregar',
+		// agregar :'<pafAgregar',
 		cargar : '<pafCargar'
 	},
 	controller: 'interesadoInteraccionesControlador'

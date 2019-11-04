@@ -9,6 +9,28 @@ interesadosMod.controller('interesadoInteraccionesControlador', ['$scope', 'inte
 			
 			self.ahora = Math.floor(Date.now() / 1000); 
 
+			//INI-Interacción de un Interesado.
+			//Modal Interacción.
+			self.interaccionEditando = null;
+			self.modalInteraccionOpen = false;
+
+			self.showModalInteraccion = function showModalInteraccion(interesado) {
+				var fechaId = new Date();
+				var InteraccionBase = {
+					'interesadoId': interesado.interesadoId,
+					'interaccionInteresadoId': Math.floor(fechaId.getTime() / 1000),
+					'fecha': fechaId.toJSON(), 
+					'comentario': null
+				};
+				self.interaccionEditando = InteraccionBase;
+				self.modalInteraccionOpen = true;
+			};
+
+			self.closeModalInteraccion = function closeModalInteraccion() {
+				self.modalInteraccionOpen = false;
+			};
+			//Fin Modal Interacción.
+
 			self.eliminar = function eliminar(interaccionAEliminar) {
 				//$scope.myStyle.cursor = 'wait';
 				interesadoSrv.eliminarInteraccion(interaccionAEliminar.interesadoId, interaccionAEliminar.interaccionInteresadoId)
@@ -21,6 +43,22 @@ interesadosMod.controller('interesadoInteraccionesControlador', ['$scope', 'inte
 					})
 					.finally(function () {
 						//$scope.myStyle.cursor = 'auto';
+					});
+			};
+
+			self.agregar = function agregar(InteraccionAAgregar) {
+				//$scope.myStyle.cursor = 'wait';
+				interesadoSrv.agregarInteraccion(InteraccionAAgregar)
+					.then(function () {
+						self.interacciones.push(InteraccionAAgregar);
+					})
+					.catch(function (responseError) {
+						//$scope.error.errores = responseError.mensajes;
+						//$scope.error.hayError = true;
+					})
+					.finally(function () {
+						//$scope.myStyle.cursor = 'auto';
+						self.modalInteraccionOpen = false;
 					});
 			};
 
