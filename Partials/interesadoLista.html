@@ -62,16 +62,16 @@
 		</div>
 	</div>
 	<div class="col-md-7">
-		<div class="panel panel-primary">
+		<!-- <div class="panel panel-primary">
 			<div class="panel-heading">
 				<paf-interesado-cabecera paf-interesado="interesadoSeleccionado"></paf-interesado-cabecera>
 			</div>
 			<div class="panel-body">
 				<paf-interesado-base paf-interesado="interesadoSeleccionado"></paf-interesado-base>
-				<paf-interesado-interacciones paf-interesado="interesadoSeleccionado" ></paf-interesado-interacciones>
+				<paf-interesado-interacciones paf-interesado="interesadoSeleccionado"></paf-interesado-interacciones>
 			</div>
 			<div class="panel-footer">
-					<paf-interesado-pie paf-interesado="interesadoSeleccionado"></paf-interesado-pie>
+				<paf-interesado-pie paf-interesado="interesadoSeleccionado"></paf-interesado-pie>
 				<div class="col-md-1">
 					<span class="badge" style="background-color: #ec971f" ng-show="interesadoSeleccionado.duplicado"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" data-original-title="¡Posible duplicado!"></i></span>
 				</div>
@@ -81,7 +81,8 @@
 					<button class="btn btn-primary" ng-click="irAinscripcion(interesadoSeleccionado)">Inscripción</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
+		<paf-interesado-panel paf-interesado="interesadoSeleccionado" paf-deleted="obtenerInteresados"></paf-interesado-panel>
 
 		<div class="panel panel-default small">
 			<div class="panel-heading">
@@ -175,7 +176,7 @@
 <!-- Fin Modal - Observación sobre la invitación a Evento-->
 
 <!-- Modal - Eliminar Interesado-->
-<div class="divModalBase" ng-show="modalEliminarInteresadoOpen">
+<!-- <div class="divModalBase" ng-show="modalEliminarInteresadoOpen">
 	<div class="col-md-4"></div>
 	<div class="col-md-4" style='top: 33%'>
 		<div class="panel panel-info ">
@@ -200,5 +201,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 <!--Fin Modal - Eliminar Interesado-->
