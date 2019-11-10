@@ -1,0 +1,19 @@
+<table class="table table-striped table-hover table-condensed">
+	<theader>
+		<tr>
+			<th class="col-md-1">Fecha</th>
+			<th class="col-md-3">Título</th>
+			<th class="col-md-7">Observación</th>
+			<th class="col-md-1">
+			</th>
+		</tr>
+	</theader>
+	<tbody>
+		<tr ng-repeat="evento in $ctrl.eventosFuturos | orderBy:'fecha'">
+			<td>{{evento.fecha | date:'dd/MM/yyyy'}}</td>
+			<td>{{evento.titulo}}</td>
+			<td>{{evento.observacion}}</td>
+			<td><i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="$ctrl.OnEventoSeleccionado(evento)" role="button" data-toggle="tooltip" data-original-title="Agregar al interesado al evento."></i></td>
+		</tr>
+	</tbody>
+</table>
