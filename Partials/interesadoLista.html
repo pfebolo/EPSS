@@ -76,30 +76,8 @@
 				</span>
 			</div>
 			<div style="max-height: 140px; overflow-y: auto;  overflow-x: auto;">
-				<!--Tabla de Eventos Asignados-->
-				<!-- <table class="table table-striped table-hover table-condensed" ng-show="!altaEvento">
-					<thead>
-						<tr>
-							<th class="col-md-1">Fecha</th>
-							<th class="col-md-3">Título</th>
-							<th class="col-md-7">Comentario</th>
-							<th class="col-md-1">
-								<i class="fa fa-calendar-check-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Asistencia."></i></th>
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="interesadoEvento in interesadosEventos | orderBy:'evento.fecha':true">
-							<td class="col-md-1">{{interesadoEvento.evento.fecha | date:'dd/MM/yyyy'}}</td>
-							<td class="col-md-3">{{interesadoEvento.evento.titulo}}</td>
-							<td class="col-md-7">{{interesadoEvento.observacion}}&nbsp<i class="fa  fa-pencil icon-primary icon-pointer" aria-hidden="true" ng-hide="interesadoEvento.asistente" ng-click="showModalInvitacionObservacion(interesadoEvento)"></i></td>
-							<td class="col-md-1">
-								<i class="icon-primary" aria-hidden="true" data-toggle="tooltip" data-original-title="Editar comentarios" ng-class="interesadoEvento.asistente ? 'fa fa-calendar-check-o' : 'fa fa-calendar-o '" ng-show="interesadoEvento.evento.estadoFecha<=0" />
-							</td>
-						</tr>
-					</tbody>
-				</table> -->
-				<paf-eventos-asignados-lista ng-show="!altaEvento" paf-interesado="interesadoSeleccionado" ></paf-eventos-asignados-lista>
+
+				<paf-eventos-asignados-lista ng-show="!altaEvento" paf-interesado="interesadoSeleccionado" paf-refrescar="refrescarEventosAsignados"></paf-eventos-asignados-lista>
 
 
 				<paf-eventos-lista ng-show="altaEvento" paf-evento-seleccionado="irAAgregarInteresadoEvento"></paf-eventos-lista>
@@ -112,28 +90,3 @@
 
 
 
-<!-- Modal - Observación sobre la invitación a Evento-->
-<!-- <div class="divModalBase " ng-show="modalInvitacionObservacionOpen">
-	<div class="col-md-3 "></div>
-	<div class="col-md-6 " style='top: 33%'>
-		<div class="panel panel-info ">
-			<div class="panel-heading "><i class="fa fa-info-circle fa-lg .text-info "></i><em>&nbsp<strong>{{interesadoSeleccionado.nombre}}&nbsp{{interesadoSeleccionado.apellido}}</strong> invitado al evento <strong>{{interesadoEventoEditando.evento.titulo}}</strong> el día <strong>{{interesadoEventoEditando.evento.fecha | date:'dd/MM/yyyy'}}</strong></em>
-			</div>
-			<div class="panel-body">
-				<form novalidate name="myForm" class="css-form" autocomplete="off">
-					<div class="input-group" ng-class="'has-success'">
-						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Observación de la invitación">Observación</span>
-						<textarea class="form-control" name="observacion" ng-model="interesadoEventoEditando.observacion"></textarea>
-					</div>
-				</form>
-			</div>
-			<div class="panel-footer ">
-				<div class="text-right">
-					<button class="btn btn-primary" ng-click="actualizarObservacion(interesadoEventoEditando)" autofocus>Actualizar</button>
-					<button class="btn btn-default" ng-click="closeModalInvitacionObservacion()" autofocus>Cancelar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->
-<!-- Fin Modal - Observación sobre la invitación a Evento-->
