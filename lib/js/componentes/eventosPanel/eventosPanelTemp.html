@@ -1,0 +1,19 @@
+<div class="panel panel-default small">
+	<div class="panel-heading">
+		<span ng-show="!$ctrl.altaEvento">
+			Eventos
+			<i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="$ctrl.mostrarEventosFuturos()" role="button" data-toggle="tooltip" data-original-title="Dar de alta a un interesado en un evento."></i>
+		</span>
+		<span ng-show="$ctrl.altaEvento">
+			Elegir Evento
+			<i class="fa fa-minus-circle text-primary" aria-hidden="true" ng-click="$ctrl.altaEvento=false" role="button" data-toggle="tooltip" data-original-title="Dar de alta a un interesado en un evento."></i>
+		</span>
+	</div>
+	<div style="max-height: 140px; overflow-y: auto;  overflow-x: auto;">
+
+		<paf-eventos-asignados-lista ng-show="!$ctrl.altaEvento" paf-interesado="$ctrl.interesado" paf-refrescar="$ctrl.refrescarEventosAsignados"></paf-eventos-asignados-lista>
+
+
+		<paf-eventos-lista ng-show="$ctrl.altaEvento" paf-evento-seleccionado="$ctrl.agregar"></paf-eventos-lista>
+	</div>
+</div>
