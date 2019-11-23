@@ -1,4 +1,16 @@
-<div class="col-md-5">
-		Interesado el.:&nbsp{{$ctrl.interesado.fechaInteresado | date:'dd/MM/yyyy'}}<br>Actualizado el:&nbsp{{$ctrl.interesado.fechaActualizacion | date:'dd/MM/yyyy HH:mm'}}
+<div>
+	<div class="col-md-8">
+		<div class="small">
+			Interesado el.:&nbsp{{$ctrl.interesado.fechaInteresado | date:'dd/MM/yyyy'}}
+		</div>
+		<div class="small">
+			Actualizado el:&nbsp{{$ctrl.interesado.fechaActualizacion | date:'dd/MM/yyyy HH:mm'}}
+		</div>
+	</div>
+	<div class="col-md-2">
 		<i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="$ctrl.interesado.seguimiento" data-toggle="tooltip" data-original-title="Seguimiento"></i>
 	</div>
+	<div class="col-md-2">
+		<span class="badge" style="background-color: #ec971f" ng-show="$ctrl.interesado.duplicado"><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" data-original-title="¡Posible duplicado!"></i></span>
+	</div>
+</div>
