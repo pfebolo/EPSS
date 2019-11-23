@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<paf-interesado-cabecera paf-interesado="$ctrl.interesado"></paf-interesado-cabecera>
+	</div>
+	<div class="panel-body">
+		<paf-interesado-base paf-interesado="$ctrl.interesado"></paf-interesado-base>
+		<paf-interesado-interacciones paf-interesado="$ctrl.interesado"></paf-interesado-interacciones>
+	</div>
+	<div class="panel-footer">
+		<paf-interesado-pie paf-interesado="$ctrl.interesado" class="col-md-6"></paf-interesado-pie>
+		<div class="text-right col-md-6" ng-hide="$ctrl.readOnly">
+			<button class="btn btn-danger"  ng-click="$ctrl.showModalEliminarInteresado($ctrl.interesado)">Eliminar</button>
+			<button class="btn btn-primary" ng-click="$ctrl.irAEdicion($ctrl.interesado)">Edición</button>
+			<button class="btn btn-primary" ng-click="$ctrl.irAinscripcion($ctrl.interesado)">Inscripción</button>
+		</div>
+	</div>
+</div>
+
+<!-- Modal - Eliminar Interesado-->
+<div class="divModalBase" ng-show="$ctrl.modalEliminarInteresadoOpen">
+	<div class="col-md-4"></div>
+	<div class="col-md-4" style='top: 33%'>
+		<div class="panel panel-info ">
+			<div class="panel-heading"><i class="fa fa-check-circle text-warning"></i>&nbspIngrese el PIN de confirmación.
+			</div>
+			<div class="panel-body">
+				<form novalidate name="myForm" class="css-form" autocomplete="off">
+					<div class="input-group" ng-class="myForm.PIN.$valid ? 'has-success' : 'has-error'">
+						<span class="input-group-addon" data-toggle="tooltip" data-original-title="Pin de confirmación">PIN</span>
+						<input type="password" class="form-control" name="PIN" ng-model="$ctrl.eliminarInteresadoPIN" placeholder="[1234]" pattern="\d{4}" maxlength="4" ng-keyup="$ctrl.eliminarInteresadoPINErroneo=false" autofocus required min="0" max="9999">
+					</div>
+				</form>
+			</div>
+			<div class="panel-footer ">
+				<div class="col-md-6 text-danger">
+					<span ng-show="$ctrl.eliminarInteresadoPINErroneo">El PIN ingresado es incorrecto.</span>
+				</div>
+				<div class="text-right">
+					<button class="btn btn-danger" ng-click="$ctrl.closeModalEliminarInteresado($ctrl.eliminarInteresadoPIN)" ng-disabled="!myForm.$valid">Confirmar</button>
+					<button class="btn btn-default" ng-click="$ctrl.closeModalEliminarInteresado('Cancelar')" autofocus>Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Fin Modal - Eliminar Interesado-->

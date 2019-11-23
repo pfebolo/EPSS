@@ -1,0 +1,29 @@
+<div>
+	<ul class="nav nav-tabs">
+		<li ng-class="$ctrl.indiceActivo==0 ? 'active':''">
+			<a ng-click="$ctrl.indiceActivo=0">Historia &nbsp
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="($ctrl.cuestionario[0] !== null) && ($ctrl.cuestionario[0] !== '')" />
+			</a>
+		</li>
+		<li ng-class="$ctrl.indiceActivo==1 ? 'active':''">
+			<a ng-click="$ctrl.indiceActivo=1">Definición &nbsp
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="($ctrl.cuestionario[1] !== null) && ($ctrl.cuestionario[1] !== '')" />
+			</a>
+		</li>
+		<li ng-class="$ctrl.indiceActivo==2 ? 'active':''">
+			<a ng-click="$ctrl.indiceActivo=2">Situación &nbsp
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="($ctrl.cuestionario[2] !== null) && ($ctrl.cuestionario[2] !== '')" />
+			</a>
+		</li>
+		<li ng-class="$ctrl.indiceActivo==3 ? 'active':''">
+			<a ng-click="$ctrl.indiceActivo=3">Expectativas &nbsp
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true" ng-show="($ctrl.cuestionario[3] !== null) && ($ctrl.cuestionario[3] !== '')" />
+			</a>
+		</li>
+	</ul>
+	<em style="white-space:pre-wrap;">{{$ctrl.cuestionario[$ctrl.indiceActivo]}}</em>
+	<br>
+	<div class="alert alert-info" role="alert" ng-show="$ctrl.cuestionario[$ctrl.indiceActivo]=='' || $ctrl.cuestionario[$ctrl.indiceActivo]==null">
+		El estudiante no ha dado esta información.
+	</div>
+</div>

@@ -344,3 +344,7 @@ border-top,.border-right,.border-bottom,.border-left,.border {
   -webkit-text-stroke: 1px black;
   paint-order: stroke fill;
 }
+
+.panel-footer{
+	height:55px; 
+}

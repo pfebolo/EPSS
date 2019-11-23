@@ -1,0 +1,21 @@
+<div class="divSpinner" ng-show="cargando">
+	<div class="spinner" />
+</div>
+<div class="alert alert-danger" ng-show="error.hayError">
+	<p ng-repeat="error in error.errores">
+		<strong>{{error.codigo}}:</strong><em>&nbsp;{{error.mensaje}}</em>
+	</p>
+</div>
+<div ng-show="!GetOK">
+	<div class="alert alert-warning" ng-show="!cargando">
+		El interesado no fue obtenido, intente nuevamente.
+	</div>
+</div>
+
+
+<div ng-show="!cargando">
+	<div class="col-md-1"></div>
+	<div class="col-md-7">
+		<paf-interesado-panel paf-interesado="interesadoSeleccionado" paf-read-only="true"></paf-interesado-panel>
+	</div>
+</div>
