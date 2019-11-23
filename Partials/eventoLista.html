@@ -129,7 +129,10 @@
 							</td>
 							<td>{{interesadoEvento.interesado.apellido}},&nbsp;{{interesadoEvento.interesado.nombre}}&nbsp<i class="fa fa-flag banderin-danger" aria-hidden="true" ng-show="interesadoEvento.interesado.seguimiento"></i></td>
 
-							<td>{{interesadoEvento.interesado.mail}}</td>
+							<td>
+								<a href="mailto:{{interesadoEvento.interesado.mail}}?Subject=EPSS:" target="_top">&nbsp{{interesadoEvento.interesado.mail}}</a>
+							</td>
+							
 							<td>{{interesadoEvento.interesado.telefono}}&nbsp;{{interesadoEvento.interesado.celular}}</td>
 							
 							<td>

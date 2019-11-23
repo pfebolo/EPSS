@@ -2,7 +2,8 @@
 	<tbody>
 		<tr>
 			<td class="col-md-5">
-				<span class="glyphicon glyphicon-send" aria-hidden="true" data-toggle="tooltip" data-original-title="E-Mail" />&nbsp{{$ctrl.interesado.mail}}
+				<span class="glyphicon glyphicon-send" aria-hidden="true" data-toggle="tooltip" data-original-title="E-Mail" />
+				<a href="mailto:{{$ctrl.interesado.mail}}" target="_top">&nbsp{{$ctrl.interesado.mail}}</a>
 			</td>
 			<td class="col-md-3">
 				<span class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip" data-original-title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" />&nbsp{{$ctrl.interesado.telefono}}&nbsp{{$ctrl.interesado.celular}}
