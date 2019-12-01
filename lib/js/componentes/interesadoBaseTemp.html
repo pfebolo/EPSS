@@ -1,0 +1,52 @@
+<table class="table table-striped table-condensed">
+	<tbody>
+		<tr>
+			<td class="col-md-5">
+				<span class="glyphicon glyphicon-send" aria-hidden="true" data-toggle="tooltip" data-original-title="E-Mail" />
+				<a href="mailto:{{$ctrl.interesado.mail}}" target="_top">&nbsp{{$ctrl.interesado.mail}}</a>
+			</td>
+			<td class="col-md-3">
+				<span class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip" data-original-title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" />&nbsp{{$ctrl.interesado.telefono}}&nbsp{{$ctrl.interesado.celular}}
+			</td>
+			<td class="col-md-4">
+				<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" data-original-title="Modalidad de cursada" />&nbsp{{$ctrl.interesado.modalidad.nombre}}{{$ctrl.interesado.modalidadId===1 && interesado.turno!==null ? ',&nbsp'.concat(interesado.turno) : null }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true" data-toggle="tooltip" data-original-title="Grado de interés" />&nbsp{{$ctrl.interesado.gradoInteres}}
+			</td>
+			<td>
+				<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Año de inscripción"></i>&nbsp{{$ctrl.interesado.anioAcursar}}{{$ctrl.interesado.anioAcursar!==2 ? 'er' : 'do'}}&nbspAño.
+			</td>
+			<td>
+				<i class="fa fa-calendar fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Cuatrimestre de inscripción"></i>&nbsp{{$ctrl.interesado.nmestreAcursar}}{{$ctrl.interesado.nmestreAcursar===1 ? 'er' : 'do'}}&nbspCuatrimestre.
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip " title="¿Como conoció a la Escuela?" />&nbsp{{$ctrl.interesado.comoConocio}}
+			</td>
+			<td>
+				<span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" data-original-title="Situación Particular" />&nbsp{{$ctrl.interesado.situacionInscripcion}}
+			</td>
+			<td>
+				<span class="glyphicon glyphicon-bell" aria-hidden="true" data-toggle="tooltip" data-original-title="Situación Especial" />&nbsp{{$ctrl.interesado.situacionEspecial}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<i class="fa fa-handshake-o" aria-hidden="true" data-toggle="tooltip" data-original-title="Medio de Contacto"></i>&nbsp{{$ctrl.interesado.medioDeContacto.nombre}}
+			</td>
+			<td colspan="2">
+				<i class="fa fa-university fa-fw" aria-hidden="true" data-toggle="tooltip" data-original-title="Carrera a cursar"></i>&nbsp{{$ctrl.interesado.carrera.descripcion}}</nbsp>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"/> -->
+				<i class="fa fa-comment-o" aria-hidden="true"  data-toggle="tooltip" data-original-title="Comentarios" />&nbsp{{$ctrl.interesado.comentario}}
+			</td>
+		</tr>
+	</tbody>
+</table>

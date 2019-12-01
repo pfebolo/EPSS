@@ -1,0 +1,79 @@
+<table id="Documentación" class="table table-striped table-condensed">
+	<thead>
+		<tr>
+			<th colspan="7">Fechas de entrega y validación de Documentación</th>
+		</tr>
+		<tr>
+			<th>
+
+			</th>
+			<th>
+				Compromiso
+			</th>
+			<th>
+				Cuestionario
+			</th>
+			<th>
+				Apto Físico
+			</th>
+			<th>
+				Título
+			</th>
+			<th>
+				DNI
+			</th>
+			<th>
+				Foto
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				Entrega
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.alumno.docCompromiso!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.alumno.docCompromiso | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.cuestionario!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.cuestionario | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.alumno.docAptoFisico!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.alumno.docAptoFisico | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.alumno.docTitulo!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.alumno.docTitulo | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.alumno.docDni!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.alumno.docDni | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.alumno.docFoto!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.alumno.docFoto | date:'dd/MM/yyyy'}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Validación
+			</td>
+			<td>
+				[No Aplica]
+			</td>
+			<td>
+				[No Aplica]
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.docAptoFisicoValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.docAptoFisicoValido | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.docTituloValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.docTituloValido | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.docDnivalido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.docDnivalido | date:'dd/MM/yyyy'}}
+			</td>
+			<td>
+				<span ng-class="$ctrl.legajo.docFotoValido!==null ? 'glyphicon glyphicon-check':'glyphicon glyphicon-unchecked'" aria-hidden="true" />&nbsp{{$ctrl.legajo.docFotoValido | date:'dd/MM/yyyy'}}
+			</td>
+		</tr>
+	</tbody>
+
+</table>

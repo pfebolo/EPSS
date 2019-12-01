@@ -1,0 +1,43 @@
+<div>
+	<strong>Informes de coordinadoras/es</strong>
+	<i class="fa fa-plus-circle text-primary" aria-hidden="true" ng-click="$ctrl.irACrear()" role="button" data-toggle="tooltip" data-original-title="Dar de alta nuevos $ctrl.informes."></i>
+	<div class="alert alert-info" role="alert" ng-show="$ctrl.informes.length==0">
+		El estudiante no tiene informes.
+	</div>
+	<div class="stripped-row" ng-repeat="informe in $ctrl.informes" ng-show="$ctrl.informes.length!=0">
+		<div class="no-gutter-deep">
+			<div class="col-md-1">
+				{{informe.anioLectivo}}° año
+			</div>
+			<div class="col-md-11">
+				<div class="col-md-12">
+					<div class="col-md-11">
+						<textarea style="min-width: 100%">{{informe.informe}}</textarea>
+					</div>
+					<div class="col-md-1 text-center">
+						<div class="col-md-12">
+							<span class="fa-stack fa-lg icon-primary icon-pointer" data-toggle="tooltip" data-original-title="Mostrar" aria-hidden="true" ng-click="$ctrl.showModal(informe)">
+								<i class="fa fa-search fa-stack-1x text-danger" />
+								<i class="fa fa-file-text-o fa fa-stack-1x" />
+							</span>
+						</div>
+						<div class="col-md-12">
+							<i class="fa  fa-pencil icon-primary icon-pointer" data-toggle="tooltip" data-original-title="Editar" aria-hidden="true" ng-click="$ctrl.showModalEditar(informe)" ng-show="$ctrl.esEditable(informe.fechaActualizacion)"></i>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-2">
+						<img class="media-object img-circle" class="" width="25" height="25" ng-src="{{informe.coordinador.fotoPath}}" alt="{{informe.coordinador.nombre}}" data-toogle="tooltip" data-original-title="{{informe.coordinador.nombre}}">
+					</div>
+					<div class="col-md-7">
+						<small>{{informe.coordinador.nombre}}</small>
+					</div>
+					<div class="col-md-3">
+						<small><span class="fa fa-calendar" data-toggle="tooltip" data-original-title="Fecha de actualización" aria-hidden="true" />&nbsp{{informe.fechaActualizacion | date:'dd/MM/yy HH:mm'}}</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
