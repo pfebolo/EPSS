@@ -9,7 +9,7 @@
 				<span class="glyphicon glyphicon-earphone" aria-hidden="true" data-toggle="tooltip" data-original-title="N° de teléfono fijo (xx-xxxx-xxxx) o celular (xx-15-xxxx-xxxx)" />&nbsp{{$ctrl.interesado.telefono}}&nbsp{{$ctrl.interesado.celular}}
 			</td>
 			<td class="col-md-4">
-				<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" data-original-title="Modalidad de cursada" />&nbsp{{$ctrl.interesado.modalidad.nombre}}{{$ctrl.interesado.modalidadId===1 && interesado.turno!==null ? ',&nbsp'.concat(interesado.turno) : null }}
+				<span class="glyphicon glyphicon-registration-mark" aria-hidden="true" data-toggle="tooltip" data-original-title="Modalidad de cursada" />&nbsp{{$ctrl.interesado.modalidad.nombre}}{{$ctrl.interesado.modalidadId===1 && $ctrl.interesado.turno!==null ? ',&nbsp'.concat($ctrl.interesado.turno) : null }}
 			</td>
 		</tr>
 		<tr>
